@@ -1,0 +1,9 @@
+<h1><%= @vertical_market.name %></h1>
+
+<% if @vertical_market.children.length > 0 %>
+  <ul>
+    <% @vertical_market.children.each do |vm| %>
+      <li> <%= link_to vm.name, vm %> </li>
+    <% end %>
+  </ul>
+<% end %>
