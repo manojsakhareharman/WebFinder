@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+vm_install = VerticalMarket.create(name: "Installed")
+VerticalMarket.create(name: "Live Sound")
+VerticalMarket.create(name: "Studio")
+
+VerticalMarket.create([
+  {parent_id: vm_install.id, name: "House of Worship"},
+  {parent_id: vm_install.id, name: "Restaurant/Bar"},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+#  {parent_id: vm_install.id, name: ""},
+])

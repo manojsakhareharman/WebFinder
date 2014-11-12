@@ -24,5 +24,13 @@ RSpec.describe VerticalMarket, :type => :model do
     it "has children" do
       expect(@vertical_market.children).to include(@child_vertical)
     end
+
+    it "has examples" do
+      example = FactoryGirl.create(:example, vertical_market: @child_vertical)
+
+      @child_vertical.reload
+
+      expect(@child_vertical.examples).to include(example)
+    end
   end
 end

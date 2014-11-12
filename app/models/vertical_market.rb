@@ -1,4 +1,5 @@
 class VerticalMarket < ActiveRecord::Base
+  has_many :examples, -> { order("position ASC") }
   acts_as_tree order: "name"
   validates :name, presence: true, uniqueness: true
 

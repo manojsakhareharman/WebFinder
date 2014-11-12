@@ -14,6 +14,7 @@ RSpec.describe VerticalMarketsController do
 
     it "renders show template" do
       expect(response).to render_template("show")
+      expect(response).to have_http_status(:success)
     end
   end
 end

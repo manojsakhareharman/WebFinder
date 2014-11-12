@@ -17,6 +17,7 @@ gem 'foundation-rails', '~> 5.4'
 gem 'friendly_id'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'acts_as_list'
 gem 'acts_as_tree'
 # gem 'unicorn'
 

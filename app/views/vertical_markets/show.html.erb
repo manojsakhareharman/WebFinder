@@ -6,4 +6,11 @@
       <li> <%= link_to vm.name, vm %> </li>
     <% end %>
   </ul>
+<% else %>
+  <h3 class="subheader">Example Applications</h3>
+  <ul>
+    <% @vertical_market.examples.each do |example| %>
+      <li><%= link_to example.name, [@vertical_market, example] %></li>
+    <% end %>
+  </ul>
 <% end %>

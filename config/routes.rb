@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :vertical_markets, only: :show
+  get 'examples/show'
+
+  resources :vertical_markets, only: :show do
+    resources :examples, only: :show
+  end
+
   root to: 'main#index'
 
 end

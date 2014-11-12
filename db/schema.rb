@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110160516) do
+ActiveRecord::Schema.define(version: 20141112221606) do
+
+  create_table "examples", force: true do |t|
+    t.string   "name"
+    t.integer  "vertical_market_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "retail",             default: false
+    t.integer  "position"
+    t.text     "description"
+  end
+
+  add_index "examples", ["vertical_market_id"], name: "index_examples_on_vertical_market_id", using: :btree
 
   create_table "vertical_markets", force: true do |t|
     t.string   "name"
