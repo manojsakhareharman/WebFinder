@@ -20,7 +20,7 @@ gem 'aws-sdk'
 gem 'acts_as_list'
 gem 'acts_as_tree'
 gem 'devise'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'activeadmin-sortable'
 
 group :development do
