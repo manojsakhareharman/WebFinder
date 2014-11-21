@@ -16,4 +16,5 @@
 /tmp
 /coverage
 /notes
+/config/database.yml
 

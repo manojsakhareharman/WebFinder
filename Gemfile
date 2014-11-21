@@ -33,6 +33,7 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'capistrano-rails'
+  gem 'capistrano-bundler'
 end
 
 group :development, :test do
