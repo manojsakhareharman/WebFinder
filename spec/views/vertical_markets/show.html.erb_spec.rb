@@ -5,7 +5,7 @@ describe "vertical_markets/show.html.erb" do
     before do
       @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
       @child_verticals = FactoryGirl.create_list(:vertical_market, 3, parent_id: @vertical_market.id)
-      @example = FactoryGirl.create(:example, vertical_market: @vertical_market)
+      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
 
       render
@@ -18,24 +18,53 @@ describe "vertical_markets/show.html.erb" do
     end
 
     it "does not link to applications" do
-      expect(rendered).not_to have_link(@example.name)
+      expect(rendered).not_to have_link(@reference_system.name)
+    end
+  end
+
+  context "general" do
+    before do
+      @vertical_market = FactoryGirl.create(:vertical_market)
+      assign(:vertical_market, @vertical_market)
+
+      render
+    end
+
+    it "has headline and description" do
+      expect(rendered).to have_css("h2", text: @vertical_market.headline)
+      expect(rendered).to have_css("div.description", text: @vertical_market.description)
     end
   end
 
   context "bottom-level vertical" do
     before do
       @vertical_market = FactoryGirl.create(:vertical_market)
-      @example = FactoryGirl.create(:example, vertical_market: @vertical_market)
+      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
 
       render
     end
 
     # with javascript, the application content loads inline via AJAX
-    # without, it links to a example view page
-    it "links to related example applications" do
-      expect(rendered).to have_link(@example.name, href: vertical_market_example_path(@vertical_market, @example))
+    # without, it links to a reference_system view page
+    it "links to related reference_system applications" do
+      expect(rendered).to have_link(@reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, @reference_system))
     end
 
+  end
+
+  context "child vertical" do
+    before do
+      @parent = FactoryGirl.create(:vertical_market)
+      @vertical_market = FactoryGirl.create(:vertical_market, parent_id: @parent.id)
+      assign(:vertical_market, @vertical_market)
+
+      render
+    end
+
+    it "shows content from the parent vertical market" do
+      expect(rendered).to have_css("h3", text: @parent.headline)
+      expect(rendered).to have_css("div.parent", text: @parent.description)
+    end
   end
 end

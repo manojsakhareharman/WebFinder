@@ -1,5 +1,24 @@
-<ul>
+
+<div class="text-center">
+  <div class="placeholder" style="height: 300px">
+    Homepage Banner
+  </div>
+</div>
+
+<hr/>
+
+<div class="text-center">
+  <h2>Vertical Markets Headline</h2>
+</div>
+
+<ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
   <% @vertical_markets.each do |vm| %>
-    <li> <%= link_to vm.name, vm %> </li>
+    <li><div class="panel">
+        <%= link_to vm.name, vm %>
+      </div>
+    </li>
   <% end %>
 </ul>
+
+<hr/>
+

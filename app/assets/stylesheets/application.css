@@ -10,8 +10,40 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ * NOTE: require_tree directive is diabled so the active_admin css isn't included in the main
+ * application. Each css file will need to be included manually (if any).
+ *
+ * require_tree .
+ *
  *= require_self
  *= require foundation_and_overrides
-
  */
+
+/* placeholder boxes: */
+div.placeholder {
+  margin: 20px auto;
+  padding: 50px;
+  height: 150px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+
+div.small_placeholder {
+  margin: 10px auto;
+  padding: 10px;
+  min-height: 50px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+
+div.infographic_container, div.buynow_container {
+  margin: 20px auto;
+  padding: 50px;
+  height: 150px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+

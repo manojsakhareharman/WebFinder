@@ -1,8 +1,8 @@
-class ExamplesController < ApplicationController
+class ReferenceSystemsController < ApplicationController
   before_action :load_vertical_market
 
   def show
-    @example = Example.find(params[:id])
+    @reference_system = ReferenceSystem.find(params[:id])
   end
 
   private

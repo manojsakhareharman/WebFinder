@@ -1,9 +1,25 @@
 class VerticalMarket < ActiveRecord::Base
-  has_many :examples, -> { order("position ASC") }
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
+  has_many :reference_systems, -> { order("position ASC") }
   acts_as_tree order: "name"
   validates :name, presence: true, uniqueness: true
+  validates :headline, presence: true
 
   def self.parent_verticals
     where("parent_id IS NULL or parent_id <= 0")
+  end
+
+  def slug_candidates
+    [
+      :name,
+      :headline,
+      [:name, :headline]
+    ]
+  end
+
+  def retail?
+    reference_systems.where(retail: true).length > 0
   end
 end

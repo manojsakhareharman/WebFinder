@@ -1,3 +1,11 @@
+<% if @vertical_market.reference_systems.length > 0 %>
+  <div class="text-center">
+    <% @vertical_market.reference_systems.each do |reference_system| %>
+      <%= image_tag reference_system.banner.url(:large) %>
+    <% end %>
+  </div>
+<% end %>
+
 <h1><%= @vertical_market.name %></h1>
 
 <% if @vertical_market.children.length > 0 %>
@@ -7,10 +15,64 @@
     <% end %>
   </ul>
 <% else %>
-  <h3 class="subheader">Example Applications</h3>
-  <ul>
-    <% @vertical_market.examples.each do |example| %>
-      <li><%= link_to example.name, [@vertical_market, example] %></li>
-    <% end %>
-  </ul>
+  <% @vertical_market.reference_systems.each do |reference_system| %>
+    <div class="reference_system_container">
+      <h1><%= link_to reference_system.headline, [@vertical_market, reference_system] %></h1>
+      <%=raw reference_system.description %>
+      <div class="placeholder" style="height: 280px">System Diagram</div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="large-9 columns">
+      <h2><%= @vertical_market.headline %></h2>
+      <div class="description">
+        <%=raw @vertical_market.description %>
+      </div>
+
+      <div class="placeholder">Case Studies</div>
+    </div>
+    <div class="large-3 columns">
+      <h4>From the Harman Resource Library</h4>
+      <div class="row">
+        <div class="large-4 small-5 columns">
+          <div class="small_placeholder">Img1</div>
+        </div>
+        <div class="large-8 small-7 columns">
+          <h5>Resource title</h5>
+          resource description text
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @vertical_market.retail? %>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel">
+          Retail Placeholder
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="large-9 columns">
+        <% if @vertical_market.parent %>
+          <h3><%= @vertical_market.parent.headline %></h3>
+          <div class="description parent">
+            <%= raw @vertical_market.parent.description %>
+          </div>
+        <% end %>
+        ...help me find...
+      </div>
+      <div class="large-3 columns">
+        <div class="panel">
+          <h4>Harman Equipment Financing</h4>
+          description<br/>
+          <%= link_to "Learn More", '#', class: "tiny radius button" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 <% end %>
