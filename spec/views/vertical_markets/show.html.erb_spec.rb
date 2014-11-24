@@ -39,16 +39,51 @@ describe "vertical_markets/show.html.erb" do
   context "bottom-level vertical" do
     before do
       @vertical_market = FactoryGirl.create(:vertical_market)
-      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-      assign(:vertical_market, @vertical_market)
-
-      render
     end
 
-    # with javascript, the application content loads inline via AJAX
-    # without, it links to a reference_system view page
-    it "links to related reference_system applications" do
-      expect(rendered).to have_link(@reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, @reference_system))
+    describe "and reference systems" do
+      before do
+        @reference_systems = FactoryGirl.create_list(:reference_system, 9, vertical_market: @vertical_market)
+        assign(:vertical_market, @vertical_market)
+
+        render
+      end
+
+      # with javascript, the application content loads inline via AJAX
+      # without, it links to a reference_system view page
+      it "links to related reference_system applications" do
+        reference_system = @reference_systems.first
+
+        expect(rendered).to have_link(reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+      end
+
+      it "shows the reference system pics, description" do
+        reference_system = @reference_systems.first
+
+        expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
+        expect(rendered).to have_content(reference_system.description)
+      end
+
+      it "shows only the first 6 reference systems" do
+        reference_system = @reference_systems.last # (beyond the number we want to include)
+
+        expect(rendered).not_to have_link(reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+      end
+    end
+
+    describe "and case studies" do
+      before do
+        @case_studies = FactoryGirl.create_list(:case_study, 4, vertical_market: @vertical_market)
+        assign(:vertical_market, @vertical_market)
+
+        render
+      end
+
+      it "links to case studies" do
+        case_study = @vertical_market.featured_case_studies.first
+
+        expect(rendered).to have_link(case_study.headline, href: vertical_market_case_study_path(@vertical_market, case_study))
+      end
     end
 
   end

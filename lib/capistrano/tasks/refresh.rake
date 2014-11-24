@@ -35,6 +35,8 @@ namespace :refresh do
 
         execute :mysql, "-u #{dev_db['username']} #{dev_db['database']} < ./#{filename}"
         execute :rm, filename
+
+        rake 'db:migrate'
       end
     end
   end

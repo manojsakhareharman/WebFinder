@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121172558) do
+ActiveRecord::Schema.define(version: 20141124222517) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,20 @@ ActiveRecord::Schema.define(version: 20141121172558) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "case_studies", force: true do |t|
+    t.string   "name"
+    t.string   "headline"
+    t.text     "description"
+    t.integer  "vertical_market_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.text     "content"
+  end
+
+  add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
+  add_index "case_studies", ["vertical_market_id"], name: "index_case_studies_on_vertical_market_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

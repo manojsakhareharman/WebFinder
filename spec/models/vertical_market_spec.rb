@@ -14,6 +14,7 @@ RSpec.describe VerticalMarket, :type => :model do
   it { should respond_to(:retail?) }
   it { should respond_to(:parent) }
   it { should respond_to(:reference_systems) }
+  it { should respond_to(:case_studies) }
 
   context "class methods" do
     it "#parent_verticals should return all the parent verticals" do
@@ -39,6 +40,20 @@ RSpec.describe VerticalMarket, :type => :model do
       @child_vertical.reload
 
       expect(@child_vertical.reference_systems).to include(reference_system)
+    end
+
+    it "#featured_reference_systems limits them to 6" do
+      FactoryGirl.create_list(:reference_system, 7, vertical_market: @child_vertical)
+      @child_vertical.reload
+
+      expect(@child_vertical.featured_reference_systems.length).to eq(6)
+    end
+
+    it "#featured_case_studies is limited to 3" do
+      FactoryGirl.create_list(:case_study, 4, vertical_market: @child_vertical)
+      @child_vertical.reload
+
+      expect(@child_vertical.featured_case_studies.length).to eq(3)
     end
 
     describe ".retail?" do

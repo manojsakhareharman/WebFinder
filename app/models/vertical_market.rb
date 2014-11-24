@@ -2,6 +2,7 @@ class VerticalMarket < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  has_many :case_studies
   has_many :reference_systems, -> { order("position ASC") }
   acts_as_tree order: "name"
   validates :name, presence: true, uniqueness: true
@@ -22,4 +23,13 @@ class VerticalMarket < ActiveRecord::Base
   def retail?
     reference_systems.where(retail: true).length > 0
   end
+
+  def featured_reference_systems(limit = 6)
+    reference_systems.limit(limit)
+  end
+
+  def featured_case_studies(limit = 3)
+    @featured_case_studies ||= case_studies.order("RAND()").limit(limit)
+  end
+
 end

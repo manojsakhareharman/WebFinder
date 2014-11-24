@@ -40,6 +40,17 @@ ActiveAdmin.register VerticalMarket do
       end
     end
   end
+
+  sidebar "Case Studies", only: [:show, :edit] do
+    ul do
+      unless vertical_market.children.length > 0
+        li link_to("+ New Case Study", new_admin_vertical_market_case_study_path(vertical_market))
+      end
+      vertical_market.case_studies.each do |c|
+        li link_to(c.name, [:amdin, vertical_market, c])
+      end
+    end
+  end
   # :nocov:
 
 end
