@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124222517) do
+ActiveRecord::Schema.define(version: 20141125185409) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 20141124222517) do
     t.datetime "updated_at"
     t.string   "slug"
     t.text     "content"
+    t.string   "banner_file_name"
+    t.string   "banner_content_type"
+    t.integer  "banner_file_size"
+    t.datetime "banner_updated_at"
   end
 
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree

@@ -31,8 +31,6 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
       expect(rendered).to have_link("next", href: vertical_market_reference_system_path(@vertical_market, @reference_system.next))
     end
 
-    it "displays related resource guide"
-
     it "displays reference_system description paragraph" do
       @reference_system.update_column(:description, "This system can save the world...")
 
@@ -63,7 +61,6 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
       expect(rendered).to have_css("div.infographic_container")
     end
 
-    it "displays the leadgen form"
   end
 
   context "retail" do
@@ -80,6 +77,5 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
       expect(rendered).not_to have_css("div.infographic_container")
     end
 
-    it "does not link to leadgen form"
   end
 end

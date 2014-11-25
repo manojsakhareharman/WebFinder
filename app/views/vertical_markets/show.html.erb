@@ -1,30 +1,55 @@
-<% if @vertical_market.reference_systems.length > 0 %>
-  <div class="text-center">
-    <% @vertical_market.featured_reference_systems.each do |reference_system| %>
-      <%= image_tag reference_system.banner.url(:large) %>
-    <% end %>
-  </div>
+<%= content_for :title do %>
+  <%= @vertical_market.name %>
 <% end %>
 
-<h1><%= @vertical_market.name %></h1>
-
 <% if @vertical_market.children.length > 0 %>
-  <ul>
+
+  <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
+  <%= raw @vertical_market.description %>
+  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
     <% @vertical_market.children.each do |vm| %>
-      <li> <%= link_to vm.name, vm %> </li>
+      <li>
+        <div class="panel">
+          <div class="text-center">
+            <%= link_to vm.name, vm %>
+          </div>
+        </div>
+      </li>
     <% end %>
   </ul>
+
 <% else %>
+
+  <%= content_for :banner do %>
+    <div class="text-center">
+      <% @vertical_market.featured_reference_systems.each do |reference_system| %>
+        <%= image_tag reference_system.banner.url(:large) %>
+      <% end %>
+      <% if @vertical_market.featured_reference_systems.length == 0 %>
+        <%= image_tag 'missing/banners/large.jpg' %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="large-5 large-offset-2 small-8 columns">
+        <div class="panel slider-container">
+          <h1><%= @vertical_market.name %></h1>
+
+          <p>[---|---|---&lt;|&gt;---|---]</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <% @vertical_market.featured_reference_systems.each do |reference_system| %>
     <div class="reference_system_container">
-      <h1><%= link_to reference_system.headline, [@vertical_market, reference_system] %></h1>
+      <h2><%= reference_system.headline %></h2>
       <%=raw reference_system.description %>
       <div class="placeholder" style="height: 280px">System Diagram</div>
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="large-9 columns">
+  <div class="row space-after">
+    <div class="large-8 columns">
       <h2><%= @vertical_market.headline %></h2>
       <div class="description">
         <%=raw @vertical_market.description %>
@@ -32,10 +57,17 @@
 
       <% if @vertical_market.featured_case_studies.length > 0 %>
         <div class="case_studies">
-          <ul class="small-block-grid-1 large-block-grid-<%= @vertical_market.featured_case_studies.length %> medium-block-grid-<%= @vertical_market.featured_case_studies.length %>">
+          <ul class="small-block-grid-1 large-block-grid-3 medium-block-grid-3">
             <% @vertical_market.featured_case_studies.each do |case_study| %>
-              <li><h5><%= link_to case_study.headline, [@vertical_market, case_study]  %></h5>
-              <%= raw case_study.description %>
+              <li>
+                <div class="panel dark-panel">
+                  <div class="text-center">
+                    <%= link_to image_tag(case_study.banner.url(:thumb)), [@vertical_market, case_study] %>
+                  </div>
+                  <h6 class="subheader"><%= link_to case_study.headline, [@vertical_market, case_study]  %></h6>
+                  <div class="space-after"><%= raw case_study.description %></div>
+                  <%= link_to "more", [@vertical_market, case_study], class: "tiny radius button" %>
+                </div>
               </li>
             <% end %>
           </ul>
@@ -43,16 +75,18 @@
       <% end %>
 
     </div>
-    <div class="large-3 columns">
-      <h4>From the Harman Resource Library</h4>
+    <div class="large-4 columns">
+      <h6 class="subheader underlined">From the Harman Resource Library</h6>
       <div class="row">
-        <div class="large-4 small-5 columns">
-          <div class="small_placeholder">Img1</div>
-        </div>
-        <div class="large-8 small-7 columns">
-          <h5>Resource title</h5>
-          resource description text
-        </div>
+        <% (1..3).each do |n| %>
+          <div class="large-4 small-5 columns">
+            <div class="small_placeholder">Img<%= n %></div>
+          </div>
+          <div class="large-8 small-7 columns">
+            <h5>Resource title</h5>
+            resource description text
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -67,7 +101,7 @@
     </div>
   <% else %>
     <div class="row">
-      <div class="large-9 columns">
+      <div class="large-8 columns">
         <% if @vertical_market.parent %>
           <h3><%= @vertical_market.parent.headline %></h3>
           <div class="description parent">
@@ -76,11 +110,11 @@
         <% end %>
         ...help me find...
       </div>
-      <div class="large-3 columns">
+      <div class="large-4 columns">
         <div class="panel">
-          <h4>Harman Equipment Financing</h4>
-          description<br/>
-          <%= link_to "Learn More", '#', class: "tiny radius button" %>
+          <h6 class="subheader">Harman Equipment Financing</h6>
+          <div class="space-after">description</div>
+          <%= link_to "Learn More", '#', class: "small radius button" %>
         </div>
       </div>
     </div>

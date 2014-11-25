@@ -1,20 +1,20 @@
 
-<div class="text-center">
-  <div class="placeholder" style="height: 300px">
-    Homepage Banner
+<%= content_for :banner do %>
+  <div class="text-center">
+    <div class="placeholder" style="height: 350px; margin: 0;">
+      Homepage Banner
+    </div>
   </div>
-</div>
+<% end %>
 
-<hr/>
-
-<div class="text-center">
-  <h2>Vertical Markets Headline</h2>
-</div>
+<h2 class="text-center space-after">Vertical Markets Headline</h2>
 
 <ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
   <% @vertical_markets.each do |vm| %>
     <li><div class="panel">
+      <h5 class="subheader text-center">
         <%= link_to vm.name, vm %>
+      </h5>
       </div>
     </li>
   <% end %>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Harman Professional" %></title>
+    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %>Harman Professional</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,24 +13,32 @@
 
   <body>
 
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/">Harman Professional</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <ul class="right">
-          <%= top_vertical_market_navigation %>
+    <div class="sticky">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+          <h1><a href="/"><%= image_tag "harman-logo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems" %></a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
-      </section>
-    </nav>
 
-    <div class="container">
+        <section class="top-bar-section">
+          <ul class="right">
+            <%= top_vertical_market_navigation %>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <% if content_for?(:banner) %>
+      <div class="banner-container space-after">
+        <%= yield :banner %>
+      </div>
+    <% end %>
+
+    <div class="container main-container">
       <div class="row">
-        <div class="large-12 columns">
+        <div class="large-8 large-offset-2 columns">
           <%= yield %>
         </div>
       </div>

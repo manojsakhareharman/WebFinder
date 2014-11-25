@@ -28,17 +28,15 @@ feature "Basic visitor flow" do
 
     click_on @child_vertical.name
 
-    expect(page).to have_link(@reference_system.headline, href: vertical_market_reference_system_path(@child_vertical, @reference_system))
+    expect(page).to have_css('h2', text: @reference_system.headline)
     expect(page).to have_link(@case_study.headline, href: vertical_market_case_study_path(@child_vertical, @case_study))
   end
 
-  # As a casual visitor on a vertical market page which has reference systems
-  # I want to click on a reference system
-  # So that I can learn what it has to offer
+  # As a casual visitor
+  # I want to land directly on a reference page
+  # So I can learn directly about that system
   scenario "Visit a reference system page" do
-    visit vertical_market_path(@child_vertical)
-
-    click_on @reference_system.headline
+    visit vertical_market_reference_system_path(@child_vertical, @reference_system)
 
     expect(page).to have_content(@reference_system.description)
   end

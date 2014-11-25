@@ -8,6 +8,7 @@ class ReferenceSystem < ActiveRecord::Base
       large: "1000x624",
       medium: "500x312",
       small: "250x156",
+      thumb: "83x52",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
 

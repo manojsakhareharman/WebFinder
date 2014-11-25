@@ -1,6 +1,12 @@
-<div class="text-center">
-  <%= image_tag(@reference_system.banner.url(:large)) %>
-</div>
+<%= content_for :title do %>
+  <%= @reference_system.name %>
+<% end %>
+
+<%= content_for :banner do %>
+  <div class="text-center">
+    <%= image_tag(@reference_system.banner.url(:large)) %>
+  </div>
+<% end %>
 
 <h1><%= @reference_system.name %></h1>
 <h4 class="subheader"><small>A <%= link_to @vertical_market.name, @vertical_market %> reference system</small></h4>

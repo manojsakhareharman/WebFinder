@@ -51,16 +51,17 @@ describe "vertical_markets/show.html.erb" do
 
       # with javascript, the application content loads inline via AJAX
       # without, it links to a reference_system view page
-      it "links to related reference_system applications" do
+      it "shows related reference_system" do
         reference_system = @reference_systems.first
 
-        expect(rendered).to have_link(reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+        expect(rendered).to have_css('h2', text: reference_system.headline)
       end
 
       it "shows the reference system pics, description" do
         reference_system = @reference_systems.first
 
-        expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
+        # Banner is moved to a content_for block, not in the show template itself
+        #expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
         expect(rendered).to have_content(reference_system.description)
       end
 

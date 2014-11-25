@@ -3,7 +3,7 @@ class AddBannerToReferenceSystems < ActiveRecord::Migration
     add_attachment :reference_systems, :banner
   end
 
-  def method_name
+  def down
     remove_attachment :reference_systems, :banner
   end
 end
