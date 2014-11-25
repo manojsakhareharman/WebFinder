@@ -51,6 +51,16 @@ ActiveAdmin.register VerticalMarket do
       end
     end
   end
+
+  form do |f|
+    f.inputs do
+      f.input :parent
+      f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
+      f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
+      f.input :description, hint: "Maximum characters: 650", input_html: { maxlength: 650, rows: 10 }
+    end
+    f.actions
+  end
   # :nocov:
 
 end

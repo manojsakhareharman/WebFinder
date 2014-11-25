@@ -22,11 +22,11 @@ ActiveAdmin.register ReferenceSystem do
   form do |f|
     f.inputs do
       f.input :vertical_market
-      f.input :name, input_html: { maxlength: 20 }
-      f.input :banner
-      f.input :venue_size_descriptor, input_html: { maxlength: 16 }
-      f.input :headline, input_html: { maxlength: 90 }
-      f.input :description, input_html: { maxlength: 650, rows: 6 }
+      f.input :name, hint: "Maximum characters: 20", input_html: { maxlength: 20 }
+      f.input :banner, hint: "Preferred size: 1000x624 px with a strongly horizontal orientation."
+      f.input :venue_size_descriptor, hint: "Maximum characters: 16", input_html: { maxlength: 16 }
+      f.input :headline, hint: "Maximum characters: 90", input_html: { maxlength: 90 }
+      f.input :description, hint: "Maximum characters: 650", input_html: { maxlength: 650, rows: 6 }
       f.input :retail, label: "Offer ecommerce links with this system."
     end
     f.actions
