@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125185409) do
+ActiveRecord::Schema.define(version: 20141201180315) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -96,6 +96,13 @@ ActiveRecord::Schema.define(version: 20141125185409) do
 
   add_index "reference_systems", ["slug"], name: "index_reference_systems_on_slug", unique: true, using: :btree
   add_index "reference_systems", ["vertical_market_id"], name: "index_reference_systems_on_vertical_market_id", using: :btree
+
+  create_table "site_settings", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "vertical_markets", force: true do |t|
     t.string   "name"

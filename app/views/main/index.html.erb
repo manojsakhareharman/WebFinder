@@ -1,13 +1,13 @@
 
 <%= content_for :banner do %>
   <div class="text-center">
-    <div class="placeholder" style="height: 350px; margin: 0;">
-      Homepage Banner
+    <div class="placeholder" style="height: 450px; padding-top: 150px; margin: 0;">
+      <%= SiteSetting.value("homepage-main-headline") %>
     </div>
   </div>
 <% end %>
 
-<h2 class="text-center space-after">Vertical Markets Headline</h2>
+<h2 class="text-center space-after"><%= SiteSetting.value("homepage-vertical-markets-headline") %></h2>
 
 <ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
   <% @vertical_markets.each do |vm| %>

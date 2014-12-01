@@ -1367,8 +1367,8 @@ $panel-header-adjust: false;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $harman-blue;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: rgba($harman-blue, .9);
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
 $topbar-height: 60px;
@@ -1394,9 +1394,9 @@ $topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(15);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: scale-color($topbar-bg-color, $lightness: -10%);
+$topbar-link-hover-lightness: 0%; // Darken by 10%
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-color-hover: $topbar-link-bg;
 $topbar-link-bg-hover: $topbar-link-bg-color-hover;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1471,10 +1471,18 @@ $topbar-link-text-transform: uppercase;
     margin-bottom: 10px;
   }
 }
+.bumped-up {
+  margin-top: -80px;
+}
+.banner-container {
+  background: $dark-gray;
+  padding: 0;
+}
+
 .slider-container {
   height: 180px;
   margin-top: -180px;
-  background: $primary-color;
+  background: rgba($primary-color, 0.63);
   color: $snow;
   h1,h2,h3 {
     color: $white;

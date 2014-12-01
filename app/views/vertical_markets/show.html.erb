@@ -21,7 +21,7 @@
 <% else %>
 
   <%= content_for :banner do %>
-    <div class="text-center">
+    <div class="banner-container text-center">
       <% @vertical_market.featured_reference_systems.each do |reference_system| %>
         <%= image_tag reference_system.banner.url(:large) %>
       <% end %>
@@ -76,21 +76,23 @@
 
     </div>
     <div class="large-4 columns">
-      <h6 class="subheader underlined">From the Harman Resource Library</h6>
-      <div class="row">
-        <% (1..3).each do |n| %>
-          <div class="large-4 small-5 columns">
-            <div class="small_placeholder">Img<%= n %></div>
-          </div>
-          <div class="large-8 small-7 columns">
-            <h5>Resource title</h5>
-            resource description text
-          </div>
-        <% end %>
-      </div>
+      <%= cache ["resource-library-content", @vertical_market, Date.today] do %>
+        <h6 class="subheader underlined"><%= SiteSetting.value("resource-library-sidebar-title") %></h6>
+        <div class="row">
+          <% (1..3).each do |n| %>
+            <div class="large-4 small-5 columns">
+              <div class="small_placeholder">Img<%= n %></div>
+            </div>
+            <div class="large-8 small-7 columns">
+              <h5>Resource title</h5>
+              resource description text
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
-
+  <br/>
   <% if @vertical_market.retail? %>
     <div class="row">
       <div class="large-12 columns">
@@ -102,21 +104,34 @@
   <% else %>
     <div class="row">
       <div class="large-8 columns">
-        <% if @vertical_market.parent %>
-          <h3><%= @vertical_market.parent.headline %></h3>
-          <div class="description parent">
-            <%= raw @vertical_market.parent.description %>
-          </div>
+
+        <%= cache ["parent-vertical-content", @vertical_market.parent, Date.today] do %>
+          <% if @vertical_market.parent %>
+            <h3><%= @vertical_market.parent.headline %></h3>
+            <div class="description parent">
+              <%= raw @vertical_market.parent.description %>
+            </div>
+          <% end %>
         <% end %>
-        ...help me find...
+
+        <%= cache ["help-find-installer-content", Date.today] do %>
+          <h6><%= SiteSetting.value("subheader-help-find-installer") %></h6>
+          <div class="space-after"><%= SiteSetting.value("help-find-installer-description") %></div>
+          <%= link_to SiteSetting.value("button-help-find-installer"), '#', class: "small radius button" %>
+        <% end %>
+
       </div>
+
       <div class="large-4 columns">
         <div class="panel">
-          <h6 class="subheader">Harman Equipment Financing</h6>
-          <div class="space-after">description</div>
-          <%= link_to "Learn More", '#', class: "small radius button" %>
+          <%= cache ["hef-content", Date.today] do %>
+            <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
+            <div class="space-after"><%= SiteSetting.value("hef-description") %></div>
+            <%= link_to "Learn More", '#', class: "small radius button" %>
+          <% end %>
         </div>
       </div>
+
     </div>
   <% end %>
 
