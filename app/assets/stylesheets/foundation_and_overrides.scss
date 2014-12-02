@@ -1496,3 +1496,28 @@ ul.title-area {
   }
 }
 
+.footer {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  margin-top: 40px;
+  background: scale-color(adjust-color($harman-blue, $green: 12), $lightness: -28%);
+  .subheader {
+    color: $primary-color;
+    font-weight: 200;
+    letter-spacing: rem-calc(.8);
+  }
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-right: 0;
+    li {
+      font-size: rem-calc(10);
+      a {
+        color: $snow;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
