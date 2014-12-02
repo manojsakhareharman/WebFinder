@@ -44,6 +44,25 @@
       </div>
     </div>
 
+    <%= cache ["footer", Date.today] do %>
+      <div class="container footer">
+        <div class="row">
+          <div class="large-8 large-offset-2 columns">
+            <div class="row">
+              <div class="large-3 columns">
+                <h5>Harman Brands</h5>
+                <ul>
+                  <% Brand.order("UPPER(name)").each do |brand| %>
+                    <li><%= link_to brand.name, brand.url, target: "_blank" %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

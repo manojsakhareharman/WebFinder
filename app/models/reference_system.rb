@@ -3,6 +3,8 @@ class ReferenceSystem < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :vertical_market
+  has_many :reference_system_product_types
+
   has_attached_file :banner,
     styles: {
       large: "1000x624",

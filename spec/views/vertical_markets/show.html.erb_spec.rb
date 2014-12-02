@@ -103,4 +103,34 @@ describe "vertical_markets/show.html.erb" do
       expect(rendered).to have_css("div.parent", text: @parent.description)
     end
   end
+
+  context "retail" do
+    before do
+      @vertical_market = FactoryGirl.create(:vertical_market)
+      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+      @product_type = FactoryGirl.create(:product_type)
+      @product = FactoryGirl.create(:product)
+      rspt = FactoryGirl.create(
+        :reference_system_product_type,
+        reference_system: @reference_system,
+        product_type: @product_type
+      )
+      FactoryGirl.create(
+        :reference_system_product_type_product,
+        reference_system_product_type: rspt,
+        product: @product
+      )
+      assign(:vertical_market, @vertical_market)
+
+      render
+    end
+
+    it "shows the product types involved" do
+      expect(rendered).to have_content(@product_type.name)
+    end
+
+    it "has links to the product" do
+      expect(rendered).to have_link(@product.name)
+    end
+  end
 end

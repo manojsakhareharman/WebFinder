@@ -23,4 +23,12 @@ RSpec.describe ReferenceSystem, :type => :model do
       expect(@reference_system.next).to eq(@reference_systems.last)
     end
   end
+
+  context "with products" do
+    before do
+      @reference_system.update_column(:retail, true)
+    end
+
+    it { should respond_to(:reference_system_product_types) }
+  end
 end

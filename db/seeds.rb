@@ -33,3 +33,26 @@ SiteSetting.create([
   { name: "help-find-installer-description", content: "Paragraph describing how we can help find a consultant or installer." },
   { name: "button-help-find-installer", content: "Help Me Find An Installer" }
 ])
+
+Brand.create([
+  { name: "AKG", url: "http://www.akg.com" },
+  { name: "AMX", url: "http://www.amx.com" },
+  { name: "BSS", url: "http://www.bssaudio.com" },
+  { name: "Crown", url: "http://www.crownaudio.com" },
+  { name: "dbx", url: "http://www.dbxpro.com" },
+  { name: "JBL", url: "http://www.jblpro.com" },
+  { name: "Lexicon", url: "http://www.lexiconpro.com" },
+  { name: "Martin", url: "http://www.martin.com" },
+  { name: "Soundcraft", url: "http://www.soundcraft.com" },
+  { name: "Studer", url: "http://www.studer.ch" },
+])
+
+ProductType.create([
+  { name: "Microphone" },
+  { name: "Mixer" },
+  { name: "Signal Processor" },
+  { name: "Amplifier" },
+  { name: "Powered Speaker" },
+  { name: "Speaker" },
+  { name: "Control Interface" }
+])

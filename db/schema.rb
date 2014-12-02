@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201180315) do
+ActiveRecord::Schema.define(version: 20141202175952) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20141201180315) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "case_studies", force: true do |t|
     t.string   "name"
     t.string   "headline"
@@ -77,6 +84,51 @@ ActiveRecord::Schema.define(version: 20141201180315) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "product_types", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_types", ["slug"], name: "index_product_types_on_slug", unique: true, using: :btree
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.string   "url"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brand_id"
+  end
+
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
+
+  create_table "reference_system_product_type_products", force: true do |t|
+    t.integer  "reference_system_product_type_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reference_system_product_type_products", ["reference_system_product_type_id"], name: "r_s_p_t_id", using: :btree
+
+  create_table "reference_system_product_types", force: true do |t|
+    t.integer  "reference_system_id"
+    t.integer  "product_type_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reference_system_product_types", ["reference_system_id"], name: "index_reference_system_product_types_on_reference_system_id", using: :btree
+
   create_table "reference_systems", force: true do |t|
     t.string   "name"
     t.integer  "vertical_market_id"
@@ -103,6 +155,8 @@ ActiveRecord::Schema.define(version: 20141201180315) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "site_settings", ["name"], name: "index_site_settings_on_name", unique: true, using: :btree
 
   create_table "vertical_markets", force: true do |t|
     t.string   "name"
