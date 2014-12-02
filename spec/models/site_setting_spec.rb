@@ -21,4 +21,36 @@ RSpec.describe SiteSetting, :type => :model do
       expect(SiteSetting.value(setting.name)).to eq(setting.content)
     end
   end
+
+  describe "caching values" do
+    it "should not reload from the database after loading once" do
+      setting = FactoryGirl.create(:site_setting, content: "Original Value")
+
+      original = SiteSetting.value(setting.name)
+      setting.update_column(:content, "New Value")
+      setting.reload
+
+      expect(SiteSetting.value(setting.name)).to eq(original)
+    end
+
+    it "should reload after updating the setting" do
+      setting = FactoryGirl.create(:site_setting, content: "Original Value")
+
+      SiteSetting.value(setting.name)
+      setting.update_attributes(content: "New Value")
+      setting.reload
+
+      expect(SiteSetting.value(setting.name)).to eq(setting.content)
+    end
+
+    it "should reload a previously missing setting after its creation" do
+      SiteSetting.value("foo-bar")
+
+      setting = FactoryGirl.create(:site_setting, name: "foo-bar")
+
+      expect(SiteSetting.value(setting.name)).to eq(setting.content)
+    end
+
+  end
+
 end

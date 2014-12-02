@@ -17,6 +17,7 @@
 /coverage
 /notes
 /config/database.yml
+/.capistrano/
 
 
 # Ignore application configuration
