@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-// require turbolinks
+//= require angular/angular
+//= require angular-slider/slider
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

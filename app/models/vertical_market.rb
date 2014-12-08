@@ -12,6 +12,7 @@ class VerticalMarket < ActiveRecord::Base
     where("parent_id IS NULL or parent_id <= 0")
   end
 
+  # :nocov:
   def slug_candidates
     [
       :name,
@@ -19,6 +20,7 @@ class VerticalMarket < ActiveRecord::Base
       [:name, :headline]
     ]
   end
+  # :nocov:
 
   def retail?
     reference_systems.where(retail: true).length > 0

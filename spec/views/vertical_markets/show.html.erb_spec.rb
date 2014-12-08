@@ -60,8 +60,9 @@ describe "vertical_markets/show.html.erb" do
       it "shows the reference system pics, description" do
         reference_system = @reference_systems.first
 
-        # Banner is moved to a content_for block, not in the show template itself
-        expect(view.content_for(:banner)).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
+        # Banner was moved to a content_for block, not in the show template itself
+        #expect(view.content_for(:banner)).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
+        expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
         expect(rendered).to have_content(reference_system.description)
       end
 

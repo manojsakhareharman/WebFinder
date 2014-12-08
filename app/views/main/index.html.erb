@@ -1,24 +1,29 @@
-
-<%= content_for :banner do %>
+<div class="bumped-up space-after">
   <div class="text-center">
     <div class="placeholder" style="height: 450px; padding-top: 150px; margin: 0;">
       <%= SiteSetting.value("homepage-main-headline") %>
     </div>
   </div>
-<% end %>
+</div>
 
-<h2 class="text-center space-after"><%= SiteSetting.value("homepage-vertical-markets-headline") %></h2>
+<div class="container main-container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <h2 class="text-center space-after"><%= SiteSetting.value("homepage-vertical-markets-headline") %></h2>
 
-<ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
-  <% @vertical_markets.each do |vm| %>
-    <li><div class="panel">
-      <h5 class="subheader text-center">
-        <%= link_to vm.name, vm %>
-      </h5>
-      </div>
-    </li>
-  <% end %>
-</ul>
+      <ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
+        <% @vertical_markets.each do |vm| %>
+          <li><div class="panel">
+            <h5 class="subheader text-center">
+              <%= link_to vm.name, vm %>
+            </h5>
+            </div>
+          </li>
+        <% end %>
+      </ul>
 
-<hr/>
+      <hr/>
+    </div>
+  </div>
+</div>
 

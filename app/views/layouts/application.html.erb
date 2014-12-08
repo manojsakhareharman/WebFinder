@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="harmanpro">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -30,19 +31,7 @@
       </nav>
     </div>
 
-    <% if content_for?(:banner) %>
-      <div class="bumped-up space-after">
-        <%= yield :banner %>
-      </div>
-    <% end %>
-
-    <div class="container main-container">
-      <div class="row">
-        <div class="large-8 large-offset-2 columns">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    <%= yield %>
 
     <%= cache ["footer", Date.today] do %>
       <div class="container footer">
@@ -90,6 +79,5 @@
       </div>
     <% end %>
 
-    <%= javascript_include_tag "application" %>
   </body>
 </html>

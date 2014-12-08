@@ -1,0 +1,50 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * NOTE: require_tree directive is diabled so the active_admin css isn't included in the main
+ * application. Each css file will need to be included manually (if any).
+ *
+ * require_tree .
+ *
+ *= require_self
+ *= require foundation_and_overrides
+ *= require angular-slider/slider
+ */
+
+/* placeholder boxes: */
+div.placeholder {
+  margin: 20px auto;
+  padding: 50px;
+  height: 150px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+
+div.small_placeholder {
+  margin: 10px auto;
+  padding: 10px;
+  min-height: 50px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+
+div.infographic_container, div.buynow_container {
+  margin: 20px auto;
+  padding: 50px;
+  height: 150px;
+  background: #CCC;
+  color: #666;
+  text-align: center;
+}
+

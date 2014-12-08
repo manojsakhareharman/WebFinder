@@ -4,6 +4,7 @@ ActiveAdmin.register ProductType do
 
   menu false
 
+  # :nocov:
   form do |f|
     f.inputs do
       f.input :name
@@ -11,5 +12,6 @@ ActiveAdmin.register ProductType do
     end
     f.actions
   end
+  # :nocov:
 
 end

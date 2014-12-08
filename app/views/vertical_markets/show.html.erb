@@ -4,151 +4,175 @@
 
 <% if @vertical_market.children.length > 0 %>
 
-  <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
-  <%= raw @vertical_market.description %>
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
-    <% @vertical_market.children.each do |vm| %>
-      <li>
-        <div class="panel">
-          <div class="text-center">
-            <%= link_to vm.name, vm %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <div class="container main-container">
+    <div class="row">
+      <div class="large-8 large-offset-2 columns">
+        <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
+        <%= raw @vertical_market.description %>
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
+          <% @vertical_market.children.each do |vm| %>
+            <li>
+              <div class="panel">
+                <div class="text-center">
+                  <%= link_to vm.name, vm %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 <% else %>
 
-  <%= content_for :banner do %>
-    <div class="banner-container text-center">
-      <% @vertical_market.featured_reference_systems.each do |reference_system| %>
-        <%= image_tag reference_system.banner.url(:large) %>
-      <% end %>
-      <% if @vertical_market.featured_reference_systems.length == 0 %>
-        <%= image_tag 'missing/banners/large.jpg' %>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="large-5 large-offset-2 small-8 columns">
-        <div class="panel slider-container">
-          <h1><%= @vertical_market.name %></h1>
-
-          <p>[---|---|---&lt;|&gt;---|---]</p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-  <% @vertical_market.featured_reference_systems.each do |reference_system| %>
-    <div class="reference_system_container">
-      <h2><%= reference_system.headline %></h2>
-      <%=raw reference_system.description %>
-      <div class="placeholder" style="height: 280px">System Diagram</div>
-      <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
-        <% reference_system.reference_system_product_types.each do |rspt| %>
-          <li><div class="panel">
-            <h5 class="subheader"><%= link_to rspt.product_type.name, '#' %></h5>
-            <ul>
-              <% rspt.products[0,3].each do |product| %>
-                <li>
-                  <h6><%= link_to product.name, product.url, target: "_blank" %></h6>
-                  <div><%= product.description %></div>
-                  <%= link_to "more info", product.url, target: "_blank" %>
-                </li>
-              <% end %>
-            </ul>
+  <div ng-controller="VerticalMarketController as vertical" vmid="<%= @vertical_market.id %>">
+    <div class="bumped-up space-after">
+      <div class="banner-container text-center">
+        <% @vertical_market.featured_reference_systems.each_with_index do |reference_system, i| %>
+          <div ng-show="vertical.slider_pos === <%= i + 1 %>">
+            <%= image_tag reference_system.banner.url(:large) %>
           </div>
-          </li>
         <% end %>
-    </div>
-  <% end %>
-
-  <div class="row space-after">
-    <div class="large-8 columns">
-      <h2><%= @vertical_market.headline %></h2>
-      <div class="description">
-        <%=raw @vertical_market.description %>
+        <% if @vertical_market.featured_reference_systems.length == 0 %>
+          <%= image_tag 'missing/banners/large.jpg' %>
+        <% end %>
       </div>
-
-      <% if @vertical_market.featured_case_studies.length > 0 %>
-        <div class="case_studies">
-          <ul class="small-block-grid-1 large-block-grid-3 medium-block-grid-3">
-            <% @vertical_market.featured_case_studies.each do |case_study| %>
-              <li>
-                <div class="panel dark-panel">
-                  <div class="text-center">
-                    <%= link_to image_tag(case_study.banner.url(:thumb)), [@vertical_market, case_study] %>
-                  </div>
-                  <h6 class="subheader"><%= link_to case_study.headline, [@vertical_market, case_study]  %></h6>
-                  <div class="space-after"><%= raw case_study.description %></div>
-                  <%= link_to "more", [@vertical_market, case_study], class: "tiny radius button" %>
-                </div>
-              </li>
+      <div class="row">
+        <div class="large-5 large-offset-2 small-8 columns">
+          <div class="panel slider-container">
+            <h1><%= @vertical_market.name %></h1>
+            <% if @vertical_market.featured_reference_systems.length > 1 %>
+              <slider
+                floor="1"
+                ceiling="<%= @vertical_market.featured_reference_systems.length %>"
+                step="1"
+                precision="0"
+                ng-model="vertical.slider_pos">
+               </slider>
             <% end %>
-          </ul>
+          </div>
         </div>
-      <% end %>
-
+      </div>
     </div>
-    <div class="large-4 columns">
-      <%= cache ["resource-library-content", @vertical_market, Date.today] do %>
-        <h6 class="subheader underlined"><%= SiteSetting.value("resource-library-sidebar-title") %></h6>
-        <div class="row">
-          <% (1..3).each do |n| %>
-            <div class="large-4 small-5 columns">
-              <div class="small_placeholder">Img<%= n %></div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+          <% @vertical_market.featured_reference_systems.each_with_index do |reference_system, i| %>
+            <div class="reference_system_container" ng-show="vertical.slider_pos === <%= i + 1 %>">
+              <h2><%= reference_system.headline %></h2>
+              <%=raw reference_system.description %>
+              <div class="placeholder" style="height: 280px">System Diagram</div>
+              <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
+                <% reference_system.reference_system_product_types.each do |rspt| %>
+                  <li><div class="panel">
+                    <h5 class="subheader"><%= link_to rspt.product_type.name, '#' %></h5>
+                    <ul>
+                      <% rspt.products[0,3].each do |product| %>
+                        <li>
+                          <h6><%= link_to product.name, product.url, target: "_blank" %></h6>
+                          <div><%= product.description %></div>
+                          <%= link_to "more info", product.url, target: "_blank" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  </li>
+                <% end %>
+              </ul>
             </div>
-            <div class="large-8 small-7 columns">
-              <h5>Resource title</h5>
-              resource description text
+          <% end %>
+
+          <div class="row space-after">
+            <div class="large-8 columns">
+              <h2><%= @vertical_market.headline %></h2>
+              <div class="description">
+                <%=raw @vertical_market.description %>
+              </div>
+
+              <% if @vertical_market.featured_case_studies.length > 0 %>
+                <div class="case_studies">
+                  <ul class="small-block-grid-1 large-block-grid-3 medium-block-grid-3">
+                    <% @vertical_market.featured_case_studies.each do |case_study| %>
+                      <li>
+                        <div class="panel dark-panel">
+                          <div class="text-center">
+                            <%= link_to image_tag(case_study.banner.url(:thumb)), [@vertical_market, case_study] %>
+                          </div>
+                          <h6 class="subheader"><%= link_to case_study.headline, [@vertical_market, case_study]  %></h6>
+                          <div class="space-after"><%= raw case_study.description %></div>
+                          <%= link_to "more", [@vertical_market, case_study], class: "tiny radius button" %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+            </div>
+            <div class="large-4 columns">
+              <%= cache ["resource-library-content", @vertical_market, Date.today] do %>
+                <h6 class="subheader underlined"><%= SiteSetting.value("resource-library-sidebar-title") %></h6>
+                <div class="row">
+                  <% (1..3).each do |n| %>
+                    <div class="large-4 small-5 columns">
+                      <div class="small_placeholder">Img<%= n %></div>
+                    </div>
+                    <div class="large-8 small-7 columns">
+                      <h5>Resource title</h5>
+                      resource description text
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <br/>
+          <% if @vertical_market.retail? %>
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="panel">
+                  Retail Placeholder
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="row">
+              <div class="large-8 columns">
+
+                <%= cache ["parent-vertical-content", @vertical_market.parent, Date.today] do %>
+                  <% if @vertical_market.parent %>
+                    <h3><%= @vertical_market.parent.headline %></h3>
+                    <div class="description parent">
+                      <%= raw @vertical_market.parent.description %>
+                    </div>
+                  <% end %>
+                <% end %>
+
+                <%= cache ["help-find-installer-content", Date.today] do %>
+                  <h6><%= SiteSetting.value("subheader-help-find-installer") %></h6>
+                  <div class="space-after"><%= SiteSetting.value("help-find-installer-description") %></div>
+                  <%= link_to SiteSetting.value("button-help-find-installer"), '#', class: "small radius button" %>
+                <% end %>
+
+              </div>
+
+              <div class="large-4 columns">
+                <div class="panel">
+                  <%= cache ["hef-content", Date.today] do %>
+                    <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
+                    <div class="space-after"><%= SiteSetting.value("hef-description") %></div>
+                    <%= link_to "Learn More", '#', class: "small radius button" %>
+                  <% end %>
+                </div>
+              </div>
+
             </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
-  <br/>
-  <% if @vertical_market.retail? %>
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="panel">
-          Retail Placeholder
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <div class="row">
-      <div class="large-8 columns">
-
-        <%= cache ["parent-vertical-content", @vertical_market.parent, Date.today] do %>
-          <% if @vertical_market.parent %>
-            <h3><%= @vertical_market.parent.headline %></h3>
-            <div class="description parent">
-              <%= raw @vertical_market.parent.description %>
-            </div>
-          <% end %>
-        <% end %>
-
-        <%= cache ["help-find-installer-content", Date.today] do %>
-          <h6><%= SiteSetting.value("subheader-help-find-installer") %></h6>
-          <div class="space-after"><%= SiteSetting.value("help-find-installer-description") %></div>
-          <%= link_to SiteSetting.value("button-help-find-installer"), '#', class: "small radius button" %>
-        <% end %>
-
-      </div>
-
-      <div class="large-4 columns">
-        <div class="panel">
-          <%= cache ["hef-content", Date.today] do %>
-            <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
-            <div class="space-after"><%= SiteSetting.value("hef-description") %></div>
-            <%= link_to "Learn More", '#', class: "small radius button" %>
-          <% end %>
-        </div>
-      </div>
-
-    </div>
-  <% end %>
 
 <% end %>

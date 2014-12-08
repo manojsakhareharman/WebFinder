@@ -16,6 +16,7 @@ class CaseStudy < ActiveRecord::Base
   validates :name, presence: true
   validates :vertical_market, presence: true
 
+  # :nocov:
   def slug_candidates
     [
       :name,
@@ -23,4 +24,6 @@ class CaseStudy < ActiveRecord::Base
       [:name, :headline]
     ]
   end
+  # :nocov:
+
 end

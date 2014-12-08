@@ -21,6 +21,7 @@ class ReferenceSystem < ActiveRecord::Base
 
   acts_as_list scope: :vertical_market
 
+  # :nocov:
   def slug_candidates
     [
       :name,
@@ -28,6 +29,7 @@ class ReferenceSystem < ActiveRecord::Base
       [:name, :headline]
     ]
   end
+  # :nocov:
 
   def previous
     higher_item unless first?

@@ -1,6 +1,7 @@
 ActiveAdmin.register Product do
   permit_params :name, :brand_id, :url, :photo, :description
 
+  # :nocov:
   form do |f|
     f.inputs do
       f.input :brand
@@ -23,4 +24,6 @@ ActiveAdmin.register Product do
 
   filter :brand, as: :select
   filter :name, as: :string
+
+  # :nocov:
 end
