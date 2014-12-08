@@ -17,6 +17,10 @@ describe "vertical_markets/show.html.erb" do
       end
     end
 
+    it "shows one banner" do
+      expect(rendered).to have_xpath("//img[@src='/assets/#{@vertical_market.banner.url(:large)}']")
+    end
+
     it "does not link to applications" do
       expect(rendered).not_to have_link(@reference_system.name)
     end

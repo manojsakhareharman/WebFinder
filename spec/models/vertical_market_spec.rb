@@ -15,6 +15,7 @@ RSpec.describe VerticalMarket, :type => :model do
   it { should respond_to(:parent) }
   it { should respond_to(:reference_systems) }
   it { should respond_to(:case_studies) }
+  it { should respond_to(:banner) }
 
   context "class methods" do
     it "#parent_verticals should return all the parent verticals" do

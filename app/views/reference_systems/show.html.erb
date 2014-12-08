@@ -3,45 +3,37 @@
 <% end %>
 
 <div class="bumped-up space-after">
-  <div class="text-center">
+  <div class="banner-container text-center">
     <%= image_tag(@reference_system.banner.url(:large)) %>
   </div>
+  <div class="row">
+    <div class="large-5 large-offset-2 small-8 columns">
+      <div class="panel slider-container">
+        <h1><%= @reference_system.name %></h1>
+        <p>
+          <% if @reference_system.previous %>
+            <%= link_to "previous", [@vertical_market, @reference_system.previous] %>
+          <% end %>
+          <% if @reference_system.next %>
+            <%= link_to "next", [@vertical_market, @reference_system.next] %>
+          <% end %>
+        </p>
+        <p>More <%= link_to "#{@vertical_market.name.downcase} examples", @vertical_market %>...</p>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <div class="container main-container">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
-      <h1><%= @reference_system.name %></h1>
-      <h4 class="subheader"><small>A <%= link_to @vertical_market.name, @vertical_market %> reference system</small></h4>
 
-      <p>
-        <% if @reference_system.previous %>
-          <%= link_to "previous", [@vertical_market, @reference_system.previous] %>
-        <% end %>
-        <% if @reference_system.next %>
-          <%= link_to "next", [@vertical_market, @reference_system.next] %>
-        <% end %>
-      </p>
-
-      <h2><%= @reference_system.headline %></h2>
-      <div class="reference_system_description">
-        <%= @reference_system.description %>
+      <div class="reference_system_container">
+        <%= render "details", reference_system: @reference_system %>
       </div>
 
-      <% if @reference_system.retail? %>
+      <%= render "vertical_markets/bottom", vertical_market: @vertical_market %>
 
-        <div class="buynow_container">
-          Ecomm hook
-        </div>
-
-      <% else %>
-
-        <div class="infographic_container">
-          Design/Build Infographic
-        </div>
-
-      <% end %>
     </div>
   </div>
 </div>

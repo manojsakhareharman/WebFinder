@@ -1487,6 +1487,10 @@ $topbar-link-text-transform: uppercase;
   h1,h2,h3 {
     color: $white;
   }
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
 }
 ul.title-area {
   li.name {
