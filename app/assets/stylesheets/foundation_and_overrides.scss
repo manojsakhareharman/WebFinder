@@ -129,6 +129,12 @@ $dark-gray: #676767;
  $jet         : #222222;
  $black       : #000000;
 
+$body-background-color: #e6e7e8;
+$plan-background-color: $white;
+$buy-background-color: #4c4d4f;
+$banner-background-color: #404042;
+$footer-background-color: #002f3a;
+
 // We use these to control various global styles
 // $body-bg: $white;
 $body-font-color: $dark-gray;
@@ -1448,6 +1454,18 @@ $topbar-link-text-transform: uppercase;
 
 @import 'foundation';
 
+body {
+  background: $body-background-color;
+}
+.plan-container {
+  background: $plan-background-color;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+.buy-container {
+  background: $buy-background-color;
+  padding: 40px 0;
+}
 .underlined {
   padding-bottom: 8px;
   border-bottom: 2px solid $secondary-color;
@@ -1475,8 +1493,11 @@ $topbar-link-text-transform: uppercase;
   margin-top: -80px;
 }
 .banner-container {
-  background: $dark-gray;
+  background: $banner-background-color;
   padding: 0;
+  h1 {
+    color: $white;
+  }
 }
 
 .slider-container {
@@ -1491,6 +1512,9 @@ $topbar-link-text-transform: uppercase;
     color: $white;
     text-decoration: underline;
   }
+  &.panel {
+    margin-bottom: 0;
+  }
 }
 ul.title-area {
   li.name {
@@ -1499,12 +1523,13 @@ ul.title-area {
     }
   }
 }
-
+.magellan-container {
+  background: $iron;
+}
 .footer {
   padding-top: 40px;
   padding-bottom: 60px;
-  margin-top: 40px;
-  background: scale-color(adjust-color($harman-blue, $green: 12), $lightness: -28%);
+  background: $footer-background-color;
   .subheader {
     color: $primary-color;
     font-weight: 200;

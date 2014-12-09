@@ -17,4 +17,10 @@
 //= require angular-slider/slider
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation({
+    "magellan-expedition": {
+      fixed_top: 60
+    }
+  });
+});

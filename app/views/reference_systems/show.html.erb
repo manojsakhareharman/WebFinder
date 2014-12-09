@@ -2,7 +2,7 @@
   <%= @reference_system.name %>
 <% end %>
 
-<div class="bumped-up space-after">
+<div class="bumped-up">
   <div class="banner-container text-center">
     <%= image_tag(@reference_system.banner.url(:large)) %>
   </div>
@@ -24,6 +24,8 @@
   </div>
 </div>
 
+<%= render "shared/learn_plan_buy_nav.html.erb" %>
+
 <div class="container main-container">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
@@ -32,9 +34,11 @@
         <%= render "details", reference_system: @reference_system %>
       </div>
 
-      <%= render "vertical_markets/bottom", vertical_market: @vertical_market %>
-
+      <%= render "vertical_markets/learn", vertical_market: @vertical_market %>
     </div>
   </div>
 </div>
+
+<%= render "vertical_markets/plan", vertical_market: @vertical_market %>
+<%= render "vertical_markets/buy", vertical_market: @vertical_market %>
 

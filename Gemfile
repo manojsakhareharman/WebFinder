@@ -8,10 +8,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
-#gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
 gem 'foundation-rails', '~> 5.4'
@@ -23,6 +22,8 @@ gem 'acts_as_tree'
 gem 'devise'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'activeadmin-sortable'
+
+gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do
   gem 'spring'

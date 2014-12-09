@@ -1,7 +1,9 @@
-<div class="bumped-up space-after">
-  <div class="text-center">
-    <div class="placeholder" style="height: 450px; padding-top: 150px; margin: 0;">
-      <%= SiteSetting.value("homepage-main-headline") %>
+<div ng-controller="HomeBannerController as banner">
+  <div class="bumped-up space-after">
+    <div class="banner-container text-center">
+      <div class="text-center" style="height: 450px; padding-top: 150px; margin: 0;">
+        <h1><%= SiteSetting.value("homepage-main-headline") %></h1>
+      </div>
     </div>
   </div>
 </div>

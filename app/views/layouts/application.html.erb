@@ -25,7 +25,9 @@
 
         <section class="top-bar-section">
           <ul class="right">
-            <%= top_vertical_market_navigation %>
+            <%#= cache ["top-nav", Date.today] do %>
+              <%= top_vertical_market_navigation(dropdowns: false) %>
+            <%# end %>
           </ul>
         </section>
       </nav>
@@ -33,12 +35,12 @@
 
     <%= yield %>
 
-    <%= cache ["footer", Date.today] do %>
-      <div class="container footer">
-        <div class="row">
-          <div class="large-8 large-offset-2 columns">
-            <div class="row">
-              <div class="large-3 columns">
+    <div class="container footer">
+      <div class="row">
+        <div class="large-8 large-offset-2 columns">
+          <div class="row">
+            <div class="large-3 columns">
+              <%= cache ["footer-col-1", Date.today] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length > 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
@@ -49,8 +51,10 @@
                     </ul>
                   <% end %>
                 <% end %>
-              </div>
-              <div class="large-3 columns">
+              <% end %>
+            </div>
+            <div class="large-3 columns">
+              <%= cache ["footer-col-2", Date.today] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length <= 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
@@ -61,23 +65,27 @@
                     </ul>
                   <% end %>
                 <% end %>
-              </div>
-              <div class="large-3 columns">
+              <% end %>
+            </div>
+            <div class="large-3 columns">
+              <%= cache ["footer-col-3", Date.today] do %>
                 <h6 class="subheader">Harman Brands</h6>
                 <ul>
                   <% Brand.order("UPPER(name)").each do |brand| %>
                     <li><%= link_to brand.name, brand.url, target: "_blank" %></li>
                   <% end %>
                 </ul>
-              </div>
-              <div class="large-3 columns">
+              <% end %>
+            </div>
+            <div class="large-3 columns">
+              <%= cache ["footer-col-4", Date.today] do %>
                 <h6 class="subheader">Harman Resource Library</h6>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
 
   </body>
 </html>

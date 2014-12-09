@@ -39,7 +39,7 @@
 <% else %>
 
   <div ng-controller="VerticalMarketController as vertical" vmid="<%= @vertical_market.id %>">
-    <div class="bumped-up space-after">
+    <div class="bumped-up">
       <div class="banner-container text-center">
         <% @vertical_market.featured_reference_systems.each_with_index do |reference_system, i| %>
           <div ng-show="vertical.slider_pos === <%= i + 1 %>">
@@ -52,7 +52,7 @@
       </div>
       <div class="row">
         <div class="large-5 large-offset-2 small-8 columns">
-          <div class="panel slider-container">
+          <div class="slider-container panel">
             <h1><%= @vertical_market.name %></h1>
             <% if @vertical_market.featured_reference_systems.length > 1 %>
               <slider
@@ -68,6 +68,8 @@
       </div>
     </div>
 
+    <%= render "shared/learn_plan_buy_nav.html.erb" %>
+
     <div class="container main-container">
       <div class="row">
         <div class="large-8 large-offset-2 columns">
@@ -78,11 +80,13 @@
             </div>
           <% end %>
 
-          <%= render "bottom", vertical_market: @vertical_market %>
+          <%= render "learn", vertical_market: @vertical_market %>
 
         </div>
       </div>
     </div>
-  </div>
+
+    <%= render "plan", vertical_market: @vertical_market %>
+    <%= render "buy", vertical_market: @vertical_market %>
 
 <% end %>

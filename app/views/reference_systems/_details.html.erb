@@ -1,6 +1,10 @@
 <h2><%= reference_system.headline %></h2>
 <%=raw reference_system.description %>
-<div class="placeholder" style="height: 280px">System Diagram</div>
+
+<div class="text-center" style="height: 280px; background: #999; color: #EEE; margin: 20px 0px; padding-top: 120px;">
+  System Diagram Placeholder
+</div>
+
 <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
   <% reference_system.reference_system_product_types.each do |rspt| %>
     <li><div class="panel">
