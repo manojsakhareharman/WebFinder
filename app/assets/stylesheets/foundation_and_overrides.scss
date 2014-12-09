@@ -1457,14 +1457,16 @@ $topbar-link-text-transform: uppercase;
 body {
   background: $body-background-color;
 }
+.main-container {
+  padding: 20px 0 80px;
+}
 .plan-container {
   background: $plan-background-color;
-  padding: 40px 0;
-  margin-top: 40px;
+  padding: 60px 0;
 }
 .buy-container {
   background: $buy-background-color;
-  padding: 40px 0;
+  padding: 60px 0;
 }
 .underlined {
   padding-bottom: 8px;
@@ -1528,7 +1530,7 @@ ul.title-area {
 }
 .footer {
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 150px;
   background: $footer-background-color;
   .subheader {
     color: $primary-color;

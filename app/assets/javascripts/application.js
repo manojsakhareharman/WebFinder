@@ -20,7 +20,8 @@
 $(function(){
   $(document).foundation({
     "magellan-expedition": {
-      fixed_top: 60
+      fixed_top: 60,
+      destination_threshold: 85,
     }
   });
 });
