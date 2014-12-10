@@ -7,6 +7,7 @@ describe "vertical_markets/show.html.erb" do
       @child_verticals = FactoryGirl.create_list(:vertical_market, 3, parent_id: @vertical_market.id)
       @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
+      assign(:reference_systems, [])
 
       render
     end
@@ -29,7 +30,9 @@ describe "vertical_markets/show.html.erb" do
   context "general" do
     before do
       @vertical_market = FactoryGirl.create(:vertical_market)
+      @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
+      assign(:reference_systems, [@reference_system])
 
       render
     end
@@ -49,6 +52,7 @@ describe "vertical_markets/show.html.erb" do
       before do
         @reference_systems = FactoryGirl.create_list(:reference_system, 9, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
+        assign(:reference_systems, @reference_systems)
 
         render
       end
@@ -80,7 +84,9 @@ describe "vertical_markets/show.html.erb" do
     describe "and case studies" do
       before do
         @case_studies = FactoryGirl.create_list(:case_study, 4, vertical_market: @vertical_market)
+        @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
+        assign(:reference_systems, [@reference_system])
 
         render
       end
@@ -98,7 +104,9 @@ describe "vertical_markets/show.html.erb" do
     before do
       @parent = FactoryGirl.create(:vertical_market)
       @vertical_market = FactoryGirl.create(:vertical_market, parent_id: @parent.id)
+      @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
+      assign(:reference_systems, [@reference_system])
 
       render
     end
@@ -126,6 +134,7 @@ describe "vertical_markets/show.html.erb" do
         product: @product
       )
       assign(:vertical_market, @vertical_market)
+      assign(:reference_systems, [@reference_system])
 
       render
     end

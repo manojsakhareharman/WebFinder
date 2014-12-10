@@ -39,34 +39,43 @@
 <% else %>
 
   <div ng-controller="VerticalMarketController as vertical" vmid="<%= @vertical_market.id %>">
-    <div class="bumped-up">
-      <div class="banner-container">
-        <% @vertical_market.featured_reference_systems.each_with_index do |reference_system, i| %>
-          <div ng-show="vertical.slider_pos === <%= i + 1 %>">
-            <%= image_tag reference_system.banner.url(:large) %>
-          </div>
-        <% end %>
-        <% if @vertical_market.featured_reference_systems.length == 0 %>
-          <%= image_tag @vertical_market.banner.url(:large) %>
-        <% end %>
-      </div>
-      <div class="row">
-        <div class="large-5 large-offset-2 small-8 columns">
-          <div class="slider-container panel">
-            <h1><%= @vertical_market.name %></h1>
-            <% if @vertical_market.featured_reference_systems.length > 1 %>
-              <slider
-                floor="1"
-                ceiling="<%= @vertical_market.featured_reference_systems.length %>"
-                step="1"
-                precision="0"
-                ng-model="vertical.slider_pos">
+    <%= cache ["vm-slider", @vertical_market, Date.today] do %>
+      <div class="bumped-up">
+        <div class="banner-container">
+          <% @reference_systems.each_with_index do |reference_system, i| %>
+            <div ng-show="vertical.slider_pos === <%= i + 1 %>">
+              <%= image_tag reference_system.banner.url(:large) %>
+            </div>
+          <% end %>
+          <% if @reference_systems.length == 0 %>
+            <%= image_tag @vertical_market.banner.url(:large) %>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="large-5 large-offset-2 small-8 columns">
+            <div class="slider-container panel">
+              <h1><%= @vertical_market.name %></h1>
+              <% if @reference_systems.length > 1 %>
+                <slider
+                  floor="1"
+                  ceiling="<%= @reference_systems.length %>"
+                  step="1"
+                  precision="0"
+                  ng-model="vertical.slider_pos">
                </slider>
-            <% end %>
+
+               <ul class="small-block-grid-<%= @reference_systems.length %> medium-block-grid-<%=@reference_systems.length %> large-block-grid-<%=@reference_systems.length %>">
+                 <% @reference_systems.each_with_index do |reference_system, i| %>
+                   <li> <%= reference_system.slider_name %> </li>
+                 <% end %>
+               </ul>
+
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <%= render "shared/learn_plan_buy_nav.html.erb" %>
 
@@ -74,7 +83,7 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
-          <% @vertical_market.featured_reference_systems.each_with_index do |reference_system, i| %>
+          <% @reference_systems.each_with_index do |reference_system, i| %>
             <div class="reference_system_container" ng-show="vertical.slider_pos === <%= i + 1 %>">
               <%= render "reference_systems/details", reference_system: reference_system %>
             </div>

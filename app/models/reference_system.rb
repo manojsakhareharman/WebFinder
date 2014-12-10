@@ -31,6 +31,9 @@ class ReferenceSystem < ActiveRecord::Base
   end
   # :nocov:
 
+  def slider_name
+    @slider_name ||= (self.venue_size_descriptor.present?) ? venue_size_descriptor : name
+  end
   def previous
     higher_item unless first?
   end

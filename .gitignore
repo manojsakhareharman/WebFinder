@@ -18,7 +18,7 @@
 /notes
 /config/database.yml
 /.capistrano/
-
+/public/system/
 
 # Ignore application configuration
 /config/application.yml

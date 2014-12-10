@@ -1518,6 +1518,22 @@ body {
   &.panel {
     margin-bottom: 0;
   }
+  ul {
+    margin-top: 4px;
+    font-size: rem-calc(10);
+    line-height: 1.05;
+    max-height: 40px;
+    overflow: hidden;
+    li {
+      text-align: center;
+      &:first-child {
+        text-align: left;
+      }
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
 }
 ul.title-area {
   li.name {
