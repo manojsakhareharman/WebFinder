@@ -30,7 +30,7 @@ ActiveAdmin.register ReferenceSystem do
     end
   end
 
-  form do |f|
+  form html: { multipart: true} do |f|
     f.inputs do
       f.input :vertical_market
       f.input :name, hint: "Maximum characters: 20", input_html: { maxlength: 20 }

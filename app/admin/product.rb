@@ -2,7 +2,7 @@ ActiveAdmin.register Product do
   permit_params :name, :brand_id, :url, :photo, :description
 
   # :nocov:
-  form do |f|
+  form html: { multipart: true} do |f|
     f.inputs do
       f.input :brand
       f.input :name

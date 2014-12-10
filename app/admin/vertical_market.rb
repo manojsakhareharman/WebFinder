@@ -52,7 +52,7 @@ ActiveAdmin.register VerticalMarket do
     end
   end
 
-  form do |f|
+  form html: { multipart: true} do |f|
     f.inputs do
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
