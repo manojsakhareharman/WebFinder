@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "required": ["vertical_market"],
+  "properties": {
+    "vertical_market": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "headline",
+        "description",
+        "banner_url",
+        "reference_systems"
+      ],
+      "properties" : {
+        "id": {"type" : "integer"},
+        "name": {"type" : "string"},
+        "headline": {"type" : "string"},
+        "description": {"type" : "text"},
+        "banner_url": {"type" : "string"},
+        "reference_systems": {
+          "type" : "array",
+          "items" : [
+            {
+              "type": "object",
+              "required": ["id", "name", "headline", "description", "banner_url", "slider_name", "system_diagram_url"],
+              "properties": {
+                "id": {"type": "integer"},
+                "name": {"type": "string"},
+                "headline": {"type": "string"},
+                "description": {"type": "text"},
+                "banner_url": {"type": "string"},
+                "slider_name": {"type": "string"},
+                "system_diagram_url": {"type": "string"}
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

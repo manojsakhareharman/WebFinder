@@ -1,24 +1,29 @@
 <h2><%= reference_system.headline %></h2>
 <%=raw reference_system.description %>
 
-<div class="text-center" style="height: 280px; background: #999; color: #EEE; margin: 20px 0px; padding-top: 120px;">
-  System Diagram Placeholder
-</div>
+<div class="system-diagram-container" ng-controller="SystemDiagramCtrl">
+  <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon"
+    ng-style="{'left': '<%= 50 * reference_system.id %>px', bottom: '<%= 30 * reference_system.id %>px'}"/>
 
-<ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
-  <% reference_system.reference_system_product_types.each do |rspt| %>
-    <li><div class="panel">
-      <h5 class="subheader"><%= link_to rspt.product_type.name, '#' %></h5>
-      <ul>
-        <% rspt.products[0,3].each do |product| %>
-          <li>
-            <h6><%= link_to product.name, product.url, target: "_blank" %></h6>
-            <div><%= product.description %></div>
-            <%= link_to "more info", product.url, target: "_blank" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    </li>
-  <% end %>
-</ul>
+  <%= image_tag(reference_system.system_diagram.url(:large)) %>
+
+
+  <!-- These will be the popups on the diagram -->
+  <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
+    <% reference_system.reference_system_product_types.each do |rspt| %>
+      <li><div class="panel">
+        <h5 class="subheader"><%= link_to rspt.product_type.name, '#' %></h5>
+        <ul>
+          <% rspt.products[0,3].each do |product| %>
+            <li>
+              <h6><%= link_to product.name, product.url, target: "_blank" %></h6>
+              <div><%= product.description %></div>
+              <%= link_to "more info", product.url, target: "_blank" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

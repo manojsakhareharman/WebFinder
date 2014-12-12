@@ -24,6 +24,7 @@ feature "Basic visitor flow" do
   # I want to click through to a child vertical market page
   # So I can find out about the system solutions
   scenario "Visit a child vertical market page" do
+    skip "content loads from angular"
     click_on @parent_vertical.name
 
     click_on @child_vertical.name

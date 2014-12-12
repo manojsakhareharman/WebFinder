@@ -14,7 +14,14 @@ class ReferenceSystem < ActiveRecord::Base
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
 
+  has_attached_file :system_diagram,
+    styles: {
+      large: "635x419",
+      thumb_square: "64x64#"
+  }, default_url: "missing/system_diagrams/:style.jpg"
+
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :system_diagram, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true
   validates :vertical_market, presence: true
   validates :headline, presence: true

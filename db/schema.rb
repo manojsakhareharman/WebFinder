@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208213021) do
+ActiveRecord::Schema.define(version: 20141210175236) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20141208213021) do
   create_table "reference_systems", force: true do |t|
     t.string   "name"
     t.integer  "vertical_market_id"
-    t.boolean  "retail",                default: false
+    t.boolean  "retail",                      default: false
     t.integer  "position"
     t.string   "venue_size_descriptor"
     t.string   "headline"
@@ -144,6 +144,10 @@ ActiveRecord::Schema.define(version: 20141208213021) do
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
     t.string   "slug"
+    t.string   "system_diagram_file_name"
+    t.string   "system_diagram_content_type"
+    t.integer  "system_diagram_file_size"
+    t.datetime "system_diagram_updated_at"
   end
 
   add_index "reference_systems", ["slug"], name: "index_reference_systems_on_slug", unique: true, using: :btree

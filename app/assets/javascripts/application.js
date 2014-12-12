@@ -15,7 +15,10 @@
 //= require foundation
 //= require angular/angular
 //= require angular-slider/slider
-//= require_tree .
+//= require imagesloaded/imagesloaded.pkgd.min
+//= require angular-images-loaded/angular-images-loaded
+//= require app
+// require_tree .
 
 $(function(){
   $(document).foundation({

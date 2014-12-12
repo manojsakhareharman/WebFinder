@@ -14,6 +14,7 @@ RSpec.describe ReferenceSystem, :type => :model do
   it { should respond_to(:description) }
   it { should respond_to(:venue_size_descriptor) }
   it { should respond_to(:banner) }
+  it { should respond_to(:system_diagram) }
 
   context "as part of a list" do
     it "should have a previous reference_system" do

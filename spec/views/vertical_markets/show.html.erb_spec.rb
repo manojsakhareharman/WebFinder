@@ -50,6 +50,7 @@ describe "vertical_markets/show.html.erb" do
 
     describe "and reference systems" do
       before do
+        skip "Content loads from angular"
         @reference_systems = FactoryGirl.create_list(:reference_system, 9, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
         assign(:reference_systems, @reference_systems)
@@ -71,7 +72,6 @@ describe "vertical_markets/show.html.erb" do
         # Banner was moved to a content_for block, not in the show template itself
         #expect(view.content_for(:banner)).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
         expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
-        expect(rendered).to have_content(reference_system.description)
       end
 
       it "shows only the first 6 reference systems" do
@@ -119,6 +119,7 @@ describe "vertical_markets/show.html.erb" do
 
   context "retail" do
     before do
+      skip "Content loads from angular"
       @vertical_market = FactoryGirl.create(:vertical_market)
       @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
       @product_type = FactoryGirl.create(:product_type)

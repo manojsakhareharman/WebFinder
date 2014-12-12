@@ -1,16 +1,9 @@
 class VerticalMarketsController < ApplicationController
+  respond_to :html, :json
 
   def show
     @vertical_market = VerticalMarket.find(params[:id])
-    if @vertical_market.children.length > 0
-      @reference_systems = []
-    else
-      @reference_systems = @vertical_market.featured_reference_systems
-    end
-    respond_to do |format|
-      format.html
-      format.json { render json: @reference_systems }
-    end
+    respond_with @vertical_market
   end
 
 end

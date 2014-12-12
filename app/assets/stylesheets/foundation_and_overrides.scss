@@ -211,7 +211,7 @@ $body-font-weight: $font-weight-medium;
 $header-font-weight: $font-weight-light;
 // $header-font-style: normal;
 $header-font-color: $harman-blue;
-// $header-line-height: 1.4;
+$header-line-height: 1.2;
 $header-top-margin: .3rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
@@ -1457,6 +1457,9 @@ $topbar-link-text-transform: uppercase;
 body {
   background: $body-background-color;
 }
+img.in {
+  outline: 4px solid red;
+}
 .main-container {
   padding: 20px 0 80px;
 }
@@ -1492,12 +1495,33 @@ body {
   }
 }
 .bumped-up {
-  margin-top: -80px;
+ // margin-top: -80px; // causes odd behavior with the banner
 }
 .banner-container {
+  position: relative;
   text-align: center;
   background: $banner-background-color;
   padding: 0;
+  &.vertical-market, &.reference-system {
+    @media only screen and (min-width: 1000px) {
+      img {
+        height: 624px;
+        width: 1000px;
+      }
+    }
+    @media only screen and (min-width: 500px) and (max-width: 999px) {
+      img {
+        height: 312px;
+        width: 500px;
+      }
+    }
+    @media only screen and (max-width: 499px) {
+      img {
+        height: 156px;
+        width: 250px;
+      }
+    }
+  }
   h1 {
     color: $white;
   }
@@ -1506,7 +1530,7 @@ body {
 .slider-container {
   height: 180px;
   margin-top: -180px;
-  background: rgba($primary-color, 0.63);
+  background: rgba($primary-color, 0.83);
   color: $snow;
   h1,h2,h3 {
     color: $white;
@@ -1535,6 +1559,15 @@ body {
     }
   }
 }
+
+.system-diagram-container {
+  margin: 20px 0px 40px;
+  position: relative;
+  img.help-icon {
+    position: absolute;
+  }
+}
+
 ul.title-area {
   li.name {
     h1 {

@@ -2,7 +2,7 @@ ActiveAdmin.register ReferenceSystem do
 
   # :nocov:
   permit_params :name, :position, :description, :vertical_market_id, :retail,
-    :venue_size_descriptor, :headline, :banner
+    :venue_size_descriptor, :headline, :banner, :system_diagram
 
   belongs_to :vertical_market
 
@@ -38,6 +38,7 @@ ActiveAdmin.register ReferenceSystem do
       f.input :venue_size_descriptor, hint: "Maximum characters: 16", input_html: { maxlength: 16 }
       f.input :headline, hint: "Maximum characters: 90", input_html: { maxlength: 90 }
       f.input :description, hint: "Maximum characters: 650", input_html: { maxlength: 650, rows: 6 }
+      f.input :system_diagram, hint: "Becomes the backdrop for the interactive learning diagram."
       f.input :retail, label: "Offer ecommerce links with this system."
     end
     f.actions

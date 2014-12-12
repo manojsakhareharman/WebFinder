@@ -20,4 +20,13 @@
  *= require angular-slider/slider
  */
 
-
+span.spinner {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 43px;
+  height: 11px;
+  margin: 20px auto;
+  background: asset-url('ajax-loader.gif');
+}

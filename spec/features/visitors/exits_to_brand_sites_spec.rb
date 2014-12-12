@@ -14,11 +14,15 @@ feature "Exits to brand sites" do
   end
 
   scenario "via reference system products list" do
-    visit vertical_market_path(@vertical_market)
+    visit vertical_market_reference_system_path(@vertical_market, @reference_system)
 
     click_on @product_type.name
 
     expect(page).to have_link(@product.name, href: @product.url)
+  end
+
+  scenario "via popup on vertical market page" do
+    skip "content loads from angular"
   end
 
   scenario "via footer links" do

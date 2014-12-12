@@ -4,7 +4,7 @@
 
 <% if @vertical_market.children.length > 0 %>
   <div class="bumped-up space-after">
-    <div class="banner-container">
+    <div class="banner-container vertical-market">
       <%= image_tag @vertical_market.banner.url(:large) %>
     </div>
     <div class="row">
@@ -38,44 +38,35 @@
 
 <% else %>
 
-  <div ng-controller="VerticalMarketController as vertical" vmid="<%= @vertical_market.id %>">
-    <%= cache ["vm-slider", @vertical_market, Date.today] do %>
-      <div class="bumped-up">
-        <div class="banner-container">
-          <% @reference_systems.each_with_index do |reference_system, i| %>
-            <div ng-show="vertical.slider_pos === <%= i + 1 %>">
-              <%= image_tag reference_system.banner.url(:large) %>
-            </div>
-          <% end %>
-          <% if @reference_systems.length == 0 %>
-            <%= image_tag @vertical_market.banner.url(:large) %>
-          <% end %>
-        </div>
-        <div class="row">
-          <div class="large-5 large-offset-2 small-8 columns">
-            <div class="slider-container panel">
-              <h1><%= @vertical_market.name %></h1>
-              <% if @reference_systems.length > 1 %>
-                <slider
-                  floor="1"
-                  ceiling="<%= @reference_systems.length %>"
-                  step="1"
-                  precision="0"
-                  ng-model="vertical.slider_pos">
-               </slider>
+  <div ng-controller="VerticalMarketCtrl as vm" vmurl="<%= vertical_market_path(@vertical_market, format: :json) %>">
+    <div class="bumped-up">
+      <div class="banner-container vertical-market">
+        <img src="<%= @vertical_market.banner_file_name.present? ? asset_path(@vertical_market.banner.url(:large)) : '' %>"
+          ng-src="{{ vm.currentSystem(vm.slider_pos)['banner_url'] }}" img-preload />
+      </div>
+      <div class="row">
+        <div class="large-5 large-offset-2 small-8 columns">
+          <div class="slider-container panel">
+            <h1><%= @vertical_market.name %></h1>
 
-               <ul class="small-block-grid-<%= @reference_systems.length %> medium-block-grid-<%=@reference_systems.length %> large-block-grid-<%=@reference_systems.length %>">
-                 <% @reference_systems.each_with_index do |reference_system, i| %>
-                   <li> <%= reference_system.slider_name %> </li>
-                 <% end %>
-               </ul>
+            <div ng-show="vm.systems.length > 1">
+              <slider
+                floor="1"
+                ceiling="{{ vm.systems.length }}"
+                step="1"
+                precision="0"
+                ng-model="vm.slider_pos">
+              </slider>
 
-              <% end %>
+              <ul class="small-block-grid-{{ vm.systems.length }} medium-block-grid-{{ vm.systems.length }} large-block-grid-{{ vm.systems.length }}">
+                <li ng-repeat="system in vm.systems">{{ system.slider_name }}</li>
+              </ul>
             </div>
+
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
 
     <%= render "shared/learn_plan_buy_nav.html.erb" %>
 
@@ -83,11 +74,17 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
-          <% @reference_systems.each_with_index do |reference_system, i| %>
-            <div class="reference_system_container" ng-show="vertical.slider_pos === <%= i + 1 %>">
-              <%= render "reference_systems/details", reference_system: reference_system %>
+          <div class="reference_system_container">
+            <h2>{{ vm.currentSystem(vm.slider_pos)['headline'] }}</h2>
+            {{ vm.currentSystem(vm.slider_pos)['description'] }}</h2>
+
+            <div class="system-diagram-container" ng-controller="SystemDiagramCtrl">
+              <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon"
+                ng-style="{'left': '50px', bottom: '50px'}"/>
+              <img ng-src="{{ vm.currentSystem(vm.slider_pos)['system_diagram_url'] }}" img-preload/>
             </div>
-          <% end %>
+
+          </div>
 
           <%= render "learn", vertical_market: @vertical_market %>
 

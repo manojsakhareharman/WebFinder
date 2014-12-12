@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
+gem "active_model_serializers", "~> 0.8.0"
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
@@ -49,6 +50,7 @@ group :test do
   gem 'ZenTest'
   gem 'simplecov', require: false
   gem 'rspec-autotest'
+  gem 'json-schema'
   gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
