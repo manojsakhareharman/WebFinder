@@ -10,6 +10,8 @@ app.controller 'VerticalMarketCtrl', ['$http', '$attrs', ($http, $attrs) ->
   @currentSystem = (slider_pos) ->
     if vm.systems.length > 0
       vm.systems[slider_pos - 1]
+
+  true
 ]
 
 app.directive 'imgPreload', ->
