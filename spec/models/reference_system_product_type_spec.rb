@@ -15,4 +15,9 @@ RSpec.describe ReferenceSystemProductType, :type => :model do
     it { should respond_to(:reference_system_product_type_products) }
     it { should respond_to(:products) }
   end
+
+  describe "icon coordinates" do
+    it { should respond_to(:top) }
+    it { should respond_to(:left) }
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210175236) do
+ActiveRecord::Schema.define(version: 20141215222946) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 20141210175236) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "top"
+    t.string   "left"
   end
 
   add_index "reference_system_product_types", ["reference_system_id"], name: "index_reference_system_product_types_on_reference_system_id", using: :btree

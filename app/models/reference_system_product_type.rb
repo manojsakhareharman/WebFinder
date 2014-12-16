@@ -1,3 +1,7 @@
+# Associates a ReferenceSystem with one or more ProductTypes. This
+# class is manifest as icons on the system diagram for the Reference System,
+# and becomes the container for related products.
+#
 class ReferenceSystemProductType < ActiveRecord::Base
   belongs_to :reference_system
   belongs_to :product_type
@@ -6,4 +10,8 @@ class ReferenceSystemProductType < ActiveRecord::Base
 
   validates :reference_system, presence: true
   validates :product_type, presence: true
+
+  def name
+    "#{reference_system.name}: #{product_type.name}"
+  end
 end

@@ -50,7 +50,6 @@ describe "vertical_markets/show.html.erb" do
 
     describe "and reference systems" do
       before do
-        skip "Content loads from angular"
         @reference_systems = FactoryGirl.create_list(:reference_system, 9, vertical_market: @vertical_market)
         assign(:vertical_market, @vertical_market)
         assign(:reference_systems, @reference_systems)
@@ -61,12 +60,14 @@ describe "vertical_markets/show.html.erb" do
       # with javascript, the application content loads inline via AJAX
       # without, it links to a reference_system view page
       it "shows related reference_system" do
+        skip "Content loads via angular"
         reference_system = @reference_systems.first
 
         expect(rendered).to have_css('h2', text: reference_system.headline)
       end
 
       it "shows the reference system pics, description" do
+        skip "Content loads via angular"
         reference_system = @reference_systems.first
 
         # Banner was moved to a content_for block, not in the show template itself
@@ -74,11 +75,21 @@ describe "vertical_markets/show.html.erb" do
         expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
       end
 
-      it "shows only the first 6 reference systems" do
-        reference_system = @reference_systems.last # (beyond the number we want to include)
+      context "noscript block" do
 
-        expect(rendered).not_to have_link(reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+        it "shows only the first 6 reference systems" do
+          reference_system = @reference_systems.last # (beyond the number we want to include)
+
+          expect(rendered).not_to have_link(reference_system.headline, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+        end
+
+        it "links to reference systems" do
+          reference_system = @reference_systems.first
+
+          expect(rendered).to have_link(reference_system.name, href: vertical_market_reference_system_path(@vertical_market, reference_system))
+        end
       end
+
     end
 
     describe "and case studies" do

@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "required": ["reference_system"],
+  "properties": {
+    "reference_system": {
+      "type": "object",
+      "required": ["id", "name", "headline", "description", "banner_url", "api_url", "slider_name", "system_diagram_url", "reference_system_product_types"],
+      "properties": {
+        "id": {"type": "integer"},
+        "name": {"type": "string"},
+        "headline": {"type": "string"},
+        "description": {"type": "text"},
+        "banner_url": {"type": "string"},
+        "api_url": {"type": "string"},
+        "slider_name": {"type": "string"},
+        "system_diagram_url": {"type": "string"},
+        "reference_system_product_types": {
+          "type" : "array",
+          "items" : [
+            {
+              "type": "object",
+              "required": ["id", "top", "left", "quantity", "name", "description", "products"],
+              "properties": {
+                "id": {"type": "integer"},
+                "top": {"type": "string"},
+                "left": {"type": "string"},
+                "quantity": {"type": "integer"},
+                "name": { "type": "string" },
+                "description": { "type": "text"},
+                "products": {
+                  "type": "array",
+                  "items" : [
+                    {
+                      "type": "object",
+                      "required": ["id", "name", "url"],
+                      "properties": {
+                        "id": {"type": "integer"},
+                        "name": {"type": "string"},
+                        "url": {"type": "string"}
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

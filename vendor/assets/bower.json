@@ -3,6 +3,7 @@
   "dependencies": {
     "angular": "latest",
     "angular-slider": "latest",
-    "angular-images-loaded": "latest"
+    "angular-images-loaded": "latest",
+    "nsPopover": "latest"
   }
 }

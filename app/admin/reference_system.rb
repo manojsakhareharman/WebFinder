@@ -21,9 +21,9 @@ ActiveAdmin.register ReferenceSystem do
 
   sidebar "Product Types", only: [:show, :edit] do
     ul do
-      if reference_system.retail?
+      #if reference_system.retail?
         li link_to("+ New Product Type", new_admin_reference_system_reference_system_product_type_path(reference_system))
-      end
+      #end
       reference_system.reference_system_product_types.each do |rspt|
         li link_to(rspt.product_type.name, [:admin, reference_system, rspt])
       end

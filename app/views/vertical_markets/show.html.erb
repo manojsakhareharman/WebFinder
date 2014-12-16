@@ -40,14 +40,20 @@
 
   <div ng-controller="VerticalMarketCtrl as vm" vmurl="<%= vertical_market_path(@vertical_market, format: :json) %>">
     <div class="bumped-up">
+
       <div class="banner-container vertical-market">
-        <img src="<%= @vertical_market.banner_file_name.present? ? asset_path(@vertical_market.banner.url(:large)) : '' %>"
-          ng-src="{{ vm.currentSystem(vm.slider_pos)['banner_url'] }}" img-preload />
+        <% if @vertical_market.reference_systems.count > 0 %>
+          <img ng-src="{{ vm.currentSystem()['banner_url'] }}" ng-show="vm.systems.length > 0" img-preload />
+        <% else %>
+          <img src="<%= asset_path(@vertical_market.banner.url(:large)) %>"/>
+        <% end %>
       </div>
+
       <div class="row">
         <div class="large-5 large-offset-2 small-8 columns">
           <div class="slider-container panel">
-            <h1><%= @vertical_market.name %></h1>
+            <a name="learn"></a>
+            <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
 
             <div ng-show="vm.systems.length > 1">
               <slider
@@ -66,6 +72,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
     <%= render "shared/learn_plan_buy_nav.html.erb" %>
@@ -74,23 +81,54 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
-          <div class="reference_system_container">
-            <h2>{{ vm.currentSystem(vm.slider_pos)['headline'] }}</h2>
-            {{ vm.currentSystem(vm.slider_pos)['description'] }}</h2>
+          <div class="reference_system_container" ng-show="vm.systems.length > 0">
+            <h2>{{ vm.currentSystem()['headline'] }}</h2>
+            {{ vm.currentSystem()['description'] }}
 
-            <div class="system-diagram-container" ng-controller="SystemDiagramCtrl">
-              <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon"
-                ng-style="{'left': '50px', bottom: '50px'}"/>
-              <img ng-src="{{ vm.currentSystem(vm.slider_pos)['system_diagram_url'] }}" img-preload/>
+            <div class="system-diagram-container">
+              <script type="text/ng-template" id="popover-template">
+                <div class="triangle"></div>
+                <div class="ns-popover-tooltip">
+                  <h5 class="subheader">{{ vm.selectedProductType["name"] }}</h5>
+                  <p>{{ vm.selectedProductType["description"] }}</p>
+                  <i>Product Suggestions:</i>
+                  <ul>
+                    <li ng-repeat="product in vm.selectedProductType['products']">
+                      <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
+                    </li>
+                  </ul>
+                  <button ng-click="hidePopover()" class="tiny button">Close</button>
+                </div>
+              </script>
+
+              <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon" ns-popover
+                ng-repeat="product_type in vm.currentSystem()['reference_system_product_types']"
+                ptid="{{ product_type.id }}"
+                ng-style="{'left': product_type.left, 'top': product_type.top}"
+                ng-click="vm.setProductType(product_type)"
+                ns-popover-modal="product-type-popups"
+                ns-popover-theme="ns-popover-tooltip-theme"
+                ns-popover-timeout="7"
+                ns-popover-template="popover-template"/>
+              <img ng-src="{{ vm.currentSystem()['system_diagram_url'] }}" img-preload/>
             </div>
-
           </div>
+
+          <noscript>
+            <h5 class="subheader">Explore these examples:</h5>
+            <ul>
+              <%= @vertical_market.featured_reference_systems.each do |reference_system| %>
+                <li><%= link_to reference_system.name, [@vertical_market, reference_system] %></li>
+              <% end %>
+            </ul>
+          </noscript>
 
           <%= render "learn", vertical_market: @vertical_market %>
 
         </div>
       </div>
     </div>
+
   </div>
 
   <%= render "plan", vertical_market: @vertical_market %>

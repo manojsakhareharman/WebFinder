@@ -1,8 +1,10 @@
 class ReferenceSystemsController < ApplicationController
+  respond_to :html, :json
   before_action :load_vertical_market
 
   def show
     @reference_system = ReferenceSystem.find(params[:id])
+    respond_with @reference_system
   end
 
   private

@@ -24,6 +24,12 @@ RSpec.describe VerticalMarketsController do
 
   describe "GET show.json" do
     before do
+      product_type = FactoryGirl.create(:product_type)
+      rspt = FactoryGirl.create(:reference_system_product_type,
+                                reference_system: @reference_system,
+                                product_type: product_type)
+      FactoryGirl.create(:reference_system_product_type_product,
+                         reference_system_product_type: rspt)
       get :show, id: @vertical_market.id, format: :json
     end
 

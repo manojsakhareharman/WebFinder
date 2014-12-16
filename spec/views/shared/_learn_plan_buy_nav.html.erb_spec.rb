@@ -23,8 +23,5 @@ RSpec.describe "shared/_learn_plan_buy_nav.html.erb", :type => :view do
       expect(rendered).to have_xpath("//dd[@data-magellan-arrival='buy']")
     end
 
-    it "should have destination for the learn section" do
-      expect(rendered).to have_xpath("//a[@data-magellan-destination='learn']")
-    end
   end
 end

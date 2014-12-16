@@ -1,15 +1,25 @@
-app = angular.module('harmanpro', ['ui.slider', 'angular-images-loaded' ])
+app = angular.module 'harmanpro', [
+  'ui.slider'
+  'angular-images-loaded'
+  'nsPopover'
+]
 
 app.controller 'VerticalMarketCtrl', ['$http', '$attrs', ($http, $attrs) ->
-  @slider_pos = 1
   vm = @
   vm.systems = []
+  vm.slider_pos = 1
+  vm.selectedProductType = ""
+
   $http.get($attrs.vmurl).success (data) ->
     vm.systems = data["vertical_market"]["reference_systems"]
 
-  @currentSystem = (slider_pos) ->
+  @currentSystem = ->
+    slider_pos = vm.slider_pos
     if vm.systems.length > 0
       vm.systems[slider_pos - 1]
+
+  @setProductType = (product_type) ->
+    vm.selectedProductType = product_type
 
   true
 ]
@@ -27,8 +37,23 @@ app.directive 'imgPreload', ->
         element.css { opacity: 0 }
   }
 
-app.controller 'SystemDiagramCtrl', ->
+app.controller 'ReferenceSystemCtrl', ['$http', '$attrs', ($http, $attrs) ->
+  rs = @
+  rs.system = ""
+  rs.selectedProductType = ""
 
+  if $attrs.system
+    rs.system = $attrs.system
+    console.log(rs.system)
+  else if $attrs.rsurl
+    $http.get($attrs.rsurl).success (data) ->
+      rs.system = data["reference_system"]
+
+  @setProductType = (product_type) ->
+    rs.selectedProductType = product_type
+
+  true
+]
 
 app.controller 'HomeBannerCtrl', ->
   @some_var = 1

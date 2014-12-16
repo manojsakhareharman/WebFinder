@@ -11,6 +11,11 @@
 // about supported directives.
 //
 //= require foundation
+//= require angular/angular
+//= require angular-slider/slider
+//= require imagesloaded/imagesloaded.pkgd.min
+//= require angular-images-loaded
+//= require nsPopover
 //= require app
 // require_tree .
 
