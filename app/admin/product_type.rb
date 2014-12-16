@@ -5,6 +5,15 @@ ActiveAdmin.register ProductType do
   menu false
 
   # :nocov:
+  filter :name
+
+  index do
+    selectable_column
+    column :name
+    column :description
+    actions
+  end
+
   form do |f|
     f.inputs do
       f.input :name

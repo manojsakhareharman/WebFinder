@@ -5,6 +5,19 @@ ActiveAdmin.register ReferenceSystemProductType do
   belongs_to :reference_system
 
   # :nocov:
+  filter :reference_system
+  filter :product_type
+
+  index do
+    selectable_column
+    column :reference_system
+    column :product_type
+    column "Products" do |v|
+      v.products.length
+    end
+    actions
+  end
+
   sidebar "Products", only: [:show, :edit] do
     ul do
       if reference_system_product_type.products.length < 3
@@ -15,6 +28,7 @@ ActiveAdmin.register ReferenceSystemProductType do
       end
     end
   end
+
   form do |f|
     f.inputs do
       f.input :reference_system

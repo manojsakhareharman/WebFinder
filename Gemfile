@@ -35,7 +35,7 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'sshkit', '1.5.1' # version 1.6.0 caused problems deploying
+  gem 'sshkit'
   gem 'colorize', '0.7.4' # version 0.7.5 caused problems deploying
   gem 'capistrano-rails'
   gem 'capistrano-bundler'

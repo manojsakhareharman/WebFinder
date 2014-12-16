@@ -8,6 +8,9 @@ ActiveAdmin.register CaseStudy do
   config.paginate = false
   config.sort_order = 'name_asc'
 
+  filter :vertical_market
+  filter :name
+
   index do
     selectable_column
     column :name

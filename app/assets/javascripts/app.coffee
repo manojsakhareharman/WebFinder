@@ -42,12 +42,8 @@ app.controller 'ReferenceSystemCtrl', ['$http', '$attrs', ($http, $attrs) ->
   rs.system = ""
   rs.selectedProductType = ""
 
-  if $attrs.system
-    rs.system = $attrs.system
-    console.log(rs.system)
-  else if $attrs.rsurl
-    $http.get($attrs.rsurl).success (data) ->
-      rs.system = data["reference_system"]
+  $http.get($attrs.rsurl).success (data) ->
+    rs.system = data["reference_system"]
 
   @setProductType = (product_type) ->
     rs.selectedProductType = product_type
