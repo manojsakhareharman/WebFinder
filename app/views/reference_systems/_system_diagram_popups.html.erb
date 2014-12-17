@@ -1,0 +1,24 @@
+<script type="text/ng-template" id="popover-template">
+  <div class="triangle"></div>
+  <div class="ns-popover-tooltip">
+    <h5 class="subheader">{{ selectedProductType["name"] }}</h5>
+    <p>{{ selectedProductType["description"] }}</p>
+    <i>Product Suggestions:</i>
+    <ul>
+      <li ng-repeat="product in selectedProductType['products']">
+        <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
+      </li>
+    </ul>
+    <button ng-click="hidePopover()" class="tiny button">Close</button>
+  </div>
+</script>
+
+<img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon" ns-popover
+  ng-repeat="product_type in system['reference_system_product_types']"
+  ptid="{{ product_type.id }}"
+  ng-style="{'left': product_type.left, 'top': product_type.top}"
+  ng-click="setProductType(product_type)"
+  ns-popover-modal="product-type-popups"
+  ns-popover-theme="ns-popover-tooltip-theme"
+  ns-popover-timeout="7"
+  ns-popover-template="popover-template"/>

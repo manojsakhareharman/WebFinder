@@ -10,13 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require foundation
-//= require angular/angular
+//= require angular-resource
 //= require angular-slider/slider
-//= require imagesloaded/imagesloaded.pkgd.min
-//= require angular-images-loaded
 //= require nsPopover
 //= require app
+//= require foundation
 // require_tree .
 
 $(function(){

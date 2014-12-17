@@ -32,36 +32,16 @@
     <div class="large-8 large-offset-2 columns">
 
       <div class="reference_system_container"
-        ng-controller="ReferenceSystemCtrl as rs"
-        rsurl="<%= vertical_market_reference_system_path(@vertical_market, @reference_system, format: :json) %>">
+        ng-controller="ReferenceSystemCtrl"
+        vmid="<%= @vertical_market.to_param %>"
+        rsid="<%= @reference_system.to_param %>">
+
         <h2><%= @reference_system.headline %></h2>
         <%=raw @reference_system.description %>
 
-        <div class="system-diagram-container">
-          <script type="text/ng-template" id="popover-template">
-            <div class="triangle"></div>
-            <div class="ns-popover-tooltip">
-              <h5 class="subheader">{{ rs.selectedProductType["name"] }}</h5>
-              <p>{{ rs.selectedProductType["description"] }}</p>
-              <i>Product Suggestions:</i>
-              <ul>
-                <li ng-repeat="product in rs.selectedProductType['products']">
-                  <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
-                </li>
-              </ul>
-              <button ng-click="hidePopover()" class="tiny button">Close</button>
-            </div>
-          </script>
+        <div ng-controller="SystemDiagramCtrl" class="system-diagram-container">
+          <%= render "system_diagram_popups" %>
 
-          <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon" ns-popover
-            ng-repeat="product_type in rs.system['reference_system_product_types']"
-            ptid="{{ product_type.id }}"
-            ng-style="{'left': product_type.left, 'top': product_type.top}"
-            ng-click="rs.setProductType(product_type)"
-            ns-popover-modal="product-type-popups"
-            ns-popover-theme="ns-popover-tooltip-theme"
-            ns-popover-timeout="7"
-            ns-popover-template="popover-template"/>
           <%= image_tag(@reference_system.system_diagram.url(:large)) %>
 
           <noscript>

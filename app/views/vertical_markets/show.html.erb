@@ -38,12 +38,14 @@
 
 <% else %>
 
-  <div ng-controller="VerticalMarketCtrl as vm" vmurl="<%= vertical_market_path(@vertical_market, format: :json) %>">
+  <div ng-controller="VerticalMarketCtrl" ng-cloak
+    vmid="<%= @vertical_market.to_param %>">
+
     <div class="bumped-up">
 
       <div class="banner-container vertical-market">
         <% if @vertical_market.reference_systems.count > 0 %>
-          <img ng-src="{{ vm.currentSystem()['banner_url'] }}" ng-show="vm.systems.length > 0" img-preload />
+          <img ng-src="{{ currentSystem()['banner_url'] }}" ng-show="systems.length > 0" img-preload />
         <% else %>
           <img src="<%= asset_path(@vertical_market.banner.url(:large)) %>"/>
         <% end %>
@@ -55,17 +57,17 @@
             <a name="learn"></a>
             <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
 
-            <div ng-show="vm.systems.length > 1">
+            <div ng-show="systems.length > 1">
               <slider
                 floor="1"
-                ceiling="{{ vm.systems.length }}"
+                ceiling="{{ systems.length }}"
                 step="1"
                 precision="0"
-                ng-model="vm.slider_pos">
+                ng-model="slider_pos">
               </slider>
 
-              <ul class="small-block-grid-{{ vm.systems.length }} medium-block-grid-{{ vm.systems.length }} large-block-grid-{{ vm.systems.length }}">
-                <li ng-repeat="system in vm.systems">{{ system.slider_name }}</li>
+              <ul class="small-block-grid-{{ systems.length }} medium-block-grid-{{ systems.length }} large-block-grid-{{ systems.length }}">
+                <li ng-repeat="system in systems">{{ system.slider_name }}</li>
               </ul>
             </div>
 
@@ -81,36 +83,16 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
-          <div class="reference_system_container" ng-show="vm.systems.length > 0">
-            <h2>{{ vm.currentSystem()['headline'] }}</h2>
-            {{ vm.currentSystem()['description'] }}
+          <div class="reference_system_container"
+            ng-show="systems.length > 0">
 
-            <div class="system-diagram-container">
-              <script type="text/ng-template" id="popover-template">
-                <div class="triangle"></div>
-                <div class="ns-popover-tooltip">
-                  <h5 class="subheader">{{ vm.selectedProductType["name"] }}</h5>
-                  <p>{{ vm.selectedProductType["description"] }}</p>
-                  <i>Product Suggestions:</i>
-                  <ul>
-                    <li ng-repeat="product in vm.selectedProductType['products']">
-                      <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
-                    </li>
-                  </ul>
-                  <button ng-click="hidePopover()" class="tiny button">Close</button>
-                </div>
-              </script>
+            <h2>{{ system['headline'] }}</h2>
+            {{ system['description'] }}
 
-              <img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon" ns-popover
-                ng-repeat="product_type in vm.currentSystem()['reference_system_product_types']"
-                ptid="{{ product_type.id }}"
-                ng-style="{'left': product_type.left, 'top': product_type.top}"
-                ng-click="vm.setProductType(product_type)"
-                ns-popover-modal="product-type-popups"
-                ns-popover-theme="ns-popover-tooltip-theme"
-                ns-popover-timeout="7"
-                ns-popover-template="popover-template"/>
-              <img ng-src="{{ vm.currentSystem()['system_diagram_url'] }}" img-preload/>
+            <div ng-controller="SystemDiagramCtrl" class="system-diagram-container">
+              <%= render "reference_systems/system_diagram_popups" %>
+
+              <img ng-src="{{ system['system_diagram_url'] }}" img-preload/>
             </div>
           </div>
 

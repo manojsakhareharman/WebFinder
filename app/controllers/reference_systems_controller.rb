@@ -4,7 +4,7 @@ class ReferenceSystemsController < ApplicationController
 
   def show
     @reference_system = ReferenceSystem.find(params[:id])
-    respond_with @reference_system
+    respond_with @vertical_market, @reference_system
   end
 
   private
