@@ -36,8 +36,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     end
 
     it "links to help find contracter" do
-      pending "Determine where to link button to find contractor"
-      expect(rendered).to have_link("Help Me Find Installer", href: "somewhere-to-find-installer")
+      expect(rendered).to have_link("Help Me Find Installer", href: new_lead_path)
     end
 
     it "shows content from parent vertical" do

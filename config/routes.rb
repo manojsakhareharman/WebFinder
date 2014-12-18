@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
   end
+  resources :leads, path: 'plan/help', only: [:new, :create]
 
   root to: 'main#index'
 

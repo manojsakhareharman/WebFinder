@@ -1,0 +1,8 @@
+<%= simple_form_for @lead do |f| %>
+  <%= f.input :name %>
+  <%= f.input :company %>
+  <%= f.input :email %>
+  <%= f.input :phone %>
+  <%= f.input :project_description, label: "Project Description" %>
+  <%= f.button :submit, "Submit", class: "medium radius button" %>
+<% end %>
