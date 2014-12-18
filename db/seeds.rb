@@ -28,10 +28,11 @@ SiteSetting.create([
   { name: "homepage-vertical-markets-headline", content: "Vertical Markets Headline" },
   { name: "resource-library-sidebar-title", content: "From The Harman Resource Library" },
   { name: "hef-sidebar-title", content: "Harman Equipment Financing" },
-  { name: "hef-description", content: "Description of Harman Equipment Financing" },
+  { name: "hef-description", content: "Our flexible finance programs and unbeatable rates make it easy for you to get the equipment you really want and need." },
   { name: "subheader-help-find-installer", content: "Need help locating an AV Consultant or System Installer?" },
-  { name: "help-find-installer-description", content: "Paragraph describing how we can help find a consultant or installer." },
-  { name: "button-help-find-installer", content: "Help Me Find An Installer" }
+  { name: "help-find-installer-description", content: "We've worked with the top system consultants and installers throughout the world. Let us help you get connected with a partner who is right for your project." },
+  { name: "button-help-find-installer", content: "Help Me Find An Installer" },
+  { name: "hef-link", content: "http://www.harmanequipmentfinance.com" }
 ])
 
 Brand.create([

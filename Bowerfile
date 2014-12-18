@@ -1,4 +1,5 @@
 asset 'angular'
 asset 'angular-resource'
+asset 'angular-mocks'
 asset 'angular-slider'
 asset 'nsPopover'

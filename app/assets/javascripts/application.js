@@ -13,7 +13,7 @@
 //= require angular-resource
 //= require angular-slider/slider
 //= require nsPopover
-//= require app
+//= require_tree ./app
 //= require foundation
 // require_tree .
 

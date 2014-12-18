@@ -57,24 +57,6 @@ describe "vertical_markets/show.html.erb" do
         render
       end
 
-      # with javascript, the application content loads inline via AJAX
-      # without, it links to a reference_system view page
-      it "shows related reference_system" do
-        skip "Content loads via angular"
-        reference_system = @reference_systems.first
-
-        expect(rendered).to have_css('h2', text: reference_system.headline)
-      end
-
-      it "shows the reference system pics, description" do
-        skip "Content loads via angular"
-        reference_system = @reference_systems.first
-
-        # Banner was moved to a content_for block, not in the show template itself
-        #expect(view.content_for(:banner)).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
-        expect(rendered).to have_xpath("//img[@src='/assets/#{reference_system.banner.url(:large)}']")
-      end
-
       context "noscript block" do
 
         it "shows only the first 6 reference systems" do
@@ -128,35 +110,4 @@ describe "vertical_markets/show.html.erb" do
     end
   end
 
-  context "retail" do
-    before do
-      skip "Content loads from angular"
-      @vertical_market = FactoryGirl.create(:vertical_market)
-      @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
-      @product_type = FactoryGirl.create(:product_type)
-      @product = FactoryGirl.create(:product)
-      rspt = FactoryGirl.create(
-        :reference_system_product_type,
-        reference_system: @reference_system,
-        product_type: @product_type
-      )
-      FactoryGirl.create(
-        :reference_system_product_type_product,
-        reference_system_product_type: rspt,
-        product: @product
-      )
-      assign(:vertical_market, @vertical_market)
-      assign(:reference_systems, [@reference_system])
-
-      render
-    end
-
-    it "shows the product types involved" do
-      expect(rendered).to have_content(@product_type.name)
-    end
-
-    it "has links to the product" do
-      expect(rendered).to have_link(@product.name)
-    end
-  end
 end

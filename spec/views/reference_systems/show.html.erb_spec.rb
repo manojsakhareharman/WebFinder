@@ -6,6 +6,18 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_systems = FactoryGirl.create_list(:reference_system, 3, vertical_market: @vertical_market)
     @reference_system = @reference_systems.second
+    @product_type = FactoryGirl.create(:product_type)
+    @product = FactoryGirl.create(:product)
+    rspt = FactoryGirl.create(
+      :reference_system_product_type,
+      reference_system: @reference_system,
+      product_type: @product_type
+    )
+    FactoryGirl.create(
+      :reference_system_product_type_product,
+      reference_system_product_type: rspt,
+      product: @product
+    )
     assign(:reference_system, @reference_system)
     assign(:vertical_market, @vertical_market)
 
@@ -42,4 +54,13 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
 
   end
 
+  context "retail" do
+    it "shows the product types involved" do
+      expect(rendered).to have_content(@product_type.name)
+    end
+
+    it "has links to the product" do
+      expect(rendered).to have_link(@product.name)
+    end
+  end
 end

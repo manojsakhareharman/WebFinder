@@ -21,10 +21,6 @@ feature "Exits to brand sites" do
     expect(page).to have_link(@product.name, href: @product.url)
   end
 
-  scenario "via popup on vertical market page" do
-    skip "content loads from angular"
-  end
-
   scenario "via footer links" do
     visit root_path
 

@@ -17,6 +17,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
       FactoryGirl.create(:site_setting, name: "subheader-help-find-installer", content: "Help Me Find Installer")
       FactoryGirl.create(:site_setting, name: "help-find-installer-description", content: "Paragraph helping customer find installer.")
       FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
+      FactoryGirl.create(:site_setting, name: "hef-link", content: "www.hef.com")
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }
     end
 
@@ -26,8 +27,7 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
     end
 
     it "links to learn more about HEF" do
-      pending "Determine where to link button for HEF"
-      expect(rendered).to have_link("Learn More", href: "somewhere-to-learn-about-hef")
+      expect(rendered).to have_link("Learn More", href: "www.hef.com")
     end
 
     it "offers help finding contractor" do
