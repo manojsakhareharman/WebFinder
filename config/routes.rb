@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :leads, path: 'plan/help', only: [:new, :create]
 
+  get 'thankyou' => 'main#thankyou', as: :thankyou
   root to: 'main#index'
 
 end

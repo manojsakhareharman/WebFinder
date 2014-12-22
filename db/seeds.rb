@@ -32,7 +32,11 @@ SiteSetting.create([
   { name: "subheader-help-find-installer", content: "Need help locating an AV Consultant or System Installer?" },
   { name: "help-find-installer-description", content: "We've worked with the top system consultants and installers throughout the world. Let us help you get connected with a partner who is right for your project." },
   { name: "button-help-find-installer", content: "Help Me Find An Installer" },
-  { name: "hef-link", content: "http://www.harmanequipmentfinance.com" }
+  { name: "hef-link", content: "http://www.harmanequipmentfinance.com" },
+  { name: "thanks", content: "Thanks!"},
+  { name: "contact-thankyou-message", content: "Thank you for contacting us. We will route your inquiry to the right person and get back with you shortly."},
+  { name: "leadgen-title", content: "Connect With Harman"},
+  { name: "leadgen-intro", content: "Tell us about your project. Complete the form below to connect with Harman."}
 ])
 
 Brand.create([

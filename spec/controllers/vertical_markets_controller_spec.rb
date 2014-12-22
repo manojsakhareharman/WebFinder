@@ -9,7 +9,7 @@ RSpec.describe VerticalMarketsController do
 
   describe "GET show.html" do
     before do
-      get :show, id: @vertical_market.id
+      get :show, id: @vertical_market.to_param
     end
 
     it "assigns @vertical_market" do
@@ -19,6 +19,10 @@ RSpec.describe VerticalMarketsController do
     it "renders show template" do
       expect(response).to render_template("show")
       expect(response).to have_http_status(:success)
+    end
+
+    it "stores page url in session" do
+      expect(session["last_page"]).to eq(vertical_market_path(@vertical_market))
     end
   end
 

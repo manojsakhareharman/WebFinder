@@ -9,7 +9,7 @@ RSpec.describe ReferenceSystemsController, :type => :controller do
 
   describe "GET show.html" do
     before do
-      get :show, id: @reference_system.id, vertical_market_id: @vertical_market.id
+      get :show, id: @reference_system.to_param, vertical_market_id: @vertical_market.to_param
     end
 
     it "assigns @reference_system" do
@@ -23,6 +23,10 @@ RSpec.describe ReferenceSystemsController, :type => :controller do
     it "renders show template" do
       expect(response).to render_template("show")
       expect(response).to have_http_status(:success)
+    end
+
+    it "stores page url in session" do
+      expect(session["last_page"]).to eq(vertical_market_reference_system_path(@vertical_market, @reference_system))
     end
   end
 

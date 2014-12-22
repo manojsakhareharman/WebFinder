@@ -1,6 +1,7 @@
 class ReferenceSystemsController < ApplicationController
   respond_to :html, :json
   before_action :load_vertical_market
+  after_action :track_last_page
 
   def show
     @reference_system = ReferenceSystem.find(params[:id])

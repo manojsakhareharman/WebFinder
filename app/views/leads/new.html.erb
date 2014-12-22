@@ -1,8 +1,22 @@
-<%= simple_form_for @lead do |f| %>
-  <%= f.input :name %>
-  <%= f.input :company %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-  <%= f.input :project_description, label: "Project Description" %>
-  <%= f.button :submit, "Submit", class: "medium radius button" %>
+<%= content_for :title do %>
+  <%= SiteSetting.value("leadgen-title") %>
 <% end %>
+
+<div class="container main-container">
+  <h1 class="text-center"><%= SiteSetting.value("leadgen-title") %></h1>
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <p>
+        <%= SiteSetting.value("leadgen-intro") %>
+      </p>
+      <%= simple_form_for @lead do |f| %>
+        <%= f.input :name %>
+        <%= f.input :company %>
+        <%= f.input :email %>
+        <%= f.input :phone %>
+        <%= f.input :project_description, label: "Project Description", input_html: { rows: 10 } %>
+        <%= f.button :submit, "Submit", class: "medium radius button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

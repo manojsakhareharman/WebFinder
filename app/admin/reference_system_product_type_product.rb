@@ -4,6 +4,7 @@ ActiveAdmin.register ReferenceSystemProductTypeProduct do
 
   belongs_to :reference_system_product_type
 
+  # :nocov:
   form do |f|
     f.inputs do
       f.input :reference_system_product_type
@@ -11,4 +12,6 @@ ActiveAdmin.register ReferenceSystemProductTypeProduct do
     end
     f.actions
   end
+  # :nocov:
+
 end

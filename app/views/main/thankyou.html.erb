@@ -1,0 +1,12 @@
+<%= content_for :title do %>
+  <%= SiteSetting.value("thanks") %>
+<% end %>
+
+<div class="container main-container">
+  <h1 class="text-center"><%= SiteSetting.value("thanks") %></h1>
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <%= SiteSetting.value("contact-thankyou-message") %>
+    </div>
+  </div>
+</div>

@@ -18,4 +18,12 @@ RSpec.describe MainController do
     end
 
   end
+
+  describe "GET thankyou" do
+    it "renders thankyou template" do
+      get :thankyou
+      expect(response).to render_template("thankyou")
+    end
+  end
+
 end
