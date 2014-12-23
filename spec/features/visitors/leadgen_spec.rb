@@ -4,7 +4,7 @@ feature "Lead generation" do
 
   before do
     @vertical_market = FactoryGirl.create(:vertical_market)
-    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
+    @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market, retail: false)
     @help_find_installer = FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
   end
@@ -41,6 +41,10 @@ feature "Lead generation" do
     expect(page).to have_content(@title.content)
     expect(new_lead.name).to eq(lead.name)
     expect(new_lead.source).to eq(vertical_market_reference_system_path(@vertical_market, @reference_system))
+  end
+
+  scenario "new lead is delivered to sales department" do
+    skip "Determine how to push leads into some marketing automation or sales database"
   end
 
   # As a casual visitor

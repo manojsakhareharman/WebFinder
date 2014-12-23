@@ -1,4 +1,4 @@
-angular.module("HarmanPro")
+angular.module("harmanpro")
   .factory 'VerticalMarket', ['$resource', ($resource) ->
     $resource('/applications/:id.json')
   ]

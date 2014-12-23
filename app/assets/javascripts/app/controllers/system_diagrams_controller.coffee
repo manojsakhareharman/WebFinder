@@ -1,4 +1,4 @@
-angular.module("HarmanPro")
+angular.module("harmanpro")
   .controller 'SystemDiagramCtrl',
     ['$scope', ($scope) ->
       $scope.selectedProductType = ""

@@ -1,4 +1,4 @@
-angular.module('HarmanPro')
+angular.module("harmanpro")
   .directive 'imgPreload', ->
     {
       restrict: 'A'

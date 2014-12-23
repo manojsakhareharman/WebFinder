@@ -1,4 +1,4 @@
-angular.module("HarmanPro")
+angular.module("harmanpro")
   .controller 'ReferenceSystemCtrl',
     ['$attrs', '$scope', 'ReferenceSystem', ($attrs, $scope, ReferenceSystem) ->
 

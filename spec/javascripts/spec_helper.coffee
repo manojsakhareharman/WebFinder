@@ -1,7 +1,6 @@
-#= require application
 #= require angular-mocks
 
-beforeEach(module('HarmanPro'))
+beforeEach(module('harmanpro'))
 
 beforeEach inject (_$httpBackend_, _$compile_, $rootScope, $controller, $location, $injector, $timeout) ->
   @scope = $rootScope.$new()
@@ -18,6 +17,8 @@ beforeEach inject (_$httpBackend_, _$compile_, $rootScope, $controller, $locatio
       @scope.$digest()
   #@sandbox = sinon.sandbox.create()
 
-  afterEach ->
-    @http.resetExpectations()
-    @http.verifyNoOutstandingExpectation()
+afterEach ->
+  @http.resetExpectations()
+  @http.verifyNoOutstandingExpectation()
+
+
