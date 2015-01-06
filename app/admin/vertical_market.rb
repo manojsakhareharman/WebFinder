@@ -47,7 +47,7 @@ ActiveAdmin.register VerticalMarket do
         li link_to("+ New Case Study", new_admin_vertical_market_case_study_path(vertical_market))
       end
       vertical_market.case_studies.each do |c|
-        li link_to(c.name, [:amdin, vertical_market, c])
+        li link_to(c.name, [:admin, vertical_market, c])
       end
     end
   end
