@@ -39,7 +39,7 @@
         <h2><%= @reference_system.headline %></h2>
         <%=raw @reference_system.description %>
 
-        <div ng-controller="SystemDiagramCtrl" class="system-diagram-container">
+        <div class="system-diagram-container">
           <%= render "system_diagram_popups" %>
 
           <%= image_tag(@reference_system.system_diagram.url(:large)) %>

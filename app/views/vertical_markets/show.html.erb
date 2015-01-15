@@ -89,7 +89,7 @@
             <h2>{{ system['headline'] }}</h2>
             {{ system['description'] }}
 
-            <div ng-controller="SystemDiagramCtrl" class="system-diagram-container">
+            <div class="system-diagram-container">
               <%= render "reference_systems/system_diagram_popups" %>
 
               <img ng-src="{{ system['system_diagram_url'] }}" img-preload/>

@@ -1,11 +1,11 @@
 <script type="text/ng-template" id="system_diagram_popup">
   <div class="triangle"></div>
   <div class="ns-popover-tooltip">
-    <h5 class="subheader">{{ selectedProductType["name"] }}</h5>
-    <p>{{ selectedProductType["description"] }}</p>
+    <h5 class="subheader">{{ product_type.name }}</h5>
+    <p>{{ product_type.description }}</p>
     <i>Product Suggestions:</i>
     <ul>
-      <li ng-repeat="product in selectedProductType['products']">
+      <li ng-repeat="product in product_type.products">
         <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
       </li>
     </ul>
@@ -17,7 +17,6 @@
   ng-repeat="product_type in system['reference_system_product_types']"
   ptid="{{ product_type.id }}"
   ng-style="{'left': product_type.left, 'top': product_type.top}"
-  ng-click="setProductType(product_type)"
   ns-popover-modal="product-type-popups"
   ns-popover-theme="ns-popover-tooltip-theme"
   ns-popover-timeout="7"

@@ -25,9 +25,10 @@
 
         <section class="top-bar-section">
           <ul class="right">
-            <%#= cache ["top-nav", Date.today] do %>
+            <%= cache ["top-nav", Date.today] do %>
               <%= top_vertical_market_navigation(dropdowns: false) %>
-            <%# end %>
+            <% end %>
+            <li><%= link_to "Blog", "http://blog.harmanpro.com/", target: "_blank" %></li>
           </ul>
         </section>
       </nav>
