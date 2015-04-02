@@ -41,6 +41,7 @@ group :development do
   gem 'colorize', '0.7.4' # version 0.7.5 caused problems deploying
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
 end
 
 group :development, :test do
