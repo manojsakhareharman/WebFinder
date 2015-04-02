@@ -20,7 +20,8 @@ set :repo_url, 'https://github.com/harman-signal-processing/harmanpro'
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
+set :passenger_restart_with_sudo, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/application.yml config/secrets.yml}
