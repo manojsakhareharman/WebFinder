@@ -1,20 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.9'
+gem 'rails', '4.2.1'
+gem 'responders', '~> 2.0'
 gem 'mysql2'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
-gem "active_model_serializers", "~> 0.8.0"
+gem "active_model_serializers"
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
-gem 'foundation-rails', '~> 5.4'
+gem 'foundation-rails', '~> 5.4.5'
 gem 'friendly_id'
 gem 'paperclip'
 gem 'aws-sdk'
@@ -27,6 +28,7 @@ gem 'activeadmin-sortable'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do
+  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
