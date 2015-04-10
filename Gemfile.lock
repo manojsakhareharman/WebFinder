@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin
-  revision: e82b68ca90e8a25f34805e9983d7353c2c33c05c
+  revision: c5e3ab82b9b5e1170c55f7e34f027e2f2ed162cb
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -109,7 +109,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
-    colorize (0.7.4)
+    colorize (0.7.5)
     dalli (2.7.4)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
@@ -183,7 +183,7 @@ GEM
       phantomjs (< 2.0)
       railties (>= 3.1.0)
       sprockets-rails
-    jbuilder (2.2.12)
+    jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
@@ -379,7 +379,7 @@ DEPENDENCIES
   capistrano-rails
   capybara
   coffee-rails (~> 4.1.0)
-  colorize (= 0.7.4)
+  colorize
   dalli
   database_cleaner
   devise
