@@ -6,6 +6,7 @@ gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'sprockets', '< 3.0' # v3.0 caused deploy problems with capistrano as of 4/15/15
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
@@ -38,7 +39,7 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'sshkit'
-  gem 'colorize' #, '0.7.4' # version 0.7.5 caused problems deploying
+  gem 'colorize'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
