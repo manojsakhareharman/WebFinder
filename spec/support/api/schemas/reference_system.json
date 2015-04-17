@@ -36,7 +36,10 @@
                       "properties": {
                         "id": {"type": "integer"},
                         "name": {"type": "string"},
-                        "url": {"type": "string"}
+                        "url": {"type": "string"},
+                        "tiny_photo_url": {"type": "string"},
+                        "buy_now_url": {"type": "string"},
+                        "ecommerce_enabled": {"type": "boolean"}
                       }
                     }
                   ]

@@ -147,14 +147,13 @@ $popover-triangle-border-color: $popover-border-color !default;
 
     li {
       list-style-type: none;
-
-      a {
-        padding: 0.1875rem 0.625rem;
-        display: block;
-
-        &:hover {
-          background-color: #f5f5f5;
-        }
+    }
+    div.columns {
+      h6 {
+        margin-top: 0;
+      }
+      img {
+        margin-top: 4px;
       }
     }
   }

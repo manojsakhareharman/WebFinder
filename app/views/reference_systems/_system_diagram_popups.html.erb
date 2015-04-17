@@ -1,15 +1,29 @@
 <script type="text/ng-template" id="system_diagram_popup">
   <div class="triangle"></div>
   <div class="ns-popover-tooltip">
-    <h5 class="subheader">{{ product_type.name }}</h5>
+    <div class="row collapse">
+      <div class="large-11 small-11 columns">
+        <h5 class="subheader">{{ product_type.name }}</h5>
+      </div>
+      <div class="large-1 small-1 columns text-right">
+        <a ng-click="hidePopover()"><%= image_tag('close.png', alt: "X") %></a>
+      </div>
+    </div>
     <p>{{ product_type.description }}</p>
     <i>Product Suggestions:</i>
     <ul>
       <li ng-repeat="product in product_type.products">
-        <a href="{{ product.url }}" target="_blank">{{ product.name }}</a>
+        <div class="row">
+          <div class="large-2 small-2 columns">
+            <img src="<%= image_path('missing/banners/tiny.jpg') %>" ng-src="{{ product.tiny_photo_url }}" class="no-resize"/>
+          </div>
+          <div class="large-10 small-10 columns">
+            <h6><strong><a href="{{ product.url }}" target="_blank">{{ product.name }}</a></strong></h6>
+            <a href="{{ product.buy_now_url }}" target="_blank" class="tiny success button" ng-show="{{ product.ecommerce_enabled }}">shop</a>
+          </div>
+        </div>
       </li>
     </ul>
-    <button ng-click="hidePopover()" class="tiny button">Close</button>
   </div>
 </script>
 

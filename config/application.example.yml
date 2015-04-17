@@ -12,6 +12,7 @@
 
 devise_secret_key: devise_secret_key
 devise_sender: 'no-reply@example.com'
+buy_now_url_template: "http://buy-this-product.com/buy?product=%s"
 
 production:
   harmanpro_database_password: database_password
