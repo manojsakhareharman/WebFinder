@@ -25,6 +25,7 @@ gem 'acts_as_tree'
 gem 'devise'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'activeadmin-sortable'
+gem 'upmin-admin'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

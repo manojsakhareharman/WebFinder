@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  # Trying out upmin...
+  authenticate :admin_user do
+    mount Upmin::Engine => '/upmin'
+  end
 
   resources :vertical_markets, path: 'applications', only: :show do
     resources :reference_systems, path: 'solutions', only: :show
