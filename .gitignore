@@ -11,6 +11,11 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignoring some bins
+/bin/spring
+/bin/guard
+/bin/_guard-core
+
 # Ignore all logfiles and tempfiles.
 /log
 /tmp

@@ -16,7 +16,7 @@ gem "active_model_serializers"
 gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
-gem 'foundation-rails', '~> 5.4.5'
+gem 'foundation-rails'#, '~> 5.4.5'
 gem 'friendly_id'
 gem 'paperclip'
 #gem 'aws-sdk', '< 2.0'
