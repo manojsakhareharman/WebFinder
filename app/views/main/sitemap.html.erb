@@ -1,0 +1,31 @@
+<%= content_for :title do %>Sitemap<% end %>
+<div class="container main-container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <h1>Sitemap</h1>
+
+      <h3 class="subheader">HARMAN brands</h3>
+      <ul>
+        <% all_brands.each do |brand| %>
+          <li><%= link_to brand.name, brand %></li>
+        <% end %>
+      </ul>
+
+      <h3 class="subheader">Applications</h3>
+      <ul>
+        <% @vertical_markets.each do |vertical_market| %>
+          <li><%= link_to vertical_market.name, vertical_market %>
+            <ul>
+              <% vertical_market.reference_systems.each do |reference_system| %>
+                <li><%= link_to reference_system.name, [vertical_market, reference_system] %></li>
+              <% end %>
+              <% vertical_market.case_studies.each do |case_study| %>
+                <li><%= link_to case_study.headline, [vertical_market, case_study] %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

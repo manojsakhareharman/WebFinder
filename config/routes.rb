@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :leads, path: 'plan/help', only: [:new, :create]
 
   get 'thankyou' => 'main#thankyou', as: :thankyou
+  get 'privacy_policy' => 'main#privacy_policy', as: :privacy_policy
+  get 'terms_of_use' => 'main#terms_of_use', as: :terms_of_use
+  get 'sitemap(.:format)' => 'main#sitemap', as: :sitemap
+
   root to: 'main#index'
 
 end

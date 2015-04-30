@@ -1,9 +1,10 @@
+<%= content_for :title do %><%= truncate @case_study.headline, length: 40 %><% end %>
 <div class="container main-container">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
       <h1><%= @case_study.headline %></h1>
 
-      <%= textilize @case_study.content %>
+      <%=raw textilize @case_study.content %>
 
     </div>
   </div>

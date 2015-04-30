@@ -1,3 +1,4 @@
+<%= content_for :title do %><%= @brand.name %><% end %>
 <div class="container main-container">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
@@ -8,11 +9,13 @@
       <% end %>
 
       <div>
-        <%=textilize @brand.description %>
+        <%=raw textilize @brand.description %>
       </div>
 
       <% if @brand.url.present? %>
-        <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
+        <p>Learn more at
+          <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
+        </p>
       <% end %>
     </div>
   </div>

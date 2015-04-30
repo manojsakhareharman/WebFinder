@@ -143,10 +143,10 @@ $body-font-weight: $font-weight-medium;
 
 // $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
 // $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
-
 // Legacy
 // $small: $medium-up;
 // $medium: $medium-up;
+
 // $large: $large-up;
 
 // We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
@@ -246,7 +246,7 @@ $subheader-font-weight: bold;
 // $definition-list-margin-bottom: rem-calc(12);
 
 // We use these to style blockquotes
-// $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
+$blockquote-font-color: scale-color($body-font-color, $lightness: 35%);
 // $blockquote-padding: rem-calc(9 20 0 19);
 // $blockquote-border: 1px solid $gainsboro;
 // $blockquote-cite-font-size: rem-calc(13);
@@ -1492,11 +1492,21 @@ a.circle {
       }
     }
   }
+  .homepage-banner {
+    position: relative;
+    h1 {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 100px;
+      font-size: rem-calc(60);
+      line-height: 1.2;
+    }
+  }
   h1 {
     color: $white;
   }
 }
-
 .slider-container {
   height: 180px;
   margin-top: -180px;
@@ -1569,6 +1579,17 @@ ul.title-area {
           color: $secondary-color;
         }
       }
+    }
+  }
+}
+.sub-footer {
+  padding: 20px;
+  font-size: rem-calc(10);
+  color: $monsoon;
+  a {
+    color: $charcoal;
+    &:hover {
+      color: $jet;
     }
   }
 }

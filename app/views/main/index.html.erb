@@ -1,7 +1,8 @@
 <div ng-controller="HomeBannerCtrl as banner">
-  <div class="bumped-up space-after">
+  <div class="bumped-up space-after hide-for-medium-down">
     <div class="banner-container text-center">
-      <div class="text-center" style="height: 450px; padding-top: 150px; margin: 0;">
+      <div class="text-center homepage-banner">
+        <%= image_tag "HarmanSkylineImage.png" %>
         <h1><%= SiteSetting.value("homepage-main-headline") %></h1>
       </div>
     </div>
