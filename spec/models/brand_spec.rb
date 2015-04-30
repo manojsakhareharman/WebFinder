@@ -23,6 +23,13 @@ RSpec.describe Brand, :type => :model do
     expect(all.last).to eq(brand2)
   end
 
+  it ".friendly_url formats the url without protocol" do
+    @brand.update_column(:url, "http://somesite.com")
+    @brand.reload
+
+    expect(@brand.friendly_url).to eq("somesite.com")
+  end
+
   describe "friendly id" do
     it "generates a new slug when name changes" do
       old_slug = @brand.slug

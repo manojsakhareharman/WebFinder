@@ -32,6 +32,6 @@ feature "Exits to brand sites via brand page" do
   scenario "via brand page" do
     visit brand_path(@brand)
 
-    expect(page).to have_link(@brand.url, href: @brand.url)
+    expect(page).to have_link(@brand.friendly_url, href: @brand.url)
   end
 end

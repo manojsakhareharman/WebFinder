@@ -41,4 +41,7 @@ class Brand < ActiveRecord::Base
   end
   # :nocov:
 
+  def friendly_url
+    self.url.to_s.gsub(/^https?\:\/\//, '')
+  end
 end

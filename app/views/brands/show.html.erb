@@ -12,7 +12,7 @@
       </div>
 
       <% if @brand.url.present? %>
-        <%= link_to @brand.url, @brand.url, target: "_blank" %>
+        <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
       <% end %>
     </div>
   </div>

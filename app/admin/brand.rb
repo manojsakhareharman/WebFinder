@@ -5,6 +5,7 @@ ActiveAdmin.register Brand do
   index do
     column :name
     column :url
+    actions
   end
 
   filter :name, as: :string

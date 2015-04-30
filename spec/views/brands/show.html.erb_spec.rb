@@ -16,7 +16,7 @@ RSpec.describe "brands/show.html.erb", as: :view do
   end
 
   it "links to the brand external site" do
-    expect(rendered).to have_link(@brand.url, href: @brand.url)
+    expect(rendered).to have_link(@brand.friendly_url, href: @brand.url)
   end
 
   it "has the brand description" do
