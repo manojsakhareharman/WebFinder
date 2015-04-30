@@ -1,6 +1,6 @@
 class ReferenceSystem < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates
 
   belongs_to :vertical_market
   has_many :reference_system_product_types
@@ -35,6 +35,10 @@ class ReferenceSystem < ActiveRecord::Base
       :headline,
       [:name, :headline]
     ]
+  end
+
+  def should_generate_new_friendly_id?
+    true
   end
   # :nocov:
 

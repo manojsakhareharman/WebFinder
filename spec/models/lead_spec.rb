@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Lead, :type => :model do
-  before do
+  before :all do
     @lead = FactoryGirl.build_stubbed(:lead)
   end
 

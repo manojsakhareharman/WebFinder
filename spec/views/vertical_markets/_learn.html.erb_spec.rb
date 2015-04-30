@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
 
-  before do
+  before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
     @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
+  end
+
+  before :each do
     render partial: "vertical_markets/learn", locals: { vertical_market: @vertical_market }
   end
 

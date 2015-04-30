@@ -72,8 +72,8 @@
               <%= cache ["footer-col-3", Date.today] do %>
                 <h6 class="subheader">Harman Brands</h6>
                 <ul>
-                  <% Brand.order("UPPER(name)").each do |brand| %>
-                    <li><%= link_to brand.name, brand.url, target: "_blank" %></li>
+                  <% all_brands.each do |brand| %>
+                    <li><%= link_to brand.name, brand %></li>
                   <% end %>
                 </ul>
               <% end %>

@@ -2,11 +2,15 @@ require "rails_helper"
 
 feature "Lead generation" do
 
-  before do
+  before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market, retail: false)
     @help_find_installer = FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
+  end
+
+  after :all do
+    DatabaseCleaner.clean_with :truncation
   end
 
   # As a casual visitor on a vertical market page

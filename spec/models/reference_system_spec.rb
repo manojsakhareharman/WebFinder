@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ReferenceSystem, :type => :model do
-  before do
+  before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_systems = FactoryGirl.create_list(:reference_system, 3, vertical_market: @vertical_market)
     @reference_system = @reference_systems.second
@@ -15,6 +15,7 @@ RSpec.describe ReferenceSystem, :type => :model do
   it { should respond_to(:venue_size_descriptor) }
   it { should respond_to(:banner) }
   it { should respond_to(:system_diagram) }
+  it { should respond_to(:friendly_id) }
 
   context "as part of a list" do
     it "should have a previous reference_system" do
@@ -31,5 +32,18 @@ RSpec.describe ReferenceSystem, :type => :model do
     end
 
     it { should respond_to(:reference_system_product_types) }
+  end
+
+  describe "friendly id" do
+    it "generates a new slug when name changes" do
+      old_slug = @reference_system.slug
+
+      @reference_system.name = "Yo Mama #{@reference_system.name}"
+      @reference_system.save
+      @reference_system.reload
+
+      expect(@reference_system.slug).not_to eq old_slug
+      expect(@reference_system.slug.present?).to be(true)
+    end
   end
 end

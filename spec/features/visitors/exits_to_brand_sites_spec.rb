@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-feature "Exits to brand sites" do
+feature "Exits to brand sites via brand page" do
 
-  before do
+  before :all do
     rsptp = FactoryGirl.create(:reference_system_product_type_product)
     @product = rsptp.product
     @brand = @product.brand
@@ -26,6 +26,12 @@ feature "Exits to brand sites" do
 
     footer = find('.footer')
 
-    expect(footer).to have_link(@brand.name, href: @brand.url)
+    expect(footer).to have_link(@brand.name, href: brand_path(@brand))
+  end
+
+  scenario "via brand page" do
+    visit brand_path(@brand)
+
+    expect(page).to have_link(@brand.url, href: @brand.url)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ReferenceSystemProductType, :type => :model do
 
-  before do
+  before :all do
     @reference_system_product_type = FactoryGirl.create(:reference_system_product_type)
   end
 

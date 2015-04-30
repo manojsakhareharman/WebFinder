@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, :type => :model do
-  before do
+  before :all do
     @product = FactoryGirl.create(:product)
   end
 
@@ -12,6 +12,7 @@ RSpec.describe Product, :type => :model do
   it { should respond_to(:url) }
   it { should respond_to(:description) }
   it { should respond_to(:ecommerce_id) }
+  it { should respond_to(:friendly_id) }
 
   describe "ecommerce" do
     it "should generate a 'buy now' URL" do
@@ -22,10 +23,11 @@ RSpec.describe Product, :type => :model do
     end
 
     it "#ecommerce_enabled should return 'false' when no ecommerce_id is provided" do
-      @product.update_column(:ecommerce_id, '')
+      product = FactoryGirl.create(:product)
+      product.update_column(:ecommerce_id, '')
 
-      expect(@product.ecommerce_enabled).to be(false)
-      expect(@product.buy_now_url).to eq('')
+      expect(product.ecommerce_enabled).to be(false)
+      expect(product.buy_now_url).to eq('')
     end
 
     it "#ecommerce_enabled should return 'true' when ecommerce_id is provided" do
@@ -44,6 +46,23 @@ RSpec.describe Product, :type => :model do
 
   it "without a photo attached #tiny_photo_url generates a URL" do
     expect(@product.tiny_photo_url).to be_a(String)
+  end
+
+  describe "friendly id" do
+    it ".brand_name loads the brand name" do
+      expect(@product.brand_name).to eq @product.brand.name
+    end
+
+    it "generates a new slug when name changes" do
+      old_slug = @product.slug
+
+      @product.name = "Yo Mama #{@product.name}"
+      @product.save
+      @product.reload
+
+      expect(@product.slug).not_to eq old_slug
+      expect(@product.slug.present?).to be(true)
+    end
   end
 
 end

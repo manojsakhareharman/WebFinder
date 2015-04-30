@@ -1,6 +1,6 @@
 class VerticalMarket < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates
 
   has_many :case_studies
   has_many :reference_systems, -> { order("position ASC") }
@@ -30,6 +30,10 @@ class VerticalMarket < ActiveRecord::Base
       :headline,
       [:name, :headline]
     ]
+  end
+
+  def should_generate_new_friendly_id?
+    true
   end
   # :nocov:
 

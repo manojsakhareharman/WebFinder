@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe CaseStudiesController, :type => :controller do
 
+  before :all do
+    @vertical_market = FactoryGirl.create(:vertical_market)
+    @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
+  end
+
   describe "GET show" do
     before do
-      @vertical_market = FactoryGirl.create(:vertical_market)
-      @case_study = FactoryGirl.create(:case_study, vertical_market: @vertical_market)
       get :show, vertical_market_id: @vertical_market.id, id: @case_study.id
     end
 

@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def all_brands
+    Brand.all_for_site
+  end
+  helper_method :all_brands
+
   def track_last_page
     session["last_page"] = request.path
   end

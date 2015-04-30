@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe VerticalMarket, :type => :model do
 
-  before do
+  before :all do
     @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_market.id)
   end
@@ -16,6 +16,7 @@ RSpec.describe VerticalMarket, :type => :model do
   it { should respond_to(:reference_systems) }
   it { should respond_to(:case_studies) }
   it { should respond_to(:banner) }
+  it { should respond_to(:friendly_id) }
 
   context "class methods" do
     it "#parent_verticals should return all the parent verticals" do
@@ -68,6 +69,18 @@ RSpec.describe VerticalMarket, :type => :model do
         expect(@child_vertical.retail?).to be(false)
       end
     end
+  end
 
+  describe "friendly id" do
+    it "generates a new slug when name changes" do
+      old_slug = @vertical_market.slug
+
+      @vertical_market.name = "Yo Mama #{@vertical_market.name}"
+      @vertical_market.save
+      @vertical_market.reload
+
+      expect(@vertical_market.slug).not_to eq old_slug
+      expect(@vertical_market.slug.present?).to be(true)
+    end
   end
 end

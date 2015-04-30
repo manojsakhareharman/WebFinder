@@ -2,13 +2,15 @@ require 'rails_helper'
 
 describe "vertical_markets/show.html.erb" do
   context "parent vertical" do
-    before do
+    before :all do
       @vertical_market = FactoryGirl.create(:vertical_market, parent_id: nil)
       @child_verticals = FactoryGirl.create_list(:vertical_market, 3, parent_id: @vertical_market.id)
       @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
       assign(:reference_systems, [])
+    end
 
+    before :each do
       render
     end
 
@@ -28,12 +30,14 @@ describe "vertical_markets/show.html.erb" do
   end
 
   context "general" do
-    before do
+    before :all do
       @vertical_market = FactoryGirl.create(:vertical_market)
       @reference_system = FactoryGirl.build_stubbed(:reference_system, vertical_market: @vertical_market)
       assign(:vertical_market, @vertical_market)
       assign(:reference_systems, [@reference_system])
+    end
 
+    before :each do
       render
     end
 

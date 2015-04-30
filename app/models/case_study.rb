@@ -1,6 +1,6 @@
 class CaseStudy < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates
 
   belongs_to :vertical_market
   has_attached_file :banner,
@@ -24,6 +24,11 @@ class CaseStudy < ActiveRecord::Base
       [:name, :headline]
     ]
   end
+
+  def should_generate_new_friendly_id?
+    true
+  end
   # :nocov:
+
 
 end

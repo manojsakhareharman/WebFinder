@@ -18,6 +18,23 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :brand, presence: true
 
+  # :nocov:
+  def slug_candidates
+    [
+      :name,
+      [:brand_name, :name]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    true
+  end
+  # :nocov:
+
+  def brand_name
+    brand.name
+  end
+
   def buy_now_url
     @buy_now_url ||= ecommerce_enabled ? (ENV['buy_now_url_template'] % ecommerce_id) : ''
   end

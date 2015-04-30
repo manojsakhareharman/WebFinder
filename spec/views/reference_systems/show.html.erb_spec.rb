@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "reference_systems/show.html.erb", :type => :view do
 
-  before do
+  before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_systems = FactoryGirl.create_list(:reference_system, 3, vertical_market: @vertical_market)
     @reference_system = @reference_systems.second
@@ -18,9 +18,12 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
       reference_system_product_type: rspt,
       product: @product
     )
+
     assign(:reference_system, @reference_system)
     assign(:vertical_market, @vertical_market)
+  end
 
+  before :each do
     render
   end
 

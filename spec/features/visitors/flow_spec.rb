@@ -2,12 +2,14 @@ require "rails_helper"
 
 feature "Basic visitor flow" do
 
-  before do
+  before :all do
     @parent_vertical = FactoryGirl.create(:vertical_market)
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @parent_vertical.id)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
     @case_study = FactoryGirl.create(:case_study, vertical_market: @child_vertical)
+  end
 
+  before :each do
     visit root_path
   end
 
