@@ -8,6 +8,7 @@ RSpec.describe CaseStudy, :type => :model do
   subject { @case_study }
   it { should respond_to(:vertical_market) }
   it { should respond_to(:friendly_id) }
+  it { should respond_to(:banner) }
 
   describe "friendly id" do
     it "generates a new slug when name changes" do

@@ -9,16 +9,20 @@ RSpec.describe "case_studies/show.html.erb", :type => :view do
     assign(:vertical_market, @vertical_market)
   end
 
-  it "displays the headline" do
+  before :each do
     render
+  end
 
+  it "displays the headline" do
     expect(rendered).to have_css("h1", text: @case_study.headline)
   end
 
   it "displays the body content" do
-    render
-
     expect(rendered).to have_content(@case_study.content)
+  end
+
+  it "displays the banner image" do
+    expect(rendered).to have_css("img[@src='#{@case_study.banner.url(:large)}']")
   end
 
 end

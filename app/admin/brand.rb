@@ -1,5 +1,5 @@
 ActiveAdmin.register Brand do
-  permit_params :name, :url, :logo, :white_logo, :description
+  permit_params :name, :url, :downloads_page_url, :logo, :white_logo, :description
 
   # :nocov:
   index do
@@ -14,6 +14,7 @@ ActiveAdmin.register Brand do
     f.inputs do
       f.input :name
       f.input :url
+      f.input :downloads_page_url
       f.input :logo
       f.input :white_logo
       f.input :description

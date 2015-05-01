@@ -23,6 +23,17 @@ RSpec.describe Brand, :type => :model do
     expect(all.last).to eq(brand2)
   end
 
+  it "#for_consultant_portal loads brands which have their downloads page defined" do
+    Brand.destroy_all
+    brand2 = FactoryGirl.create(:brand, name: "ZZZZ", downloads_page_url: "foo.com")
+    brand1 = FactoryGirl.create(:brand, name: "AAAAA")
+
+    brands = Brand.for_consultant_portal
+
+    expect(brands).to include(brand2)
+    expect(brands).not_to include(brand1)
+  end
+
   it ".friendly_url formats the url without protocol" do
     @brand.update_column(:url, "http://somesite.com")
     @brand.reload

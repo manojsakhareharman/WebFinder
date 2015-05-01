@@ -4,6 +4,7 @@ FactoryGirl.define do
     headline "CS Headline"
     description "CS Description"
     vertical_market
+    banner { File.new(Rails.root.join('spec', 'fixtures', 'test.jpg')) }
     content "CS Content"
   end
 

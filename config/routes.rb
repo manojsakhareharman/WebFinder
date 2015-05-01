@@ -17,10 +17,13 @@ Rails.application.routes.draw do
   end
   resources :leads, path: 'plan/help', only: [:new, :create]
 
-  get 'thankyou' => 'main#thankyou', as: :thankyou
-  get 'privacy_policy' => 'main#privacy_policy', as: :privacy_policy
-  get 'terms_of_use' => 'main#terms_of_use', as: :terms_of_use
-  get 'sitemap(.:format)' => 'main#sitemap', as: :sitemap
+  get '/consultant' => 'consultants#index', as: :consultant_portal
+  get '/consultant-portal', to: redirect('/consultant')
+
+  get '/thankyou' => 'main#thankyou', as: :thankyou
+  get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
+  get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use
+  get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
   root to: 'main#index'
 

@@ -35,6 +35,10 @@ class Brand < ActiveRecord::Base
     order("UPPER(name)")
   end
 
+  def self.for_consultant_portal
+    all_for_site.where("downloads_page_url IS NOT NULL OR downloads_page_url != ''")
+  end
+
   # :nocov:
   def should_generate_new_friendly_id?
     true
