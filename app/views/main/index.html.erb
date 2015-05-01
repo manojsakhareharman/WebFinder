@@ -3,7 +3,7 @@
     <div class="banner-container text-center">
       <div class="text-center homepage-banner">
         <%= image_tag "HarmanSkylineImage.png" %>
-        <h1><%= SiteSetting.value("homepage-main-headline") %></h1>
+        <h1><%=raw SiteSetting.value("homepage-main-headline") %></h1>
       </div>
     </div>
   </div>
@@ -11,26 +11,29 @@
 
 <div class="container main-container">
   <div class="row">
-    <div class="large-8 large-offset-2 columns">
-      <h2 class="text-center space-after"><%= SiteSetting.value("homepage-vertical-markets-headline") %></h2>
+    <div class="large-8 large-offset-2 columns text-center">
+      <h2 class="space-after"><%=raw SiteSetting.value("homepage-vertical-markets-headline") %></h2>
 
-      <ul class="small-block-grid-1 medium-block-grid-<%= @vertical_markets.length %> large-block-grid-<%= @vertical_markets.length %>">
         <% @vertical_markets.each do |vm| %>
-          <li><div class="panel">
-            <h5 class="subheader text-center">
-              <%= link_to vm.name, vm %>
-            </h5>
-            </div>
-          </li>
+          <%= link_to vm, class: "vertical-market-icon" do %>
+            <%= image_tag vm.banner.url(:small) %>
+            <h5><%= vm.name %></h5>
+          <% end %>
         <% end %>
-      </ul>
+    </div>
+  </div>
 
-      <hr/>
+  <div class="row">
+    <hr/>
+  </div>
 
-      <h2 class="text-center space-after"><%= SiteSetting.value("homepage-brands-headline") %></h2>
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+
+      <h2 class="text-center space-after"><%=raw SiteSetting.value("homepage-brands-headline") %></h2>
       <div class="text-center">
         <% all_brands.each do |brand| %>
-          <%= link_to brand, class: 'circle' do %>
+          <%= link_to brand, class: 'brand-circle' do %>
             <% if brand.white_logo.present? %>
               <%= image_tag brand.white_logo.url(:circle), alt: brand.name %>
             <% else %>

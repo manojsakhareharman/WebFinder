@@ -22,6 +22,7 @@ namespace :refresh do
       folder = "db_backup"
       execute :mkdir, "-p", folder
 
+      puts "#{@db.inspect}"
       within folder do
         execute :mysqldump, "-u #{@db['username']} --password=#{@env['harmanpro_database_password']} #{@db['database']} > #{@filename}"
         curr = capture(:pwd)

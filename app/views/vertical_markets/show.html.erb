@@ -18,20 +18,17 @@
 
   <div class="container main-container">
     <div class="row">
-      <div class="large-8 large-offset-2 columns">
+      <div class="large-10 large-offset-1 columns">
         <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
-        <%= raw @vertical_market.description %>
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
+        <%= raw textilize @vertical_market.description %>
+        <div class="text-center">
           <% @vertical_market.children.each do |vm| %>
-            <li>
-              <div class="panel">
-                <div class="text-center">
-                  <%= link_to vm.name, vm %>
-                </div>
-              </div>
-            </li>
+            <%= link_to vm, class: "vertical-market-icon" do %>
+              <%= image_tag vm.banner.url(:small) %>
+              <h5><%= vm.name %></h5>
+            <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
