@@ -1,4 +1,5 @@
 $harman-blue: #00395a;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -45,14 +46,14 @@ $include-html-global-classes: $include-html-classes;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-// $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-sans-serif: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
-$font-weight-light: 200;
-$font-weight-medium: 300;
+$font-weight-light: 300;
+$font-weight-medium: 400;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
@@ -93,7 +94,7 @@ $footer-background-color: #002f3a;
 // We use these to control various global styles
 // $body-bg: $white;
 $body-font-color: $dark-gray;
-// $body-font-family: $font-family-sans-serif;
+$body-font-family: $font-family-sans-serif;
 $body-font-weight: $font-weight-medium;
 // $body-font-style: normal;
 
@@ -1417,6 +1418,9 @@ img.in {
 }
 .main-container {
   padding: 20px 0 80px;
+  &.padded {
+    padding: 80px 0 100px;
+  }
 }
 .plan-container {
   background: $plan-background-color;
@@ -1456,10 +1460,11 @@ a.brand-circle {
   display: inline-block;
   width: rem-calc(100);
   height: rem-calc(100);
-  line-height: rem-calc(94);
+  line-height: rem-calc(90);
   text-align: center;
   margin: rem-calc(10);
-  font-size: rem-calc(18);
+  font-size: rem-calc(17);
+  font-weight: $font-weight-light;
   &:hover {
     background: $base;
   }
@@ -1483,7 +1488,9 @@ a.vertical-market-icon {
   }
   h5 {
     margin-top: 40%;
-    font-size: rem-calc(20);
+    font-size: rem-calc(19);
+    font-weight: $font-weight-light;
+    letter-spacing: rem-calc(0.25);
     line-height: 1.1;
     position: absolute;
     width: 100%;
@@ -1533,8 +1540,8 @@ a.vertical-market-icon {
       position: absolute;
       width: 100%;
       text-align: center;
-      top: 80px;
-      font-size: rem-calc(60);
+      top: 70px;
+      font-size: rem-calc(56);
       line-height: 1.2;
       text-shadow: 1px 2px 5px $aluminum;
     }

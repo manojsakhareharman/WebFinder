@@ -12,7 +12,7 @@ class Brand < ActiveRecord::Base
       small: "250x156",
       thumb: "83x52",
       thumb_square: "64x64#",
-      circle: "48x48#",
+      circle: "72x72",
       tiny: "32x32#"
   }, default_url: "missing/banners/:style.jpg"
 
@@ -25,7 +25,7 @@ class Brand < ActiveRecord::Base
       small: "250x156",
       thumb: "83x52",
       thumb_square: "64x64#",
-      circle: "48x48#",
+      circle: "72x72",
       tiny: "32x32#"
   }, default_url: "missing/banners/:style.jpg"
 

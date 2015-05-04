@@ -1,5 +1,5 @@
 <%= content_for :title do %><%= @brand.name %><% end %>
-<div class="container main-container">
+<div class="container main-container padded">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
       <% if @brand.logo.present? %>
@@ -7,6 +7,7 @@
       <% else %>
         <h1><%= @brand.name %></h1>
       <% end %>
+      <br/>
 
       <div>
         <%=raw textilize @brand.description %>
