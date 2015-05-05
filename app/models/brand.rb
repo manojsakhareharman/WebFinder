@@ -36,7 +36,7 @@ class Brand < ActiveRecord::Base
   end
 
   def self.for_consultant_portal
-    all_for_site.where("downloads_page_url IS NOT NULL OR downloads_page_url != ''")
+    where("downloads_page_url IS NOT NULL AND downloads_page_url != ''").order("UPPER(name)")
   end
 
   # :nocov:

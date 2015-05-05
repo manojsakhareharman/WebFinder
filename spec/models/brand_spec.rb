@@ -26,7 +26,7 @@ RSpec.describe Brand, :type => :model do
   it "#for_consultant_portal loads brands which have their downloads page defined" do
     Brand.destroy_all
     brand2 = FactoryGirl.create(:brand, name: "ZZZZ", downloads_page_url: "foo.com")
-    brand1 = FactoryGirl.create(:brand, name: "AAAAA")
+    brand1 = FactoryGirl.create(:brand, name: "AAAAA", downloads_page_url: nil)
 
     brands = Brand.for_consultant_portal
 

@@ -4,6 +4,7 @@ RSpec.describe ConsultantsController, type: :controller do
 
   before :all do
     @brand = FactoryGirl.create(:brand, downloads_page_url: "http://brand.download.page")
+    @other_brand = FactoryGirl.create(:brand, downloads_page_url: '')
   end
 
   describe "GET :index" do
@@ -13,6 +14,7 @@ RSpec.describe ConsultantsController, type: :controller do
 
     it "assigns @brands" do
       expect(assigns(:brands)).to include(@brand)
+      expect(assigns(:brands)).not_to include(@other_brand)
     end
 
     it "renders index template" do

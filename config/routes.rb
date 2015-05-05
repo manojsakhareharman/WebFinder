@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/consultant' => 'consultants#index', as: :consultant_portal
   get '/consultant-portal', to: redirect('/consultant')
+  get '/consultants', to: redirect('/consultant')
 
   get '/thankyou' => 'main#thankyou', as: :thankyou
   get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
