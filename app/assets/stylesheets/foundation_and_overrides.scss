@@ -1452,6 +1452,14 @@ img.in {
   .space-after {
     margin-bottom: 10px;
   }
+  .cs-descr {
+    height: 70px;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+}
+.case_studies {
+  margin: 20px 0px;
 }
 a.brand-circle {
   border-radius: 50%;
@@ -1540,10 +1548,13 @@ a.vertical-market-icon {
       position: absolute;
       width: 100%;
       text-align: center;
-      top: 70px;
+      top: 60px;
       font-size: rem-calc(56);
       line-height: 1.2;
       text-shadow: 1px 2px 5px $aluminum;
+    }
+    .help-icon {
+      position: absolute;
     }
   }
   h1 {

@@ -1,12 +1,10 @@
 <%= content_for :title do %><%= truncate @case_study.headline, length: 40 %><% end %>
 
-<% if @case_study.banner.present? %>
-  <div class="bumped-up space-after">
-    <div class="banner-container vertical-market">
-      <%= image_tag @case_study.banner.url(:large) %>
-    </div>
+<div class="bumped-up space-after">
+  <div class="banner-container vertical-market">
+    <%= image_tag @case_study.banner.url(:large) %>
   </div>
-<% end %>
+</div>
 
 <div class="container main-container">
   <div class="row">

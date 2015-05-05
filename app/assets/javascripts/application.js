@@ -22,6 +22,9 @@ $(function(){
     "magellan-expedition": {
       fixed_top: 60,
       destination_threshold: 85,
+    },
+    equalizer: {
+      equalize_on_stack: true
     }
   });
 });

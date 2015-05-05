@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   resources :leads, path: 'plan/help', only: [:new, :create]
 
+  get '/venues(.:format)' => 'main#venues'
   get '/consultant' => 'consultants#index', as: :consultant_portal
   get '/consultant-portal', to: redirect('/consultant')
 

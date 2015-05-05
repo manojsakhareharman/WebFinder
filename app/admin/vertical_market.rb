@@ -1,6 +1,6 @@
 ActiveAdmin.register VerticalMarket do
 
-  permit_params :name, :parent_id, :headline, :description
+  permit_params :name, :parent_id, :headline, :description, :banner
 
   config.sort_order = "parent_id"
 
