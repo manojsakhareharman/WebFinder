@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-  respond_to :html, :json, :xml
 
   def index
     @vertical_markets = VerticalMarket.parent_verticals
@@ -12,13 +11,6 @@ class MainController < ApplicationController
   end
 
   def thankyou
-  end
-
-  def venues
-    @venues = []
-    respond_to do |format|
-      format.json { respond_with @venues }
-    end
   end
 
   def sitemap

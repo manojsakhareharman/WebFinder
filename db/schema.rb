@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501200342) do
+ActiveRecord::Schema.define(version: 20150505164551) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -188,6 +188,18 @@ ActiveRecord::Schema.define(version: 20150501200342) do
   end
 
   add_index "site_settings", ["name"], name: "index_site_settings_on_name", unique: true, using: :btree
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "left",        limit: 255
+    t.string   "top",         limit: 255
+    t.string   "slug",        limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "venues", ["slug"], name: "index_venues_on_slug", using: :btree
 
   create_table "vertical_markets", force: :cascade do |t|
     t.string   "name",                limit: 255

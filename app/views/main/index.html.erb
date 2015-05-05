@@ -14,40 +14,37 @@
 </script>
 
 <div ng-controller="HomepageBannerCtrl as banner">
-  <div class="bumped-up space-after hide-for-medium-down">
+  <div class="bumped-up hide-for-medium-down">
     <div class="banner-container text-center">
       <div class="text-center homepage-banner">
         <%= image_tag "HarmanSkylineImage.jpg" %>
         <h1><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
         <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon" ns-popover
           ng-repeat="venue in venues"
-          ptid="{{ venue.id }}"
-          ng-style="{'left': 'venue.left', 'top': 'venue.top'}"
+          vid="{{ venue.id }}"
+          ng-style="{'left': venue.left, 'top': venue.top}"
           ns-popover-modal="venue-popups"
           ns-popover-theme="ns-popover-tooltip-theme"
-          ns-popover-timeout="7"/>
+          ns-popover-timeout="7"
+          ns-popover-template="venue_popup"/>
       </div>
     </div>
   </div>
 </div>
 
+
+<ul class="homepage-vertical-market large-block-grid-<%= @vertical_markets.length %> medium-block-grid-<%= @vertical_markets.length %> small-block-grid-1">
+  <% @vertical_markets.each do |vm| %>
+    <li>
+      <%= link_to vm do %>
+        <%= image_tag vm.banner.url(:medium) %>
+        <h5><%= vm.name %></h5>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
 <div class="container main-container">
-  <div class="row">
-    <div class="large-8 large-offset-2 columns text-center">
-      <h2 class="space-after"><%=raw format_headline SiteSetting.value("homepage-vertical-markets-headline") %></h2>
-
-        <% @vertical_markets.each do |vm| %>
-          <%= link_to vm, class: "vertical-market-icon" do %>
-            <%= image_tag vm.banner.url(:small) %>
-            <h5><%= vm.name %></h5>
-          <% end %>
-        <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <hr/>
-  </div>
 
   <div class="row">
     <div class="large-10 large-offset-1 columns">

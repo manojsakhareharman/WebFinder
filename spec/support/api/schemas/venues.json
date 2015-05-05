@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": ["venues"],
+  "properties": {
+    "venues": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "required": ["id", "name", "description", "left", "top"],
+          "properties": {
+            "id": {"type": "integer"},
+            "name": {"type": "string"},
+            "description": {"type": "string"},
+            "left": {"type": "string"},
+            "top": {"type": "string"}
+          }
+        }
+      ]
+    }
+  }
+}
