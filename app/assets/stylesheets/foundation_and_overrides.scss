@@ -1520,8 +1520,9 @@ a.vertical-market-icon {
     display: block;
     position: relative;
     img {
+      width: 100%;
       opacity: 0.9;
-      filter:  grayscale(1) contrast(60%) brightness(100%) contrast(60%);
+      filter:  grayscale(1) contrast(60%) brightness(140%) contrast(60%);
     }
     h5 {
       position: absolute;
@@ -1530,8 +1531,8 @@ a.vertical-market-icon {
       width: 100%;
       line-height: 1.2;
       top: 20%;
-      font-size: rem-calc(28);
-      text-shadow: 1px 1px 5px $base;
+      font-size: rem-calc(32);
+      text-shadow: 1px 1px 9px $white;
       .arrow {
         color: white;
       }
@@ -1543,7 +1544,7 @@ a.vertical-market-icon {
       }
       img {
         opacity: 1;
-        filter: saturate(10%) opacity(100%) contrast(85%); //alpha(opacity=100);
+        filter: saturate(15%) opacity(100%) contrast(85%); //alpha(opacity=100);
       }
     }
   }

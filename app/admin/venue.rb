@@ -1,5 +1,5 @@
 ActiveAdmin.register Venue do
-  permit_params :name, :description, :left, :top
+  permit_params :name, :description, :top, :left
 
   # :nocov:
   index do
