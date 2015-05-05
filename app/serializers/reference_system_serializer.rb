@@ -8,7 +8,7 @@ class ReferenceSystemSerializer < ActiveModel::Serializer
   end
 
   def system_diagram_url
-    ActionController::Base.helpers.asset_path object.system_diagram.url(:large)
+    ActionController::Base.helpers.asset_path object.system_diagram.url
   end
 
   def api_url
