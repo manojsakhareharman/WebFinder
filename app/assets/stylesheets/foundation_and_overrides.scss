@@ -1586,13 +1586,29 @@ a.vertical-market-icon {
       position: absolute;
       width: 100%;
       text-align: center;
-      top: 60px;
-      font-size: rem-calc(56);
+      @media only screen and (min-width: 1000px) {
+        top: 50px;
+        font-size: rem-calc(56);
+      }
+      @media only screen and (min-width: 500px) and (max-width: 999px) {
+        top: 20px;
+        font-size: rem-calc(32);
+      }
+      @media only screen and (max-width: 499px) {
+        top: 10px;
+        font-size: rem-calc(18);
+      }
       line-height: 1.2;
       text-shadow: 1px 2px 5px $aluminum;
     }
     .help-icon {
       position: absolute;
+      -moz-animation-iteration-count: 6;
+      -webkit-animation-iteration-count: 6;
+      -animation-iteration-count: 6;
+      -moz-animation-duration: 1.8s;
+      -webkit-animation-duration: 1.8s;
+      -animation-duration: 1.8s;
     }
   }
   h1 {
@@ -1637,6 +1653,9 @@ a.vertical-market-icon {
   position: relative;
   .help-icon {
     position: absolute;
+    -moz-animation-delay: 0.4s;
+    -webkit-animation-delay: 0.4s;
+    -animation-delay: 0.4s;
   }
 }
 

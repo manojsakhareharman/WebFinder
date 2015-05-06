@@ -27,7 +27,7 @@
   </div>
 </script>
 
-<img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon" ns-popover
+<img src="<%= asset_path "q.png" %>" alt="[?]" class="help-icon animated bounceIn" ns-popover
   ng-repeat="product_type in system['reference_system_product_types']"
   ptid="{{ product_type.id }}"
   ng-style="{'left': product_type.left, 'top': product_type.top}"

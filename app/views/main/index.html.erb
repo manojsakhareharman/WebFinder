@@ -14,15 +14,15 @@
 </script>
 
 <div ng-controller="HomepageBannerCtrl as banner">
-  <div class="bumped-up hide-for-medium-down">
+  <div class="bumped-up hide-for-small-down">
     <div class="banner-container text-center">
       <div class="text-center homepage-banner">
         <%= image_tag "HarmanSkylineImage.jpg" %>
         <h1><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
-        <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon" ns-popover
+        <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated infinite bounce" ns-popover
           ng-repeat="venue in venues"
           vid="{{ venue.id }}"
-          ng-style="{'left': venue.left, 'top': venue.top}"
+          ng-style="{'left': venue.left, 'top': venue.top, '-moz-animation-delay': venue.id*2/5+'s', '-animation-delay': venue.id*2/5+'s', '-webkit-animation-delay': venue.id*2/5+'s'}"
           ns-popover-modal="venue-popups"
           ns-popover-theme="ns-popover-tooltip-theme"
           ns-popover-timeout="7"

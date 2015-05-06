@@ -10,7 +10,8 @@ feature "Consultant portal" do
   scenario "landing page links to brand download page" do
     visit consultant_portal_path
 
-    expect(page).to have_link(@brand.name, href: @brand.downloads_page_url)
-    expect(page).not_to have_link(@other_brand.name)
+    main_container = page.find(".main-container")
+    expect(main_container).to have_link(@brand.name, href: @brand.downloads_page_url)
+    expect(main_container).not_to have_link(@other_brand.name)
   end
 end

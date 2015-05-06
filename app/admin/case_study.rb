@@ -1,7 +1,7 @@
 ActiveAdmin.register CaseStudy do
 
   # :nocov:
-  permit_params :name, :headline, :description, :content
+  permit_params :name, :headline, :description, :content, :banner
 
   belongs_to :vertical_market
 
