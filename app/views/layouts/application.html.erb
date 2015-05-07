@@ -14,25 +14,30 @@
 
   <body>
 
-    <div class="sticky">
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-          <h1><a href="/"><%= image_tag "harman-logo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-
-        <section class="top-bar-section">
-          <ul class="right">
-            <%= cache ["top-nav", Date.today] do %>
-              <%= top_vertical_market_navigation(dropdowns: false) %>
-            <% end %>
-            <li><%= link_to "Blog", "http://blog.harmanpro.com/", target: "_blank" %></li>
+    <%= cache ["topnav", Date.today] do %>
+      <div class="sticky">
+        <nav class="top-bar" data-topbar role="navigation">
+          <ul class="title-area">
+            <li class="name">
+            <h1><a href="/"><%= image_tag "harman-logo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
           </ul>
-        </section>
-      </nav>
-    </div>
+
+          <section class="top-bar-section">
+            <ul class="right">
+              <%= cache ["top-nav", Date.today] do %>
+                <%= top_vertical_market_navigation(dropdowns: false) %>
+              <% end %>
+              <% if SiteSetting.where(name: "store_link").exists? %>
+                <li class="divider"></li>
+                <li class="has-form"><%= link_to "Shop", SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
+              <% end %>
+            </ul>
+          </section>
+        </nav>
+      </div>
+    <% end %>
 
     <%= yield %>
 
@@ -40,7 +45,7 @@
       <div class="row">
         <div class="large-8 large-offset-2 columns">
           <div class="row">
-            <div class="large-3 medium-3 small-6 columns">
+            <div class="large-4 medium-4 small-4 columns">
               <%= cache ["footer-col-1", Date.today] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length > 0 %>
@@ -54,7 +59,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="large-3 medium-3 small-6 columns">
+            <div class="large-4 medium-4 small-4 columns">
               <%= cache ["footer-col-2", Date.today] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length <= 0 %>
@@ -68,7 +73,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="large-3 medium-3 small-6 columns">
+            <div class="large-4 medium-4 small-4 columns">
               <%= cache ["footer-col-3", Date.today] do %>
                 <h6 class="subheader">Harman Brands</h6>
                 <ul>
@@ -76,11 +81,6 @@
                     <li><%= link_to brand.name, brand %></li>
                   <% end %>
                 </ul>
-              <% end %>
-            </div>
-            <div class="large-3 medium-3 small-6 columns">
-              <%= cache ["footer-col-4", Date.today] do %>
-                <h6 class="subheader">Harman Resource Library</h6>
               <% end %>
             </div>
           </div>
@@ -95,6 +95,7 @@
       <%= link_to "Privacy Policy", privacy_policy_path %>
       &bull;
       <%= link_to "Terms of Use", terms_of_use_path %>
+    </div>
 
     <%= javascript_include_tag "application" %>
     <%= render 'shared/marketing_tracking' %>

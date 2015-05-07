@@ -44,7 +44,7 @@
         <% if @vertical_market.reference_systems.count > 0 %>
           <img ng-src="{{ currentSystem()['banner_url'] }}" ng-show="systems.length > 0" img-preload />
         <% else %>
-          <img src="<%= asset_path(@vertical_market.banner.url(:large)) %>"/>
+          <%= image_tag(@vertical_market.banner.url(:large)) %>
         <% end %>
       </div>
 
@@ -54,19 +54,21 @@
             <a name="learn"></a>
             <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
 
-            <div ng-show="systems.length > 1">
-              <slider
-                floor="1"
-                ceiling="{{ systems.length }}"
-                step="1"
-                precision="0"
-                ng-model="slider_pos">
-              </slider>
+            <% if @vertical_market.reference_systems.count > 1 %>
+              <div ng-show="systems.length > 1">
+                <slider
+                  floor="1"
+                  ceiling="{{ systems.length }}"
+                  step="1"
+                  precision="0"
+                  ng-model="slider_pos">
+                </slider>
 
-              <ul class="small-block-grid-{{ systems.length }} medium-block-grid-{{ systems.length }} large-block-grid-{{ systems.length }}">
-                <li ng-repeat="system in systems">{{ system.slider_name }}</li>
-              </ul>
-            </div>
+                <ul class="small-block-grid-{{ systems.length }} medium-block-grid-{{ systems.length }} large-block-grid-{{ systems.length }}">
+                  <li ng-repeat="system in systems">{{ system.slider_name }}</li>
+                </ul>
+              </div>
+            <% end %>
 
           </div>
         </div>

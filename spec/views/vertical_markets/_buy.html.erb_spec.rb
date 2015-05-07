@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
 
   before :all do
+    FactoryGirl.create(:site_setting, name: 'store_link', content: 'http://shop.harmanpro.com')
+    FactoryGirl.create(:site_setting, name: 'buy_direct_from_harman_headline', content: 'Buy Direct From Us')
+    FactoryGirl.create(:site_setting, name: "buy_from_online_retailer_headline", content: "Buy From A Retailer")
+    @retailer = FactoryGirl.create(:online_retailer)
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
   end
@@ -14,7 +18,13 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     end
 
     it "should use infographic as 'buy' section" do
-      skip "Finalize infogrpahic"
+      skip "Finalize infographic"
+    end
+
+    it "won't have retailer link" do
+      expect(rendered).not_to have_content("Buy From A Retailer")
+      expect(rendered).not_to have_content("Buy Direct From Us")
+      expect(rendered).not_to have_link(@retailer.name, href: @retailer.url)
     end
 
   end
@@ -22,11 +32,19 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
   context "retail" do
     before do
       @reference_system.update_column(:retail, true)
+
       render partial: "vertical_markets/buy", locals: { vertical_market: @vertical_market }
     end
 
     it "links to ecommerce store" do
-      skip "Develop Ecommerce section for retail vertical markets"
+      expect(rendered).to have_content("Buy Direct From Us")
+      expect(rendered).to have_css("a[@href='http://shop.harmanpro.com']")
+    end
+
+    it "links to online retailers" do
+      expect(rendered).to have_content("Buy From A Retailer")
+      expect(rendered).to have_link(@retailer.name, href: @retailer.url)
+      expect(rendered).to have_css("img[@src='#{@retailer.logo.url(:thumb)}']")
     end
   end
 

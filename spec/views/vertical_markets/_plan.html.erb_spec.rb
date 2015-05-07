@@ -47,12 +47,16 @@ RSpec.describe "vertical_markets/_plan.html.erb", :type => :view do
 
   context "retail" do
     before do
+      FactoryGirl.create(:site_setting, name: "retail-plan-section-subheader", content: "How To Buy Stuff")
+      FactoryGirl.create(:site_setting, name: "retail-plan-section-paragraph", content: "Paragraph on buying stuff")
       @reference_system.update_column(:retail, true)
+
       render partial: "vertical_markets/plan", locals: { vertical_market: @vertical_market }
     end
 
     it "shows plan section for retail vertical market" do
-      skip "Develop plan section for retail"
+      expect(rendered).to have_content("How To Buy Stuff")
+      expect(rendered).to have_content("Paragraph on buying stuff")
     end
   end
 

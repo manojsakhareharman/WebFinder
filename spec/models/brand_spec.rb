@@ -34,6 +34,12 @@ RSpec.describe Brand, :type => :model do
     expect(brands).not_to include(brand1)
   end
 
+  it "should not allow invalid URLs" do
+    @brand.url = "a non-valid url"
+
+    expect(@brand.valid?).to be(false)
+  end
+
   it ".friendly_url formats the url without protocol" do
     @brand.update_column(:url, "http://somesite.com")
     @brand.reload

@@ -3,7 +3,7 @@ class Brand < ActiveRecord::Base
   friendly_id :name
 
   validates :name, presence: true, uniqueness: true
-  validates :url, presence: true
+  validates :url, presence: true, format: { with: URI.regexp }
 
   has_attached_file :logo,
     styles: {

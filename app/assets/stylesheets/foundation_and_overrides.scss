@@ -1355,7 +1355,7 @@ $topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(15);
+$topbar-link-font-size: rem-calc(14);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-color-hover: $topbar-link-bg;
@@ -1416,6 +1416,14 @@ body {
 img.in {
   outline: 4px solid red;
 }
+.top-bar-section li.has-form {
+  padding-top: 6px;
+  .button {
+    text-transform: lowercase;
+    font-weight: 100;
+    font-size: rem-calc(14);
+  }
+}
 .main-container {
   padding: 20px 0 80px;
   &.padded {
@@ -1429,6 +1437,10 @@ img.in {
 .buy-container {
   background: $buy-background-color;
   padding: 60px 0;
+  color: $white;
+  h1,h2,h3,h4,h5,h6 {
+    color: $snow;
+  }
 }
 .underlined {
   padding-bottom: 8px;
@@ -1491,13 +1503,13 @@ a.vertical-market-icon {
   img {
     max-width: none;
     margin-left: -50px;
-    opacity: 0.9;
-    filter: alpha(opacity=90);
+    opacity: 0.5;
+    filter: alpha(opacity=50);
   }
   h5 {
     margin-top: 40%;
-    font-size: rem-calc(19);
-    font-weight: $font-weight-light;
+    font-size: rem-calc(18);
+    font-weight: 400;
     letter-spacing: rem-calc(0.25);
     line-height: 1.1;
     position: absolute;
@@ -1505,12 +1517,12 @@ a.vertical-market-icon {
     top: 0;
     left: 0;
     color: $white;
-    text-shadow: 1px 1px 3px $oil;
+    text-shadow: 1px 1px 5px $black;
   }
   &:hover {
     img {
-      opacity: 1;
-      filter: alpha(opacity=100);
+      opacity: 0.9;
+      filter: alpha(opacity=90);
     }
   }
 }
@@ -1521,8 +1533,8 @@ a.vertical-market-icon {
     position: relative;
     img {
       width: 100%;
-      opacity: 0.9;
-      filter:  grayscale(1) contrast(60%) brightness(140%) contrast(60%);
+      opacity: 0.5;
+      filter: grayscale(1) contrast(80%);
     }
     h5 {
       position: absolute;
@@ -1543,8 +1555,8 @@ a.vertical-market-icon {
         text-shadow: 1px 1px 3px $oil;
       }
       img {
-        opacity: 1;
-        filter: saturate(15%) opacity(100%) contrast(85%); //alpha(opacity=100);
+        opacity: 0.775;
+        filter: saturate(20%) contrast(95%);
       }
     }
   }
@@ -1603,12 +1615,12 @@ a.vertical-market-icon {
     }
     .help-icon {
       position: absolute;
-      -moz-animation-iteration-count: 6;
-      -webkit-animation-iteration-count: 6;
-      -animation-iteration-count: 6;
-      -moz-animation-duration: 1.8s;
-      -webkit-animation-duration: 1.8s;
-      -animation-duration: 1.8s;
+      -moz-animation-iteration-count: 4;
+      -webkit-animation-iteration-count: 4;
+      -animation-iteration-count: 4;
+      -moz-animation-duration: 2.4s;
+      -webkit-animation-duration: 2.4s;
+      -animation-duration: 2.4s;
     }
   }
   h1 {
@@ -1671,7 +1683,15 @@ ul.title-area {
 }
 .footer {
   padding-top: 40px;
-  padding-bottom: 150px;
+  @media only screen and (min-width: 1000px) {
+    padding-bottom: 150px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 999px) {
+    padding-bottom: 80px;
+  }
+  @media only screen and (max-width: 499px) {
+    padding-bottom: 40px;
+  }
   background: $footer-background-color;
   .subheader {
     color: $primary-color;

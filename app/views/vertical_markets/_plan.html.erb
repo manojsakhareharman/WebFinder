@@ -5,31 +5,35 @@
 
       <% if vertical_market.retail? %>
 
-        <div class="row">
-          <div class="large-12 columns">
-            <div style="height: 300px; padding-top: 150px;" class="text-center">
-              Plan placeholder for retail vertical market
+        <%= cache ["vertical-retail-plan", Date.today] do %>
+          <div class="row">
+            <div class="large-8 columns">
+              <h3><%= SiteSetting.value("retail-plan-section-subheader") %></h3>
+              <div class="space-after">
+                <%=raw textilize SiteSetting.value("retail-plan-section-paragraph") %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
 
       <% else %>
 
         <div class="row">
           <div class="large-8 columns">
-
             <%= cache ["parent-vertical-content", vertical_market.parent, Date.today] do %>
               <% if vertical_market.parent %>
                 <h3><%= vertical_market.parent.headline %></h3>
                 <div class="description parent">
-                  <%= raw vertical_market.parent.description %>
+                  <%= raw textilize vertical_market.parent.description %>
                 </div>
               <% end %>
             <% end %>
 
             <%= cache ["help-find-installer-content", Date.today] do %>
               <h6><strong><%= SiteSetting.value("subheader-help-find-installer") %></strong></h6>
-              <div class="space-after"><%= SiteSetting.value("help-find-installer-description") %></div>
+              <div class="space-after">
+                <%= raw textilize SiteSetting.value("help-find-installer-description") %>
+              </div>
               <%= link_to SiteSetting.value("button-help-find-installer"), new_lead_path, class: "small radius button" %>
             <% end %>
 
@@ -39,12 +43,15 @@
             <div class="panel">
               <%= cache ["hef-content", Date.today] do %>
                 <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
-                <div class="space-after"><%= SiteSetting.value("hef-description") %></div>
+                <div class="space-after">
+                  <%= raw textilize SiteSetting.value("hef-description") %>
+                </div>
                 <%= link_to "Learn More", SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
               <% end %>
             </div>
           </div>
         </div>
+
       <% end %>
 
     </div>
