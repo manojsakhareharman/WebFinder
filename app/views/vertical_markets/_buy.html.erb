@@ -23,7 +23,7 @@
                   <br/>
                   <% retailers.each do |online_retailer| %>
                     <%= link_to online_retailer.url, target: "_blank" do %>
-                      <%= image_tag online_retailer.logo.url(:thumb), alt: online_retailer.name %>
+                      <%= image_tag online_retailer.logo.url(:small), alt: online_retailer.name %>
                     <% end %>
                   <% end %>
                 <% end %>

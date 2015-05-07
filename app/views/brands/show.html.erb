@@ -3,7 +3,7 @@
   <div class="row">
     <div class="large-8 large-offset-2 columns">
       <% if @brand.logo.present? %>
-        <h1><%= image_tag @brand.logo.url(:small), alt: @brand.name %></h1>
+        <h1><%= image_tag @brand.logo.url(:medium), alt: @brand.name %></h1>
       <% else %>
         <h1><%= @brand.name %></h1>
       <% end %>

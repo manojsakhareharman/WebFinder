@@ -12,7 +12,7 @@ RSpec.describe "brands/show.html.erb", as: :view do
   end
 
   it "shows the brand logo" do
-    expect(rendered).to have_css("img[@src='#{@brand.logo.url(:small)}'][@alt='#{@brand.name}']")
+    expect(rendered).to have_css("img[@src='#{@brand.logo.url(:medium)}'][@alt='#{@brand.name}']")
   end
 
   it "links to the brand external site" do
