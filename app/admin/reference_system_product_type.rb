@@ -34,8 +34,8 @@ ActiveAdmin.register ReferenceSystemProductType do
       f.input :reference_system
       f.input :product_type, hint: "If not listed, create the product type first."
       f.input :quantity
-      f.input :top, hint: "Pixel position from the top of the system diagram where the icon should appear.", placeholder: "100px"
-      f.input :left, hint: "Pixel position from the left side of the system diagram where the icon should appear.", placeholder: "100px"
+      f.input :top, hint: "Percent position from the top of the system diagram where the icon should appear.", placeholder: "20%"
+      f.input :left, hint: "Percent position from the left side of the system diagram where the icon should appear.", placeholder: "20%"
     end
     f.actions
   end

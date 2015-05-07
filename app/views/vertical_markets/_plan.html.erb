@@ -5,7 +5,8 @@
 
       <% if vertical_market.retail? %>
 
-        <%= cache ["vertical-retail-plan", Date.today] do %>
+        <%# TODO: enable caching once changes calm down %>
+        <%#= cache ["vertical-retail-plan", Date.today] do %>
           <div class="row">
             <div class="large-8 columns">
               <h3><%= SiteSetting.value("retail-plan-section-subheader") %></h3>
@@ -14,14 +15,14 @@
               </div>
             </div>
           </div>
-        <% end %>
+        <%# end %>
 
       <% else %>
 
         <div class="row">
           <div class="large-8 columns">
-            <%= cache ["parent-vertical-content", vertical_market.parent, Date.today] do %>
-              <% if vertical_market.parent %>
+            <% if vertical_market.parent %>
+              <%= cache ["parent-vertical-content", vertical_market.parent, Date.today] do %>
                 <h3><%= vertical_market.parent.headline %></h3>
                 <div class="description parent">
                   <%= raw textilize vertical_market.parent.description %>

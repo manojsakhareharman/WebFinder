@@ -1469,6 +1469,9 @@ img.in {
     overflow: hidden;
     line-height: 1.2;
   }
+  &.case-study {
+    img { width: 100% }
+  }
 }
 .case_studies {
   margin: 20px 0px;
@@ -1528,6 +1531,9 @@ a.vertical-market-icon {
 }
 a.retailer {
   padding: 10px;
+  img {
+    padding: 10px;
+  }
 }
 .homepage-vertical-market {
   margin-bottom: 40px;
@@ -1584,14 +1590,12 @@ a.retailer {
     }
     @media only screen and (min-width: 500px) and (max-width: 999px) {
       img {
-        height: 312px;
-        width: 500px;
+        width: 100%;
       }
     }
     @media only screen and (max-width: 499px) {
       img {
-        height: 156px;
-        width: 250px;
+        width: 100%;
       }
     }
   }
@@ -1631,8 +1635,6 @@ a.retailer {
   }
 }
 .slider-container {
-  height: 180px;
-  margin-top: -180px;
   background: rgba($primary-color, 0.83);
   color: $snow;
   h1,h2,h3 {
@@ -1659,6 +1661,27 @@ a.retailer {
       &:last-child {
         text-align: right;
       }
+    }
+  }
+  @media only screen and (min-width: 1000px) {
+    height: 180px;
+    margin-top: -180px;
+    h1 {
+      font-size: rem-calc(38);
+    }
+  }
+  @media only screen and (min-width: 500px) and (max-width: 999px) {
+    height: 160px;
+    margin-top: -160px;
+    h1 {
+      font-size: rem-calc(26);
+    }
+  }
+  @media only screen and (max-width: 499px) {
+    height: 140px;
+    margin-top: -140px;
+    h1 {
+      font-size: rem-calc(20);
     }
   }
 }

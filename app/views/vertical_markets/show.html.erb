@@ -3,12 +3,12 @@
 <% end %>
 
 <% if @vertical_market.children.length > 0 %>
-  <div class="bumped-up space-after">
+  <div class="bumped-up space-after hide-for-small">
     <div class="banner-container vertical-market">
       <%= image_tag @vertical_market.banner.url(:large) %>
     </div>
     <div class="row">
-      <div class="large-5 large-offset-2 small-8 columns">
+      <div class="large-5 large-offset-2 medium-6 medium-offset-2 columns">
         <div class="panel slider-container">
           <h1><%= @vertical_market.name %></h1>
         </div>
@@ -18,8 +18,12 @@
 
   <div class="container main-container">
     <div class="row">
-      <div class="large-10 large-offset-1 columns">
+      <div class="large-10 medium-12 large-offset-1 columns">
         <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
         <%= raw textilize @vertical_market.description %>
         <div class="text-center">
           <% @vertical_market.children.each do |vm| %>
@@ -49,7 +53,7 @@
       </div>
 
       <div class="row">
-        <div class="large-5 large-offset-2 small-8 columns">
+        <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-12 columns">
           <div class="slider-container panel">
             <a name="learn"></a>
             <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>
