@@ -5,9 +5,11 @@
 
       <% if vertical_market.retail? %>
 
-        <%= cache ["retailers_section", Date.today] do %>
+        <%# TODO: enable caching once changes settle down %>
+        <%#= cache ["retailers_section", Date.today] do %>
           <% retailers = OnlineRetailer.all %>
           <% if SiteSetting.where(name: "store_link").exists? || retailers.count > 0 %>
+
             <div class="row">
               <div class="large-12 columns text-center">
 
@@ -21,17 +23,18 @@
                 <% if retailers.count > 0 %>
                   <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
                   <br/>
-                  <% retailers.each do |online_retailer| %>
-                    <%= link_to online_retailer.url, target: "_blank" do %>
-                      <%= image_tag online_retailer.logo.url(:small), alt: online_retailer.name %>
+                  <% retailers.order("RAND()").each do |online_retailer| %>
+                    <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
+                      <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
                     <% end %>
                   <% end %>
                 <% end %>
 
               </div>
             </div>
+
           <% end %>
-        <% end %>
+        <%# end %>
 
       <% else %>
         <div class="row">
