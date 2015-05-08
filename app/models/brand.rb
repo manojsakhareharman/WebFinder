@@ -4,6 +4,9 @@ class Brand < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :url, presence: true, format: { with: URI.regexp }
+  validates :support_url, format: { with: URI.regexp }, allow_blank: true
+  validates :downloads_page_url, format: { with: URI.regexp }, allow_blank: true
+  validates :training_url, format: { with: URI.regexp }, allow_blank: true
 
   has_attached_file :logo,
     styles: {

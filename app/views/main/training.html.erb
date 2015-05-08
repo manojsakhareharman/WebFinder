@@ -1,0 +1,18 @@
+<%= content_for :title do %>Training<% end %>
+
+<div class="container main-container padded">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <h1 class="text-center">HARMAN Professional Training</h1>
+      <br/>
+
+      <ul>
+        <% all_brands.each do |brand| %>
+          <% if brand.training_url.present? %>
+            <li><%= link_to "#{brand.name} Training", brand.training_url, target: "_blank" %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

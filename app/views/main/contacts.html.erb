@@ -1,0 +1,20 @@
+<%= content_for :title do %>Contacts<% end %>
+
+<div class="container main-container padded">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <h1 class="text-center">HARMAN Professional Brand Contacts</h1>
+      <br/>
+
+      <ul>
+        <% all_brands.each do |brand| %>
+          <% if brand.support_url.present? %>
+            <li><%= link_to "#{brand.name} Support", brand.support_url, target: "_blank" %></li>
+          <% elsif brand.url.present? %>
+            <li><%= link_to "#{brand.name} Info", brand.url, target: "_blank" %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

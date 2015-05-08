@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Brand, :type => :model do
-  before :all do
-    @brand = FactoryGirl.create(:brand)
+  before :each do
+    @brand = FactoryGirl.build(:brand)
   end
 
   subject { @brand }
@@ -11,9 +11,11 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:logo) }
   it { should respond_to(:white_logo) }
   it { should respond_to(:friendly_id) }
+  it { should respond_to(:downloads_page_url) }
+  it { should respond_to(:support_url) }
+  it { should respond_to(:training_url) }
 
   it "#all_for_site loads all brands in alphabetical order" do
-    Brand.destroy_all
     brand2 = FactoryGirl.create(:brand, name: "ZZZZ")
     brand1 = FactoryGirl.create(:brand, name: "AAAAA")
 
@@ -24,8 +26,8 @@ RSpec.describe Brand, :type => :model do
   end
 
   it "#for_consultant_portal loads brands which have their downloads page defined" do
-    Brand.destroy_all
-    brand2 = FactoryGirl.create(:brand, name: "ZZZZ", downloads_page_url: "foo.com")
+    Brand.delete_all
+    brand2 = FactoryGirl.create(:brand, name: "ZZZZ", downloads_page_url: "http://foo.com")
     brand1 = FactoryGirl.create(:brand, name: "AAAAA", downloads_page_url: nil)
 
     brands = Brand.for_consultant_portal
@@ -41,18 +43,37 @@ RSpec.describe Brand, :type => :model do
   end
 
   it ".friendly_url formats the url without protocol" do
-    @brand.update_column(:url, "http://somesite.com")
-    @brand.reload
+    @brand.url = "http://somesite.com"
+    @brand.save
 
     expect(@brand.friendly_url).to eq("somesite.com")
   end
 
+  it "should not allow invalid support_url" do
+    @brand.support_url = "not a url"
+
+    expect(@brand.valid?).to be(false)
+  end
+
+  it "should not allow invalid downloads_page_url" do
+    @brand.downloads_page_url = "not a url"
+
+    expect(@brand.valid?).to be(false)
+  end
+
+  it "should not allow invalid training_url" do
+    @brand.training_url = "not a url"
+
+    expect(@brand.valid?).to be(false)
+  end
+
   describe "friendly id" do
     it "generates a new slug when name changes" do
+      @brand.save
       old_slug = @brand.slug
 
       @brand.name = "Yo Mama #{@brand.name}"
-      @brand.save
+      @brand.save!
       @brand.reload
 
       expect(@brand.slug).not_to eq old_slug

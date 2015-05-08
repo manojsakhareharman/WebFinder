@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "consultants/index.html.erb", as: :view do
 
   before :all do
-    @brand = FactoryGirl.create(:brand, downloads_page_url: "foo.com")
+    @brand = FactoryGirl.create(:brand, downloads_page_url: "http://foo.com")
     assign(:brands, [@brand])
   end
 

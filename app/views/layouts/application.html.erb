@@ -14,30 +14,35 @@
 
   <body>
 
-    <%= cache ["topnav", Date.today] do %>
-      <div class="sticky">
-        <nav class="top-bar" data-topbar role="navigation">
-          <ul class="title-area">
-            <li class="name">
-            <h1><a href="/"><%= image_tag "harman-logo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
-            </li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-          </ul>
+    <div class="sticky">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+          <h1><a href="/"><%= image_tag "harman-logo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
 
-          <section class="top-bar-section">
-            <ul class="right">
-              <%= cache ["top-nav", Date.today] do %>
-                <%= top_vertical_market_navigation(dropdowns: false) %>
-              <% end %>
+        <section class="top-bar-section">
+          <ul class="right">
+            <%= cache ["top-nav", Date.today] do %>
+              <%= top_vertical_market_navigation(dropdowns: false) %>
+              <li class="has-dropdown">
+                <a href="#" class="disabled">Resources</a>
+                <ul class="dropdown">
+                  <li><%= link_to "Contacts", contacts_path %></li>
+                  <li><%= link_to "Training", training_path %></li>
+                </ul>
+              </li>
               <% if SiteSetting.where(name: "store_link").exists? %>
                 <li class="divider"></li>
                 <li class="has-form"><%= link_to "Shop", SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
               <% end %>
-            </ul>
-          </section>
-        </nav>
-      </div>
-    <% end %>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+    </div>
 
     <%= yield %>
 

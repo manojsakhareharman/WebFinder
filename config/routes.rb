@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/consultant-portal', to: redirect('/consultant')
   get '/consultants', to: redirect('/consultant')
 
+  get '/contacts' => 'main#contacts'
+  get '/training' => 'main#training'
   get '/thankyou' => 'main#thankyou', as: :thankyou
   get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
   get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use

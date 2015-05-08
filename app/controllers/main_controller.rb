@@ -4,6 +4,12 @@ class MainController < ApplicationController
     @vertical_markets = VerticalMarket.parent_verticals
   end
 
+  def contacts
+  end
+
+  def training
+  end
+
   def privacy_policy
   end
 

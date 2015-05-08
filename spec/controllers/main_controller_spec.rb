@@ -53,7 +53,26 @@ RSpec.describe MainController do
   describe "GET thankyou" do
     it "renders thankyou template" do
       get :thankyou
+
       expect(response).to render_template("thankyou")
+    end
+  end
+
+  describe "GET contacts" do
+    it "responds with contacts page" do
+      get :contacts
+
+      expect(response).to be_success
+      expect(response).to render_template("contacts")
+    end
+  end
+
+  describe "GET training" do
+    it "responds with training page" do
+      get :training
+
+      expect(response).to be_success
+      expect(response).to render_template("training")
     end
   end
 
