@@ -44,16 +44,17 @@
 
     <div class="bumped-up">
 
+      <div data-system-id="{{ currentSystem()['id'] }}"></div>
       <div class="banner-container vertical-market">
         <% if @vertical_market.reference_systems.count > 0 %>
-          <img ng-src="{{ currentSystem()['banner_url'] }}" ng-show="systems.length > 0" img-preload />
+          <img ng-src="{{ system['banner_url'] }}" img-preload />
         <% else %>
           <%= image_tag(@vertical_market.banner.url(:large)) %>
         <% end %>
       </div>
 
       <div class="row">
-        <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-12 columns">
+        <div class="large-5 large-offset-2 medium-6 medium-offset-2 small-11 columns">
           <div class="slider-container panel">
             <a name="learn"></a>
             <h1 data-magellan-destination="learn"><%= @vertical_market.name %></h1>

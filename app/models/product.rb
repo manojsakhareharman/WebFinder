@@ -36,16 +36,11 @@ class Product < ActiveRecord::Base
   end
 
   def buy_now_url
-    @buy_now_url ||= ecommerce_enabled ? (ENV['buy_now_url_template'] % ecommerce_id) : ''
+    @buy_now_url ||= ecommerce_enabled? ? (ENV['buy_now_url_template'] % ecommerce_id) : ''
   end
 
-  # No ? at the end because this gets passed as an attribute to js
-  def ecommerce_enabled
+  def ecommerce_enabled?
     !!(ecommerce_id.present?)
-  end
-
-  def tiny_photo_url
-    self.photo.url(:tiny)
   end
 
 end
