@@ -30,8 +30,9 @@
               <li class="has-dropdown">
                 <a href="#" class="disabled">Resources</a>
                 <ul class="dropdown">
-                  <li><%= link_to "Contacts", contacts_path %></li>
                   <li><%= link_to "Training", training_path %></li>
+                  <li><%= link_to "Consultants", consultant_portal_path %></li>
+                  <li><%= link_to "Contacts", contacts_path %></li>
                 </ul>
               </li>
               <% if SiteSetting.where(name: "store_link").exists? %>

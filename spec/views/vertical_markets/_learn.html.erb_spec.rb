@@ -22,7 +22,4 @@ RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
     expect(rendered).to have_link(@case_study.headline, href: vertical_market_case_study_path(@vertical_market, @case_study))
   end
 
-  it "links to resource library items" do
-    skip "Develop resource library, then test its links"
-  end
 end
