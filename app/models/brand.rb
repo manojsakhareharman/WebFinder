@@ -7,6 +7,7 @@ class Brand < ActiveRecord::Base
   validates :support_url, format: { with: URI.regexp }, allow_blank: true
   validates :downloads_page_url, format: { with: URI.regexp }, allow_blank: true
   validates :training_url, format: { with: URI.regexp }, allow_blank: true
+  validates :tech_url, format: { with: URI.regexp }, allow_blank: true
 
   has_attached_file :logo,
     styles: {
@@ -35,11 +36,19 @@ class Brand < ActiveRecord::Base
   validates_attachment_content_type :white_logo, content_type: /\Aimage\/.*\Z/
 
   def self.all_for_site
-    order("UPPER(name)")
+    where(show_on_main_site: true).order("UPPER(name)")
   end
 
   def self.for_consultant_portal
-    where("downloads_page_url IS NOT NULL AND downloads_page_url != ''").order("UPPER(name)")
+    where(show_on_main_site: true).where("downloads_page_url IS NOT NULL AND downloads_page_url != ''").order("UPPER(name)")
+  end
+
+  def self.for_service_site
+    where(show_on_services_site: true).order("UPPER(name)")
+  end
+
+  def first_name
+    self.name.split(/\s/).first
   end
 
   # :nocov:

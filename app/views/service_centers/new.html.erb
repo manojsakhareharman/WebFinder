@@ -1,0 +1,24 @@
+<%= content_for :title do %>Service Center Registration<% end %>
+
+<%= render 'shared/service_subnav' %>
+
+<div class="container main-container">
+  <div class="row">
+
+    <div class="large-8 medium-7 columns">
+      <h1>Service Center Registration</h1>
+
+      <%= render 'form' %>
+    </div>
+
+    <div class="large-4 medium-5 columns">
+      <div class="callout panel">
+        <h3>Requirements</h3>
+        <%= render "shared/become_service_center" %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

@@ -13,6 +13,10 @@
 devise_secret_key: devise_secret_key
 devise_sender: 'no-reply@example.com'
 buy_now_url_template: "http://buy-this-product.com/buy?product=%s"
+warranty_registration_url: http://foo.bar.com
+warranty_repair_url: http://repair.foo.com
+dealer_portal_url: http://portal.foo.com
+service_center_registration_recipient: 'service@foo.com'
 
 production:
   harmanpro_database_password: database_password

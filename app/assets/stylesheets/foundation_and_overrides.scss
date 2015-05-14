@@ -1167,7 +1167,7 @@ $panel-header-adjust: false;
 
 // We use these to control margin and padding
 // $sub-nav-list-margin: rem-calc(-4 0 18);
-// $sub-nav-list-padding-top: rem-calc(4);
+//$sub-nav-list-padding-top: rem-calc(10);
 
 // We use this to control the definition
 // $sub-nav-font-family: $body-font-family;
@@ -1180,7 +1180,7 @@ $panel-header-adjust: false;
 // $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 // We use these to control the active item styles
-// $sub-nav-active-font-weight: $font-weight-normal;
+// $sub-nav-active-font-weight: $font-weight-light;
 // $sub-nav-active-bg: $primary-color;
 // $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
 // $sub-nav-active-color: $white;
@@ -1415,6 +1415,9 @@ body {
 }
 img.in {
   outline: 4px solid red;
+}
+input[type='checkbox'] {
+  margin-right: 5px;
 }
 .top-bar-section li.has-form {
   padding-top: 6px;
@@ -1704,9 +1707,28 @@ ul.title-area {
     }
   }
 }
-.magellan-container {
+.magellan-container, .subnav-container {
   background: $iron;
 }
+.subnav-container {
+  padding-top: 10px;
+  height: 44px;
+}
+
+.brand-panel {
+  text-align: center;
+  p {
+    font-size: 80%;
+    line-height: 1.1;
+  }
+  .brand-logo {
+    p {
+      line-height: rem-calc(80);
+    }
+    margin-bottom: rem-calc(10);
+  }
+}
+
 .footer {
   padding-top: 40px;
   @media only screen and (min-width: 1000px) {

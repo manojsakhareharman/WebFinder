@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -18,12 +19,21 @@ Rails.application.routes.draw do
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
 
+  # Consultant Portal
   get '/consultant' => 'consultants#index', as: :consultant_portal
   get '/consultant-portal', to: redirect('/consultant')
   get '/consultants', to: redirect('/consultant')
 
-  get '/contacts' => 'main#contacts'
+  # Service Site
+  get '/service' => 'service#index', as: :service
+  get '/service_centers/login' => 'service_centers#login', as: :service_center_login
+  resources :service_centers, only: [:index, :new, :create]
+
+  # Training site
   get '/training' => 'main#training'
+
+  # The usual stuff
+  get '/contacts' => 'main#contacts'
   get '/thankyou' => 'main#thankyou', as: :thankyou
   get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
   get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use

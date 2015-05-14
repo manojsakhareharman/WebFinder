@@ -3,6 +3,8 @@ require "rails_helper"
 feature "Basic visitor flow" do
 
   before :all do
+    @brand = FactoryGirl.create(:brand)
+    @service_brand = FactoryGirl.create(:brand, show_on_main_site: false)
     @parent_vertical = FactoryGirl.create(:vertical_market)
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @parent_vertical.id)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
@@ -11,6 +13,22 @@ feature "Basic visitor flow" do
 
   before :each do
     visit root_path
+  end
+
+  scenario "Visit brand information page" do
+    click_on @brand.name
+
+    expect(current_path).to eq brand_path(@brand)
+  end
+
+  scenario "Service-only brand does not appear" do
+    expect(page).not_to have_link(@service_brand.name)
+  end
+
+  scenario "Service-only brand does not navigate" do
+    visit brand_path(@service_brand)
+
+    expect(current_path).to eq root_path
   end
 
   # As a casual visitor

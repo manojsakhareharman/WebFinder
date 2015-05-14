@@ -1,0 +1,59 @@
+<%= content_for :title do %>Harman Pro Service<% end %>
+
+<%= render 'shared/service_subnav' %>
+
+<div class="container main-container">
+  <div class="row">
+
+    <div class="large-8 medium-7 columns">
+      <div style="width: 100%; height: 450px; background: #CCC;">img</div>
+      <br/>
+      <div class="row" data-equalizer="blurbs">
+        <div class="large-4 medium-4 small-4 columns">
+          <h5>Register Your Products</h5>
+          <div data-equalizer-watch="blurbs">
+            <p>Get the most from your warranty.</p>
+          </div>
+            <br/>
+          <%= link_to "Register Now", ENV['warranty_registration_url'], target: "_blank", class: "small radius button" %>
+        </div>
+        <div class="large-4 medium-4 small-4 columns">
+          <h5>Warranty Repair</h5>
+          <div data-equalizer-watch="blurbs">
+            <p>Get your products fixed. Start by filling out a Service Return Authorization.</p>
+          </div>
+            <br/>
+          <%= link_to "Start Your Repair", ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
+        </div>
+        <div class="large-4 medium-4 small-4 columns">
+          <h5>Out of Warranty?</h5>
+          <div data-equalizer-watch="blurbs">
+            <p>You're not out of luck. Fill out a Service Return Authorization for info &amp; general rate.</p>
+          </div>
+            <br/>
+          <%= link_to "Get Started", ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 medium-5 columns">
+      <div class="callout panel">
+        <h3>Service Center Login</h3>
+        <p>Authorized service centers can access additional product information,
+        place part orders, or submit a warranty claim.</p>
+        <%= link_to "Access Now", service_center_login_path, class: "small radius button" %>
+
+        <hr/>
+        <h3>Become a Service Center</h3>
+        <p>Learn our requirements and apply to be an authorized service center
+        for all Harman Professional products.</p>
+        <%= link_to "Apply Now", new_service_center_path, class: "small radius button" %>
+
+        <hr/>
+        <h3>Harman Pro Dealer Portal</h3>
+        <p>Portal for Harman Pro Representatives, Dealers and Authorized Service Centers.</p>
+        <%= link_to "Order Now", ENV['dealer_portal_url'], class: "small radius button" %>
+    </div>
+
+  </div>
+</div>

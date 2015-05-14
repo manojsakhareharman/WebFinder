@@ -33,6 +33,7 @@
                   <li><%= link_to "Training", training_path %></li>
                   <li><%= link_to "Consultants", consultant_portal_path %></li>
                   <li><%= link_to "Contacts", contacts_path %></li>
+                  <li><%= link_to "Service", service_path %></li>
                 </ul>
               </li>
               <% if SiteSetting.where(name: "store_link").exists? %>
@@ -44,6 +45,20 @@
         </section>
       </nav>
     </div>
+
+    <%# Rails flash messages styled for Zurb Foundation %>
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="row">
+          <div class="large-12 medium-12 columns">
+            <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+              <%= content_tag :div, msg %>
+              <a href="#" class="close">&times;</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
     <%= yield %>
 

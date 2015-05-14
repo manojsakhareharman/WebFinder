@@ -38,6 +38,10 @@ RSpec.describe "layouts/application.html.erb", as: :view do
     it "doesn't link to child vertical markets" do
       expect(header).not_to have_link @child_vertical.name
     end
+
+    it "links to service page" do
+      expect(header).to have_link "Service", href: service_path
+    end
   end
 
   describe "footer" do

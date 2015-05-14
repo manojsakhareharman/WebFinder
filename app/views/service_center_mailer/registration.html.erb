@@ -1,0 +1,18 @@
+<h5>New Service Center Registration</h5>
+
+<p>Hi. A new registration was submitted. Here is what was submitted:</p>
+
+<h5><%= @service_center.name %></h5>
+<p>
+  Contact: <%= @service_center.contact_name %><br/>
+  Email: <%= @service_center.email %><br/>
+  Phone: <%= @service_center.phone %><br/>
+</p>
+
+<p>
+  <%= @service_center.address %>
+  <br/><%= @service_center.city %>,
+  <%= @service_center.state %>
+  <%= @service_center.zip %>
+</p>
+

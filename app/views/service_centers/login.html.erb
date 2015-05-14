@@ -1,0 +1,56 @@
+<%= content_for :title do %>Harman Pro Service Centers Login<% end %>
+
+<%= render 'shared/service_subnav' %>
+
+<div class="container main-container">
+  <div class="row">
+
+    <div class="large-8 medium-7 columns">
+      <h3>Visit specific portals for resources on the brands shown</h3>
+      <br/>
+
+      <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2" data-equalizer="panels">
+        <% @brands.each do |brand| %>
+          <li>
+          <div class="panel brand-panel" data-equalizer-watch="panels">
+            <div class="brand-logo">
+              <p>
+              <%= image_tag brand.logo.url(:medium), alt: brand.name %>
+              </p>
+            </div>
+            <p>
+              <%= link_to "#{brand.first_name} Website", brand.url, target: "_blank" %>
+            </p>
+            <% if brand.tech_url.present? %>
+              <p>
+                <%= link_to "#{brand.first_name} Technical Resources", brand.tech_url, target: "_blank" %>
+              </p>
+            <% end %>
+          </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+    <div class="large-4 medium-5 columns">
+      <div class="callout panel">
+        <h3>Become a Service Center</h3>
+
+        <%= render "shared/become_service_center" %>
+
+        <p>Get started by completing our preliminary application.</p>
+
+        <%= link_to "Apply Now", new_service_center_path, class: "small radius button" %>
+      </div>
+
+      <div class="callout panel">
+        <h3>Dealer Portal for Spare Parts Purchase</h3>
+        <p>Portal for Harman Pro Representatives, Dealers and Authorized Service Centers.</p>
+        <%= link_to "Order Now", ENV['dealer_portal_url'], class: "small radius button" %>
+      </div>
+    </div>
+  </div>
+
+</div>
+

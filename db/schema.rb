@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508201142) do
+ActiveRecord::Schema.define(version: 20150514195859) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -64,8 +64,13 @@ ActiveRecord::Schema.define(version: 20150508201142) do
     t.string   "downloads_page_url",      limit: 255
     t.string   "support_url",             limit: 255
     t.string   "training_url",            limit: 255
+    t.string   "tech_url",                limit: 255
+    t.boolean  "show_on_main_site",       limit: 1,     default: true
+    t.boolean  "show_on_services_site",   limit: 1,     default: true
   end
 
+  add_index "brands", ["show_on_main_site"], name: "index_brands_on_show_on_main_site", using: :btree
+  add_index "brands", ["show_on_services_site"], name: "index_brands_on_show_on_services_site", using: :btree
   add_index "brands", ["slug"], name: "index_brands_on_slug", using: :btree
 
   create_table "case_studies", force: :cascade do |t|
@@ -85,6 +90,22 @@ ActiveRecord::Schema.define(version: 20150508201142) do
 
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   add_index "case_studies", ["vertical_market_id"], name: "index_case_studies_on_vertical_market_id", using: :btree
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,     default: 0, null: false
+    t.integer  "attempts",   limit: 4,     default: 0, null: false
+    t.text     "handler",    limit: 65535,             null: false
+    t.text     "last_error", limit: 65535
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -195,6 +216,25 @@ ActiveRecord::Schema.define(version: 20150508201142) do
 
   add_index "reference_systems", ["slug"], name: "index_reference_systems_on_slug", unique: true, using: :btree
   add_index "reference_systems", ["vertical_market_id"], name: "index_reference_systems_on_vertical_market_id", using: :btree
+
+  create_table "service_centers", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.string   "address",        limit: 255
+    t.string   "city",           limit: 255
+    t.string   "state",          limit: 255
+    t.string   "zip",            limit: 255
+    t.string   "phone",          limit: 255
+    t.string   "fax",            limit: 255
+    t.string   "email",          limit: 255
+    t.string   "website",        limit: 255
+    t.string   "account_number", limit: 255
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "contact_name",   limit: 255
+    t.boolean  "active",         limit: 1,   default: true
+  end
+
+  add_index "service_centers", ["active"], name: "index_service_centers_on_active", using: :btree
 
   create_table "site_settings", force: :cascade do |t|
     t.string   "name",       limit: 255
