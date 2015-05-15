@@ -1763,8 +1763,10 @@ ul.title-area {
 }
 .sub-footer {
   padding: 20px;
-  font-size: rem-calc(10);
-  color: $monsoon;
+  p {
+    font-size: rem-calc(10);
+    color: $monsoon;
+  }
   a {
     color: $charcoal;
     &:hover {

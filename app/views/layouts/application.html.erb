@@ -110,12 +110,17 @@
     </div>
 
     <div class="sub-footer text-center">
-      &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
-      All rights reserved.
-      &bull;
-      <%= link_to "Privacy Policy", privacy_policy_path %>
-      &bull;
-      <%= link_to "Terms of Use", terms_of_use_path %>
+      <p>
+        &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
+        All rights reserved.
+        &bull;
+        <%= link_to "Privacy Policy", privacy_policy_path %>
+        &bull;
+        <%= link_to "Terms of Use", terms_of_use_path %>
+      </p>
+      <p>
+        <%= link_to image_tag("harman_tiny.jpg", alt: "HARMAN"), "http://www.harman.com", target: "_blank" %>
+      </p>
     </div>
 
     <%= javascript_include_tag "application" %>
