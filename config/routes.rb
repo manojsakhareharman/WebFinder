@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/consultant' => 'consultants#index', as: :consultant_portal
   get '/consultant-portal', to: redirect('/consultant')
   get '/consultants', to: redirect('/consultant')
+  get '/consultants/api_test' => 'consultants#api_test'
+  get '/consultants/api_test/:id' => 'consultants#api_test_brand', as: :consultants_api_brand
+  get '/consultants/api_test/:brand_id/product/:id' => 'consultants#api_test_product', as: :consultants_api_product
 
   # Service Site
   get '/service' => 'service#index', as: :service

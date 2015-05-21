@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="large-12 columns">
+
+    <h1>API Test</h1>
+
+    <h3>Brands</h3>
+    <ul>
+      <% @brands.each do |brand| %>
+        <li><%= link_to brand["name"], consultants_api_brand_path(brand["id"]) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
+

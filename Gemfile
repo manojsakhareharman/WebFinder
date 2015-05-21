@@ -27,6 +27,7 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'activeadmin-sortable'
 gem 'upmin-admin'
 gem 'delayed_job_active_record'
+gem 'httparty'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
