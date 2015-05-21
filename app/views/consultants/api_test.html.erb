@@ -6,7 +6,9 @@
     <h3>Brands</h3>
     <ul>
       <% @brands.each do |brand| %>
-        <li><%= link_to brand["name"], consultants_api_brand_path(brand["id"]) %></li>
+        <% if Brand.exists?(brand["id"]) || brand["name"].match(/jbl/i) %>
+          <li><%= link_to brand["name"], consultants_api_brand_path(brand["id"]) %></li>
+        <% end %>
       <% end %>
     </ul>
 
