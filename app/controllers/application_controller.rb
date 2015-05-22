@@ -13,4 +13,5 @@ class ApplicationController < ActionController::Base
   def track_last_page
     session["last_page"] = request.path
   end
+
 end

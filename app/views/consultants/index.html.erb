@@ -6,11 +6,32 @@
 
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
 
-      <ul>
-        <% @brands.each do |brand| %>
-          <li><%= link_to "#{brand.name} Technical Downloads", brand.downloads_page_url, target: "_blank" %></li>
-        <% end %>
-      </ul>
+      <div class="row">
+        <div class="large-6 medium-6 columns">
+          <h3>Technical Product Resources</h3>
+          <br/>
+          <% @brands.each do |brand| %>
+            <h5><%= brand.name %> Products</h5>
+            <%#= link_to "#{brand.name} Technical Downloads", brand.downloads_page_url, target: "_blank" %>
+            <form data-brand-id="<%= brand.friendly_id %>" class="product_selector">
+              <input type="hidden" name="brand_id" value="<%= brand.friendly_id %>">
+              <select name="product_id">
+                <option class="loading">Loading...</option>
+              </select>
+            </form>
+          <% end %>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <div id="product-content"></div>
+          <!--
+          <h3>Software<h3>
+          <%# @brands.each do |brand| %>
+            <ul class='software_list' data-brand-id="<%#= brand.friendly_id %>"></ul>
+          <%# end %>
+          -->
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

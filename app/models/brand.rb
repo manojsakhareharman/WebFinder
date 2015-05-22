@@ -60,4 +60,30 @@ class Brand < ActiveRecord::Base
   def friendly_url
     self.url.to_s.gsub(/^https?\:\/\//, '')
   end
+
+  # Get URL where all products can be retrieved
+  def products_api(format = :json)
+    #HTTParty.get(self.info_api(format))["products"]
+    "#{ api_root }/products.#{ format.to_s }"
+  end
+
+  # Get URL where single product can be retrieved
+  def product_api(product_id, format = :json)
+    "#{ api_root }/products/#{ product_id }.#{ format.to_s }"
+  end
+
+  # Get URL for software list
+  def softwares_api(format = :json)
+    "#{ api_root }/softwares.#{ format.to_s }"
+  end
+
+  def info_api(format = :json)
+    "#{api_root}.#{ format.to_s }"
+  end
+
+  private
+
+  def api_root
+    "http://#{ENV['brands_api_host']}/api/v2/brands/#{ self.friendly_id }"
+  end
 end

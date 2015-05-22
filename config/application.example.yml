@@ -17,6 +17,7 @@ warranty_registration_url: http://foo.bar.com
 warranty_repair_url: http://repair.foo.com
 dealer_portal_url: http://portal.foo.com
 service_center_registration_recipient: 'service@foo.com'
+brands_api_host: api-server.com
 
 production:
   harmanpro_database_password: database_password

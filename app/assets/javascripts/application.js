@@ -15,6 +15,7 @@
 //= require nsPopover
 //= require_tree ./app
 //= require foundation
+//= require consultants
 // require_tree .
 
 $(function(){

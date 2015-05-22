@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     mount Upmin::Engine => '/upmin'
   end
 
-  resources :brands, only: :show
+  resources :brands, only: :show do
+    member do
+      get :softwares
+    end
+    resources :products, only: [:index, :show]
+  end
   resources :vertical_markets, path: 'applications', only: :show do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
