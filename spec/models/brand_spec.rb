@@ -14,6 +14,8 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:downloads_page_url) }
   it { should respond_to(:support_url) }
   it { should respond_to(:training_url) }
+  it { should respond_to(:show_on_consultant_page) }
+  it { should respond_to(:contact_info_for_consultants) }
 
   it "#all_for_site loads all brands in alphabetical order except service-only brands" do
     brand1 = FactoryGirl.create(:brand, name: "ZZZZ")
@@ -27,11 +29,11 @@ RSpec.describe Brand, :type => :model do
     expect(all).not_to include(brand3)
   end
 
-  it "#for_consultant_portal loads brands which have their downloads page defined" do
+  it "#for_consultant_portal loads brands which are flagged with show_on_consultant_page" do
     Brand.delete_all
-    brand1 = FactoryGirl.create(:brand, name: "ZZZZ", downloads_page_url: nil)
-    brand2 = FactoryGirl.create(:brand, name: "AAAAA", downloads_page_url: "http://foo.com")
-    brand3 = FactoryGirl.create(:brand, show_on_main_site: false, downloads_page_url: "http://zoo.com")
+    brand1 = FactoryGirl.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
+    brand2 = FactoryGirl.create(:brand, name: "AAAAA", show_on_consultant_page: true)
+    brand3 = FactoryGirl.create(:brand, show_on_main_site: false, show_on_consultant_page: true)
 
     brands = Brand.for_consultant_portal
 

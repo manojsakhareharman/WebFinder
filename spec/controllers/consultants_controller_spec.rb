@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe ConsultantsController, type: :controller do
 
   before :all do
-    @brand = FactoryGirl.create(:brand, downloads_page_url: "http://brand.download.page")
-    @other_brand = FactoryGirl.create(:brand, downloads_page_url: '')
+    @brand = FactoryGirl.create(:brand, show_on_consultant_page: true)
+    @other_brand = FactoryGirl.create(:brand, show_on_consultant_page: false)
   end
 
   describe "GET :index" do

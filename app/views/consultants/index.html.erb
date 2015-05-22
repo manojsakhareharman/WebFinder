@@ -2,7 +2,10 @@
 <div class="container main-container">
   <div class="row">
     <div class="large-10 large-offset-1 columns">
-      <h1 class="text-center">Consultant Portal</h1>
+      <div class="text-center">
+        <%= image_tag "consultants_header.jpg" %>
+        <h1>Consultant Resources</h1>
+      </div>
 
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
 
@@ -29,6 +32,22 @@
             <ul class='software_list' data-brand-id="<%#= brand.friendly_id %>"></ul>
           <%# end %>
           -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 medium-12 columns">
+          <hr/>
+          <ul class="large-block-grid-<%= @brands.length %> medium-block-grid-<%= @brands.length %>">
+            <% @brands.each do |brand| %>
+              <li>
+                <div class="panel">
+                  <h6><%= brand.name %> Contact Info</h6>
+                  <%=raw textilize brand.contact_info_for_consultants %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
 

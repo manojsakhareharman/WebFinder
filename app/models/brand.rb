@@ -40,7 +40,7 @@ class Brand < ActiveRecord::Base
   end
 
   def self.for_consultant_portal
-    where(show_on_main_site: true).where("downloads_page_url IS NOT NULL AND downloads_page_url != ''").order("UPPER(name)")
+    where(show_on_main_site: true, show_on_consultant_page: true).order("UPPER(name)")
   end
 
   def self.for_service_site
