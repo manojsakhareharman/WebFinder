@@ -48,6 +48,6 @@ jQuery ($) ->
           $panel.append('<h5>Software</h5>')
           $panel.append( $software_list )
 
-        $panel.append("<p><a href='#{ data.link }' target='_blank'>more info...</a></p>")
+        $panel.append("<p><a href='#{ data.link }' target='_blank' class='tiny radius button'>more info...</a></p>")
         $product_content_container.html( $panel )
 
