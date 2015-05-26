@@ -14,15 +14,7 @@ feature "Registering to become a service center" do
     perform_enqueued_jobs do
       s_count = ServiceCenter.count
 
-      fill_in "Your Name", with: @service_center.contact_name
-      fill_in "Business Name", with: @service_center.name
-      fill_in "Address", with: @service_center.address
-      fill_in "City", with: @service_center.city
-      fill_in "State", with: @service_center.state
-      fill_in "Zip", with: @service_center.zip
-      fill_in "Phone", with: @service_center.phone
-      fill_in "Email", with: @service_center.email
-      check "I am willing and able to service all Harman" #...
+      fill_in_form(@service_center)
       click_on "Register"
 
       service_center = ServiceCenter.last
@@ -35,6 +27,29 @@ feature "Registering to become a service center" do
       last_email = ActionMailer::Base.deliveries.last
       expect(last_email.to).to include(ENV['service_center_registration_recipient'])
     end
+  end
+
+  scenario "with errors" do
+    @service_center.name = nil
+    s_count = ServiceCenter.count
+
+    fill_in_form(@service_center)
+    click_on "Register"
+
+    expect(ServiceCenter.count).to eq s_count
+    expect(page).to have_content "can't be blank"
+  end
+
+  def fill_in_form(sc)
+    fill_in "Your Name", with: sc.contact_name
+    fill_in "Business Name", with: sc.name
+    fill_in "Address", with: sc.address
+    fill_in "City", with: sc.city
+    fill_in "State", with: sc.state
+    fill_in "Zip", with: sc.zip
+    fill_in "Phone", with: sc.phone
+    fill_in "Email", with: sc.email
+    check "I am willing and able to service all Harman" #...
   end
 
 end

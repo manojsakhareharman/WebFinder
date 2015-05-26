@@ -1,45 +1,63 @@
-<p id="notice"><%= notice %></p>
+<%= content_for :title do %>Locate a Harman Pro Service Center<% end %>
 
-<h1>Listing Service Centers</h1>
+<%= render 'shared/service_subnav' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Phone</th>
-      <th>Fax</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th>Account number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container main-container">
+  <div class="row">
+    <div class="large-6 medium-8 columns">
+      <div class="callout panel">
+        <%= search_form_for @search, class: "custom" do |f| %>
+          <%= f.label :state_cont, "Enter your US state:" %>
+          <div class="row collapse">
+            <div class="large-8 medium-8 small-9 columns">
+              <%= f.text_field :state_cont %>
+            </div>
+            <div class="large-4 medium-4 small-3 columns">
+              <%= f.submit "Search", class: "prefix button" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-  <tbody>
-    <% @service_centers.each do |service_center| %>
-      <tr>
-        <td><%= service_center.name %></td>
-        <td><%= service_center.address %></td>
-        <td><%= service_center.city %></td>
-        <td><%= service_center.state %></td>
-        <td><%= service_center.zip %></td>
-        <td><%= service_center.phone %></td>
-        <td><%= service_center.fax %></td>
-        <td><%= service_center.email %></td>
-        <td><%= service_center.website %></td>
-        <td><%= service_center.account_number %></td>
-        <td><%= link_to 'Show', service_center %></td>
-        <td><%= link_to 'Edit', edit_service_center_path(service_center) %></td>
-        <td><%= link_to 'Destroy', service_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="large-12 columns">
+      <% if @service_centers  %>
+        <% if @service_centers.length > 0 %>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Website</th>
+              </tr>
+            </thead>
 
-<br>
+            <tbody>
+              <% @service_centers.each do |service_center| %>
+                <tr>
+                  <td><%= service_center.name %></td>
+                  <td>
+                    <%= service_center.address %><br/>
+                    <%= service_center.city %>,
+                    <%= service_center.state %>
+                    <%= service_center.zip %>
+                  </td>
+                  <td><%= service_center.phone %></td>
+                  <td><%=raw auto_link service_center.email %></td>
+                  <td><%=raw auto_link service_center.website %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p><i>No search results found. Please try again. Try entering just the state abbreviation.</i></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'New Service center', new_service_center_path %>
+</div>

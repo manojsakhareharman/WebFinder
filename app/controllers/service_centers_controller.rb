@@ -4,7 +4,10 @@ class ServiceCentersController < ApplicationController
   # GET /service_centers.json
   # This is the service center search page
   def index
-    @service_centers = ServiceCenter.all
+    @search = ServiceCenter.active.ransack(params[:q])
+    if params[:q]
+      @service_centers = @search.result
+    end
   end
 
   # GET /service_centers/login

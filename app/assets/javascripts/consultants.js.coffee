@@ -10,10 +10,9 @@ jQuery ($) ->
   #    $.each data.brands, (key, software) ->
   #      $list.append $("<li><a href='#{ software.direct_download_url }'>#{ software.formatted_name }</a></li>")
 
-  $product_content_container = $("div#product-content")
-  $spinner = $("<div class='placeholder'><p><img src='#{ $product_content_container.data('loading') }' alt='loading'></p></div>")
-
   $("form.product_selector").each ->
+    $product_content_container = $("div#product-content")
+    $spinner = $("<div class='placeholder'><p><img src='#{ $product_content_container.data('loading') }' alt='loading'></p></div>")
     $select = $(@).find("select")
     brand_id = $(@).data("brand-id")
     url = "/brands/#{ brand_id }/products.json"

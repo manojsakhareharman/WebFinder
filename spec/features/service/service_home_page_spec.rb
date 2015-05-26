@@ -45,4 +45,10 @@ feature 'Service landing page' do
     expect(current_url).to match(ENV['dealer_portal_url'])
   end
 
+  scenario 'find a service center' do
+    click_on "Find a Service Center"
+
+    expect(current_path).to eq service_centers_path
+  end
+
 end

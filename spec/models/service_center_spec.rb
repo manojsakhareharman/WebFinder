@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ServiceCenter, type: :model do
 
   before :all do
-    @service_center = FactoryGirl.create(:service_center)
+    @service_center = FactoryGirl.create(:service_center, active: true)
   end
 
   subject { @service_center }
@@ -13,5 +13,14 @@ RSpec.describe ServiceCenter, type: :model do
   it { should respond_to :zip }
   it { should respond_to :willingness }
   it { should respond_to :active? }
+
+  it ".active should select only active service centers" do
+    inactive_service_center = FactoryGirl.create(:service_center, active: false)
+
+    results = ServiceCenter.active
+
+    expect(results).to include(@service_center)
+    expect(results).not_to include(inactive_service_center)
+  end
 
 end

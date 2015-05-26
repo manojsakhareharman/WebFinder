@@ -6,6 +6,29 @@ RSpec.describe ServiceCentersController, as: :controller do
     @non_service_brand = FactoryGirl.create(:brand, show_on_services_site: false)
   end
 
+  describe "GET :index" do
+    before do
+      get :index
+    end
+
+    it "builds the ransack search item and empty array" do
+      expect(assigns(:search)).to be_a(Ransack::Search)
+      expect(assigns(:service_centers)).to eq(nil)
+    end
+  end
+
+  describe "POST :index (search)" do
+    before do
+      @service_center = FactoryGirl.create(:service_center, state: "UT")
+
+      post :index, q: { state: "UT" }
+    end
+
+    it "builds the service centers array" do
+      expect(assigns(:service_centers)).to include(@service_center)
+    end
+  end
+
   describe "GET :login" do
     before do
       get :login

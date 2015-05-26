@@ -424,6 +424,7 @@ DEPENDENCIES
   paperclip
   rails (= 4.2.1)
   rails_autolink
+  ransack
   rb-fchange
   rb-fsevent
   rb-inotify

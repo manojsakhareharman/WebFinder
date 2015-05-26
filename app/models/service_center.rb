@@ -6,4 +6,8 @@ class ServiceCenter < ActiveRecord::Base
   validates :email, presence: true
   validates :zip, presence: true
 
+  def self.active
+    where(active: true)
+  end
+
 end

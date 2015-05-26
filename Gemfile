@@ -29,6 +29,7 @@ gem 'upmin-admin'
 gem 'delayed_job_active_record'
 gem 'httparty'
 gem 'rails_autolink'
+gem 'ransack' # using for service center search
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
