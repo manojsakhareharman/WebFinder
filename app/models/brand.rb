@@ -40,7 +40,11 @@ class Brand < ActiveRecord::Base
   end
 
   def self.for_consultant_portal
-    where(show_on_main_site: true, show_on_consultant_page: true).order("UPPER(name)")
+    where(show_on_consultant_page: true).order("UPPER(name)")
+  end
+
+  def self.for_consultant_portal_with_contacts
+    for_consultant_portal.where("contact_info_for_consultants IS NOT NULL and contact_info_for_consultants != ''")
   end
 
   def self.for_service_site
@@ -84,6 +88,6 @@ class Brand < ActiveRecord::Base
   private
 
   def api_root
-    "http://#{ENV['brands_api_host']}/api/v2/brands/#{ self.friendly_id }"
+    self.api_url.present? ? self.api_url : "http://#{ENV['brands_api_host']}/api/v2/brands/#{ self.friendly_id }"
   end
 end

@@ -14,10 +14,17 @@ RSpec.describe BrandsController do
       expect(assigns(:brand)).to eq(@brand)
     end
 
-    it "renders the brand page" do
+    it "(html) renders the brand page" do
       get :show, id: @brand.id
 
       expect(response).to render_template('brands/show')
+    end
+
+    it "(json) renders json data" do
+      expect(HTTParty).to receive(:get).and_return(@brand.to_json)
+      get :show, id: @brand.id, format: :json
+
+      expect(response.content_type).to eq("application/json")
     end
 
     it "redirects to root for service-only brand" do
@@ -29,5 +36,15 @@ RSpec.describe BrandsController do
     end
 
   end
+
+  describe "GET :softwares (json)" do
+    it "renders json" do
+      expect(HTTParty).to receive(:get).and_return([])
+      get :softwares, id: @brand.id, format: :json
+
+      expect(response.content_type).to eq("application/json")
+    end
+  end
+
 
 end

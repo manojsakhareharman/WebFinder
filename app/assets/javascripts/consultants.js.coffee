@@ -1,16 +1,17 @@
 jQuery ($) ->
 
-  $("ul.software_list").each ->
-    $list = $(@)
-    brand_id = $(@).data("brand-id")
-    url = "/brands/#{ brand_id }/softwares.json"
-
-    $.getJSON url, (data) ->
-      console.log data.brands
-      $.each data.brands, (key, software) ->
-        $list.append $("<li><a href='#{ software.direct_download_url }'>#{ software.formatted_name }</a></li>")
+  # Overall software list loaded on page load...
+  #$("ul.software_list").each ->
+  #  $list = $(@)
+  #  brand_id = $(@).data("brand-id")
+  #  url = "/brands/#{ brand_id }/softwares.json"
+  #  $.getJSON url, (data) ->
+  #    console.log data.brands
+  #    $.each data.brands, (key, software) ->
+  #      $list.append $("<li><a href='#{ software.direct_download_url }'>#{ software.formatted_name }</a></li>")
 
   $product_content_container = $("div#product-content")
+  $spinner = $("<div class='placeholder'><p><img src='#{ $product_content_container.data('loading') }' alt='loading'></p></div>")
 
   $("form.product_selector").each ->
     $select = $(@).find("select")
@@ -25,8 +26,10 @@ jQuery ($) ->
     $select.change (e) ->
       product_id = $(@).val()
       product_url = "/brands/#{ brand_id }/products/#{ product_id }.json"
+      $product_content_container.html( $spinner )
+
       $.getJSON product_url, (data) ->
-        $panel = $("<div class='callout panel'></div>")
+        $panel = $("<div></div>")
 
         if data.images.length > 0
           img = data.images[0].image

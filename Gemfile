@@ -28,6 +28,7 @@ gem 'activeadmin-sortable'
 gem 'upmin-admin'
 gem 'delayed_job_active_record'
 gem 'httparty'
+gem 'rails_autolink'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

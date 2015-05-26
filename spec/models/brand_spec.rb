@@ -16,6 +16,7 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:training_url) }
   it { should respond_to(:show_on_consultant_page) }
   it { should respond_to(:contact_info_for_consultants) }
+  it { should respond_to(:api_url) }
 
   it "#all_for_site loads all brands in alphabetical order except service-only brands" do
     brand1 = FactoryGirl.create(:brand, name: "ZZZZ")
@@ -36,6 +37,19 @@ RSpec.describe Brand, :type => :model do
     brand3 = FactoryGirl.create(:brand, show_on_main_site: false, show_on_consultant_page: true)
 
     brands = Brand.for_consultant_portal
+
+    expect(brands).to include(brand2)
+    expect(brands).not_to include(brand1)
+    expect(brands).to include(brand3)
+  end
+
+  it "#for_consultant_portal_with_contacts loads only brands with contact info and flagged for consultant page" do
+    Brand.delete_all
+    brand1 = FactoryGirl.create(:brand, name: "ZZZZ", show_on_consultant_page: false)
+    brand2 = FactoryGirl.create(:brand, name: "AAAAA", show_on_consultant_page: true, contact_info_for_consultants: "FOO")
+    brand3 = FactoryGirl.create(:brand, show_on_main_site: false, show_on_consultant_page: true, contact_info_for_consultants: '')
+
+    brands = Brand.for_consultant_portal_with_contacts
 
     expect(brands).to include(brand2)
     expect(brands).not_to include(brand1)
@@ -121,6 +135,25 @@ RSpec.describe Brand, :type => :model do
 
       expect(@brand.slug).not_to eq old_slug
       expect(@brand.slug.present?).to be(true)
+    end
+  end
+
+  describe "api urls" do
+    it { should respond_to(:products_api) }
+    it { should respond_to(:product_api) }
+    it { should respond_to(:softwares_api) }
+    it { should respond_to(:info_api) }
+
+    it "#api_root uses the provided #api_url" do
+      @brand.api_url = "something special"
+
+      expect(@brand.send(:api_root)).to eq @brand.api_url
+    end
+
+    it "#api_root generates its own root when #api_url is blank" do
+      @brand.api_url = nil
+
+      expect(@brand.send(:api_root)).to match(/#{@brand.friendly_id}/)
     end
   end
 
