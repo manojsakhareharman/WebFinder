@@ -1,0 +1,28 @@
+// Place all the styles related to the ReferenceSystems controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.service-banner {
+  overflow: hidden;
+  @media only screen and (min-width: 900px) {
+    height: 475px;
+  }
+  @media only screen and (max-width: 899px) and (min-width: 500px) {
+    height: 300px;
+  }
+  @media only screen and (max-width: 499px) {
+    height: 200px;
+  }
+  background-image: asset-url("service.jpg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.brand-panel {
+  text-align: center;
+  p {
+    font-size: 80%;
+    line-height: 1.1;
+  }
+}
