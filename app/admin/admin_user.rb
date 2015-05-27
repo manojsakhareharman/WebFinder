@@ -1,5 +1,7 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :service_department, :super_admin
+
+  #menu if: proc { current_admin_user.can?(:manage, AdminUser) }
 
   # :nocov:
   index do
@@ -24,6 +26,10 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+    end
+    f.inputs "Roles" do
+      f.input :service_department
+      f.input :super_admin
     end
     f.actions
   end

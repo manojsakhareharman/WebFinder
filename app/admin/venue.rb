@@ -2,6 +2,8 @@ ActiveAdmin.register Venue do
   permit_params :name, :description, :top, :left
 
   # :nocov:
+  menu false
+
   index do
     selectable_column
     column :name

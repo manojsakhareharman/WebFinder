@@ -13,6 +13,8 @@ RSpec.describe ServiceCenter, type: :model do
   it { should respond_to :zip }
   it { should respond_to :willingness }
   it { should respond_to :active? }
+  it { should respond_to :service_center_service_groups }
+  it { should respond_to :service_groups }
 
   it ".active should select only active service centers" do
     inactive_service_center = FactoryGirl.create(:service_center, active: false)
