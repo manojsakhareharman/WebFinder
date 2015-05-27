@@ -25,30 +25,43 @@
     <div class="large-12 columns">
       <% if @service_centers  %>
         <% if @service_centers.length > 0 %>
-          <table>
+          <table width="100%">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Website</th>
+                <th>Address/Phone</th>
+                <th>Services</th>
               </tr>
             </thead>
 
             <tbody>
-              <% @service_centers.each do |service_center| %>
+              <% @service_centers.sort{|a,b| b.service_center_service_groups.count <=> a.service_center_service_groups.count}.each do |service_center| %>
                 <tr>
-                  <td><%= service_center.name %></td>
+                  <td>
+                    <%= service_center.name %>
+                    <% if service_center.email.present? %>
+                      <br/><%= raw auto_link service_center.email %>
+                    <% end %>
+                    <% if service_center.website.present? %>
+                      <br/><%= raw auto_link service_center.website %>
+                    <% end %>
+                  </td>
                   <td>
                     <%= service_center.address %><br/>
                     <%= service_center.city %>,
                     <%= service_center.state %>
                     <%= service_center.zip %>
+                    <% if service_center.phone.present? %>
+                      <br/><%= raw service_center.phone.to_s.gsub(/\s/, "&nbsp;") %>
+                    <% end %>
                   </td>
-                  <td><%= service_center.phone %></td>
-                  <td><%=raw auto_link service_center.email %></td>
-                  <td><%=raw auto_link service_center.website %></td>
+                  <td>
+                    <ul>
+                      <% service_center.service_groups.each do |sg| %>
+                        <li><%= sg.name %></li>
+                      <% end %>
+                    </ul>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

@@ -9,7 +9,7 @@ class ServiceCenter < ActiveRecord::Base
   validates :zip, presence: true
 
   def self.active
-    where(active: true)
+    where(active: true).includes(:service_center_service_groups)
   end
 
 end

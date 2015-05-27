@@ -19,6 +19,9 @@
       <div class="row">
         <div class="large-6 medium-6 columns">
           <br/>
+          <noscript>
+            <p>You must have javascript enabled in your browser in order for this feature to work...</p>
+          </noscript>
           <% @brands.each do |brand| %>
             <h5><%= brand.name %> Products</h5>
             <%#= link_to "#{brand.name} Technical Downloads", brand.downloads_page_url, target: "_blank" %>

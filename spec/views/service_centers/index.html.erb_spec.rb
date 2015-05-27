@@ -4,6 +4,8 @@
 
    before :all do
      @service_center = FactoryGirl.create(:service_center)
+     @service_group = FactoryGirl.create(:service_group)
+     @service_center.service_groups << @service_group
    end
 
    before :each do
@@ -44,7 +46,9 @@
          expect(response).to have_content(@service_center.name)
        end
 
-       it "shows which brands are serviced"
+       it "shows which brands are serviced" do
+         expect(response).to have_content(@service_group.name)
+       end
      end
 
      it "shows no results found" do
