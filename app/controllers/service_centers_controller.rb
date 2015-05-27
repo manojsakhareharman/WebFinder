@@ -6,8 +6,10 @@ class ServiceCentersController < ApplicationController
   def index
     @search = ServiceCenter.active.ransack(params[:q])
     @selected = nil
+    @selected_group = nil
     if params[:q]
       @selected = params[:q][:state_eq]
+      @selected_group = params[:q][:service_groups_name_eq]
       @service_centers = @search.result
     end
   end

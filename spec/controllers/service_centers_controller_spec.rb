@@ -20,8 +20,10 @@ RSpec.describe ServiceCentersController, as: :controller do
   describe "POST :index (search)" do
     before do
       @service_center = FactoryGirl.create(:service_center, state: "UT")
+      @service_group = FactoryGirl.create(:service_group)
+      @service_center.service_groups << @service_group
 
-      post :index, q: { state_eq: "UT" }
+      post :index, q: { state_eq: "UT", service_groups_name_eq: @service_group.name }
     end
 
     it "builds the service centers array" do
@@ -30,6 +32,10 @@ RSpec.describe ServiceCentersController, as: :controller do
 
     it "sets the selected state" do
       expect(assigns(:selected)).to eq "UT"
+    end
+
+    it "sets the selected service group" do
+      expect(assigns(:selected_group)).to eq @service_group.name
     end
   end
 
