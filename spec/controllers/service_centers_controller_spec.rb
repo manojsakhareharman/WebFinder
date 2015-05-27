@@ -21,11 +21,15 @@ RSpec.describe ServiceCentersController, as: :controller do
     before do
       @service_center = FactoryGirl.create(:service_center, state: "UT")
 
-      post :index, q: { state: "UT" }
+      post :index, q: { state_eq: "UT" }
     end
 
     it "builds the service centers array" do
       expect(assigns(:service_centers)).to include(@service_center)
+    end
+
+    it "sets the selected state" do
+      expect(assigns(:selected)).to eq "UT"
     end
   end
 

@@ -7,10 +7,10 @@
     <div class="large-6 medium-8 columns">
       <div class="callout panel">
         <%= search_form_for @search, class: "custom" do |f| %>
-          <%= f.label :state_cont, "Enter your US state:" %>
+          <%= f.label :state_eq, "Select your US state:" %>
           <div class="row collapse">
             <div class="large-8 medium-8 small-9 columns">
-              <%= f.text_field :state_cont %>
+              <%= f.select :state_eq, options_for_select(ServiceCenter.states, @selected) %>
             </div>
             <div class="large-4 medium-4 small-3 columns">
               <%= f.submit "Search", class: "prefix button" %>
@@ -52,7 +52,7 @@
                     <%= service_center.state %>
                     <%= service_center.zip %>
                     <% if service_center.phone.present? %>
-                      <br/><%= raw service_center.phone.to_s.gsub(/\s/, "&nbsp;") %>
+                      <br/><strong><%= raw service_center.phone.to_s.gsub(/\s/, "&nbsp;") %></strong>
                     <% end %>
                   </td>
                   <td>

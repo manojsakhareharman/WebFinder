@@ -12,4 +12,8 @@ class ServiceCenter < ActiveRecord::Base
     where(active: true).includes(:service_center_service_groups)
   end
 
+  def self.states
+    pluck(:state).uniq.sort
+  end
+
 end

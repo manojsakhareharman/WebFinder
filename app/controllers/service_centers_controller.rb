@@ -5,7 +5,9 @@ class ServiceCentersController < ApplicationController
   # This is the service center search page
   def index
     @search = ServiceCenter.active.ransack(params[:q])
+    @selected = nil
     if params[:q]
+      @selected = params[:q][:state_eq]
       @service_centers = @search.result
     end
   end

@@ -25,4 +25,11 @@ RSpec.describe ServiceCenter, type: :model do
     expect(results).not_to include(inactive_service_center)
   end
 
+  it "#states collects and sorts US states" do
+    states = ServiceCenter.states
+
+    expect(states).to be_an(Array)
+    expect(states).to include(@service_center.state)
+  end
+
 end

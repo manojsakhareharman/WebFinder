@@ -8,7 +8,9 @@
         <dd class="<%= 'active' if request.fullpath == service_center_login_path %>">
           <%= link_to "Service Center Login", service_center_login_path %>
         </dd>
-        <dd><%= link_to "Find a Service Center", service_centers_path %></dd>
+        <dd class="<%= 'active' if request.fullpath.match /#{service_centers_path}/ %>">
+          <%= link_to "Find a Service Center", service_centers_path %>
+        </dd>
       </dl>
     </div>
   </div>

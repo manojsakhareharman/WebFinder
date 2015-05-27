@@ -18,6 +18,7 @@
      render
 
      expect(response).to have_css("form[@action='#{ service_centers_path }']")
+     expect(response).to have_css("select#q_state_eq")
    end
 
    describe "before searching" do
