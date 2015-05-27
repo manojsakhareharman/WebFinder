@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526142815) do
+ActiveRecord::Schema.define(version: 20150527162158) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -29,18 +29,20 @@ ActiveRecord::Schema.define(version: 20150526142815) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "service_department",     limit: 1,   default: false
+    t.boolean  "super_admin",            limit: 1,   default: true
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
@@ -220,6 +222,16 @@ ActiveRecord::Schema.define(version: 20150526142815) do
   add_index "reference_systems", ["slug"], name: "index_reference_systems_on_slug", unique: true, using: :btree
   add_index "reference_systems", ["vertical_market_id"], name: "index_reference_systems_on_vertical_market_id", using: :btree
 
+  create_table "service_center_service_groups", force: :cascade do |t|
+    t.integer  "service_center_id", limit: 4
+    t.integer  "service_group_id",  limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "service_center_service_groups", ["service_center_id"], name: "index_service_center_service_groups_on_service_center_id", using: :btree
+  add_index "service_center_service_groups", ["service_group_id"], name: "index_service_center_service_groups_on_service_group_id", using: :btree
+
   create_table "service_centers", force: :cascade do |t|
     t.string   "name",           limit: 255
     t.string   "address",        limit: 255
@@ -238,6 +250,15 @@ ActiveRecord::Schema.define(version: 20150526142815) do
   end
 
   add_index "service_centers", ["active"], name: "index_service_centers_on_active", using: :btree
+
+  create_table "service_groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "brand_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "service_groups", ["brand_id"], name: "index_service_groups_on_brand_id", using: :btree
 
   create_table "site_settings", force: :cascade do |t|
     t.string   "name",       limit: 255

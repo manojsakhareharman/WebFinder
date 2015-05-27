@@ -1,8 +1,14 @@
 require "csv"
 namespace :ss do
 
+  # :nodoc:
   desc "Import Harman Pro service centers"
   task import: :environment do
+    puts "This task was already run. It should not be run again. The end."
+    # import
+  end
+
+  def import
     akg = Brand.find "akg"
     crown = Brand.find "crown"
     bss = Brand.find "bss"
@@ -85,4 +91,5 @@ namespace :ss do
     puts "Total service centers after: #{ServiceCenter.all.count}"
 
   end
+  # :nodoc:
 end
