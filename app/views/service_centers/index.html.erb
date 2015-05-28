@@ -10,7 +10,7 @@
           <div class="row">
             <div class="large-3 medium-3 small-12 columns">
               <%= f.label :state_eq, "Select your state:" %>
-              <%= f.select :state_eq, options_for_select(ServiceCenter.states, @selected) %>
+              <%= f.select :state_eq, options_for_select([["(any)", nil]] + ServiceCenter.states, @selected) %>
             </div>
             <div class="large-7 medium-7 small-12 columns">
               <%= f.label :service_groups_name_eq, "Service type needed:" %>

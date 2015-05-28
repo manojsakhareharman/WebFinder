@@ -12,8 +12,9 @@ feature "Find a service center" do
     visit service_centers_path
   end
 
-  scenario "by state" do
+  scenario "by state only" do
     select @service_center.state, from: "Select your state"
+    select "(any)", from: "Service type needed"
     click_on "Search"
 
     expect(page).to have_content(@service_center.name)
@@ -21,6 +22,15 @@ feature "Find a service center" do
 
   scenario "by state and service type" do
     select @service_center.state, from: "Select your state"
+    select @service_group.name, from: "Service type needed"
+    click_on "Search"
+
+    expect(page).to have_content(@service_center.name)
+    expect(page).to have_content(@service_group.name)
+  end
+
+  scenario "by service type only" do
+    select "(any)", from: "Select your state"
     select @service_group.name, from: "Service type needed"
     click_on "Search"
 

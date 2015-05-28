@@ -10,9 +10,12 @@ ActiveAdmin.register ServiceCenter do
     :email,
     :website,
     :account_number,
-    :active
+    :active,
+    service_center_service_groups_attributes: [:id, :service_group_id, :_destroy]
+
 
   # :nocov:
+
   index do
     column :name
     column :contact_name
@@ -44,6 +47,11 @@ ActiveAdmin.register ServiceCenter do
       f.input :website
       f.input :account_number
       f.input :active
+    end
+    f.has_many :service_center_service_groups do |s|
+      s.input :id, as: :hidden
+      s.input :service_group
+      s.input :_destroy, as: :boolean, label: "Delete"
     end
     f.actions
   end

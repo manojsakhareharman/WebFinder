@@ -16,6 +16,7 @@
 # used to set extended properties on the server.
 
 server '10.10.23.15', user: 'hmg', roles: %w{web app db}
+#server 'rackspace1', user: 'hmg', roles: %w{web app db}
 
 
 # Custom SSH Options
