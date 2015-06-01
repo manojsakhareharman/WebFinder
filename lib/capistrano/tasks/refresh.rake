@@ -23,7 +23,7 @@ namespace :refresh do
       execute :mkdir, "-p", folder
 
       within folder do
-        execute :mysqldump, "-u #{@db['username']} --password=#{@env['harmanpro_database_password']} #{@db['database']} > #{@filename}"
+        execute :mysqldump, "-u #{@db['username']} --password=#{@env['harmanpro_database_password']} -h #{@db['host']} --port=#{@db['port']} #{@db['database']} > #{@filename}"
         curr = capture(:pwd)
         download! "#{curr}/#{@filename}", "./#{@filename}"
         execute :rm, @filename
@@ -52,7 +52,7 @@ namespace :refresh do
 
   desc "Replace contents of public/system from remote server"
   task :development_uploads do
-    on roles(:web) do |host|
+    on roles(:admin) do |host|
       set :upload_host, host
       set :upload_user, host.user
     end
@@ -61,4 +61,21 @@ namespace :refresh do
       execute :rsync, "-avz #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/system ./public/"
     end
   end
+
+  # It would be nice to rsync directly between the two servers, but the
+  # internal server can't communicate out. Genius.
+  desc "Refreshes local public/system and then pushes the same to production node2"
+  task :node2_uploads do
+    invoke 'refresh:development_uploads'
+
+    on roles(:node2) do |host|
+      set :upload_host, host
+      set :upload_user, host.user
+    end
+
+    run_locally do
+      execute :rsync, "-avz ./public/system #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/"
+    end
+  end
+
 end
