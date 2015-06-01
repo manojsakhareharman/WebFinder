@@ -28,6 +28,7 @@ gem 'activeadmin-sortable'
 gem 'cancan'
 gem 'upmin-admin'
 gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'httparty'
 gem 'rails_autolink'
 gem 'cheetah_mail', "~> 0.6.0"

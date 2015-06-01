@@ -116,6 +116,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
+    daemons (1.2.2)
     dalli (2.7.4)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
@@ -428,6 +429,7 @@ DEPENDENCIES
   cheetah_mail (~> 0.6.0)
   coffee-rails (~> 4.1.0)
   colorize
+  daemons
   dalli
   database_cleaner
   delayed_job_active_record
