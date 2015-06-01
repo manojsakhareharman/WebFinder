@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  lead_mailer:
+    new_lead:
+      subject: New lead from harmanpro.com

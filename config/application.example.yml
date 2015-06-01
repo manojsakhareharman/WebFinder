@@ -18,8 +18,16 @@ warranty_repair_url: http://repair.foo.com
 dealer_portal_url: http://portal.foo.com
 service_center_registration_recipient: 'service@foo.com'
 brands_api_host: api-server.com
+cheetahmail_aid: 1234567
+cheetahmail_sub: 98765432
+cheetahmail_username: cheetah-user
+cheetahmail_password: cheetah-pass
 
 production:
   harmanpro_database_password: database_password
   secret_key_base: secret_key_base
+  cheetahmail_aid: 1234567
+  cheetahmail_sub: 98765432
+  cheetahmail_username: cheetah-user
+  cheetahmail_password: cheetah-pass
 

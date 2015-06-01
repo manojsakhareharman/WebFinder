@@ -1,11 +1,13 @@
 require "rails_helper"
 
 feature "Lead generation" do
+  include ActiveJob::TestHelper
 
   before :all do
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market, retail: false)
     @help_find_installer = FactoryGirl.create(:site_setting, name: "button-help-find-installer", content: "Help Me Find Installer")
+    @help_me_get_started = FactoryGirl.create(:site_setting, name: "button-help-me-get-started", content: "Help Me Get Started")
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
   end
 
@@ -48,7 +50,23 @@ feature "Lead generation" do
   end
 
   scenario "new lead is delivered to sales department" do
-    skip "Determine how to push leads into some marketing automation or sales database"
+    perform_enqueued_jobs do
+      sales_recipients = FactoryGirl.create(:site_setting, name: "leadgen-recipients", content: "yo@mama.com")
+      lead = FactoryGirl.build(:lead, name: "Reference System Installer Lead")
+      visit vertical_market_reference_system_path(@vertical_market, @reference_system)
+
+      click_on @help_me_get_started.content
+      complete_leadgen_form(lead)
+      click_on "Submit"
+
+      new_lead = Lead.last
+      expect(page).to have_content(@title.content)
+      expect(new_lead.name).to eq(lead.name)
+      expect(new_lead.source).to eq(vertical_market_reference_system_path(@vertical_market, @reference_system))
+
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email.to).to include(sales_recipients.content)
+    end
   end
 
   # As a casual visitor

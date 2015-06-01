@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Lead, :type => :model do
   before :all do
-    @lead = FactoryGirl.build_stubbed(:lead)
+    @lead = FactoryGirl.build(:lead)
   end
 
   subject { @lead }
@@ -13,9 +13,19 @@ RSpec.describe Lead, :type => :model do
   it { should respond_to(:project_description) }
   it { should respond_to(:source) }
 
-  describe "push to external system" do
-    it "sends to sales contact database" do
-      skip "Determine how to integrate with which external contact system"
+  describe "marketing automation" do
+    it "sends to cheetahmail list" do
+      expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
+
+      @lead.save
+    end
+  end
+
+  describe "emailing" do
+    it "sends contact info to several configured recipients" do
+      expect(@lead).to receive(:notify_leadgen_recipients)
+
+      @lead.save
     end
   end
 end

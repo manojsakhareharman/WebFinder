@@ -66,4 +66,5 @@ RSpec.describe "reference_systems/show.html.erb", :type => :view do
       expect(rendered).to have_link(@product.name)
     end
   end
+
 end

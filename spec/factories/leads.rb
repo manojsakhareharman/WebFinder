@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :lead do
-    name "MyString"
-company "MyString"
-email "MyString"
-phone "MyString"
-project_description "MyText"
-source "MyString"
+    name "LeadName"
+    company "LeadCompany"
+    email "my@email.com"
+    phone "555-5555"
+    project_description "Project Description"
+    source "MyString"
   end
 
 end
