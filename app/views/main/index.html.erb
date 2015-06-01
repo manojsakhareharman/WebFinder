@@ -36,7 +36,7 @@
   <% @vertical_markets.each do |vm| %>
     <li>
       <%= link_to vm do %>
-        <%= image_tag vm.banner.url(:medium) %>
+        <%= image_tag vm.banner.url(:medium_gray) %>
         <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
       <% end %>
     </li>
