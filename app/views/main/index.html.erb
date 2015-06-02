@@ -14,12 +14,12 @@
 </script>
 
 <div ng-controller="HomepageBannerCtrl as banner">
-  <div class="bumped-up hide-for-small-down">
+  <div class="bumped-up">
     <div class="banner-container text-center">
       <div class="text-center homepage-banner">
         <%= image_tag "HarmanSkylineImage.jpg" %>
         <h1><%=raw format_headline SiteSetting.value("homepage-main-headline") %></h1>
-        <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn" ns-popover
+        <img src="<%= asset_path('H-Pointer.png') %>" alt="[H]" class="help-icon animated bounceIn hide-for-small-down" ns-popover
           ng-repeat="venue in venues"
           vid="{{ venue.id }}"
           ng-style="{'left': venue.left, 'top': venue.top, '-moz-animation-delay': venue.id*2/5+'s', '-animation-delay': venue.id*2/5+'s', '-webkit-animation-delay': venue.id*2/5+'s'}"
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<ul class="homepage-vertical-market large-block-grid-<%= @vertical_markets.length %> medium-block-grid-<%= @vertical_markets.length %> small-block-grid-1">
+<ul class="homepage-vertical-market large-block-grid-<%= @vertical_markets.length %> medium-block-grid-<%= @vertical_markets.length %> small-block-grid-3">
   <% @vertical_markets.each do |vm| %>
     <li>
       <%= link_to vm do %>
