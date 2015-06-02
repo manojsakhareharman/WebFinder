@@ -1713,14 +1713,15 @@ ul.title-area {
 }
 
 .panel {
-  &.callout {
+  &.white-callout {
+    background: $white;
     .placeholder {
       text-align: center;
       p {
         padding: rem-calc(130) 0;
         font-size: 85%;
         line-height: 1.2;
-        color: scale-color($primary-color, $saturation: -55%, $lightness: 45%);
+        color: $base;
       }
     }
   }
