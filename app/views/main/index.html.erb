@@ -47,7 +47,6 @@
 
   <div class="row">
     <div class="large-10 large-offset-1 columns">
-
       <h2 class="text-center space-after"><%=raw format_headline SiteSetting.value("homepage-brands-headline") %></h2>
       <div class="text-center">
         <% all_brands.each do |brand| %>
@@ -60,6 +59,17 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="ecomm-strip">
+  <div class="row">
+    <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-10 small-offset-1 columns">
+      <h3><%= raw format_headline SiteSetting.value("homepage-ecommerce-headline") %></h3>
+      <p><%= raw SiteSetting.value("homepage-ecommerce-text") %></p>
+      <p><%= link_to "Shop Now", "http://shop.harmanpro.com/", target: "_blank", class: "small radius button" %></p>
     </div>
   </div>
 </div>
