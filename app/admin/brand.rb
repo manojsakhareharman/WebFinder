@@ -1,7 +1,7 @@
 ActiveAdmin.register Brand do
   permit_params :name,
     :url,
-    #:downloads_page_url,
+    :downloads_page_url,
     :support_url,
     :training_url,
     :tech_url,
@@ -30,7 +30,6 @@ ActiveAdmin.register Brand do
     f.inputs do
       f.input :name
       f.input :url, placeholder: "http://brand.name.com"
-      #f.input :downloads_page_url, hint: "If present, causes this brand to appear on consultant portal page.", placeholder: "http://brand.name.com/downloads"
       f.input :support_url, hint: "If present, appears on contacts page.", placeholder: "http://brand.name.com/support"
       f.input :training_url, hint: "If present, appears on the training page.", placeholder: "http://brand.name.com/training"
       f.input :tech_url, hint: "Appears on the service center login page if present.", placeholder: "http://tech.brand.com"
@@ -41,6 +40,7 @@ ActiveAdmin.register Brand do
       f.input :show_on_services_site
       f.input :show_on_consultant_page
       f.input :api_url, hint: "Base URL for API queries.", placeholder: "http://brand.com/api/v2/brand"
+      f.input :downloads_page_url, hint: "If API URL is blank, and this is present, the link will appear on the consultants page.", placeholder: "http://brand.name.com/downloads"
       f.input :contact_info_for_consultants
     end
     f.actions

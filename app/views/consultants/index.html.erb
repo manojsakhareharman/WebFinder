@@ -23,14 +23,18 @@
             <p>You must have javascript enabled in your browser in order for this feature to work...</p>
           </noscript>
           <% @brands.each do |brand| %>
-            <h5><%= brand.name %> Products</h5>
-            <%#= link_to "#{brand.name} Technical Downloads", brand.downloads_page_url, target: "_blank" %>
-            <form data-brand-id="<%= brand.friendly_id %>" class="product_selector">
-              <input type="hidden" name="brand_id" value="<%= brand.friendly_id %>">
-              <select name="product_id">
-                <option class="loading">Loading...</option>
-              </select>
-            </form>
+            <% if brand.api_url.present? %>
+              <h5><%= brand.name %> Products</h5>
+              <form data-brand-id="<%= brand.friendly_id %>" class="product_selector">
+                <input type="hidden" name="brand_id" value="<%= brand.friendly_id %>">
+                <select name="product_id">
+                  <option class="loading">Loading...</option>
+                </select>
+              </form>
+            <% elsif brand.downloads_page_url.present? %>
+              <h5><%= brand.name %> Technical Resources</h5>
+              <%= link_to "Browse on #{brand.name} website...", brand.downloads_page_url, target: "_blank" %>
+            <% end %>
           <% end %>
         </div>
         <div class="large-6 medium-6 columns">
@@ -39,12 +43,6 @@
               <p><i>select a product<br/> to retrieve resources </i></p>
             </div>
           </div>
-          <!--
-          <h3>Software<h3>
-          <%# @brands.each do |brand| %>
-            <ul class='software_list' data-brand-id="<%#= brand.friendly_id %>"></ul>
-          <%# end %>
-          -->
         </div>
       </div>
 
@@ -54,8 +52,8 @@
           <h3>Consultant Contacts</h3>
           <br/>
           <div class="row">
-            <div class="large-8 medium-8 columns" data-equalizer="contacts">
-              <ul class="large-block-grid-2 medium-block-grid-2">
+            <div class="large-12 medium-12 columns" data-equalizer="contacts">
+              <ul class="large-block-grid-3 medium-block-grid-3">
                 <% @brands_with_contact_info.each do |brand| %>
                   <li>
                     <div class="panel" data-equalizer-watch="contacts">
@@ -67,17 +65,18 @@
                     </div>
                   </li>
                 <% end %>
+                <% if SiteSetting.exists?(name: "harman_professional_consultant_contact_info") %>
+                  <li>
+                    <div class="panel" data-equalizer-watch="contacts">
+                      <div class="brand-logo">
+                        <p><%= image_tag 'harman-logo.png', alt: "Harman Professional" %></p>
+                      </div>
+                      <%= raw auto_link textilize SiteSetting.value("harman_professional_consultant_contact_info") %>
+                    </div>
+                  </li>
+                <% end %>
               </ul>
             </div>
-          <div class="large-4 medium-4 columns">
-            <% if SiteSetting.exists?(name: "harman_professional_consultant_contact_info") %>
-                <div class="panel">
-                  <div class="brand-logo">
-                    <p><%= image_tag 'harman-logo.png', alt: "Harman Professional" %></p>
-                  </div>
-                  <%= raw auto_link textilize SiteSetting.value("harman_professional_consultant_contact_info") %>
-                </div>
-            <% end %>
           </div>
         </div>
       </div>

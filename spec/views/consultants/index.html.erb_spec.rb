@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "consultants/index.html.erb", as: :view do
 
   before :all do
-    @brand1 = FactoryGirl.create(:brand, contact_info_for_consultants: "Joe Johnson @ 555-5555")
-    @brand2 = FactoryGirl.create(:brand)
+    @brand1 = FactoryGirl.create(:brand, api_url: "http://foo.com/", contact_info_for_consultants: "Joe Johnson @ 555-5555")
+    @brand2 = FactoryGirl.create(:brand, downloads_page_url: "http://foo2.com")
     assign(:brands, [@brand1, @brand2])
     assign(:brands_with_contact_info, [@brand1])
   end
@@ -19,7 +19,10 @@ RSpec.describe "consultants/index.html.erb", as: :view do
 
   it "has select form for ajax to fill with products" do
     expect(rendered).to have_css("form[@data-brand-id='#{ @brand1.to_param }']")
-    expect(rendered).to have_css("form[@data-brand-id='#{ @brand2.to_param }']")
+  end
+
+  it "has a link to downloads page for non-api brands" do
+    expect(rendered).to have_link("#{@brand2.name} website", href: @brand2.downloads_page_url)
   end
 
   it "has brand contact info box" do
