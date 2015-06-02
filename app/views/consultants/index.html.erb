@@ -31,7 +31,10 @@
                   <option class="loading">Loading...</option>
                 </select>
               </form>
-            <% elsif brand.downloads_page_url.present? %>
+            <% end %>
+          <% end %>
+          <% @brands.each do |brand| %>
+            <% if brand.downloads_page_url.present? && brand.api_url.blank? %>
               <h5><%= brand.name %> Technical Resources</h5>
               <%= link_to "Browse on #{brand.name} website...", brand.downloads_page_url, target: "_blank" %>
             <% end %>
@@ -62,16 +65,6 @@
                       </div>
 
                       <%=raw auto_link textilize brand.contact_info_for_consultants %>
-                    </div>
-                  </li>
-                <% end %>
-                <% if SiteSetting.exists?(name: "harman_professional_consultant_contact_info") %>
-                  <li>
-                    <div class="panel" data-equalizer-watch="contacts">
-                      <div class="brand-logo">
-                        <p><%= image_tag 'harman-logo.png', alt: "Harman Professional" %></p>
-                      </div>
-                      <%= raw auto_link textilize SiteSetting.value("harman_professional_consultant_contact_info") %>
                     </div>
                   </li>
                 <% end %>
