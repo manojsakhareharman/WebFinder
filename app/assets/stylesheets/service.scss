@@ -2,21 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$harman-blue: #00395a;
+
 .service-banner {
   overflow: hidden;
   @media only screen and (min-width: 900px) {
     height: 475px;
+    h1 {
+      font-size: 36px;
+      padding: 10px 0;
+    }
   }
   @media only screen and (max-width: 899px) and (min-width: 500px) {
     height: 300px;
+    h1 {
+      font-size: 28px;
+      padding: 8px 0;
+    }
   }
   @media only screen and (max-width: 499px) {
     height: 200px;
+    h1 {
+      font-size: 22px;
+      padding: 6px 0;
+    }
   }
   background-image: asset-url("service.jpg");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  h1 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    color: white;
+    background: rgba($harman-blue, 0.65);
+    margin-bottom: 0;
+  }
+
 }
 
 .brand-panel {
