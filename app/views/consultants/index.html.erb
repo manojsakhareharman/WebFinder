@@ -1,16 +1,13 @@
-<%= content_for :title do %>Consultant Portal<% end %>
+<%= content_for :title do %>Consultant Resources<% end %>
 <div class="bumped-up">
   <div class="banner-container">
-    <%= image_tag "consultants_header.jpg" %>
+    <h1><%= image_tag "consultants_header.jpg", alt: "Consultant Resources" %></h1>
   </div>
 </div>
 
 <div class="container main-container">
   <div class="row">
     <div class="large-10 large-offset-1 columns">
-      <div class="text-center">
-        <h1>Consultant Resources</h1>
-      </div>
 
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
       <hr/>
@@ -73,6 +70,17 @@
           </div>
         </div>
       </div>
+
+      <% if SiteSetting.exists?(name: "consultant-portal-loan-program-paragraph") %>
+        <div class="row">
+          <div class="large-12 medium-12 columns">
+            <hr/>
+            <h3>Equipment Demo/Loan Program</h3>
+            <br/>
+            <%= raw auto_link textilize SiteSetting.value("consultant-portal-loan-program-paragraph") %>
+          </div>
+        </div>
+      <% end %>
 
     </div>
   </div>

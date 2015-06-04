@@ -1,17 +1,39 @@
-<%= content_for :title do %>Contacts<% end %>
+<%= content_for :title do %>HARMAN Professional Brand Contacts<% end %>
 
-<div class="container main-container padded">
+<div class="bumped-up">
+  <div class="banner-container">
+    <h1><%= image_tag "contact_header.jpg", alt: "HARMAN Professional Brand Contacts" %></h1>
+  </div>
+</div>
+
+<div class="container main-container ">
   <div class="row">
-    <div class="large-8 large-offset-2 columns">
-      <h1 class="text-center">HARMAN Professional Brand Contacts</h1>
-      <br/>
-
-      <ul>
+    <div class="large-10 large-offset-1 medium-10 medium-offset-1 columns" data-equalizer="brands">
+      <p class="text-center"><i>click to contact these brands:</i></p>
+      <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2">
         <% all_brands.each do |brand| %>
           <% if brand.support_url.present? %>
-            <li><%= link_to "#{brand.name} Support", brand.support_url, target: "_blank" %></li>
+            <li>
+              <%= link_to brand.support_url, target: "_blank" do %>
+                <div class="panel text-center" data-equalizer-watch="brands">
+                  <div class="brand-logo">
+                    <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                  </div>
+                  <p><%= brand.name %> Support</p>
+                </div>
+              <% end %>
+            </li>
           <% elsif brand.url.present? %>
-            <li><%= link_to "#{brand.name} Info", brand.url, target: "_blank" %></li>
+            <li>
+              <%= link_to brand.url, target: "_blank" do %>
+                <div class="panel text-center" data-equalizer-watch="brands">
+                  <div class="brand-logo">
+                    <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                  </div>
+                  <p><%= brand.name %> Info</p>
+                </div>
+              <% end %>
+            </li>
           <% end %>
         <% end %>
       </ul>
