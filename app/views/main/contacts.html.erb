@@ -1,4 +1,5 @@
 <%= content_for :title do %>HARMAN Professional Brand Contacts<% end %>
+<%= content_for :description do %>Support and other contact links for HARMAN Professional brands: <%= all_brands.map{|b| b.name}.join(', ') %>.<% end %>
 
 <div class="bumped-up">
   <div class="banner-container">

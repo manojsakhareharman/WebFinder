@@ -6,6 +6,11 @@ namespace :refresh do
     invoke 'refresh:development_uploads'
   end
 
+  # Pass in keep_db to keep the database dump received from the server on your
+  # local machine:
+  #
+  #   cap production refresh:development_database keep_db=true
+  #
   desc "Replace the local development database with the contents of the production database"
   task :development_database do
     set :timestamp, Time.now.to_i
@@ -43,7 +48,9 @@ namespace :refresh do
         rake 'db:create'
 
         execute :mysql, "-u #{dev_db['username']} #{dev_db['database']} < ./#{filename}"
-        execute :rm, filename
+        unless ENV['keep_db'] == "true"
+          execute :rm, filename
+        end
 
         rake 'db:migrate'
       end

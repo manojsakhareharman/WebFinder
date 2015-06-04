@@ -1,6 +1,5 @@
-<%= content_for :title do %>
-  <%= SiteSetting.value("thanks") %>
-<% end %>
+<%= content_for :title do %><%= SiteSetting.value("thanks") %><% end %>
+<%= content_for :description do %>Thank you for contacting HARMAN Professional.<% end %>
 
 <div class="container main-container">
   <h1 class="text-center"><%= SiteSetting.value("thanks") %></h1>

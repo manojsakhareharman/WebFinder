@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "HARMAN Professional is the leading manufacturer of professional audio, video, lighting and control systems from #{all_brands.map{|b| b.name}.join(', ') }." %>">
 
-    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %>Harman Professional</title>
+    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %>HARMAN Professional</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -18,7 +19,7 @@
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
           <li class="name">
-          <h1><a href="/"><%= image_tag "hprologo.png", alt: "Harman Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
+          <h1><a href="/"><%= image_tag "hprologo.png", alt: "HARMAN Professional Audio, Video, Lighting and Control Systems", id: "logo" %></a></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
@@ -96,7 +97,7 @@
             </div>
             <div class="large-4 medium-4 small-4 columns">
               <%= cache ["footer-col-3", Date.today] do %>
-                <h6 class="subheader">Harman Brands</h6>
+                <h6 class="subheader">HARMAN Brands</h6>
                 <ul>
                   <% all_brands.each do |brand| %>
                     <li><%= link_to brand.name, brand %></li>
