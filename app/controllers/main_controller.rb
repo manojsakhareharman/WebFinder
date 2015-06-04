@@ -43,6 +43,13 @@ class MainController < ApplicationController
                         changefreq: 'monthly', priority: 0.7 }
           end
         end
+        @pages << { url: training_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.3 }
+        @pages << { url: contacts_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.3 }
+        @pages << { url: consultants_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.4 }
+        @pages << { url: service_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.2 }
+        @pages << { url: service_centers_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.3 }
+        @pages << { url: new_service_center_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.3 }
+        @pages << { url: service_center_login_url, updated_at: 1.week.ago, changefreq: 'weekly', priority: 0.2 }
       }
     end
   end
