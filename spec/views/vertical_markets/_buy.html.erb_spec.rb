@@ -19,7 +19,7 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     end
 
     it "should use infographic as 'buy' section" do
-      skip "Finalize infographic"
+      expect(rendered).to have_css("img.infographic")
     end
 
     it "shows a leadgen button to help me get started" do

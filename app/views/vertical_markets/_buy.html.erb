@@ -1,57 +1,49 @@
 <div class="container buy-container" data-magellan-destination="buy">
-<a name="buy"></a>
-  <div class="row">
-    <div class="large-8 large-offset-2 columns">
+  <a name="buy"></a>
 
-      <% if vertical_market.retail? %>
+  <% if vertical_market.retail? %>
+    <div class="row">
+      <div class="large-8 large-offset-2 columns text-center">
 
         <%# TODO: enable caching once changes settle down %>
         <%#= cache ["retailers_section", Date.today] do %>
           <% retailers = OnlineRetailer.all %>
           <% if SiteSetting.where(name: "store_link").exists? || retailers.count > 0 %>
 
-            <div class="row">
-              <div class="large-12 columns text-center">
+            <% if SiteSetting.where(name: "store_link").exists? %>
+              <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
+              <br/>
+              <%= link_to "Shop Now", SiteSetting.value("store_link"), target: "_blank", class: "secondary radius button" %>
+              <br/>
+            <% end %>
 
-                <% if SiteSetting.where(name: "store_link").exists? %>
-                  <h4><%= SiteSetting.value("buy_direct_from_harman_headline") %></h4>
-                  <br/>
-                  <%= link_to "Shop Now", SiteSetting.value("store_link"), target: "_blank", class: "secondary radius button" %>
-                  <br/>
+            <% if retailers.count > 0 %>
+              <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
+              <br/>
+              <% retailers.order("RAND()").each do |online_retailer| %>
+                <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
+                  <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
                 <% end %>
-
-                <% if retailers.count > 0 %>
-                  <h4><%= SiteSetting.value("buy_from_online_retailer_headline") %></h4>
-                  <br/>
-                  <% retailers.order("RAND()").each do |online_retailer| %>
-                    <%= link_to online_retailer.url, class: "retailer", target: "_blank" do %>
-                      <%= image_tag online_retailer.logo.url(:medium), alt: online_retailer.name %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-
-              </div>
-            </div>
+              <% end %>
+            <% end %>
 
           <% end %>
         <%# end %>
-
-      <% else %>
-        <div class="row">
-          <div class="large-12 columns">
-
-            <div style="height: 300px; padding-top: 150px; color: #eee;" class="text-center">
-              Infographic placeholder
-            </div>
-
-            <div class="text-center">
-              <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
-            </div>
-
-          </div>
-        </div>
-      <% end %>
-
+      </div>
     </div>
-  </div>
+
+  <% else %>
+    <div class="row">
+      <div class="large-12 columns text-center">
+
+        <%= image_tag("AVDesign_InfoGraphic.png", alt: "Buying A Professional Audio/Video Solution", class: "infographic") %>
+
+        <div>
+          <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
 </div>
