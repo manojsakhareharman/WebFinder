@@ -11,9 +11,11 @@
           <% vertical_market.featured_case_studies.each do |case_study| %>
             <li>
               <div class="panel dark-panel case-study">
-                <div class="text-center">
-                  <%= link_to image_tag(case_study.banner.url(:small)), [vertical_market, case_study] %>
-                </div>
+                <% if case_study.banner.present? || ENV['show_placeholders'] == "true" %>
+                  <div class="text-center">
+                    <%= link_to image_tag(case_study.banner.url(:small)), [vertical_market, case_study] %>
+                  </div>
+                <% end %>
                 <h6 class="subheader"><%= link_to case_study.headline, [vertical_market, case_study]  %></h6>
                 <div class="cs-descr"><%= raw case_study.description %></div>
                 <%= link_to "more", [vertical_market, case_study], class: "tiny radius button" %>

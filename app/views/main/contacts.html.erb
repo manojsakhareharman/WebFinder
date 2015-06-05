@@ -18,7 +18,9 @@
               <%= link_to brand.support_url, target: "_blank" do %>
                 <div class="panel text-center" data-equalizer-watch="brands">
                   <div class="brand-logo">
-                    <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                      <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% end %>
                   </div>
                   <p><%= brand.name %> Support</p>
                 </div>
@@ -29,7 +31,9 @@
               <%= link_to brand.url, target: "_blank" do %>
                 <div class="panel text-center" data-equalizer-watch="brands">
                   <div class="brand-logo">
-                    <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                      <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% end %>
                   </div>
                   <p><%= brand.name %> Info</p>
                 </div>

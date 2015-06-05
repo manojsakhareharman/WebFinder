@@ -18,7 +18,9 @@
               <%= link_to brand.training_url, target: "_blank" do %>
                 <div class="panel text-center" data-equalizer-watch="brands">
                   <div class="brand-logo">
-                    <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                      <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                    <% end %>
                   </div>
                   <p><%= brand.name %> Training</p>
                 </div>

@@ -22,6 +22,7 @@ cheetahmail_aid: "1234567"
 cheetahmail_sub: "98765432"
 cheetahmail_username: cheetah-user
 cheetahmail_password: cheetah-pass
+show_placeholders: "true"
 
 production:
   harmanpro_database_password: database_password
@@ -30,4 +31,5 @@ production:
   cheetahmail_sub: "98765432"
   cheetahmail_username: cheetah-user
   cheetahmail_password: cheetah-pass
+  show_placeholders: "false"
 

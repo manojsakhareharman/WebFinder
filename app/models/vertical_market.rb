@@ -50,4 +50,8 @@ class VerticalMarket < ActiveRecord::Base
     @featured_case_studies ||= case_studies.order("RAND()").limit(limit)
   end
 
+  def all_diagrams_present?
+    !!!( reference_systems.map{ |rs| rs.system_diagram.present? }.include?(false) )
+  end
+
 end

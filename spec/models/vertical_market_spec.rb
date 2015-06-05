@@ -69,6 +69,28 @@ RSpec.describe VerticalMarket, :type => :model do
         expect(@child_vertical.retail?).to be(false)
       end
     end
+
+    describe "#all_diagrams_present?" do
+      it "is true if all its reference systems have diagrams" do
+        reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
+        reference_system.system_diagram = File.new(Rails.root.join('spec', 'fixtures', 'test.jpg'))
+        reference_system.save
+
+        @child_vertical.reload
+
+        expect(reference_system.system_diagram.present?).to be(true)
+        expect(@child_vertical.all_diagrams_present?).to be(true)
+      end
+
+      it "is false if any reference system don't have diagrams" do
+        reference_system = FactoryGirl.create(:reference_system, vertical_market: @child_vertical)
+
+        @child_vertical.reload
+
+        expect(reference_system.system_diagram.present?).to be(false)
+        expect(@child_vertical.all_diagrams_present?).to be(false)
+      end
+    end
   end
 
   describe "friendly id" do
