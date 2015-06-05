@@ -49,7 +49,7 @@ feature "Registering to become a service center" do
     fill_in "Zip", with: sc.zip
     fill_in "Phone", with: sc.phone
     fill_in "Email", with: sc.email
-    check "I am willing and able to service all Harman" #...
+    check "I am willing and able to service all HARMAN" #...
   end
 
 end

@@ -28,8 +28,8 @@ VerticalMarket.create([
 SiteSetting.create([
   { name: "homepage-main-headline", content: "Homepage Main Headline" },
   { name: "homepage-vertical-markets-headline", content: "Vertical Markets Headline" },
-  { name: "resource-library-sidebar-title", content: "From The Harman Resource Library" },
-  { name: "hef-sidebar-title", content: "Harman Equipment Financing" },
+  { name: "resource-library-sidebar-title", content: "From The HARMAN Resource Library" },
+  { name: "hef-sidebar-title", content: "HARMAN Equipment Financing" },
   { name: "hef-description", content: "Our flexible finance programs and unbeatable rates make it easy for you to get the equipment you really want and need." },
   { name: "subheader-help-find-installer", content: "Need help locating an AV Consultant or System Installer?" },
   { name: "help-find-installer-description", content: "We've worked with the top system consultants and installers throughout the world. Let us help you get connected with a partner who is right for your project." },
@@ -37,8 +37,8 @@ SiteSetting.create([
   { name: "hef-link", content: "http://www.harmanequipmentfinance.com" },
   { name: "thanks", content: "Thanks!"},
   { name: "contact-thankyou-message", content: "Thank you for contacting us. We will route your inquiry to the right person and get back with you shortly."},
-  { name: "leadgen-title", content: "Connect With Harman"},
-  { name: "leadgen-intro", content: "Tell us about your project. Complete the form below to connect with Harman."}
+  { name: "leadgen-title", content: "Connect With HARMAN"},
+  { name: "leadgen-intro", content: "Tell us about your project. Complete the form below to connect with HARMAN."}
 ])
 
 Brand.create([
