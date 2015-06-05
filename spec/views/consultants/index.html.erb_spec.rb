@@ -40,6 +40,7 @@ RSpec.describe "consultants/index.html.erb", as: :view do
 
   it "has loan program info" do
     expect(rendered).to have_content "LOAN PROGRAM PARAGRAPH"
+    expect(rendered).to have_link "Consignment Form"
   end
 
 end
