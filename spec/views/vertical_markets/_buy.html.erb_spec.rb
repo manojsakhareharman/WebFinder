@@ -7,6 +7,8 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     FactoryGirl.create(:site_setting, name: 'store_link', content: 'http://shop.harmanpro.com')
     FactoryGirl.create(:site_setting, name: 'buy_direct_from_harman_headline', content: 'Buy Direct From Us')
     FactoryGirl.create(:site_setting, name: "buy_from_online_retailer_headline", content: "Buy From A Retailer")
+    FactoryGirl.create(:site_setting, name: "installed-buy-headline", content: "AV System Design")
+    FactoryGirl.create(:site_setting, name: "installed-buy-paragraph", content: "In 8 Easy Steps")
     @retailer = FactoryGirl.create(:online_retailer)
     @vertical_market = FactoryGirl.create(:vertical_market)
     @reference_system = FactoryGirl.create(:reference_system, vertical_market: @vertical_market)
@@ -19,6 +21,8 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
     end
 
     it "should use infographic as 'buy' section" do
+      expect(rendered).to have_content("AV System Design")
+      expect(rendered).to have_content("In 8 Easy Steps")
       expect(rendered).to have_css("img.infographic")
     end
 
@@ -50,6 +54,11 @@ RSpec.describe "vertical_markets/_buy.html.erb", :type => :view do
       expect(rendered).to have_content("Buy From A Retailer")
       expect(rendered).to have_link(@retailer.name, href: @retailer.url)
       expect(rendered).to have_css("img[@src='#{@retailer.logo.url(:medium)}']")
+    end
+
+    it "won't have installed audio buy section" do
+      expect(rendered).not_to have_content("AV System Design")
+      expect(rendered).not_to have_content("In 8 Easy Steps")
     end
   end
 

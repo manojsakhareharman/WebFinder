@@ -34,11 +34,13 @@
 
   <% else %>
     <div class="row">
-      <div class="large-12 columns text-center">
+      <div class="large-12 columns">
+        <h2><%= SiteSetting.value("installed-buy-headline") %></h2>
+        <p><%= raw textilize SiteSetting.value("installed-buy-paragraph") %></p>
 
-        <%= image_tag("AVDesign_InfoGraphic.png", alt: "Buying A Professional Audio/Video Solution", class: "infographic") %>
-
-        <div>
+        <div class="text-center">
+          <%= image_tag("AVDesign_InfoGraphic.png", alt: "Buying A Professional Audio/Video Solution", class: "infographic") %>
+          <br/>
           <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
         </div>
 

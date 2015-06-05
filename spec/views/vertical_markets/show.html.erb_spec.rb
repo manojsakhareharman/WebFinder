@@ -42,7 +42,7 @@ describe "vertical_markets/show.html.erb" do
     end
 
     it "has headline and description" do
-      expect(rendered).to have_css("h2", text: @vertical_market.headline)
+      expect(rendered).to have_css("h3", text: @vertical_market.headline)
       expect(rendered).to have_css("div.description", text: @vertical_market.description)
     end
   end

@@ -13,7 +13,7 @@ RSpec.describe "vertical_markets/_learn.html.erb", :type => :view do
   end
 
   it "shows vertical market description and headline" do
-    expect(rendered).to have_css("h2", text: @vertical_market.headline)
+    expect(rendered).to have_css("h3", text: @vertical_market.headline)
     expect(rendered).to have_content(@vertical_market.description)
   end
 
