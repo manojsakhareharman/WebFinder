@@ -43,9 +43,18 @@
         <p><%= raw textilize SiteSetting.value("installed-buy-paragraph") %></p>
 
         <div class="text-center">
-          <%= image_tag("AVDesign_InfoGraphic.png", alt: "Buying A Professional Audio/Video Solution", class: "infographic") %>
-          <br/>
-          <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
+          <% (1..8).each do |i| %>
+            <%= image_tag("install_buy/button-0#{i}.png",
+              class: "infographic",
+              mouseover: asset_path("install_buy/button-0#{i}_hover.png")
+             ) %>
+          <% end %>
+
+          <p>
+            <br/>
+            <%= link_to SiteSetting.value("button-help-me-get-started"), new_lead_path, class: "small radius button" %>
+          </p>
+
         </div>
 
       </div>
