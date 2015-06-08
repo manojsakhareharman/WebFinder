@@ -46,7 +46,10 @@
           <% (1..8).each do |i| %>
             <%= image_tag("install_buy/button-0#{i}.png",
               class: "infographic",
-              mouseover: asset_path("install_buy/button-0#{i}_hover.png")
+              data: {
+                original: asset_path("install_buy/button-0#{i}.png"),
+                hover: asset_path("install_buy/button-0#{i}_hover.png")
+              }
              ) %>
           <% end %>
 

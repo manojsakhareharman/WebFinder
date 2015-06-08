@@ -16,6 +16,7 @@
 //= require_tree ./app
 //= require foundation
 //= require consultants
+//= require vertical_markets
 // require_tree .
 
 $(function(){
