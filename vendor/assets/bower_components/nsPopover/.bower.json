@@ -1,6 +1,6 @@
 {
   "name": "nsPopover",
-  "version": "0.6.3",
+  "version": "0.6.7",
   "homepage": "https://github.com/nohros/nsPopover",
   "description": "Popover for angularjs library",
   "authors": [
@@ -21,6 +21,7 @@
     "node_modules",
     "bower_components",
     "vendor",
+    "example",
     "test",
     "tests",
     ".idea"
@@ -28,11 +29,11 @@
   "dependencies": {
     "angular": "~1.2.9"
   },
-  "_release": "0.6.3",
+  "_release": "0.6.7",
   "_resolution": {
     "type": "version",
-    "tag": "0.6.3",
-    "commit": "f1ccac0c6caad9670cca9f7113dd196fce94db9f"
+    "tag": "0.6.7",
+    "commit": "f81852acc063f1139cbfb12aabe1bfa6772b180d"
   },
   "_source": "git://github.com/nohros/nsPopover.git",
   "_target": "*",

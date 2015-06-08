@@ -1480,7 +1480,16 @@ input[type='checkbox'] {
     line-height: 1.2;
   }
   &.case-study {
-    img { width: 100% }
+    div.text-center {
+      background: $black;
+      overflow: hidden;
+      @media only screen and (min-width: 641px) {
+        height: 115px;
+      }
+    }
+    img {
+      width: 100%;
+    }
   }
 }
 .case_studies {

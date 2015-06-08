@@ -1,7 +1,7 @@
 $popover-bg-color: #fff !default;
 $popover-border-color: #d2d2d2 !default;
 
-$popover-triangle-size: 10px !default;
+$popover-triangle-size: 11px !default;
 $popover-triangle-color: $popover-bg-color !default;
 $popover-triangle-border-color: $popover-border-color !default;
 
@@ -147,13 +147,14 @@ $popover-triangle-border-color: $popover-border-color !default;
 
     li {
       list-style-type: none;
-    }
-    div.columns {
-      h6 {
-        margin-top: 0;
-      }
-      img {
-        margin-top: 4px;
+
+      a {
+        padding: 0.1875rem 0.625rem;
+        display: block;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
       }
     }
   }
