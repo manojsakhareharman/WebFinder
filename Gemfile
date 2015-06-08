@@ -17,7 +17,7 @@ gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
 gem 'RedCloth'
-gem 'foundation-rails', '~> 5.4.5' # After this, getting incompatible units errors
+gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id'
 gem 'paperclip'
 gem 'acts_as_list'
