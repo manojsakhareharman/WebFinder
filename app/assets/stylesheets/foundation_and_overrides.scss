@@ -1419,11 +1419,10 @@ input[type='checkbox'] {
 .top-bar-section {
   li {
     &.has-form {
-      padding-top: 6px;
       .button {
+        padding-top: rem-calc(4);
         text-transform: lowercase;
         font-weight: 100;
-        font-size: rem-calc(14);
       }
     }
     @media only screen and (min-width: 640px) and (max-width: 800px) {
