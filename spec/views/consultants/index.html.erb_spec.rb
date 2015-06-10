@@ -11,6 +11,7 @@ RSpec.describe "consultants/index.html.erb", as: :view do
 
   before :each do
     expect(SiteSetting).to receive(:value).with("consultant-portal-welcome-paragraph").and_return("WELCOME PARAGRAPH")
+    expect(SiteSetting).to receive(:value).with("consultant-portal-loan-program-headline").and_return("LOAN PROGRAM HEADLINE")
     expect(SiteSetting).to receive(:value).with("consultant-portal-loan-program-paragraph").and_return("LOAN PROGRAM PARAGRAPH")
     expect(SiteSetting).to receive(:exists?).with(name: "consultant-portal-loan-program-paragraph").and_return(true)
 
@@ -39,6 +40,7 @@ RSpec.describe "consultants/index.html.erb", as: :view do
   end
 
   it "has loan program info" do
+    expect(rendered).to have_content "LOAN PROGRAM HEADLINE"
     expect(rendered).to have_content "LOAN PROGRAM PARAGRAPH"
     expect(rendered).to have_link "Consignment Form"
   end
