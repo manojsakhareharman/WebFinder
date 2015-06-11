@@ -70,6 +70,13 @@ img.no-resize { max-width: none; }
         }
       }
     }
+    .jslider-bg {
+      i {
+        height: 6px;
+        background-image: none;
+        background-color: #555;
+      }
+    }
     .jslider-value {
       display: none;
     }
