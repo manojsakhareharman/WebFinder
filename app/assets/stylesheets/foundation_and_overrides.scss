@@ -1474,11 +1474,12 @@ input[type='checkbox'] {
     margin-bottom: 10px;
   }
   .cs-descr {
-    height: 70px;
+    height: 90px;
     overflow: hidden;
     line-height: 1.2;
   }
   &.case-study {
+    position: relative;
     div.text-center {
       background: $black;
       overflow: hidden;
@@ -1488,6 +1489,11 @@ input[type='checkbox'] {
     }
     img {
       width: 100%;
+    }
+    .button {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
     }
   }
 }

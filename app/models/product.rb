@@ -26,11 +26,11 @@ class Product < ActiveRecord::Base
       [:brand_name, :name]
     ]
   end
+  # :nocov:
 
   def should_generate_new_friendly_id?
     true
   end
-  # :nocov:
 
   def brand_name
     brand.name

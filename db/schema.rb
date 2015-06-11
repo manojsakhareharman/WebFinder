@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527162158) do
+ActiveRecord::Schema.define(version: 20150611195144) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 20150527162158) do
   add_index "brands", ["slug"], name: "index_brands_on_slug", using: :btree
 
   create_table "case_studies", force: :cascade do |t|
-    t.string   "name",                limit: 255
     t.string   "headline",            limit: 255
     t.text     "description",         limit: 65535
     t.integer  "vertical_market_id",  limit: 4

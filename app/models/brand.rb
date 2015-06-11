@@ -57,11 +57,9 @@ class Brand < ActiveRecord::Base
     self.name.split(/\s/).first
   end
 
-  # :nocov:
   def should_generate_new_friendly_id?
     true
   end
-  # :nocov:
 
   def friendly_url
     self.url.to_s.gsub(/^https?\:\/\//, '')

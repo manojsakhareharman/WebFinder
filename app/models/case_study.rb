@@ -13,22 +13,22 @@ class CaseStudy < ActiveRecord::Base
   }, default_url: "missing/banners/:style.jpg"
 
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
-  validates :name, presence: true
+  validates :headline, presence: true, uniqueness: { scope: :vertical_market_id }
   validates :vertical_market, presence: true
 
-  # :nocov:
   def slug_candidates
     [
-      :name,
       :headline,
-      [:name, :headline]
+      [:vertical_market_name, :headline]
     ]
   end
 
   def should_generate_new_friendly_id?
     true
   end
-  # :nocov:
 
+  def vertical_market_name
+    vertical_market.name
+  end
 
 end

@@ -21,6 +21,7 @@ module Harmanpro
     #
 
     config.assets.paths << Rails.root.join("vendor", "assets", "bower_components")
+    config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "angular-awesome-slider", "dist", "img")
     config.assets.paths << Rails.root.join("app", "assets", "documents")
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf)$)

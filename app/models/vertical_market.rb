@@ -24,7 +24,6 @@ class VerticalMarket < ActiveRecord::Base
     where("parent_id IS NULL or parent_id <= 0")
   end
 
-  # :nocov:
   def slug_candidates
     [
       :name,
@@ -36,7 +35,6 @@ class VerticalMarket < ActiveRecord::Base
   def should_generate_new_friendly_id?
     true
   end
-  # :nocov:
 
   def retail?
     reference_systems.where(retail: true).length > 0

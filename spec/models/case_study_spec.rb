@@ -14,7 +14,7 @@ RSpec.describe CaseStudy, :type => :model do
     it "generates a new slug when name changes" do
       old_slug = @case_study.slug
 
-      @case_study.name = "Yo Mama #{@case_study.name}"
+      @case_study.headline = "Yo Mama #{@case_study.headline}"
       @case_study.save
       @case_study.reload
 
@@ -24,7 +24,7 @@ RSpec.describe CaseStudy, :type => :model do
     it "generates a new slug when name changes" do
       old_slug = @case_study.slug
 
-      @case_study.name = "Yo Mama #{@case_study.name}"
+      @case_study.headline = "Yo Mama #{@case_study.headline}"
       @case_study.save
       @case_study.reload
 
