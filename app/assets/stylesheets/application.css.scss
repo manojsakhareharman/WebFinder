@@ -17,7 +17,7 @@
  *
  *= require_self
  *= require foundation_and_overrides
- *= require angular-slider/slider
+ *= require angular-awesome-slider/dist/css/angular-awesome-slider.min
  *= require nsPopover/sass/ns-popover
  *= require animate
  *= require service
@@ -38,3 +38,51 @@ img.help-icon {
   cursor: pointer;
 }
 img.no-resize { max-width: none; }
+
+.jslider {
+  margin-left: 2px;
+  margin-top: 18px;
+  table thead tr th, table tfoot tr th, table tfoot tr td, table tbody tr th, table tbody tr td, table tr td {
+    line-height: 1.4;
+    div.jslider-scale {
+      span {
+        text-align: center;
+        border: none;
+        width: 50px;
+        margin-left: -26px;
+        ins {
+          margin-top: 2px;
+          color: white;
+          font-size: 10px;
+        }
+        &:first-child {
+          margin-left: 1px;
+          text-align: left;
+        }
+        &:last-child {
+          width: 60px;
+          margin-left: -61px;
+          text-align: right !important;
+          ins {
+            position: absolute;
+            right: 0px;
+          }
+        }
+      }
+    }
+    .jslider-value {
+      display: none;
+    }
+    .jslider-pointer {
+      top: -8px;
+      background-image: none;
+      background: white;
+      border-radius: 4px;
+      border: 1px solid #444;
+      width: 10px;
+      height: 22px;
+      margin-left: 0;
+    }
+  }
+}
+

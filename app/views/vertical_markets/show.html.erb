@@ -64,17 +64,16 @@
 
             <% if @vertical_market.reference_systems.count > 1 %>
               <div ng-show="systems.length > 1">
-                <slider
-                  floor="1"
-                  ceiling="{{ systems.length }}"
-                  step="1"
-                  precision="0"
-                  ng-model="slider_pos">
-                </slider>
-
-                <ul class="small-block-grid-{{ systems.length }} medium-block-grid-{{ systems.length }} large-block-grid-{{ systems.length }}">
-                  <li ng-repeat="system in systems">{{ system.slider_name }}</li>
-                </ul>
+                <input slider
+                  ng-model="slider_pos"
+                  options="{
+                    from: 1,
+                    to: systems.length,
+                    step: 1,
+                    smooth: true,
+                    scale: system_labels,
+                  }"
+                />
               </div>
             <% end %>
 

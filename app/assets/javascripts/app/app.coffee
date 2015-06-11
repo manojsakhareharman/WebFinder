@@ -1,5 +1,5 @@
 angular.module 'harmanpro', [
-  'ui.slider'
+  'angularAwesomeSlider'
   'ngResource'
   'nsPopover'
 ]

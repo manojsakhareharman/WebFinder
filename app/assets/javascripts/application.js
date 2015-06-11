@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require angular-resource
-//= require angular-slider/slider
+//= require angular-awesome-slider/dist/angular-awesome-slider.min
 //= require nsPopover
 //= require_tree ./app
 //= require foundation

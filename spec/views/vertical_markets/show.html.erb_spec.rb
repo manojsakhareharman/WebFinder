@@ -76,7 +76,7 @@ describe "vertical_markets/show.html.erb" do
       end
 
       it "shows the slider" do
-        expect(rendered).to have_css('slider')
+        expect(rendered).to have_css("input[@slider]")
       end
     end
 
