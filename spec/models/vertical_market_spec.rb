@@ -18,6 +18,26 @@ RSpec.describe VerticalMarket, :type => :model do
   it { should respond_to(:banner) }
   it { should respond_to(:friendly_id) }
 
+  describe "deleting" do
+    it "raises an error when related case studies exist" do
+      case_study = FactoryGirl.create(:case_study)
+      vertical_market = case_study.vertical_market
+
+      vertical_market.destroy
+
+      expect(VerticalMarket.exists?(vertical_market.id)).to be true
+    end
+
+    it "raises an error when related reference systems exist" do
+      reference_system = FactoryGirl.create(:reference_system)
+      vertical_market = reference_system.vertical_market
+
+      vertical_market.destroy
+
+      expect(VerticalMarket.exists?(vertical_market.id)).to be true
+    end
+  end
+
   context "class methods" do
     it "#parent_verticals should return all the parent verticals" do
       parents = VerticalMarket.parent_verticals

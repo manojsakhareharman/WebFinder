@@ -3,7 +3,7 @@ class ReferenceSystem < ActiveRecord::Base
   friendly_id :slug_candidates
 
   belongs_to :vertical_market
-  has_many :reference_system_product_types
+  has_many :reference_system_product_types, dependent: :destroy
 
   has_attached_file :banner,
     styles: {

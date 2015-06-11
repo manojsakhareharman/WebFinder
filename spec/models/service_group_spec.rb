@@ -11,6 +11,19 @@ RSpec.describe ServiceGroup, type: :model do
   it { should respond_to :service_center_service_groups }
   it { should respond_to :service_centers }
 
+  describe "deleting" do
+    it "deletes any related ServiceCenterServiceGroups" do
+      service_center_service_group = FactoryGirl.create(:service_center_service_group)
+      service_center = service_center_service_group.service_center
+      service_group = service_center_service_group.service_group
+
+      service_group.destroy
+
+      expect(ServiceCenterServiceGroup.exists?(service_center_service_group.id)).to be(false)
+      expect(ServiceCenter.exists?(service_center.id)).to be(true)
+    end
+  end
+
   it "#names collects group names" do
     names = ServiceGroup.names
 

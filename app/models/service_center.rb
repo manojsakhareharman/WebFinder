@@ -1,5 +1,5 @@
 class ServiceCenter < ActiveRecord::Base
-  has_many :service_center_service_groups, inverse_of: :service_center
+  has_many :service_center_service_groups, inverse_of: :service_center, dependent: :destroy
   has_many :service_groups, through: :service_center_service_groups
 
   validates :willingness, acceptance: true, on: :create

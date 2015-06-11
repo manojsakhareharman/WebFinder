@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :brand
+  has_many :reference_system_product_type_products, dependent: :destroy
 
   has_attached_file :photo,
     styles: {

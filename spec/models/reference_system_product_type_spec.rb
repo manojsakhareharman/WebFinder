@@ -16,6 +16,19 @@ RSpec.describe ReferenceSystemProductType, :type => :model do
     it { should respond_to(:products) }
   end
 
+  describe "deleting" do
+    it "should delete corresponding ReferenceSystemProductTypeProducts" do
+      rsptp = FactoryGirl.create(:reference_system_product_type_product)
+      reference_system_product_type = rsptp.reference_system_product_type
+      product = rsptp.product
+
+      reference_system_product_type.destroy
+
+      expect(ReferenceSystemProductTypeProduct.exists?(rsptp.id)).to be false
+      expect(Product.exists?(product.id)).to be true
+    end
+  end
+
   describe "icon coordinates" do
     it { should respond_to(:top) }
     it { should respond_to(:left) }

@@ -14,6 +14,19 @@ RSpec.describe Product, :type => :model do
   it { should respond_to(:ecommerce_id) }
   it { should respond_to(:friendly_id) }
 
+  describe "deleting" do
+    it "should delete any ReferenceSystemProductTypeProducts" do
+      rsptp = FactoryGirl.create(:reference_system_product_type_product)
+      reference_system_product_type = rsptp.reference_system_product_type
+      product = rsptp.product
+
+      product.destroy
+
+      expect(ReferenceSystemProductTypeProduct.exists?(rsptp.id)).to be false
+      expect(ReferenceSystemProductType.exists?(reference_system_product_type.id)).to be true
+    end
+  end
+
   describe "ecommerce" do
     it "should generate a 'buy now' URL" do
       @product.update_column(:ecommerce_id, "abc123")

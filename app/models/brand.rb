@@ -9,6 +9,8 @@ class Brand < ActiveRecord::Base
   validates :training_url, format: { with: URI.regexp }, allow_blank: true
   validates :tech_url, format: { with: URI.regexp }, allow_blank: true
 
+  has_many :products, dependent: :restrict_with_error
+
   has_attached_file :logo,
     styles: {
       large: "250x156",

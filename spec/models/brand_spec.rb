@@ -18,6 +18,17 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:contact_info_for_consultants) }
   it { should respond_to(:api_url) }
 
+  describe "deleting" do
+    it "raises an error when related products exist" do
+      product = FactoryGirl.create(:product)
+      brand = product.brand
+
+      brand.destroy
+
+      expect(Brand.exists?(brand.id)).to be true
+    end
+  end
+
   it "#all_for_site loads all brands in alphabetical order except service-only brands" do
     brand1 = FactoryGirl.create(:brand, name: "ZZZZ")
     brand2 = FactoryGirl.create(:brand, name: "AAAAA")

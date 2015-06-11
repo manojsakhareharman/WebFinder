@@ -2,8 +2,8 @@ class VerticalMarket < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates
 
-  has_many :case_studies
-  has_many :reference_systems, -> { order("position ASC") }
+  has_many :case_studies, dependent: :restrict_with_error
+  has_many :reference_systems, -> { order("position ASC") }, dependent: :restrict_with_error
   acts_as_tree order: "name"
 
   has_attached_file :banner,

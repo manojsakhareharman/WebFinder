@@ -34,6 +34,19 @@ RSpec.describe ReferenceSystem, :type => :model do
     it { should respond_to(:reference_system_product_types) }
   end
 
+  describe "deleting" do
+    it "should delete related ReferenceSystemProductTypes" do
+      reference_system_product_type = FactoryGirl.create(:reference_system_product_type)
+      reference_system = reference_system_product_type.reference_system
+      product_type = reference_system_product_type.product_type
+
+      reference_system.destroy
+
+      expect(ReferenceSystemProductType.exists?(reference_system_product_type.id)).to be false
+      expect(ProductType.exists?(product_type.id)).to be true
+    end
+  end
+
   describe "friendly id" do
     it "generates a new slug when name changes" do
       old_slug = @reference_system.slug
