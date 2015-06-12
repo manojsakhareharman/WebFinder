@@ -31,4 +31,8 @@ class CaseStudy < ActiveRecord::Base
     vertical_market.name
   end
 
+  def name
+    headline
+  end
+
 end

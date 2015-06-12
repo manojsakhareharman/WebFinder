@@ -9,6 +9,7 @@ RSpec.describe CaseStudy, :type => :model do
   it { should respond_to(:vertical_market) }
   it { should respond_to(:friendly_id) }
   it { should respond_to(:banner) }
+  it { should respond_to(:name) } # alias for headline for backwards compat
 
   describe "friendly id" do
     it "generates a new slug when name changes" do
