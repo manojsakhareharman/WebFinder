@@ -32,7 +32,7 @@ gem 'httparty'
 gem 'rails_autolink'
 gem 'cheetah_mail', "~> 0.6.0"
 gem 'ransack' # using for service center search
-
+gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do

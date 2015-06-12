@@ -32,4 +32,5 @@ production:
   cheetahmail_username: cheetah-user
   cheetahmail_password: cheetah-pass
   show_placeholders: "false"
+  exception_recipients: "you@something.com, someoneelse@them.com"
 
