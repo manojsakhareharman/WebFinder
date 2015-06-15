@@ -15,8 +15,8 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '10.10.23.15', user: 'hmg', roles: %w{admin web app}
-server 'rackspace1', user: 'hmg', roles: %w{node2 web app db}
+server 'rackspace1', user: 'hmg', roles: %w{admin web app db}
+server '10.10.23.15', user: 'hmg', roles: %w{node2 web app}
 
 namespace :deploy do
 
