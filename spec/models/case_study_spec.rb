@@ -33,5 +33,9 @@ RSpec.describe CaseStudy, :type => :model do
       expect(@case_study.slug.present?).to be(true)
     end
   end
+
+  it "#name should be the headline" do
+    expect(@case_study.name).to eq(@case_study.headline)
+  end
 end
 
