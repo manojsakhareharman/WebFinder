@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin
-  revision: 433e95a2df18ef2555bc952db60bc0535259ed3b
+  revision: e6d0c3f635cb70525da025d951ad291d0c9913a7
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -228,6 +228,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
     mono_logger (1.1.0)
@@ -244,11 +245,12 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
-    paperclip (4.2.3)
+    paperclip (4.3.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
+      mimemagic (= 0.3.0)
     phantomjs (1.9.8.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
@@ -317,7 +319,7 @@ GEM
       rspec-mocks (~> 3.3.0)
     rspec-autotest (1.0.0)
       rspec-core (>= 2.99.0.beta1, < 4.0.0)
-    rspec-core (3.3.0)
+    rspec-core (3.3.1)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -325,7 +327,7 @@ GEM
     rspec-mocks (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
-    rspec-rails (3.3.1)
+    rspec-rails (3.3.2)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -441,6 +443,7 @@ DEPENDENCIES
   launchy
   mysql2
   paperclip
+  rack (< 1.6.3)
   rails (= 4.2.2)
   rails_autolink
   ransack
