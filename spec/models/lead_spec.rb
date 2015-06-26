@@ -15,17 +15,19 @@ RSpec.describe Lead, :type => :model do
 
   describe "marketing automation" do
     it "sends to cheetahmail list" do
+      lead = FactoryGirl.build(:lead)
       expect_any_instance_of(CheetahMail::CheetahMail).to receive(:mailing_list_update).and_return(true)
 
-      @lead.save
+      lead.save
     end
   end
 
   describe "emailing" do
     it "sends contact info to several configured recipients" do
-      expect(@lead).to receive(:notify_leadgen_recipients)
+      lead = FactoryGirl.build(:lead)
+      expect(lead).to receive(:notify_leadgen_recipients)
 
-      @lead.save
+      lead.save
     end
   end
 end
