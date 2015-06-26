@@ -34,7 +34,7 @@ jQuery ($) ->
 
           if data.images.length > 0
             img = data.images[0].image
-            $panel.append("<div class='text-center'><a href='#{ img.original }'><img src='#{ img.medium }'/></a></div><br/>")
+            $panel.append("<div class='text-center'><a href='#{ img.url }'><img src='#{ img.medium }'/></a></div><br/>")
 
           $panel.append("<h4>#{data.name}</h4><p>#{ data.brief }</p>" )
 
