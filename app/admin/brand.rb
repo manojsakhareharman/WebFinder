@@ -1,4 +1,6 @@
 ActiveAdmin.register Brand do
+  config.sort_order = 'name_asc'
+
   permit_params :name,
     :url,
     :downloads_page_url,
@@ -16,6 +18,11 @@ ActiveAdmin.register Brand do
 
   # :nocov:
   index do
+    column :logo do |b|
+      if b.logo_file_name.present?
+        image_tag b.logo.url(:tiny)
+      end
+    end
     column :name
     column :url
     column :show_on_main_site
@@ -25,6 +32,36 @@ ActiveAdmin.register Brand do
   end
 
   filter :name, as: :string
+
+  show do
+    attributes_table do
+      row :description do
+        raw(textilize(brand.description))
+      end
+      row :logo do
+        if brand.logo_file_name.present?
+          link_to(image_tag(brand.logo.url(:small)), brand.logo.url)
+        end
+      end
+      row :white_logo do
+        if brand.white_logo_file_name.present?
+          link_to(image_tag(brand.white_logo.url(:small)), brand.white_logo.url)
+        end
+      end
+      row :show_on_main_site
+      row :show_on_services_site
+      row :show_on_consultant_page
+      row :contact_info_for_consultants do
+        raw(textilize(brand.contact_info_for_consultants))
+      end
+      row :url
+      row :downloads_page_url
+      row :support_url
+      row :training_url
+      row :tech_url
+      row :api_url
+    end
+  end
 
   form html: {multipaart: true} do |f|
     f.inputs do

@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150611195144) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "service_department",     limit: 1,   default: false
-    t.boolean  "super_admin",            limit: 1,   default: true
+    t.boolean  "service_department",                 default: false
+    t.boolean  "super_admin",                        default: true
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 20150611195144) do
     t.string   "support_url",                  limit: 255
     t.string   "training_url",                 limit: 255
     t.string   "tech_url",                     limit: 255
-    t.boolean  "show_on_main_site",            limit: 1,     default: true
-    t.boolean  "show_on_services_site",        limit: 1,     default: true
-    t.boolean  "show_on_consultant_page",      limit: 1
+    t.boolean  "show_on_main_site",                          default: true
+    t.boolean  "show_on_services_site",                      default: true
+    t.boolean  "show_on_consultant_page"
     t.text     "contact_info_for_consultants", limit: 65535
     t.string   "api_url",                      limit: 255
   end
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20150611195144) do
   create_table "reference_systems", force: :cascade do |t|
     t.string   "name",                        limit: 255
     t.integer  "vertical_market_id",          limit: 4
-    t.boolean  "retail",                      limit: 1,     default: false
+    t.boolean  "retail",                                    default: false
     t.integer  "position",                    limit: 4
     t.string   "venue_size_descriptor",       limit: 255
     t.string   "headline",                    limit: 255
@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 20150611195144) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.string   "contact_name",   limit: 255
-    t.boolean  "active",         limit: 1,   default: true
+    t.boolean  "active",                     default: true
   end
 
   add_index "service_centers", ["active"], name: "index_service_centers_on_active", using: :btree
