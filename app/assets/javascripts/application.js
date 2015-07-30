@@ -22,7 +22,7 @@
 $(function(){
   $(document).foundation({
     "magellan-expedition": {
-      fixed_top: 60,
+      fixed_top: 100,
       destination_threshold: 85,
     },
     equalizer: {

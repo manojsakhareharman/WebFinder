@@ -16,7 +16,7 @@ RSpec.describe "layouts/application.html.erb", as: :view do
 
   describe "header" do
     it "has logo in top nav" do
-      expect(header).to have_css("img[@src='/assets/harman-logo.png']")
+      expect(header).to have_css("img[@src='/assets/harman-logo-white.png']")
     end
 
     it "links to consultant portal" do

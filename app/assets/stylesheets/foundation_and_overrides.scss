@@ -1,6 +1,6 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -58,7 +58,7 @@ $font-weight-medium: 400;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
-$primary-color: #008CBA;
+$primary-color: scale-color($harman-blue, $lightness: 25%); // #008CBA;
 $secondary-color: #f16521;
 $alert-color: #ff1133;
 $success-color: #43AC6A;
@@ -1330,11 +1330,11 @@ $panel-header-adjust: false;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: rgba($harman-blue, .9);
+$topbar-bg-color: $harman-blue;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: rem-calc(60);
+$topbar-height: rem-calc(100);
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1347,19 +1347,19 @@ $topbar-margin-bottom: 0;
 // $topbar-dropdown-link-bg: $oil;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: $white;
+$topbar-dropdown-toggle-color: scale-color($topbar-bg-color, $lightness: 30%);
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: $primary-color; //scale-color($topbar-bg-color, $lightness: 30%);
+$topbar-link-color: scale-color($topbar-bg-color, $lightness: 30%);
 $topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $white;
-// $topbar-link-weight: $font-weight-normal;
-$topbar-link-font-size: rem-calc(14);
+$topbar-link-weight: 200;
+$topbar-link-font-size: rem-calc(16);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: $topbar-link-bg;
+$topbar-link-bg-color-hover: scale-color($topbar-link-bg, $lightness: -8%);
 $topbar-link-bg-hover: $topbar-link-bg-color-hover;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1382,8 +1382,8 @@ $topbar-link-text-transform: uppercase;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: $font-weight-bold;
-// $topbar-menu-link-color: $white;
-// $topbar-menu-icon-color: $white;
+//$topbar-menu-link-color: $oil;
+//$topbar-menu-icon-color: $oil;
 // $topbar-menu-link-color-toggled: $jumbo;
 // $topbar-menu-icon-color-toggled: $jumbo;
 
@@ -1394,8 +1394,8 @@ $topbar-link-text-transform: uppercase;
 // $topbar-media-query: $medium-up;
 
 // Divider Styles
-// $topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
-// $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
+//$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: -8%);
+//$topbar-divider-border-top: solid 1px scale-color($base, $lightness: -14%);
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";
@@ -1421,7 +1421,7 @@ input[type='checkbox'] {
   li {
     &.has-form {
       .button {
-        padding-top: rem-calc(4);
+        padding-top: rem-calc(2);
         text-transform: lowercase;
         font-weight: 100;
       }
@@ -1431,6 +1431,15 @@ input[type='checkbox'] {
         padding-left: 8px !important;
         padding-right: 8px !important;
       }
+    }
+  }
+}
+ul.dropdown {
+  li {
+    height: rem-calc(50);
+    a {
+      height: rem-calc(50);
+      line-height: rem-calc(50) !important;
     }
   }
 }
