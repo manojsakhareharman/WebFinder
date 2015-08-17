@@ -9,6 +9,7 @@ ActiveAdmin.register Brand do
     :tech_url,
     :logo,
     :white_logo,
+    :by_harman_logo,
     :description,
     :show_on_main_site,
     :show_on_services_site,
@@ -48,6 +49,11 @@ ActiveAdmin.register Brand do
           link_to(image_tag(brand.white_logo.url(:small)), brand.white_logo.url)
         end
       end
+      row :by_harman_logo do
+        if brand.by_harman_logo_file_name.present?
+          link_to(image_tag(brand.by_harman_logo.url(:small)), brand.by_harman_logo.url)
+        end
+      end
       row :show_on_main_site
       row :show_on_services_site
       row :show_on_consultant_page
@@ -57,6 +63,7 @@ ActiveAdmin.register Brand do
       row :url
       row :downloads_page_url
       row :support_url
+      row :marketing_url
       row :training_url
       row :tech_url
       row :api_url
@@ -70,8 +77,10 @@ ActiveAdmin.register Brand do
       f.input :support_url, hint: "If present, appears on contacts page.", placeholder: "http://brand.name.com/support"
       f.input :training_url, hint: "If present, appears on the training page.", placeholder: "http://brand.name.com/training"
       f.input :tech_url, hint: "Appears on the service center login page if present.", placeholder: "http://tech.brand.com"
+      f.input :marketing_url, hint: "IE, marketing toolkit, marcomm bank, etc.", placeholder: "http://mark.eting.url"
       f.input :logo
       f.input :white_logo
+      f.input :by_harman_logo
       f.input :description
       f.input :show_on_main_site
       f.input :show_on_services_site

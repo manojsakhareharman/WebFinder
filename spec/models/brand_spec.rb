@@ -10,6 +10,7 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:url) }
   it { should respond_to(:logo) }
   it { should respond_to(:white_logo) }
+  it { should respond_to(:by_harman_logo) }
   it { should respond_to(:friendly_id) }
   it { should respond_to(:downloads_page_url) }
   it { should respond_to(:support_url) }

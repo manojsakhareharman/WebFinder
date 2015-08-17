@@ -4,7 +4,9 @@
 <div class="container main-container padded">
   <div class="row">
     <div class="large-8 large-offset-2 columns">
-      <% if @brand.logo.present? %>
+      <% if @brand.by_harman_logo.present? %>
+        <h1><%= image_tag @brand.by_harman_logo.url(:medium), alt: @brand.name %></h1>
+      <% elsif @brand.logo.present? %>
         <h1><%= image_tag @brand.logo.url(:medium), alt: @brand.name %></h1>
       <% else %>
         <h1><%= @brand.name %></h1>
@@ -19,6 +21,28 @@
         <p>Learn more at
           <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
         </p>
+      <% end %>
+
+      <% if @brand.by_harman_logo.present? || @brand.marketing_url.present? %>
+        <hr/>
+        <h4 class="subheader">Branding Resources</h4>
+
+        <% if @brand.by_harman_logo.present? %>
+          <%= link_to @brand.by_harman_logo.url(:original) do %>
+            <%= image_tag @brand.by_harman_logo.url(:small), alt: "#{ @brand.name } logo" %>
+          <% end %>
+        <% end %>
+
+        <%= link_to asset_path('HARMAN-BRAND-VISION-GUIDELINES_07.28.15.pdf') do %>
+          <%= image_tag 'branding_cover.jpg', alt: 'Harman Branding Guidelines' %>
+        <% end %>
+
+        <% if @brand.marketing_url.present? %>
+          <p>
+            <%= link_to 'More marketing resources', @brand.marketing_url, target: "_blank", class: "small radius button" %>
+          </p>
+        <% end %>
+
       <% end %>
     </div>
   </div>

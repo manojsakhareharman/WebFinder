@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.describe "brands/show.html.erb", as: :view do
 
   before(:all) do
-    @brand = FactoryGirl.create(:brand, description: "Super cool maker of widgets")
+    @brand = FactoryGirl.create(:brand,
+                                marketing_url: 'http://foo.bar',
+                                by_harman_logo: File.new(Rails.root.join('spec', 'fixtures', 'test.jpg')),
+                                description: "Super cool maker of widgets")
     assign(:brand, @brand)
   end
 
@@ -11,8 +14,8 @@ RSpec.describe "brands/show.html.erb", as: :view do
     render
   end
 
-  it "shows the brand logo" do
-    expect(rendered).to have_css("img[@src='#{@brand.logo.url(:medium)}'][@alt='#{@brand.name}']")
+  it "shows the brand logo (by harman)" do
+    expect(rendered).to have_css("img[@src='#{@brand.by_harman_logo.url(:medium)}'][@alt='#{@brand.name}']")
   end
 
   it "links to the brand external site" do
@@ -21,6 +24,18 @@ RSpec.describe "brands/show.html.erb", as: :view do
 
   it "has the brand description" do
     expect(rendered).to have_content @brand.description
+  end
+
+  it "links to the full size by harman logo" do
+    expect(rendered).to have_css("a[@href='#{@brand.by_harman_logo.url(:original)}']")
+  end
+
+  it "links to the branding style guide" do
+    expect(rendered).to have_link('Harman Branding Guidelines')
+  end
+
+  it "links to more marketing resources" do
+    expect(rendered).to have_link('More marketing resources', href: @brand.marketing_url)
   end
 
 end

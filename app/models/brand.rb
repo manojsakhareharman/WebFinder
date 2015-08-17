@@ -37,6 +37,19 @@ class Brand < ActiveRecord::Base
 
   validates_attachment_content_type :white_logo, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :by_harman_logo,
+    styles: {
+      large: "250x156",
+      medium: "125x78",
+      small: "90x57",
+      thumb: "83x52",
+      thumb_square: "64x64#",
+      circle: "72x72",
+      tiny: "32x32#"
+  }, default_url: "missing/logos/:style.jpg"
+
+  validates_attachment_content_type :by_harman_logo, content_type: /\Aimage\/.*\Z/
+
   def self.all_for_site
     where(show_on_main_site: true).order("UPPER(name)")
   end
