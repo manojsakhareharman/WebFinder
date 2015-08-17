@@ -56,7 +56,7 @@ ActiveAdmin.register Brand do
           link_to(image_tag(brand.by_harman_logo.url(:small)), brand.by_harman_logo.url)
         end
       end
-      rot :logo_collection do
+      row :logo_collection do
         if brand.logo_collection_file_name.present?
           link_to("Logo collection", brand.logo_collection.url)
         end
