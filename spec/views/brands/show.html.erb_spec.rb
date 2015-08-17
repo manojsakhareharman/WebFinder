@@ -31,10 +31,6 @@ RSpec.describe "brands/show.html.erb", as: :view do
     expect(rendered).to have_link("#{ @brand.name } logo collection")
   end
 
-  it "links to the branding style guide" do
-    expect(rendered).to have_link('Harman Branding Guidelines')
-  end
-
   it "links to more marketing resources" do
     expect(rendered).to have_link('More marketing resources', href: @brand.marketing_url)
   end
