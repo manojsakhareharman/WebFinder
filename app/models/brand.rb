@@ -50,6 +50,9 @@ class Brand < ActiveRecord::Base
 
   validates_attachment_content_type :by_harman_logo, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :logo_collection
+  validates_attachment_content_type :logo_collection, content_type: /\Aapp|zip|exe.*\Z/
+
   def self.all_for_site
     where(show_on_main_site: true).order("UPPER(name)")
   end

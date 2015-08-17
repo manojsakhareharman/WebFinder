@@ -5,6 +5,7 @@ RSpec.describe "brands/show.html.erb", as: :view do
   before(:all) do
     @brand = FactoryGirl.create(:brand,
                                 marketing_url: 'http://foo.bar',
+                                logo_collection: File.new(Rails.root.join('spec', 'fixtures', 'test.zip')),
                                 by_harman_logo: File.new(Rails.root.join('spec', 'fixtures', 'test.jpg')),
                                 description: "Super cool maker of widgets")
     assign(:brand, @brand)
@@ -26,8 +27,8 @@ RSpec.describe "brands/show.html.erb", as: :view do
     expect(rendered).to have_content @brand.description
   end
 
-  it "links to the full size by harman logo" do
-    expect(rendered).to have_css("a[@href='#{@brand.by_harman_logo.url(:original)}']")
+  it "links to the logo collection" do
+    expect(rendered).to have_link("#{ @brand.name } logo collection")
   end
 
   it "links to the branding style guide" do

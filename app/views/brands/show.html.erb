@@ -27,15 +27,32 @@
         <hr/>
         <h4 class="subheader">Branding Resources</h4>
 
-        <% if @brand.by_harman_logo.present? %>
-          <%= link_to @brand.by_harman_logo.url(:original) do %>
-            <%= image_tag @brand.by_harman_logo.url(:small), alt: "#{ @brand.name } logo" %>
-          <% end %>
-        <% end %>
+        <div class="row">
+          <div class="medium-6 columns">
 
-        <%= link_to asset_path('HARMAN-BRAND-VISION-GUIDELINES_07.28.15.pdf') do %>
-          <%= image_tag 'branding_cover.jpg', alt: 'Harman Branding Guidelines' %>
-        <% end %>
+            <% if @brand.logo_collection.present? %>
+              <%= link_to @brand.logo_collection.url do %>
+                <% if @brand.by_harman_logo.present? %>
+                  <%= image_tag @brand.by_harman_logo.url(:small), alt: "#{ @brand.name } logo collection" %>
+                <% else %>
+                  <%= @brand.name %> logo collection
+                <% end %>
+              <% end %>
+            <% elsif @brand.by_harman_logo.present? %>
+              <%= link_to @brand.by_harman_logo.url(:original) do %>
+                <%= image_tag @brand.by_harman_logo.url(:small), alt: "#{ @brand.name } logo" %>
+              <% end %>
+            <% end %>
+
+          </div>
+          <div class="medium-6 columns">
+
+            <%= link_to asset_path('HARMAN-BRAND-VISION-GUIDELINES_07.28.15.pdf') do %>
+              <%= image_tag 'branding_cover.jpg', alt: 'Harman Branding Guidelines' %>
+            <% end %>
+
+          </div>
+        </div>
 
         <% if @brand.marketing_url.present? %>
           <p>

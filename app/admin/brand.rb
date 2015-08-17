@@ -5,11 +5,13 @@ ActiveAdmin.register Brand do
     :url,
     :downloads_page_url,
     :support_url,
+    :marketing_url,
     :training_url,
     :tech_url,
     :logo,
     :white_logo,
     :by_harman_logo,
+    :logo_collection,
     :description,
     :show_on_main_site,
     :show_on_services_site,
@@ -54,6 +56,11 @@ ActiveAdmin.register Brand do
           link_to(image_tag(brand.by_harman_logo.url(:small)), brand.by_harman_logo.url)
         end
       end
+      rot :logo_collection do
+        if brand.logo_collection_file_name.present?
+          link_to("Logo collection", brand.logo_collection.url)
+        end
+      end
       row :show_on_main_site
       row :show_on_services_site
       row :show_on_consultant_page
@@ -81,6 +88,7 @@ ActiveAdmin.register Brand do
       f.input :logo
       f.input :white_logo
       f.input :by_harman_logo
+      f.input :logo_collection, hint: "Zipped collection of all pertinent brand logo variants"
       f.input :description
       f.input :show_on_main_site
       f.input :show_on_services_site

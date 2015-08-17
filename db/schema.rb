@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817175612) do
+ActiveRecord::Schema.define(version: 20150817192231) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20150817175612) do
     t.datetime "by_harman_logo_updated_at"
     t.string   "by_harman_logo_content_type",  limit: 255
     t.string   "marketing_url",                limit: 255
+    t.string   "logo_collection_file_name",    limit: 255
+    t.integer  "logo_collection_file_size",    limit: 4
+    t.string   "logo_collection_content_type", limit: 255
+    t.datetime "logo_collection_updated_at"
   end
 
   add_index "brands", ["show_on_main_site"], name: "index_brands_on_show_on_main_site", using: :btree
