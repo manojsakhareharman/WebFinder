@@ -18,35 +18,52 @@
       </div>
 
       <% if @brand.url.present? %>
-        <p>Learn more at
+        <p>
+          Learn more at
           <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
         </p>
       <% end %>
 
       <% if @brand.by_harman_logo.present? || @brand.marketing_url.present? %>
         <hr/>
-        <h4 class="subheader">Branding Resources</h4>
+        <h6>Branding Resources</h6>
 
         <div class="row">
-          <div class="medium-6 columns">
+          <div class="medium-12 columns" data-equalizer="brand-resources">
 
-            <% if @brand.logo_collection.present? %>
-              <%= link_to @brand.logo_collection.url do %>
-                <% if @brand.by_harman_logo.present? %>
-                  <%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo collection" %>
-                <% end %>
-                <br/><%= @brand.name %> logo collection
+            <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
+
+              <% if @brand.logo_collection.present? %>
+                <li>
+                    <div class="panel text-center" data-equalizer-watch="brand-resources">
+                      <div class="brand-logo">
+                        <% if @brand.by_harman_logo.present? %>
+                          <%= link_to @brand.logo_collection.url do %>
+                            <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo collection" %></p>
+                          <% end %>
+                        <% end %>
+                      </div>
+                      <%= link_to @brand.logo_collection.url do %>
+                        <p><%= @brand.name %> logo collection</p>
+                      <% end %>
+                    </div>
+                </li>
+              <% elsif @brand.by_harman_logo.present? %>
+                <li>
+                    <div class="panel text-center" data-equalizer-watch="brands">
+                      <div class="brand-logo">
+                        <%= link_to @brand.by_harman_logo.url(:original) do %>
+                          <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo" %></p>
+                        <% end %>
+                      </div>
+                      <%= link_to @brand.by_harman_logo.url(:original) do %>
+                        <p><%= @brand.name %> logo</p>
+                      <% end %>
+                    </div>
+                </li>
               <% end %>
-            <% elsif @brand.by_harman_logo.present? %>
-              <%= link_to @brand.by_harman_logo.url(:original) do %>
-                <%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo" %>
-              <% end %>
-              <br/><%= @brand.name %> logo
-            <% end %>
 
-          </div>
-          <div class="medium-6 columns">
-
+            </ul>
 
           </div>
         </div>
