@@ -15,6 +15,7 @@ class BrandsController < ApplicationController
     end
   end
 
+  # Polls the brand for its software offerings
   def softwares
     @softwares = HTTParty.get @brand.softwares_api
     respond_with @softwares

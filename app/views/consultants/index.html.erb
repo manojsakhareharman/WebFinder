@@ -32,6 +32,12 @@
               </form>
             <% end %>
           <% end %>
+          <h5>Software</h5>
+          <form id='software-menu'>
+            <select name='software_id'>
+              <option class="loading">Loading...</option>
+            </select>
+          </form>
           <% @brands.each do |brand| %>
             <% if brand.downloads_page_url.present? && brand.api_url.blank? %>
               <h5><%= brand.name %> Technical Resources</h5>

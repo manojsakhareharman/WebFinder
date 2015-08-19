@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:index, :show]
   end
+
   resources :vertical_markets, path: 'applications', only: :show do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :venues, only: :index
 
   # Consultant Portal
+  get '/consultants/software(.:format)' => 'consultants#software', defaults: { format: 'json' }
   get '/consultant' => 'consultants#index', as: :consultant_portal
   get '/consultant-portal', to: redirect('/consultant')
   get '/consultants', to: redirect('/consultant')
