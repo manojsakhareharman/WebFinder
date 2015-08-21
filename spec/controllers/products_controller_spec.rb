@@ -10,7 +10,7 @@ RSpec.describe ProductsController do
   describe "GET :index (json)" do
 
     it "renders json" do
-      expect(HTTParty).to receive(:get).and_return([@product].to_json)
+      expect(BrandApi).to receive(:products).and_return([@product].to_json)
       get :index, brand_id: @brand.id, format: :json
 
       expect(response.content_type).to eq("application/json")
@@ -20,7 +20,7 @@ RSpec.describe ProductsController do
   describe "GET :show (json)" do
 
     it "renders json" do
-      expect(HTTParty).to receive(:get).and_return(@product.to_json)
+      expect(BrandApi).to receive(:product).and_return(@product.to_json)
       get :show, brand_id: @brand.id, id: @product.id, format: :json
 
       expect(response.content_type).to eq("application/json")

@@ -9,7 +9,7 @@ class BrandsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        resource = HTTParty.get @brand.info_api
+        resource = BrandApi.info @brand.info_api
         respond_with resource
       }
     end
@@ -17,7 +17,7 @@ class BrandsController < ApplicationController
 
   # Polls the brand for its software offerings
   def softwares
-    @softwares = HTTParty.get @brand.softwares_api
+    @softwares = BrandApi.software @brand.softwares_api
     respond_with @softwares
   end
 

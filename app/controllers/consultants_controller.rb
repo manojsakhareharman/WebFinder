@@ -12,11 +12,12 @@ class ConsultantsController < ApplicationController
   def software
     collected_software = {}
     Brand.where(show_on_consultant_page: true).where("api_url LIKE ?", '%%http%%').each do |brand|
-      brand_software = HTTParty.get brand.softwares_api
+      brand_software = BrandApi.software brand.softwares_api
       brand_software.each do |s|
         collected_software[s['formatted_name']] = s
       end
     end
+
     @software = collected_software.values.sort_by{|s| s['formatted_name']}
     respond_with @software, root: 'softwares'
   end

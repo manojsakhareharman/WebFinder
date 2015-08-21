@@ -21,7 +21,7 @@ RSpec.describe BrandsController do
     end
 
     it "(json) renders json data" do
-      expect(HTTParty).to receive(:get).and_return(@brand.to_json)
+      expect(BrandApi).to receive(:info).and_return(@brand.to_json)
       get :show, id: @brand.id, format: :json
 
       expect(response.content_type).to eq("application/json")
@@ -39,7 +39,7 @@ RSpec.describe BrandsController do
 
   describe "GET :softwares (json)" do
     it "renders json" do
-      expect(HTTParty).to receive(:get).and_return([])
+      expect(BrandApi).to receive(:software).and_return([])
       get :softwares, id: @brand.id, format: :json
 
       expect(response.content_type).to eq("application/json")

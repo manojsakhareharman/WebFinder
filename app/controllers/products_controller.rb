@@ -3,12 +3,12 @@ class ProductsController < ApplicationController
   respond_to :json
 
   def index
-    @products = HTTParty.get @brand.products_api
+    @products = BrandApi.products @brand.products_api
     respond_with @products
   end
 
   def show
-    @product = HTTParty.get @brand.product_api(params[:id])
+    @product = BrandApi.product @brand.product_api(params[:id])
     respond_with @product
   end
 
