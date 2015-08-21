@@ -84,7 +84,8 @@ jQuery ($) ->
     build_panel: =>
       @panel.append("<h4>#{ @software.name }</h4>")
       @panel.append("<p>Version: #{ @software.version }<br/>Platform: #{ @software.platform }</p>")
-      @panel.append("<p><a href=' #{ @software.url }' target='_blank'>Software details</a></p>")
+# Turns out, this is a URL to the API
+#      @panel.append("<p><a href=' #{ @software.url }' target='_blank'>Software details</a></p>")
       @panel.append("<p><a href=' #{ @software.direct_download_url }' target='_blank' class='tiny radius button'>download</a></p>")
 
 
