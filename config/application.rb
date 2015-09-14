@@ -24,7 +24,7 @@ module Harmanpro
     config.assets.paths << Rails.root.join("vendor", "assets", "bower_components", "angular-awesome-slider", "dist", "img")
     config.assets.paths << Rails.root.join("app", "assets", "documents")
 
-    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf)$)
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|pdf|xlsx)$)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
