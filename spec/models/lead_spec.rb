@@ -12,6 +12,7 @@ RSpec.describe Lead, :type => :model do
   it { should respond_to(:phone) }
   it { should respond_to(:project_description) }
   it { should respond_to(:source) }
+  it { should respond_to(:location) }
 
   describe "marketing automation" do
     it "sends to cheetahmail list" do

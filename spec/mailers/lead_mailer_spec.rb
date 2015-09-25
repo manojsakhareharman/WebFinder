@@ -22,6 +22,7 @@ RSpec.describe LeadMailer, type: :mailer do
       body = mail.body.encoded
       expect(body).to match("The following")
       expect(body).to match(@lead.name)
+      expect(body).to match(@lead.location)
       expect(body).to match(@lead.email)
     end
   end

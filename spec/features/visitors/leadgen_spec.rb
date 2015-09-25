@@ -91,6 +91,7 @@ feature "Lead generation" do
     fill_in "Company", with: lead.company
     fill_in "Email", with: lead.email
     fill_in "Phone", with: lead.phone
+    fill_in "Location", with: lead.location
     fill_in "Project Description", with: lead.project_description
   end
 
