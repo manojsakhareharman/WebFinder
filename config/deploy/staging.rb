@@ -13,6 +13,7 @@
 
 
 server '10.10.23.15', user: 'hmg', roles: %w{web app db}
+server 'rackspace1', user: 'hmg', roles: %w{production}
 
 set :application, "harmanpro_staging"
 set :deploy_to, "/var/www/#{fetch(:application)}"

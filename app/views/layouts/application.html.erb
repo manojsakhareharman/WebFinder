@@ -19,6 +19,11 @@
   <body>
 
     <div class="sticky">
+      <% unless Rails.env.production? %>
+        <div class="text-center" style="background: yellow; padding: 3px">
+          Hi. Welcome to the harmanpro.com <%= Rails.env.to_s %> environment.
+        </div>
+      <% end %>
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
           <li class="name">

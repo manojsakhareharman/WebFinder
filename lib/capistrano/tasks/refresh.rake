@@ -68,13 +68,13 @@ namespace :refresh do
 
   desc "Replace contents of public/system from remote server"
   task :development_uploads do
-    on roles(:admin) do |host|
+    on roles(:production) do |host|
       set :upload_host, host
       set :upload_user, host.user
     end
 
     run_locally do
-      execute :rsync, "-avz #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/system ./public/"
+      execute :rsync, "-avz #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path.to_s.sub(/\_staging/, '') }/public/system ./public/"
     end
   end
 
