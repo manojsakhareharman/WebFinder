@@ -2,7 +2,7 @@ namespace :refresh do
 
   # For staging:
   #
-  # cap staging refresh:staging_database
+  # cap staging refresh:staging
 	desc "Refresh the staging database and uploads from production"
 	task :staging do
 		invoke 'refresh:staging_database'
