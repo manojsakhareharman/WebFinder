@@ -4,10 +4,6 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
-
 
 # Extended Server Syntax
 # ======================
@@ -15,8 +11,22 @@ role :db,  %w{deploy@example.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
+server '10.10.23.15', user: 'hmg', roles: %w{web app db}
+
+set :application, "harmanpro_staging"
+set :deploy_to, "/var/www/#{fetch(:application)}"
+
+#ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, `git symbolic-ref --short HEAD`.chomp
+
+#namespace :deploy do
+#
+#  before :restart, :refresh_node2_uploads do
+#    invoke "refresh:node2_uploads"
+#  end
+#
+#end
 
 # Custom SSH Options
 # ==================
