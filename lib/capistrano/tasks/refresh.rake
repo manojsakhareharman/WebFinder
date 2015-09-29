@@ -1,5 +1,14 @@
 namespace :refresh do
 
+  # For staging:
+  #
+  # cap staging refresh:staging_database
+	desc "Refresh the staging database and uploads from production"
+	task :staging do
+		invoke 'refresh:staging_database'
+		invoke 'refresh:staging_uploads'
+	end
+
   desc "Replace local database and uploads from production"
   task :development do
     invoke 'refresh:development_database'
@@ -85,4 +94,42 @@ namespace :refresh do
     end
   end
 
+  desc "Replace the remote staging database with the contents of the production database"
+  task :staging_database do
+    set :timestamp, Time.now.to_i
+
+    on roles(:db) do
+
+      with rails_env: :staging do
+        within shared_path do
+          @db = YAML::load(ERB.new(IO.read(File.join("config", "database.yml"))).result)
+        end
+
+        within release_path do
+          rake 'db:drop'
+          rake 'db:create'
+
+          execute :mysqldump, "-u #{@db['production']['username']} --password=#{@db['production']['password']} -h #{@db['production']['host']} --port=#{@db['production']['port']} #{@db['production']['database']} | mysql -u #{@db['staging']['username']} --password=#{@db['staging']['password']} #{@db['staging']['database']}"
+
+          rake 'db:migrate'
+        end
+      end
+    end
+  end
+
+  # It would be nice to rsync directly between the two servers, but the
+  # internal server can't communicate out. Genius.
+  desc "Refreshes local public/system and then pushes the same to staging"
+  task :staging_uploads do
+    invoke 'refresh:development_uploads'
+
+    on roles(:web) do |host|
+      set :upload_host, host
+      set :upload_user, host.user
+    end
+
+    run_locally do
+      execute :rsync, "-avz ./public/system #{fetch(:upload_user)}@#{fetch(:upload_host)}:#{ shared_path }/public/"
+    end
+  end
 end
