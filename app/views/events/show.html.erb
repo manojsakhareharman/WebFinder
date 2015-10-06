@@ -1,0 +1,23 @@
+<%= content_for :title do %><%= truncate @event.name, length: 40 %><% end %>
+<%= content_for :description do %>HARMAN PRO event: <%=truncate @event.description, length: 60 %><% end %>
+
+<% if @event.image.present? || ENV['show_placeholders'] == "true" %>
+  <div class="bumped-up space-after">
+    <div class="banner-container vertical-market">
+      <%= image_tag @event.image.url(:large), name: @event.name %>
+    </div>
+  </div>
+<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+      <h1><%= @event.name %></h1>
+      <h6 class="subheader"><small><%= event_date(@event) %></small></h6>
+      <br/>
+
+      <%=raw textilize @event.description %>
+
+    </div>
+  </div>
+</div>

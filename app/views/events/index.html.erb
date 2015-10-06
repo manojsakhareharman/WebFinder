@@ -1,0 +1,47 @@
+<%= content_for :title do %>Events<% end %>
+<%= content_for :description do %>Events where you'll find representatives of HARMAN Professional products and services.<% end %>
+
+<div class="bumped-up">
+  <div class="banner-container">
+    <h1><%= image_tag "events_header.jpg", alt: "Events" %></h1>
+  </div>
+</div>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+
+      <% @events.where(featured: true).each do |event| %>
+        <div class="row">
+          <div class="medium-4 small-12 columns">
+            <% if event.image.present? %>
+              <%= link_to event do %>
+                <%= image_tag(event.image.url(:medium), alt: event.name) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="medium-8 small-12 columns">
+            <h3><%= link_to event.name, event %></h3>
+            <h6 class="subheader"><small><%= event_date(event) %></small></h6>
+            <%=raw textilize event.description %>
+          </div>
+        </div>
+      <% end %>
+
+      <hr/>
+
+      <ul class="large-block-grid-2 medium-block-grid-2 small-block-grid-1">
+        <% @events.where(featured: false).each do |event| %>
+          <li>
+            <div class="panel">
+              <h3><%= event.name %></h3>
+              <h6 class="subheader"><small><%= event_date(event) %></small></h6>
+              <%=raw textilize event.description %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>

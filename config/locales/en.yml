@@ -22,6 +22,16 @@
 en:
   hello: "Hello world"
 
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
   lead_mailer:
     new_lead:
       subject: New lead from harmanpro.com
