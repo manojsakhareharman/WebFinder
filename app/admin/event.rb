@@ -24,12 +24,12 @@ ActiveAdmin.register Event do
       row :start_on
       row :end_on
       row :description
-      row :featured
       row :image do
         if event.image_file_name.present?
           link_to(image_tag(event.image.url(:small)), event.image.url)
         end
       end
+      row :featured
       row :active
     end
   end
@@ -40,8 +40,8 @@ ActiveAdmin.register Event do
       f.input :start_on, as: :datepicker
       f.input :end_on, as: :datepicker
       f.input :description
+      f.input :image, hint: "Only for 'featured' events."
       f.input :featured
-      f.input :image
       f.input :active
     end
     f.actions
