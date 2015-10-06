@@ -9,21 +9,28 @@
 
 <div class="container main-container">
   <div class="row">
-    <div class="medium-12 large-10 large-offset-1 columns">
+    <div class="medium-12 columns">
+
+      <% unless @events.length > 0 %>
+        <div class="alert-box radius info" data-alert>
+          There don't seem to be any current events. Check back soon.
+        </div>
+      <% end %>
 
       <% @events.where(featured: true).each do |event| %>
         <div class="row">
           <div class="medium-4 small-12 columns">
             <% if event.image.present? %>
               <%= link_to event do %>
-                <%= image_tag(event.image.url(:medium), alt: event.name) %>
+                <%= image_tag(event.image.url(:medium), alt: event.name, class: 'featured-event') %>
               <% end %>
             <% end %>
           </div>
           <div class="medium-8 small-12 columns">
-            <h3><%= link_to event.name, event %></h3>
-            <h6 class="subheader"><small><%= event_date(event) %></small></h6>
-            <%=raw textilize event.description %>
+            <h2><%= link_to event.name, event %></h2>
+            <h5 class="subheader"><small><%= event_date(event) %></small></h5>
+            <%=raw textilize truncate(event.description, length: 275) %>
+            <p><%= link_to "more info", event, class: "small radius button" %></p>
           </div>
         </div>
       <% end %>
@@ -34,8 +41,8 @@
         <% @events.where(featured: false).each do |event| %>
           <li>
             <div class="panel">
-              <h3><%= event.name %></h3>
-              <h6 class="subheader"><small><%= event_date(event) %></small></h6>
+              <h4><%= event.name %></h4>
+              <h5 class="subheader"><small><%= event_date(event) %></small></h5>
               <%=raw textilize event.description %>
             </div>
           </li>
@@ -43,5 +50,13 @@
       </ul>
 
     </div>
+
   </div>
+  <% if Event.recent.count > 0 %>
+    <div class="row">
+      <div class="medium-12 columns">
+        <%= link_to "recent events", recent_events_path, class: "tiny radius button" %>
+      </div>
+    </div>
+  <% end %>
 </div>

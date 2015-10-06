@@ -10,6 +10,8 @@ RSpec.describe "events/index.html.erb", as: :view do
                                         featured: true,
                                         image: File.new(Rails.root.join('spec','fixtures','test.jpg')),
                                         active: true)
+    # so the 'recent events' button appears
+    FactoryGirl.create(:event, start_on: 3.weeks.ago, end_on: 2.weeks.ago, active: true)
   end
 
   before do
@@ -27,5 +29,9 @@ RSpec.describe "events/index.html.erb", as: :view do
   it "has featured event content" do
     expect(rendered).to have_link @current_event.name, href: event_path(@current_event)
     expect(rendered).to have_xpath("//img[@src='#{ @current_event.image.url(:medium) }']")
+  end
+
+  it "has a link to recent events" do
+    expect(rendered).to have_link "recent events", href: recent_events_path
   end
 end

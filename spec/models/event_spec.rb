@@ -34,4 +34,19 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe ".recent" do
+    before do
+      @very_old_event = FactoryGirl.create(:event, start_on: 5.years.ago, end_on: 5.years.ago)
+      @recent = Event.recent
+    end
+
+    it "includes recently past events" do
+      expect(@recent).to include(@past_event)
+    end
+
+    it "won't include very old events" do
+      expect(@recent).not_to include(@very_old_event)
+    end
+  end
+
 end

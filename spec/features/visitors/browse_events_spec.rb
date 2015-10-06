@@ -42,4 +42,12 @@ feature "Browse events" do
     expect(page).to have_content @past_event.description
     expect(current_path).to eq(event_path(@past_event))
   end
+
+  scenario "recent events page lists past events" do
+    click_on "Events"
+    click_on "recent events"
+
+    expect(page).to have_content @past_event.name
+    expect(current_path).to eq(recent_events_path)
+  end
 end

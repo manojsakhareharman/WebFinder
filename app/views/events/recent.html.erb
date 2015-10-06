@@ -1,0 +1,43 @@
+<%= content_for :title do %>Recent Events<% end %>
+<%= content_for :description do %>Recent events which featured HARMAN Professional products and services.<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="medium-12 large-10 large-offset-1 columns">
+      <h1 class="text-center">Recent Events</h1>
+      <br/>
+
+      <% unless @events.length > 0 %>
+        <div class="alert-box radius info" data-alert>
+          There don't seem to be any recent events. Check back soon.
+        </div>
+      <% end %>
+
+      <% @events.each do |event| %>
+        <%= link_to event, data: {"reveal-id": "event_#{event.id}"} do %>
+          <div class="event-row row collapse">
+            <div class="medium-8 small-7 columns">
+              <h5><%= event.name %></h5>
+            </div>
+            <div class="medium-4 text-right small-5 columns date-cell">
+              <%=l event.start_on, format: :month_year %>
+            </div>
+          </div>
+        <% end %>
+        <div id="event_<%= event.id %>" class="reveal-modal medium" data-reveal aria-labelledby="Event Details" aria-hidden="true" role="dialog">
+          <h2><%= event.name %></h2>
+          <h6 class="subheader"><%= event_date(event) %></h6>
+          <%= raw textilize event.description %>
+          <p><a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 large-10 large-offset-1 columns">
+      <br/>
+      <%= link_to "current events", events_path, class: "tiny radius button" %>
+    </div>
+  </div>
+</div>

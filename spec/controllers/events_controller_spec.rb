@@ -34,11 +34,28 @@ RSpec.describe EventsController, type: :controller do
       expect(response).to render_template('show')
     end
 
+
     it "should redirect to index for hidden event" do
       get :show, id: @hidden_event.to_param
 
       expect(response).to redirect_to(events_path)
     end
+  end
+
+  describe "GET recent" do
+
+    before do
+      get :recent
+    end
+
+    it "should assign @events to past events" do
+      expect(assigns(:events)).to include(@past_event)
+    end
+
+    it "should render the template" do
+      expect(response).to render_template("recent")
+    end
+
   end
 
 end

@@ -11,4 +11,8 @@ class EventsController < ApplicationController
     end
   end
 
+  def recent
+    @events = Event.recent
+  end
+
 end
