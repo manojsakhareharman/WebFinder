@@ -21,6 +21,7 @@ class BrandApi
 
   private
 
+  # :nocov:
   def self.get_api_response(url, cache_for)
     Rails.cache.fetch(url, expires: cache_for) do
       response = get(url)
@@ -31,5 +32,6 @@ class BrandApi
       end
     end
   end
+  # :nocov:
 
 end
