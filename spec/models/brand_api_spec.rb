@@ -22,7 +22,7 @@ RSpec.describe BrandApi do
     BrandApi.products(@brand.url)
   end
 
-  it "info(ur) gets info" do
+  it "info(url) gets info" do
     BrandApi.info(@brand.url)
   end
 end
