@@ -59,6 +59,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     acts_as_tree (2.2.0)
@@ -211,7 +213,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    listen (3.0.3)
+    listen (3.0.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     loofah (2.0.3)
@@ -397,6 +399,7 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   activeadmin-sortable
+  acts-as-taggable-on (~> 3.4)
   acts_as_list
   acts_as_tree
   bower-rails
