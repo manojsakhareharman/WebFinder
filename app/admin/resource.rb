@@ -1,7 +1,7 @@
 ActiveAdmin.register Resource do
 
   # :nocov:
-  permit_params :name, :attachment, :resource_type, :tag_list
+  permit_params :name, :attachment, :resource_type, :tag_list, :description
 
   filter :name
   filter :resource_type
@@ -21,6 +21,7 @@ ActiveAdmin.register Resource do
       f.input :name
       f.input :attachment
       f.input :resource_type, hint: "ie, application guide, brochure, etc."
+      f.input :description
       f.input :tag_list, label: "Tags", hint: "separated by a comma."
     end
     f.actions
