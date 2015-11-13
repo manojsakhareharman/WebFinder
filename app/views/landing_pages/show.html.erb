@@ -1,0 +1,45 @@
+<%= content_for :title do %><%= @landing_page.title %><% end %>
+
+
+<div class="container main-container">
+
+  <div class="row">
+    <div class="large-<%= 12 - @landing_page.side_column_width %> medium-12 columns">
+      <h1 class="space-after"><%= @landing_page.title %></h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <% if @landing_page.left_content.present? %>
+      <div class="medium-<%= @landing_page.side_column_width %> small-12 columns">
+        <%= raw textilize @landing_page.left_content %>
+      </div>
+    <% end %>
+
+    <div class="medium-<%= @landing_page.main_content_width %> small-12 columns">
+      <% if @landing_page.subtitle.present? %>
+        <h4 class="subheader"><%= @landing_page.subtitle %></h4>
+        <br/>
+      <% end %>
+      <%= raw textilize @landing_page.main_content %>
+    </div>
+
+    <% if @landing_page.right_content.present? %>
+      <div class="medium-<%= @landing_page.side_column_width %> small-12 columns">
+        <%= raw textilize @landing_page.right_content %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @landing_page.sub_content.present? %>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="dot-above">
+          <br/>
+          <%= raw textilize @landing_page.sub_content %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'landing_page/show'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
   end
+  resources :landing_pages, path: 'lp', only: :show
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
 
