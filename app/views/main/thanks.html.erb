@@ -1,10 +1,10 @@
 <%= content_for :title do %><%= SiteSetting.value("thanks") %><% end %>
-<%= content_for :description do %>Thank you for your interest HARMAN Professional Solutions.<% end %>
+<%= content_for :description do %> <%= SiteSetting.value("pardot-thankyou-message") %> <% end %>
 
 <div class="container main-container">
   <h1 class="text-center"><%= SiteSetting.value("thanks") %></h1>
   <div class="row">
-    <div class="large-8 large-offset-2 columns">
+    <div class="large-8 large-offset-2 columns text-center">
       <%= SiteSetting.value("pardot-thankyou-message") %>
     </div>
   </div>
