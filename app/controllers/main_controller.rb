@@ -19,6 +19,9 @@ class MainController < ApplicationController
   def thankyou
   end
 
+  def thanks
+  end
+
   def sitemap
     @vertical_markets = VerticalMarket.all
     respond_to do |format|

@@ -38,7 +38,8 @@ Rails.application.routes.draw do
 
   # The usual stuff
   get '/contacts' => 'main#contacts'
-  get '/thankyou' => 'main#thankyou', as: :thankyou
+  get '/thankyou' => 'main#thankyou', as: :thankyou # Thank you page after leadgen form
+  get '/thanks' => 'main#thanks', as: :thanks # Generic thanks page
   get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
   get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
