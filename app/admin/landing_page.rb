@@ -16,6 +16,33 @@ ActiveAdmin.register LandingPage do
   filter :title, as: :string
   filter :updated_at
 
+  show do
+    attributes_table do
+      row :title
+      row :subtitle
+      row :direct_link do
+        link_to landing_page_url(landing_page), landing_page_url(landing_page), target: "_blank"
+      end
+
+      row :main_content do
+        raw(textilize(landing_page.main_content))
+      end
+
+      row :left_content do
+        raw(textilize(landing_page.left_content))
+      end
+
+      row :right_content do
+        raw(textilize(landing_page.right_content))
+      end
+
+      row :sub_content do
+        raw(textilize(landing_page.sub_content))
+      end
+    end
+    active_admin_comments
+  end
+
   form do |f|
     f.inputs do
       f.input :title

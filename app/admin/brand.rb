@@ -75,6 +75,7 @@ ActiveAdmin.register Brand do
       row :tech_url
       row :api_url
     end
+    active_admin_comments
   end
 
   form html: {multipaart: true} do |f|
