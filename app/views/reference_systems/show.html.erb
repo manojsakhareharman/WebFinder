@@ -1,5 +1,9 @@
 <%= content_for :title do %><%= @reference_system.name %><% end %>
-<%= content_for :description do %>Sample <%= @vertical_market.name %> system: <%= @reference_system.name %> from HARMAN Professional's pro audio, video, lighting and control system brands.<% end %>
+<%= content_for :description do %>
+  <%= t('reference_system_page.meta_description',
+        vertical_market: @vertical_market.name,
+        reference_system: @reference_system.name ) %>
+<% end %>
 
 <div class="bumped-up">
   <div class="banner-container reference-system">
@@ -12,13 +16,17 @@
         <h1 data-magellan-destination="learn"><%= @reference_system.slider_name %></h1>
         <p>
           <% if @reference_system.previous %>
-            <%= link_to "previous", [@vertical_market, @reference_system.previous] %>
+            <%= link_to t("previous"), [@vertical_market, @reference_system.previous] %>
           <% end %>
           <% if @reference_system.next %>
-            <%= link_to "next", [@vertical_market, @reference_system.next] %>
+            <%= link_to t("next"), [@vertical_market, @reference_system.next] %>
           <% end %>
         </p>
-        <p>More <%= link_to "#{@vertical_market.name.downcase} examples", @vertical_market %>...</p>
+        <p>
+          <%= t('more').titleize %>
+          <%= link_to t('reference_system_page.vertical_market_examples', vertical_market: @vertical_market.name.downcase),
+            @vertical_market %>...
+        </p>
       </div>
     </div>
   </div>
@@ -45,7 +53,7 @@
             <%= image_tag(@reference_system.system_diagram.url(:large)) %>
 
             <noscript>
-              <h5 class="subheader">Explore these product suggestions:</h5>
+              <h5 class="subheader"><%= t('reference_system_page.explore_products') %>:</h5>
               <ul class="small-block-grid-1 large-block-grid-4 medium-block-grid-2">
                 <% @reference_system.reference_system_product_types.each do |rspt| %>
                   <li><div class="panel">
@@ -55,7 +63,7 @@
                         <li>
                           <h6><%= link_to product.name, product.url, target: "_blank" %></h6>
                           <div><%= product.description %></div>
-                          <%= link_to "more info", product.url, target: "_blank" %>
+                          <%= link_to t("more_information"), product.url, target: "_blank" %>
                         </li>
                       <% end %>
                     </ul>

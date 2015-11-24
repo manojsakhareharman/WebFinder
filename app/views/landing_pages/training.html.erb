@@ -1,16 +1,16 @@
-<%= content_for :title do %>HARMAN Professional Training<% end %>
-<%= content_for :description do %>Training links for HARMAN Professional audio, video, lighting and control brands.<% end %>
+<%= content_for :title do %><%= t('training_page.title') %><% end %>
+<%= content_for :description do %><%= t('training_page.meta_description') %><% end %>
 
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag "training_header.jpg", alt: "HARMAN Professional Training" %></h1>
+    <h1><%= image_tag "training_header.jpg", alt: t('training_page.title') %></h1>
   </div>
 </div>
 
 <div class="container main-container padded">
   <div class="row">
     <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands">
-      <p class="text-center"><i>click for training from these brands:</i></p>
+      <p class="text-center"><i><%= t('training_page.click_for_info') %>:</i></p>
       <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
         <% all_brands.each do |brand| %>
           <% if brand.training_url.present? %>
@@ -22,7 +22,7 @@
                       <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
                     <% end %>
                   </div>
-                  <p><%= brand.name %> Training</p>
+                  <p><%= t('training_page.brand_training', brand: brand.name) %></p>
                 </div>
               <% end %>
             </li>

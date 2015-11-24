@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "main/training.html.erb", as: :view do
+RSpec.describe "landing_pages/training.html.erb", as: :view do
 
   before :all do
     @brand1 = FactoryGirl.create(:brand, training_url: "http://training.lvh.me")

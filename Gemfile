@@ -67,4 +67,5 @@ group :test do
   gem 'json-schema'
   gem 'faker'
   gem 'selenium-webdriver'
+  gem 'launchy'
 end

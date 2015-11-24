@@ -1,5 +1,5 @@
 <%= content_for :title do %><%= @brand.name %><% end %>
-<%= content_for :description do %>Summary of products and services provided by <%= @brand.name %>, a HARMAN Professional brand.<% end %>
+<%= content_for :description do %><%= t('brand_page.meta_description', brand: @brand.name) %><% end %>
 
 <div class="container main-container padded">
   <div class="row">
@@ -19,14 +19,14 @@
 
       <% if @brand.url.present? %>
         <p>
-          Learn more at
+          <%= t('learn_more_at') %>
           <%= link_to @brand.friendly_url, @brand.url, target: "_blank" %>
         </p>
       <% end %>
 
       <% if @brand.by_harman_logo.present? || @brand.marketing_url.present? %>
         <hr/>
-        <h6>Branding Resources</h6>
+        <h6><%= t('brand_page.branding_resources') %></h6>
 
         <div class="row">
           <div class="medium-12 columns" data-equalizer="brand-resources">
@@ -39,12 +39,12 @@
                       <div class="brand-logo">
                         <% if @brand.by_harman_logo.present? %>
                           <%= link_to @brand.logo_collection.url do %>
-                            <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo collection" %></p>
+                            <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } #{ t('brand_page.logo_collection') }" %></p>
                           <% end %>
                         <% end %>
                       </div>
                       <%= link_to @brand.logo_collection.url do %>
-                        <p><%= @brand.name %> logo collection</p>
+                        <p><%= @brand.name %> <%= t 'brand_page.logo_collection' %></p>
                       <% end %>
                     </div>
                 </li>
@@ -53,11 +53,11 @@
                     <div class="panel text-center" data-equalizer-watch="brands">
                       <div class="brand-logo">
                         <%= link_to @brand.by_harman_logo.url(:original) do %>
-                          <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } logo" %></p>
+                          <p><%= image_tag @brand.by_harman_logo.url(:medium), alt: "#{ @brand.name } #{ t :logo }" %></p>
                         <% end %>
                       </div>
                       <%= link_to @brand.by_harman_logo.url(:original) do %>
-                        <p><%= @brand.name %> logo</p>
+                        <p><%= @brand.name %> <%= t :logo %></p>
                       <% end %>
                     </div>
                 </li>
@@ -70,7 +70,7 @@
 
         <% if @brand.marketing_url.present? %>
           <p>
-            <%= link_to 'More marketing resources', @brand.marketing_url, target: "_blank", class: "tiny radius button" %>
+            <%= link_to t('brand_page.more_resources'), @brand.marketing_url, target: "_blank", class: "tiny radius button" %>
           </p>
         <% end %>
 

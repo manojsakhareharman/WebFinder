@@ -1,16 +1,18 @@
-<%= content_for :title do %>HARMAN Professional Brand Contacts<% end %>
-<%= content_for :description do %>Support and other contact links for HARMAN Professional brands: <%= all_brands.map{|b| b.name}.join(', ') %>.<% end %>
+<%= content_for :title do %><%= t('contacts_page.title') %><% end %>
+<%= content_for :description do %>
+  <%= t('contacts_page.meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>
+<% end %>
 
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag "contact_header.jpg", alt: "HARMAN Professional Brand Contacts" %></h1>
+    <h1><%= image_tag "contact_header.jpg", alt: t('contacts_page.title') %></h1>
   </div>
 </div>
 
 <div class="container main-container ">
   <div class="row">
     <div class="large-10 large-offset-1 medium-10 medium-offset-1 columns" data-equalizer="brands">
-      <p class="text-center"><i>click to contact these brands:</i></p>
+      <p class="text-center"><i><%= t('contacts_page.click_to_contact') %>:</i></p>
       <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2">
         <% all_brands.each do |brand| %>
           <% if brand.support_url.present? %>
@@ -22,7 +24,7 @@
                       <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
                     <% end %>
                   </div>
-                  <p><%= brand.name %> Support</p>
+                  <p><%= t('contacts_page.brand_support', brand: brand.name) %></p>
                 </div>
               <% end %>
             </li>
@@ -35,7 +37,7 @@
                       <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
                     <% end %>
                   </div>
-                  <p><%= brand.name %> Info</p>
+                  <p><%= t('contacts_page.brand_info', brand: brand.name) %></p>
                 </div>
               <% end %>
             </li>

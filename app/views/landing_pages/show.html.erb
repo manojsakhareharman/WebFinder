@@ -1,5 +1,11 @@
 <%= content_for :title do %><%= @landing_page.title %><% end %>
-
+<%= content_for :description do %>
+  <% if @landing_page.description.present? %>
+    <%= @landing_page.description %>
+  <% elsif @landing_page.subtitle.present? %>
+    <%= @landing_page.subtitle %>
+  <% end %>
+<% end %>
 
 <div class="container main-container">
 

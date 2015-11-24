@@ -1,6 +1,6 @@
 ActiveAdmin.register LandingPage do
 
-  permit_params :title, :subtitle, :main_content, :left_content, :right_content, :sub_content
+  permit_params :title, :subtitle, :description, :main_content, :left_content, :right_content, :sub_content
 
   # :nocov:
   index do
@@ -20,6 +20,7 @@ ActiveAdmin.register LandingPage do
     attributes_table do
       row :title
       row :subtitle
+      row :description
       row :direct_link do
         link_to landing_page_url(landing_page), landing_page_url(landing_page), target: "_blank"
       end
@@ -47,6 +48,7 @@ ActiveAdmin.register LandingPage do
     f.inputs do
       f.input :title
       f.input :subtitle
+      f.input :description, hint: "appears as meta description in HTML for page"
       f.input :main_content, hint: "textilize and/or html permitted"
       f.input :left_content, hint: "(optional)"
       f.input :right_content, hint: "(optional)"

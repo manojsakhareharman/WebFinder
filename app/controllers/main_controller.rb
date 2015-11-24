@@ -4,24 +4,6 @@ class MainController < ApplicationController
     @vertical_markets = VerticalMarket.parent_verticals
   end
 
-  def contacts
-  end
-
-  def training
-  end
-
-  def privacy_policy
-  end
-
-  def terms_of_use
-  end
-
-  def thankyou
-  end
-
-  def thanks
-  end
-
   def sitemap
     @vertical_markets = VerticalMarket.all
     respond_to do |format|

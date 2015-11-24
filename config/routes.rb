@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'landing_page/show'
-
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -34,14 +32,14 @@ Rails.application.routes.draw do
   resources :service_centers, only: [:index, :new, :create]
 
   # Training site
-  get '/training' => 'main#training'
+  get '/training' => 'landing_pages#training'
 
   # The usual stuff
-  get '/contacts' => 'main#contacts'
-  get '/thankyou' => 'main#thankyou', as: :thankyou # Thank you page after leadgen form
-  get '/thanks' => 'main#thanks', as: :thanks # Generic thanks page
-  get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
-  get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use
+  get '/contacts' => 'landing_pages#contacts'
+  get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
+  get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
+  get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
+  get '/terms_of_use' => 'landing_pages#terms_of_use', as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
   root to: 'main#index'

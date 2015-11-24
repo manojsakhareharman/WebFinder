@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "main/contacts.html.erb", as: :view do
+RSpec.describe "landing_pages/contacts.html.erb", as: :view do
 
   before :all do
     @brand1 = FactoryGirl.create(:brand, support_url: "http://support.lvh.me")

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "main/thankyou.html.erb" do
+describe "landing_pages/thankyou.html.erb" do
   before do
     @title = FactoryGirl.create(:site_setting, name: "thanks", content: "Thanks!")
     @msg = FactoryGirl.create(:site_setting, name: "contact-thankyou-message", content: "You look nice today.")
