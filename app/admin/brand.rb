@@ -1,4 +1,5 @@
 ActiveAdmin.register Brand do
+  menu parent: "Brands/Products", priority: 1, label: "Brands"
   config.sort_order = 'name_asc'
 
   permit_params :name,

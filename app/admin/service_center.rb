@@ -1,4 +1,6 @@
 ActiveAdmin.register ServiceCenter do
+  menu label: "Service Centers"
+
   permit_params :name,
     :contact_name,
     :address,

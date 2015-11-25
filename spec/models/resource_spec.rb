@@ -12,5 +12,6 @@ RSpec.describe Resource, type: :model do
   it { should respond_to :description }
   it { should respond_to :tags }
   it { should respond_to :attachment }
+  it { should respond_to :image }
 
 end

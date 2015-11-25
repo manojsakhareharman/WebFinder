@@ -1,4 +1,5 @@
 ActiveAdmin.register VerticalMarket do
+  menu label: "Vertical Markets", priority: 1
 
   permit_params :name, :parent_id, :headline, :description, :banner
 

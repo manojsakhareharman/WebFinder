@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+  menu parent: "Settings", priority: 2
   permit_params :email, :password, :password_confirmation, :service_department, :super_admin
 
   #menu if: proc { current_admin_user.can?(:manage, AdminUser) }

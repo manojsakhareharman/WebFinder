@@ -1,4 +1,5 @@
 ActiveAdmin.register LandingPage do
+  menu label: "Landing Pages"
 
   permit_params :title, :subtitle, :description, :main_content, :left_content, :right_content, :sub_content
 
