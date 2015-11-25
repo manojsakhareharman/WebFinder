@@ -38,6 +38,9 @@ en:
   learn_more: Learn More
   previous: previous
   next: next
+  register: register
+  any: any
+  search: search
 
   nav:
     menu: Menu
@@ -93,6 +96,64 @@ en:
     meta_description: "Resources to learn, plan and buy your %{vertical_market} pro audio, video, lighting and control systems."
     explore_examples: Explore these examples
 
+  service_page:
+    title: HARMAN Pro Service
+    meta_description: How to get service for your HARMAN Professional products.
+    subheaders:
+      register_your_products: Register Your Products
+      warranty_repair: Warranty Repair
+      out_of_warranty: "Out of Warranty?"
+      service_center_login: Service Center Login
+      become_a_service_center: Become a Service Center
+      harman_pro_dealer_portal: HARMAN Pro Dealer Portal
+    blurbs:
+      register_your_products: Get the most from your warranty.
+      warranty_repair: Get your products fixed. Start by filling out a Service Return Authorization.
+      out_of_warranty: "You're not out of luck. Fill out a Service Return Authorization for info & general rate."
+      service_center_login: Authorized service centers can access additional product information, place part orders, or submit a warranty claim.
+      become_a_service_center: Learn our requirements and apply to be an authorized service center for all HARMAN Professional products.
+      harman_pro_dealer_portal: Portal for HARMAN Pro Representatives, Dealers and Authorized Service Centers.
+    links:
+      register_now: Register Now
+      start_your_repair: Start Your Repair
+      get_started: Get Started
+      access_now: Access Now
+      apply_now: Apply Now
+      order_now: Order Now
+    subnav:
+      services_home: Services Home
+      service_center_login: Service Center Login
+      find_service: Find a Service Center
+
+  service_center_registration:
+    title: Service Center Registration
+    meta_description: Register to become an authorized service center for HARMAN Professional brands.
+    agreement: I am willing and able to service all HARMAN Professional Brands at my location.
+    subheaders:
+      requirements: Requirements
+
+  service_login_page:
+    title: HARMAN Pro Service Centers Login
+    meta_description: "Resources for HARMAN Professional's service center partners."
+    brand_website: "%{brand} Website"
+    brand_technical_resources: "%{brand} Technical Resources"
+    subheaders:
+      visit_brand_portals: Visit specific portals for resources on the brands shown
+      become_a_service_center: Become a Service Center
+      dealer_portal: Dealer Portal for Spare Parts Purchase
+    blurbs:
+      become_a_service_center: Get started by completing our preliminary application.
+      dealer_portal: Portal for HARMAN Pro Representatives, Dealers and Authorized Service Centers.
+
+  find_service_page:
+    title: Locate a HARMAN Pro Service Center
+    meta_description: Find a local service center to repair your HARMAN Professional products.
+    select_state: "Select your state:"
+    service_type_needed: "Service type needed:"
+    no_results_found: No search results found. Please try again. Try entering just the state abbreviation without the service type.
+    contact_information: Contact Info
+    services: Services
+
   leadgen_page:
     meta_description: Contact form to get in touch with HARMAN Professional regarding your audio, video, lighting and control system.
 
@@ -122,4 +183,16 @@ en:
         phone: Phone
         location: Location
         project_description: Project Description
+      service_center:
+        contact_name: Your Name
+        email: Email
+        name: Business Name
+        address: Address
+        city: City
+        state: State
+        zip: Postal Code
+        phone: Phone
+        fax: Fax
+        website: Website
+        account_number: Account Number
 

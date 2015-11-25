@@ -1,5 +1,5 @@
-<%= content_for :title do %>Service Center Registration<% end %>
-<%= content_for :description do %>Register to become an authorized service center for HARMAN Professional brands.<% end %>
+<%= content_for :title do %><%= t('service_center_registration.title') %><% end %>
+<%= content_for :description do %><%= t('service_center_registration.meta_description') %><% end %>
 
 <%= render 'shared/service_subnav' %>
 
@@ -7,15 +7,15 @@
   <div class="row">
 
     <div class="large-8 medium-7 columns">
-      <h1>Service Center Registration</h1>
+      <h1><%= t('service_center_registration.title') %></h1>
 
       <%= render 'form' %>
     </div>
 
     <div class="large-4 medium-5 columns">
       <div class="callout panel">
-        <h3>Requirements</h3>
-        <%= render "shared/become_service_center" %>
+        <h3><%= t('service_center_registration.subheaders.requirements') %></h3>
+        <%= raw textilize SiteSetting.value('service-center-requirements') %>
       </div>
     </div>
   </div>
