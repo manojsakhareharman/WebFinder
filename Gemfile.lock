@@ -159,6 +159,9 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -183,6 +186,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    http_accept_language (2.0.5)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -425,9 +429,11 @@ DEPENDENCIES
   figaro
   foundation-rails (~> 5.5)
   friendly_id
+  globalize (~> 5.0.0)
   guard-bundler
   guard-rails
   guard-rspec
+  http_accept_language
   httparty
   jasmine-rails
   jbuilder (~> 2.0)

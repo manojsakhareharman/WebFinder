@@ -34,7 +34,7 @@
 
         <section class="top-bar-section">
           <ul class="right">
-            <%= cache ["top-nav", Date.today] do %>
+            <%= cache ["top-nav", Date.today, I18n.locale] do %>
               <%= top_vertical_market_navigation(dropdowns: false) %>
               <li class="has-dropdown">
               <a href="#" class="disabled"><%= t('nav.resources') %></a>
@@ -75,7 +75,7 @@
         <div class="large-8 large-offset-2 columns">
           <div class="row">
             <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-1", Date.today] do %>
+              <%= cache ["footer-col-1", Date.today, I18n.locale] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length > 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
@@ -89,7 +89,7 @@
               <% end %>
             </div>
             <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-2", Date.today] do %>
+              <%= cache ["footer-col-2", Date.today, I18n.locale] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
                   <% if vmp.children.length <= 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
@@ -103,7 +103,7 @@
               <% end %>
             </div>
             <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-3", Date.today] do %>
+              <%= cache ["footer-col-3", Date.today, I18n.locale] do %>
                 <h6 class="subheader"><%= t('harman_brands') %></h6>
                 <ul>
                   <% all_brands.each do |brand| %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125151916) do
+ActiveRecord::Schema.define(version: 20151130212928) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20151125151916) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "brand_translations", force: :cascade do |t|
+    t.integer  "brand_id",                     limit: 4,     null: false
+    t.string   "locale",                       limit: 255,   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.text     "description",                  limit: 65535
+    t.text     "contact_info_for_consultants", limit: 65535
+  end
+
+  add_index "brand_translations", ["brand_id"], name: "index_brand_translations_on_brand_id", using: :btree
+  add_index "brand_translations", ["locale"], name: "index_brand_translations_on_locale", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",                         limit: 255
@@ -104,6 +116,19 @@ ActiveRecord::Schema.define(version: 20151125151916) do
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   add_index "case_studies", ["vertical_market_id"], name: "index_case_studies_on_vertical_market_id", using: :btree
 
+  create_table "case_study_translations", force: :cascade do |t|
+    t.integer  "case_study_id", limit: 4,     null: false
+    t.string   "locale",        limit: 255,   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "headline",      limit: 255
+    t.text     "description",   limit: 65535
+    t.text     "content",       limit: 65535
+  end
+
+  add_index "case_study_translations", ["case_study_id"], name: "index_case_study_translations_on_case_study_id", using: :btree
+  add_index "case_study_translations", ["locale"], name: "index_case_study_translations_on_locale", using: :btree
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
     t.integer  "attempts",   limit: 4,     default: 0, null: false
@@ -132,6 +157,23 @@ ActiveRecord::Schema.define(version: 20151125151916) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "landing_page_translations", force: :cascade do |t|
+    t.integer  "landing_page_id", limit: 4,     null: false
+    t.string   "locale",          limit: 255,   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "title",           limit: 255
+    t.string   "subtitle",        limit: 255
+    t.string   "description",     limit: 255
+    t.text     "main_content",    limit: 65535
+    t.text     "left_content",    limit: 65535
+    t.text     "right_content",   limit: 65535
+    t.text     "sub_content",     limit: 65535
+  end
+
+  add_index "landing_page_translations", ["landing_page_id"], name: "index_landing_page_translations_on_landing_page_id", using: :btree
+  add_index "landing_page_translations", ["locale"], name: "index_landing_page_translations_on_locale", using: :btree
 
   create_table "landing_pages", force: :cascade do |t|
     t.string   "title",         limit: 255
@@ -173,6 +215,30 @@ ActiveRecord::Schema.define(version: 20151125151916) do
   end
 
   add_index "online_retailers", ["slug"], name: "index_online_retailers_on_slug", using: :btree
+
+  create_table "product_translations", force: :cascade do |t|
+    t.integer  "product_id",  limit: 4,     null: false
+    t.string   "locale",      limit: 255,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+  end
+
+  add_index "product_translations", ["locale"], name: "index_product_translations_on_locale", using: :btree
+  add_index "product_translations", ["product_id"], name: "index_product_translations_on_product_id", using: :btree
+
+  create_table "product_type_translations", force: :cascade do |t|
+    t.integer  "product_type_id", limit: 4,     null: false
+    t.string   "locale",          limit: 255,   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "name",            limit: 255
+    t.text     "description",     limit: 65535
+  end
+
+  add_index "product_type_translations", ["locale"], name: "index_product_type_translations_on_locale", using: :btree
+  add_index "product_type_translations", ["product_type_id"], name: "index_product_type_translations_on_product_type_id", using: :btree
 
   create_table "product_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -221,6 +287,20 @@ ActiveRecord::Schema.define(version: 20151125151916) do
   end
 
   add_index "reference_system_product_types", ["reference_system_id"], name: "index_reference_system_product_types_on_reference_system_id", using: :btree
+
+  create_table "reference_system_translations", force: :cascade do |t|
+    t.integer  "reference_system_id",   limit: 4,     null: false
+    t.string   "locale",                limit: 255,   null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "name",                  limit: 255
+    t.string   "headline",              limit: 255
+    t.string   "venue_size_descriptor", limit: 255
+    t.text     "description",           limit: 65535
+  end
+
+  add_index "reference_system_translations", ["locale"], name: "index_reference_system_translations_on_locale", using: :btree
+  add_index "reference_system_translations", ["reference_system_id"], name: "index_reference_system_translations_on_reference_system_id", using: :btree
 
   create_table "reference_systems", force: :cascade do |t|
     t.string   "name",                        limit: 255
@@ -300,6 +380,17 @@ ActiveRecord::Schema.define(version: 20151125151916) do
 
   add_index "service_groups", ["brand_id"], name: "index_service_groups_on_brand_id", using: :btree
 
+  create_table "site_setting_translations", force: :cascade do |t|
+    t.integer  "site_setting_id", limit: 4,     null: false
+    t.string   "locale",          limit: 255,   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "content",         limit: 65535
+  end
+
+  add_index "site_setting_translations", ["locale"], name: "index_site_setting_translations_on_locale", using: :btree
+  add_index "site_setting_translations", ["site_setting_id"], name: "index_site_setting_translations_on_site_setting_id", using: :btree
+
   create_table "site_settings", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.text     "content",    limit: 65535
@@ -329,6 +420,18 @@ ActiveRecord::Schema.define(version: 20151125151916) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "venue_translations", force: :cascade do |t|
+    t.integer  "venue_id",    limit: 4,     null: false
+    t.string   "locale",      limit: 255,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+  end
+
+  add_index "venue_translations", ["locale"], name: "index_venue_translations_on_locale", using: :btree
+  add_index "venue_translations", ["venue_id"], name: "index_venue_translations_on_venue_id", using: :btree
+
   create_table "venues", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
@@ -340,6 +443,19 @@ ActiveRecord::Schema.define(version: 20151125151916) do
   end
 
   add_index "venues", ["slug"], name: "index_venues_on_slug", using: :btree
+
+  create_table "vertical_market_translations", force: :cascade do |t|
+    t.integer  "vertical_market_id", limit: 4,     null: false
+    t.string   "locale",             limit: 255,   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "name",               limit: 255
+    t.string   "headline",           limit: 255
+    t.text     "description",        limit: 65535
+  end
+
+  add_index "vertical_market_translations", ["locale"], name: "index_vertical_market_translations_on_locale", using: :btree
+  add_index "vertical_market_translations", ["vertical_market_id"], name: "index_vertical_market_translations_on_vertical_market_id", using: :btree
 
   create_table "vertical_markets", force: :cascade do |t|
     t.string   "name",                limit: 255

@@ -2,6 +2,8 @@ class ReferenceSystem < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates
 
+  translates :name, :description, :headline, :venue_size_descriptor
+
   belongs_to :vertical_market
   has_many :reference_system_product_types, dependent: :destroy
 

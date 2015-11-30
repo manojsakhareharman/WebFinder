@@ -2,6 +2,8 @@ class CaseStudy < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates
 
+  translates :headline, :description, :content
+
   belongs_to :vertical_market
   has_attached_file :banner,
     styles: {
