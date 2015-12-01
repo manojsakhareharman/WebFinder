@@ -3,6 +3,18 @@ require "rails_helper"
 RSpec.describe "service/index.html.erb", as: :view do
 
   before do
+    allow(SiteSetting).to receive(:value).with('service-page-register-your-products-subheader').and_return("Register Your Products")
+    allow(SiteSetting).to receive(:value).with('service-page-register-your-products-blurb').and_return("blurb...")
+    allow(SiteSetting).to receive(:value).with('service-page-warranty-repair-subheader').and_return("Warranty Repair")
+    allow(SiteSetting).to receive(:value).with('service-page-warranty-repair-blurb').and_return("blurb...")
+    allow(SiteSetting).to receive(:value).with('service-page-out-of-warranty-subheader').and_return("Out of Warranty?")
+    allow(SiteSetting).to receive(:value).with('service-page-out-of-warranty-blurb').and_return("blurb...")
+    allow(SiteSetting).to receive(:value).with('service-page-service-center-login-subheader').and_return("Service Center Login")
+    allow(SiteSetting).to receive(:value).with('service-page-service-center-login-blurb').and_return("blurb...")
+    allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-subheader').and_return("Become a Service Center")
+    allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-blurb').and_return("blurb...")
+    allow(SiteSetting).to receive(:value).with('service-page-harman-pro-dealer-portal-subheader').and_return("Dealer Portal")
+    allow(SiteSetting).to receive(:value).with('service-page-harman-pro-dealer-portal-blurb').and_return("blurb...")
     render
   end
 

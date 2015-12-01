@@ -7,7 +7,7 @@
   <div class="row">
 
     <div class="large-8 medium-7 columns">
-      <h3><%= t('service_login_page.subheaders.visit_brand_portals') %></h3>
+      <h3><%= SiteSetting.value('service-login-visit-brand-portals-subheader') %></h3>
       <br/>
 
       <ul class="large-block-grid-4 medium-block-grid-3 small-block-grid-2" data-equalizer="panels">
@@ -32,18 +32,18 @@
 
     <div class="large-4 medium-5 columns">
       <div class="callout panel">
-        <h3><%= t('service_login_page.subheaders.become_a_service_center') %></h3>
+        <h3><%= SiteSetting.value('service-page-become-a-service-center-subheader') %></h3>
 
         <%= raw textilize SiteSetting.value('service-center-requirements') %>
 
-        <p><%= t('service_login_page.blurbs.become_a_service_center') %></p>
+        <p><%= SiteSetting.value('service-page-service-center-get-started-blurb') %></p>
 
         <%= link_to t('service_page.links.apply_now'), new_service_center_path, class: "small radius button" %>
       </div>
 
       <div class="callout panel">
-        <h3><%= t('service_login_page.subheaders.dealer_portal') %></h3>
-        <p><%= t('service_login_page.blurbs.dealer_portal') %></p>
+        <h3><%= SiteSetting.value('service-login-harman-pro-dealer-portal-subheader') %></h3>
+        <p><%= SiteSetting.value('service-page-harman-pro-dealer-portal-blurb') %></p>
         <%= link_to t('service_page.links.order_now'), ENV['dealer_portal_url'], class: "small radius button" %>
       </div>
     </div>

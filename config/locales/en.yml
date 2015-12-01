@@ -1,24 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   default_meta_description: "HARMAN Professional Solutions is the leading manufacturer of professional audio, video, lighting and control systems from %{brand_names}."
   site_name: HARMAN Professional Solutions
@@ -99,20 +78,6 @@ en:
   service_page:
     title: HARMAN Pro Service
     meta_description: How to get service for your HARMAN Professional products.
-    subheaders:
-      register_your_products: Register Your Products
-      warranty_repair: Warranty Repair
-      out_of_warranty: "Out of Warranty?"
-      service_center_login: Service Center Login
-      become_a_service_center: Become a Service Center
-      harman_pro_dealer_portal: HARMAN Pro Dealer Portal
-    blurbs:
-      register_your_products: Get the most from your warranty.
-      warranty_repair: Get your products fixed. Start by filling out a Service Return Authorization.
-      out_of_warranty: "You're not out of luck. Fill out a Service Return Authorization for info & general rate."
-      service_center_login: Authorized service centers can access additional product information, place part orders, or submit a warranty claim.
-      become_a_service_center: Learn our requirements and apply to be an authorized service center for all HARMAN Professional products.
-      harman_pro_dealer_portal: Portal for HARMAN Pro Representatives, Dealers and Authorized Service Centers.
     links:
       register_now: Register Now
       start_your_repair: Start Your Repair
@@ -137,13 +102,6 @@ en:
     meta_description: "Resources for HARMAN Professional's service center partners."
     brand_website: "%{brand} Website"
     brand_technical_resources: "%{brand} Technical Resources"
-    subheaders:
-      visit_brand_portals: Visit specific portals for resources on the brands shown
-      become_a_service_center: Become a Service Center
-      dealer_portal: Dealer Portal for Spare Parts Purchase
-    blurbs:
-      become_a_service_center: Get started by completing our preliminary application.
-      dealer_portal: Portal for HARMAN Pro Representatives, Dealers and Authorized Service Centers.
 
   find_service_page:
     title: Locate a HARMAN Pro Service Center

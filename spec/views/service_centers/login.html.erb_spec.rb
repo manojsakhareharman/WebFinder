@@ -7,6 +7,12 @@ RSpec.describe "service_centers/login.html.erb", as: :view do
   end
 
   before :each do
+    allow(SiteSetting).to receive(:value).with('service-center-requirements').and_return("Service requirements...")
+    allow(SiteSetting).to receive(:value).with('service-page-become-a-service-center-subheader').and_return("Become a Service Center")
+    allow(SiteSetting).to receive(:value).with('service-login-visit-brand-portals-subheader').and_return("Visit brands...")
+    allow(SiteSetting).to receive(:value).with('service-page-service-center-get-started-blurb').and_return("Get started by...")
+    allow(SiteSetting).to receive(:value).with('service-login-harman-pro-dealer-portal-subheader').and_return("Dealer Portal")
+    allow(SiteSetting).to receive(:value).with('service-page-harman-pro-dealer-portal-blurb').and_return("blurb...")
     assign(:brands, [@brand])
     render
   end
