@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   # Training site
   get '/training' => 'landing_pages#training'
 
+  # Resource library
+  get '/resource-library/:id' => 'resources#show', as: :resource_permalink
+
   # The usual stuff
   get '/contacts' => 'landing_pages#contacts'
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form

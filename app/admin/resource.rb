@@ -16,8 +16,11 @@ ActiveAdmin.register Resource do
     end
     column :name
     column :resource_type
-    column "Link (right-click to copy URL)" do |r|
-      link_to 'attachment', r.attachment.url
+    column "Resource" do |r|
+      link_to 'direct link', r.attachment.url
+    end
+    column "Permalink" do |r|
+      link_to 'permalink', resource_permalink_url(r)
     end
     actions
   end
@@ -27,7 +30,10 @@ ActiveAdmin.register Resource do
       row :name
       row :resource_type
       row :attachment_file_name
-      row :link do
+      row :permalink do
+        link_to resource_permalink_url(resource), resource_permalink_url(resource), target: "_blank"
+      end
+      row :direct_link do
         link_to "#{root_url.to_s.sub(/\/$/, '')}#{resource.attachment.url}", resource.attachment.url, target: "_blank"
       end
       row :attachment_content_type
