@@ -2,16 +2,33 @@ Rails.application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  # Logins for admins, etc.
+  devise_for :admin_users, skip: [:registrations]
+  as :admin_user do
+    get 'admin_users/edit' => 'admin_users/registrations#edit', as: :edit_admin_user_registration
+    patch 'admin_users' => 'admin_users/registration#update', as: :admin_user_registration
+  end
+
+  # Old CMS using ActiveAdmin, still accessible at /admin
   ActiveAdmin.routes(self)
 
+  # New CMS, accessible at /cms
+  get '/cms' => 'cms#index', as: :cms_root
+  namespace :cms do
+    resources :available_locales, only: :show do
+      AvailableLocale.translatables.each do |t|
+        resources t.underscore.pluralize.to_sym
+      end
+    end
+  end
+
+  # Main site routes
   resources :brands, only: :show do
     member do
       get :softwares
     end
     resources :products, only: [:index, :show]
   end
-
   resources :vertical_markets, path: 'applications', only: :show do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show

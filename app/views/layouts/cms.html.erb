@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="harmanpro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
+    <link rel="shortcut icon" type="image/x-icon" href="/harman.ico" />
+    <link rel="icon" type="image/x-icon" href="/harman.ico" />
+
+    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %> <%= t('site_name') %> CMS</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "header" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <div class="sticky">
+      <% unless Rails.env.production? %>
+        <div class="text-center" style="background: yellow; padding: 3px">
+          Hi. Welcome to the harmanpro.com <%= Rails.env.to_s %> environment.
+        </div>
+      <% end %>
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+          <h1><a href="/"><%= image_tag "harman-logo-white.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span><%= t('nav.menu') %></span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="right">
+            <% if admin_user_signed_in? %>
+              <li class="has-dropdown">
+                <%= link_to '#' do %>
+                  My Profile
+                <% end %>
+                <ul class="dropdown">
+                  <li><%= link_to 'Edit Account', edit_admin_user_registration_path %></li>
+                  <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method=>'delete' %></li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+    </div>
+
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <br/>
+        <div class="row">
+          <div class="large-12 medium-12 columns">
+            <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+              <%= content_tag :div, msg %>
+              <a href="#" class="close">&times;</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= yield %>
+
+
+    <div class="sub-footer text-center">
+      <p>
+        &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
+        <%= t('all_rights_reserved') %>.
+        &bull;
+        <%= link_to t('privacy_policy'), privacy_policy_path %>
+        &bull;
+        <%= link_to t('terms_of_use'), terms_of_use_path %>
+      </p>
+      <p>
+        <%= link_to image_tag("harman_tiny.png", alt: "HARMAN"), "http://www.harman.com", target: "_blank" %>
+      </p>
+    </div>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

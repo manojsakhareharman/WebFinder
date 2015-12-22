@@ -1413,6 +1413,19 @@ $topbar-link-text-transform: uppercase;
 
 body {
   background: $body-background-color;
+  &.devise {
+    color: $vapor;
+    background: $harman-blue;
+    h1,h2,h3,h4,h5,h6 { color: $iron; }
+    label,p { color: $silver; }
+    .logo { padding: 30px; }
+    .sub-footer {
+      a {
+        color: $white-smoke;
+        &:hover { color: $white; }
+      }
+    }
+  }
 }
 input[type='checkbox'] {
   margin-right: 5px;

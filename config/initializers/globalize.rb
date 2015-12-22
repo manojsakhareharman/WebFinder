@@ -5,3 +5,6 @@ Globalize.fallbacks = {
   es: [:es, :'es-MX', :en],
   'es-MX': [:'es-MX', :es, :en]
 }
+
+# My monkey patching
+require 'globalize_extensions'

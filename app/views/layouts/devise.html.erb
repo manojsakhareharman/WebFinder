@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="harmanpro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('default_meta_description', brand_names: all_brands.map{|b| b.name}.join(', ') ) %>">
+    <link rel="shortcut icon" type="image/x-icon" href="/harman.ico" />
+    <link rel="icon" type="image/x-icon" href="/harman.ico" />
+    <meta name="google-site-verification" content="WZ9C3gBAzwP1aubYp-I5aweY5QRDsEOG8zLsYq_U--E" />
+
+    <title><%= content_for?(:title) ? yield(:title) + " | " : '' %> <%= t('site_name') %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "header" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="devise">
+
+    <div class="sticky">
+      <% unless Rails.env.production? %>
+        <div class="text-center" style="background: yellow; padding: 3px; color: black;">
+          Hi. Welcome to the harmanpro.com <%= Rails.env.to_s %> environment.
+        </div>
+      <% end %>
+      <div class="text-center logo">
+        <h1><a href="/"><%= image_tag "harman-logo-white.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a></h1>
+      </div>
+    </div>
+
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <br/>
+        <div class="row">
+          <div class="large-6 large-offset-3 medium-8 medium-offset-2 small-12 columns">
+            <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+              <%= content_tag :div, msg %>
+              <a href="#" class="close">&times;</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="container">
+      <div class="row">
+        <div class="large-6 large-offset-3 medium-8 medium-offset-2 small-12 columns">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-footer text-center">
+      <p>
+        &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
+        <%= t('all_rights_reserved') %>.
+        &bull;
+        <%= link_to t('privacy_policy'), privacy_policy_path %>
+        &bull;
+        <%= link_to t('terms_of_use'), terms_of_use_path %>
+      </p>
+      <p>
+        <%= link_to image_tag("harman_tiny.png", alt: "HARMAN"), "http://www.harman.com", target: "_blank" %>
+      </p>
+    </div>
+
+    <%= javascript_include_tag "application" %>
+    <%#= render 'shared/marketing_tracking' %>
+  </body>
+</html>

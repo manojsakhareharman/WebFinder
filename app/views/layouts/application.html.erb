@@ -57,6 +57,7 @@
 
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
+        <br/>
         <div class="row">
           <div class="large-12 medium-12 columns">
             <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">

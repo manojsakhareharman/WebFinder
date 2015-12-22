@@ -1,0 +1,24 @@
+<h6 class="text-center">Welcome to the</h6>
+<h4 class="text-center">Harman Professional Solutions Content Management System</h4>
+
+<br/>
+<div class="row">
+  <div class="small-12">
+    <ul class="medium-block-grid-<%= current_admin_user.translatable_locales.length %> small-block-grid-1">
+      <% current_admin_user.translatable_locales.each do |locale| %>
+        <li>
+          <div class="panel text-center">
+            <h1 class="subheader">
+              <%= link_to locale.items_to_translate.length, [:cms, locale]  %>
+            </h1>
+            <p>items to be translated for<br/>
+            <b><%= locale.name %></b>.</p>
+            <%= link_to 'start translating', [:cms, locale], class: "small radius button" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+

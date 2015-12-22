@@ -77,7 +77,6 @@ GEM
       thor (~> 0.19)
     bower-rails (0.10.0)
     builder (3.2.2)
-    cancan (1.6.10)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -259,6 +258,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -409,7 +410,6 @@ DEPENDENCIES
   acts_as_list
   acts_as_tree
   bower-rails
-  cancan
   capistrano-bundler
   capistrano-passenger
   capistrano-rails
@@ -442,6 +442,7 @@ DEPENDENCIES
   launchy
   mysql2 (~> 0.3.18)
   paperclip
+  pundit
   rails (= 4.2.4)
   rails_autolink
   ransack
