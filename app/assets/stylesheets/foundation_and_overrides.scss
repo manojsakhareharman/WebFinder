@@ -359,7 +359,7 @@ $blockquote-font-color: scale-color($body-font-color, $lightness: 35%);
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to set the background color for the breadcrumb container.
-// $crumb-bg: scale-color($secondary-color, $lightness: 55%);
+$crumb-bg: scale-color($body-background-color, $lightness: 55%);
 
 // We use these to set the padding around the breadcrumbs.
 // $crumb-padding: rem-calc(9 14 9);
@@ -1847,4 +1847,8 @@ ul.title-area {
 }
 .dot-above {
   border-top: 2px dotted $primary-color;
+}
+
+ul.breadcrumbs {
+  margin: rem-calc(10px) 0;
 }
