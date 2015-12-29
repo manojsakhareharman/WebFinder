@@ -11,6 +11,10 @@ module GlobalizeExtensions
         super
       end
 
+      def needs_translation?(locale)
+        !self.class.needing_translations(locale).include?(self)
+      end
+
     end
   end
 end

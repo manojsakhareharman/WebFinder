@@ -1,0 +1,21 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3>Choose a vertical market:</h3>
+    <ul>
+      <% @vertical_markets.order('name').each do |vertical_market| %>
+        <li> <%= link_to vertical_market.name, edit_cms_available_locale_vertical_market_path(@available_locale, vertical_market) %> </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>Vertical Markets represent a group of
+      related applications for the company's products
+      and services. In the new organization,
+      these are related to the CSU.</p>
+    </div>
+  </div>
+</div>

@@ -34,7 +34,7 @@ RSpec.describe Cms::BrandsController do
         expect(I18n.locale).to eq(@available_locale.key.to_sym)
         expect(assigns(:available_locale)).to eq(@available_locale)
         expect(assigns(:brand)).to eq(@brand)
-        expect(response).to render_template('cms/available_locales/brands/show')
+        expect(response).to render_template('cms/available_locales/brands/edit')
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe Cms::BrandsController do
 
         @brand.reload
         expect(@brand.description).to eq('New description')
-        expect(response).to redirect_to cms_available_locale_brand_path(@available_locale, @brand)
+        expect(response).to redirect_to cms_available_locale_brands_path(@available_locale)
       end
     end
   end

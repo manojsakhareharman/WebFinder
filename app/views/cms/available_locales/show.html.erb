@@ -1,7 +1,27 @@
 <div class="large-12 small-12 columns">
   <%= render 'cms/available_locales/side_nav' %>
 
-  <div class="medium-10 small-12 columns">
-    <i>Choose an item in the menu to translate</i>
+  <div class="medium-7 small-12 columns text-center">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><i>&lt;-- Choose an item in the menu to translate</i></p>
+  </div>
+
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+
+      <h5>Note:</h5>
+
+      <% if @available_locale.name.match(/\-/) %>
+        <p>Any missing content for this locale is automatically
+        populated with its parent locale's content. If the parent
+        is missing the content, then the site's default content
+        is loaded.</p>
+      <% else %>
+        <p>Any missing content for this locale is automatically
+        populated with content from the site's default locale.</p>
+      <% end %>
+    </div>
   </div>
 </div>

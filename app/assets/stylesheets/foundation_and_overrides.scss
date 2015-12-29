@@ -1478,6 +1478,9 @@ ul.dropdown {
   padding-bottom: 8px;
   border-bottom: 2px solid $secondary-color;
 }
+.strong, li.strong {
+  font-weight: bold;
+}
 .space-after {
   margin-bottom: 20px;
 }

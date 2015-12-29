@@ -1,0 +1,144 @@
+<%= simple_form_for [:cms, @available_locale, @landing_page] do |f| %>
+  <div class="row">
+    <div class="medium-6 small-12 columns text-center">
+      <h5><%= @available_locale.name %></h5>
+    </div>
+    <div class="medium-6 small-12 columns text-center">
+      <h5>Original</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :title %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.title %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :subtitle %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.subtitle %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :description, input_html: { rows: 5 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.description %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :main_content, input_html: { rows: 35 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.main_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :left_content, input_html: { rows: 25 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.left_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :right_content, input_html: { rows: 25 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.right_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :sub_content, input_html: { rows: 25 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @landing_page.sub_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns text-center">
+      <hr/>
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

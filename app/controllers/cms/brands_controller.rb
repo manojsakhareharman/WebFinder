@@ -11,7 +11,7 @@ class Cms::BrandsController < CmsController
   def show
     @brand = Brand.find(params[:id])
     if @available_locale
-      render template: 'cms/available_locales/brands/show' and return false
+      render template: 'cms/available_locales/brands/edit' and return false
     end
   end
 
@@ -26,7 +26,7 @@ class Cms::BrandsController < CmsController
     @brand = Brand.find(params[:id])
     if @brand.update_attributes(brand_params)
       if @available_locale
-        redirect_to [:cms, @available_locale, @brand], notice: 'Update successful'
+        redirect_to [:cms, @available_locale, @brand.class], notice: 'Update successful'
       end
     else
       if @available_locale
