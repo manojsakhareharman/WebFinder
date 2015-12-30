@@ -45,6 +45,9 @@
                   <li><%= link_to t('Service'), service_path %></li>
                 </ul>
               </li>
+              <li>
+                <%= link_to t('nav.blog'), "http://www.harmanpro.com/insights", target: "_blank" %>
+              </li>
               <% if SiteSetting.where(name: "store_link").exists? %>
                 <li class="divider"></li>
                 <li class="has-form"><%= link_to t('shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
