@@ -38,6 +38,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'globalize', '~> 5.0.0'
 gem 'http_accept_language'
+gem 'rails-i18n'
 
 group :development do
   gem 'web-console', '~> 2.0'
