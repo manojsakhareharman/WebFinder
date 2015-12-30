@@ -5,7 +5,9 @@
     <h3>Choose a vertical market:</h3>
     <ul>
       <% @vertical_markets.order('name').each do |vertical_market| %>
-        <li> <%= link_to vertical_market.name, edit_cms_available_locale_vertical_market_path(@available_locale, vertical_market) %> </li>
+        <li class="<%= 'needs-translation' if vertical_market.needs_translation?(@available_locale.key) %>">
+          <%= link_to vertical_market.name, edit_cms_available_locale_vertical_market_path(@available_locale, vertical_market) %>
+        </li>
       <% end %>
     </ul>
   </div>

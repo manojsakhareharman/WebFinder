@@ -1,18 +1,5 @@
 <%= simple_form_for [:cms, @available_locale, @site_setting] do |f| %>
-  <div class="row">
-    <div class="medium-6 small-12 columns text-center">
-      <h5><%= @available_locale.name %></h5>
-    </div>
-    <div class="medium-6 small-12 columns text-center">
-      <h5>Original</h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
-      <hr/>
-    </div>
-  </div>
+  <%= render 'cms/available_locales/form_header', f: f %>
 
   <div class="row">
     <div class="medium-6 small-12 columns">

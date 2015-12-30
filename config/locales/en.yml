@@ -21,6 +21,21 @@ en:
   any: any
   search: search
 
+  date:
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
   nav:
     menu: Menu
     resources: Resources

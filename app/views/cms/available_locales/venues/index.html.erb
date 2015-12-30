@@ -5,7 +5,9 @@
     <h3>Choose a venue:</h3>
     <ul>
       <% @venues.order('name').each do |venue| %>
-        <li> <%= link_to venue.name, edit_cms_available_locale_venue_path(@available_locale, venue) %> </li>
+        <li class="<%= 'needs-translation' if venue.needs_translation?(@available_locale.key) %>">
+          <%= link_to venue.name, edit_cms_available_locale_venue_path(@available_locale, venue) %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -5,7 +5,9 @@
     <h3>Choose a product:</h3>
     <ul>
       <% @products.order('name').each do |product| %>
-        <li> <%= link_to product.name, edit_cms_available_locale_product_path(@available_locale, product) %> </li>
+        <li class="<%= 'needs-translation' if product.needs_translation?(@available_locale.key) %>">
+          <%= link_to product.name, edit_cms_available_locale_product_path(@available_locale, product) %>
+        </li>
       <% end %>
     </ul>
   </div>

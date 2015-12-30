@@ -6,7 +6,12 @@
       <li>
         <%= link_to [:cms, @available_locale, t.constantize] do %>
           <%= t.pluralize.titleize %>
-          (<%= t.constantize.needing_translations(@available_locale).count %>)
+          <% n = t.constantize.needing_translations(@available_locale.key).count %>
+          <% if n > 0 %>
+            <span class="needs-translation">
+              (<%= n %>)
+            </span>
+          <% end %>
         <% end %>
       </li>
     <% end %>

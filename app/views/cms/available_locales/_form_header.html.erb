@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="medium-6 small-12 columns text-center">
+    <h5><%= @available_locale.name %></h5>
+    <p><small>
+      <% if t = f.object.translation_for(@available_locale.key, false) %>
+        Last updated: <%=l t.updated_at.to_date %>
+      <% else %>
+        Not yet translated
+      <% end %>
+    </small></p>
+  </div>
+  <div class="medium-6 small-12 columns text-center">
+    <h5>Original</h5>
+    <p><small>Last updated: <%=l f.object.updated_at.to_date %></small></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <hr/>
+  </div>
+</div>

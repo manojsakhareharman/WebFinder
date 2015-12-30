@@ -5,7 +5,9 @@
     <h3>Choose a site setting:</h3>
     <ul>
       <% @site_settings.order('name').each do |site_setting| %>
-        <li> <%= link_to site_setting.name, edit_cms_available_locale_site_setting_path(@available_locale, site_setting) %> </li>
+        <li class="<%= 'needs-translation' if site_setting.needs_translation?(@available_locale.key) %>">
+          <%= link_to site_setting.name, edit_cms_available_locale_site_setting_path(@available_locale, site_setting) %>
+        </li>
       <% end %>
     </ul>
   </div>

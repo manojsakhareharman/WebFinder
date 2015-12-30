@@ -12,7 +12,8 @@ module GlobalizeExtensions
       end
 
       def needs_translation?(locale)
-        !self.class.needing_translations(locale).include?(self)
+        t = translation_for(locale, false)
+        !t || self.updated_at > t.updated_at
       end
 
     end

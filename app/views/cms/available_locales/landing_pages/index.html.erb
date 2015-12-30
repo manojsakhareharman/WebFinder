@@ -5,7 +5,9 @@
     <h3>Choose a landing page:</h3>
     <ul>
       <% @landing_pages.order('title').each do |landing_page| %>
-        <li> <%= link_to landing_page.title, edit_cms_available_locale_landing_page_path(@available_locale, landing_page) %> </li>
+        <li class="<%= 'needs-translation' if landing_page.needs_translation?(@available_locale.key) %>">
+          <%= link_to landing_page.title, edit_cms_available_locale_landing_page_path(@available_locale, landing_page) %>
+        </li>
       <% end %>
     </ul>
   </div>

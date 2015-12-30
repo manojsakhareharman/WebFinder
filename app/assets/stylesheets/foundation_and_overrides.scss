@@ -1478,8 +1478,13 @@ ul.dropdown {
   padding-bottom: 8px;
   border-bottom: 2px solid $secondary-color;
 }
-.strong, li.strong {
+.needs-translation, li.needs-translation {
   font-weight: bold;
+  color: $alert-color;
+  a {
+    font-weight: bold;
+    color: $alert-color;
+  }
 }
 .space-after {
   margin-bottom: 20px;
