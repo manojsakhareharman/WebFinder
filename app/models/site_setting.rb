@@ -22,6 +22,10 @@ class SiteSetting < ActiveRecord::Base
     "Missing Site Setting: #{setting_name}"
   end
 
+  def self.set?(setting_name)
+    exists?(name: setting_name)
+  end
+
   def value
     self.content.present? ? self.content : empty_value
   end
