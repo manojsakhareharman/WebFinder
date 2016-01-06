@@ -1,0 +1,156 @@
+es:
+  default_meta_description: "HARMAN Profesional es el fabricante líder en audio profesional, video,iluminación y sistemas de control de %{brand_names}."
+  site_name: Soluciones HARMAN Profesional
+  logo_alt_text: Soluciones HARMAN Profesional para Audio, Video, Iluminación y Sistemas de Control
+  learn_more_at: Conoce más en
+  logo: logo
+  case_study: Caso de Estudio
+  software: Software
+  loading: Cargando
+  harman_brands: Marcas HARMAN
+  all_rights_reserved: Todos los derechos reservados
+  privacy_policy: Política de Privacidad
+  terms_of_use: Términos de uso
+  submit: enviar
+  more: más
+  more_information: más información
+  learn_more: conoce más
+  previous: anterior
+  next: siguiente
+  register: registro
+  any: alguna
+  search: buscar
+
+  nav:
+    menu: Menu
+    resources: Recursos
+    training: Entrenamiento
+    consultants: Referencias
+    contacts: Contactos
+    service: Servicio
+    shop: Compra
+    learn: Conoce
+    plan: Plan
+    buy: Compra
+
+  home_page:
+    show_now: Compra Ahora
+
+  brand_page:
+    meta_description: "Resumen de productos y servicios proporcionado por %{brand}, una marca de HARMAN Profesional."
+    branding_resources: Recursos de Marca
+    logo_collection: colección de logos
+    more_resources: Más recursos de mercadotecnia
+
+  consultant_page:
+    title: Recursos de Referencia
+    meta_description: Recursos Técnicos, Información de Contacto de la marca y otros recursos para referencias de audio profesional.
+    technical_product_resources: Recursos Técnicos de Producto
+    technical_resources: Recursos Técnicos
+    select_a_product: seleccionar un producto para recuperar la información
+    contacts: Contactos de Referencia
+    browse_on_brand_site: "Explorar en %{brand} sitio web..."
+    consignment_form: Forma de Envío
+
+  contacts_page:
+    title: Contactos HARMAN Professional
+    meta_description: "Soporte y otras ligas de contacto de las marcas de HARMAN Profesional: %{brand_names}."
+    click_to_contact: haga click para ponerse en contacto con estas marcas
+    brand_support: "%{brand} Soporte"
+    brand_info: "%{brand} Información"
+
+  training_page:
+    title: Capacitación HARMAN Profesional
+    meta_description: Ligas de Capacitación para las marcas de audio profesional, video, iluminación y sistemas de control de HARMAN Profesional.
+    click_for_info: haga click para capacitación de estas marcas
+    brand_training: "%{brand} Capacitación"
+
+  reference_system_page:
+    meta_description: "Ejemplo %{vertical_market} system: %{reference_system} de las marcas de audio profesional, video, iluminación y sistemas de control de HARMAN Profesional."
+    vertical_market_examples: "%{vertical_market} ejemplos"
+    explore_products: Explora estos productos sugeridos
+    product_suggestions: Recomendaciones de Producto
+
+  vertical_market_page:
+    meta_description: "Recursos para conocer, planificar y comprar tu %{vertical_market} sistema de audio profesional, video, iluminación y de control."
+    explore_examples: Explora estos ejemplos
+
+  service_page:
+    title: Servicio HARMAN Pro
+    meta_description: Cómo obtener servicio para tus productos HARMAN Profesional.
+    links:
+      register_now: Regístrate Ahora
+      start_your_repair: Comienza Tu Reparación
+      get_started: Comenzar
+      access_now: Accesa Ahora
+      apply_now: Aplica Ahora
+      order_now: Ordena Ahora
+    subnav:
+      services_home: Servicios de Inicio
+      service_center_login: Iniciar Sesión para el Centro de Servicio
+      find_service: Encuentra un Centro de Servicio
+
+  service_center_registration:
+    title: Registro para Centro de Servicio
+    meta_description: Registro para ser un centro de servicio autorizado de las marcas de HARMAN Profesional.
+    agreement: Estoy dispuesto y tengo capacidad para proveer servicio a todas las marcas de HARMAN Profesional en mi ubicación.
+    subheaders:
+      requirements: Requisitos
+
+  service_login_page:
+    title: Iniciar Sesión Centros de Servicio de HARMAN Pro
+    meta_description: "Centro de consulta para los socios de los centros de servicio de HARMAN Profesional."
+    brand_website: "%{brand} Sitio Web"
+    brand_technical_resources: "%{brand} Recursos Técnicos"
+
+  find_service_page:
+    title: Localiza un Centro de Servicio de HARMAN Pro
+    meta_description: Localiza un Centro de Servicio local para reparar tus productos HARMAN Profesional.
+    select_state: "Selecciona tu estado:"
+    service_type_needed: "Tipo de Servicio Requerido:"
+    no_results_found: Resultados No encontrados. Por favor intenta de nuevo. Intenta introducir solo la abreviación del estado sin incluir el tipo de servicio requerido.
+    contact_information: Información de Contacto
+    services: Servicios
+
+  leadgen_page:
+    meta_description: Formulario para ponerse en contacto con HARMAN Profesional con respecto a su sistema de audio profesional, video, iluminación y control.
+
+  lead_mailer:
+    new_lead:
+      subject: Nueva guía desde harmanpro.com
+
+  activerecord:
+    models:
+      brand: Marcas
+      case_study: caso de estudio
+      landing_page: Página de destino
+      lead: Guía
+      product_type: Tipo de producto
+      product: Producto
+      reference_system: Sistema de Referencia
+      resource: Recurso
+      service_center: Centro de Servicio
+      site_setting: Ajuste del Sitio
+      venue: Sitio
+      vertical_market: Mercado Vertical
+    attributes:
+      lead:
+        name: Nombre
+        company: Compañía
+        email: Email
+        phone: Teléfono
+        location: Ubicación
+        project_description: Descripción del Proyecto
+      service_center:
+        contact_name: Nombre
+        email: Email
+        name: Nombre de empresa
+        address: Dirección
+        city: Ciudad
+        state: Estado
+        zip: Código Postal
+        phone: Teléfono
+        fax: Fax
+        website: Sitio Web
+        account_number: Número de Cuenta
+
