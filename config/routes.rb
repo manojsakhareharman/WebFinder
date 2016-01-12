@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, skip: [:registrations]
   as :admin_user do
     get 'admin_users/edit' => 'admin_users/registrations#edit', as: :edit_admin_user_registration
-    patch 'admin_users' => 'admin_users/registration#update', as: :admin_user_registration
+    patch 'admin_users' => 'admin_users/registrations#update', as: :admin_user_registration
   end
 
   # Old CMS using ActiveAdmin, still accessible at /admin
