@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'sprockets', '= 3.4.0'
-gem 'sprockets-rails', '=2.3.3'
+gem 'sprockets'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
@@ -42,7 +41,7 @@ gem 'http_accept_language'
 gem 'rails-i18n'
 
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
