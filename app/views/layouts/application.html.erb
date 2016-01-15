@@ -53,7 +53,7 @@
               <% end %>
               <% if SiteSetting.where(name: "store_link").exists? %>
                 <li class="divider"></li>
-                <li class="has-form"><%= link_to t('shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
+                <li class="has-form"><%= link_to t('nav.shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
               <% end %>
             <% end %>
           </ul>
