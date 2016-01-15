@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 
   # Resource library
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink
+  get '/medialibrary' => redirect("https://harman.widencollective.com")
 
   # The usual stuff
   get '/contacts' => 'landing_pages#contacts'

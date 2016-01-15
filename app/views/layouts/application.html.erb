@@ -39,10 +39,11 @@
               <li class="has-dropdown">
               <a href="#" class="disabled"><%= t('nav.resources') %></a>
                 <ul class="dropdown">
+                  <li><%= link_to t('nav.media_library'), "/medialibrary", target: "_blank" %></li>
                   <li><%= link_to t('nav.training'), training_path %></li>
-                  <li><%= link_to t('Consultants'), consultant_portal_path %></li>
-                  <li><%= link_to t('Contacts'), contacts_path %></li>
-                  <li><%= link_to t('Service'), service_path %></li>
+                  <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
+                  <li><%= link_to t('nav.contacts'), contacts_path %></li>
+                  <li><%= link_to t('nav.service'), service_path %></li>
                 </ul>
               </li>
               <% if SiteSetting.set?("blog_link_name") && SiteSetting.set?("blog_link") %>

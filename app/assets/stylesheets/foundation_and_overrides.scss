@@ -1449,10 +1449,15 @@ input[type='checkbox'] {
 }
 ul.dropdown {
   li {
-    height: rem-calc(50);
+    height: rem-calc(46);
     a {
-      height: rem-calc(50);
-      line-height: rem-calc(50) !important;
+      color: $iron !important;
+      text-transform: none;
+      height: rem-calc(46);
+      line-height: rem-calc(46) !important;
+      &:hover {
+        color: $white !important;
+      }
     }
   }
 }
