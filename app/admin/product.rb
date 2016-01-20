@@ -11,6 +11,43 @@ ActiveAdmin.register Product do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :brand
+      row :external_link do
+        if product.url.present?
+          link_to product.url, product.url, target: "_blank"
+        end
+      end
+      row :images do
+        if product.photo_file_name.present?
+          columns do
+            column max_width: "160px" do
+              image_tag(product.photo.url(:small))
+            end
+            column do
+              ul do
+                li link_to('original size', product.photo.url(:original))
+                li link_to('large', product.photo.url(:large))
+                li link_to('medium', product.photo.url(:medium))
+                li link_to('small', product.photo.url(:small))
+                li link_to('thumb', product.photo.url(:thumb))
+                li link_to('thumb (square)', product.photo.url(:thumb_square))
+                li link_to('tiny (square)', product.photo.url(:tiny))
+              end
+            end
+          end
+        end
+      end
+      row :description do
+        raw(textilize(brand.description))
+      end
+      row :ecommerce_id
+    end
+    active_admin_comments
+  end
+
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :brand
