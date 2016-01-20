@@ -41,7 +41,7 @@ ActiveAdmin.register Product do
         end
       end
       row :description do
-        raw(textilize(brand.description))
+        raw(textilize(product.description))
       end
       row :ecommerce_id
     end
