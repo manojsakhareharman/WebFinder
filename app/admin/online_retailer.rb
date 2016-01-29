@@ -1,4 +1,5 @@
 ActiveAdmin.register OnlineRetailer do
+  menu parent: "Brands/Products", priority: 3
   permit_params :name, :url, :logo
 
   # :nocov:

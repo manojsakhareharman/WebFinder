@@ -1,4 +1,5 @@
 ActiveAdmin.register Brand do
+  menu parent: "Brands/Products", priority: 1, label: "Brands"
   config.sort_order = 'name_asc'
 
   permit_params :name,
@@ -75,6 +76,7 @@ ActiveAdmin.register Brand do
       row :tech_url
       row :api_url
     end
+    active_admin_comments
   end
 
   form html: {multipaart: true} do |f|

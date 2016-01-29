@@ -59,4 +59,54 @@ RSpec.describe ReferenceSystem, :type => :model do
       expect(@reference_system.slug.present?).to be(true)
     end
   end
+
+  describe "without_translations(:locale) collection" do
+    it "includes missing translations" do
+      needs = ReferenceSystem.without_translations(:es)
+
+      expect(needs).to include(@reference_system)
+    end
+
+    it "does not include those which are translated" do
+      reference_system = FactoryGirl.create(:reference_system)
+
+      I18n.locale = :es
+      reference_system.name = "Translated Name"
+      reference_system.description = "Translated Description"
+      reference_system.headline = "Translated Headline"
+      reference_system.venue_size_descriptor = "Trans. Descr."
+      reference_system.save
+
+      needs = ReferenceSystem.without_translations(:es)
+
+      expect(needs).not_to include(reference_system)
+    end
+  end
+
+  describe "updated_but_not_translated(:locale) collection" do
+
+    it "includes those where main item was updated, but translation was not" do
+      reference_system = FactoryGirl.create(:reference_system)
+
+      I18n.locale = :es
+      reference_system.name = "Translated Name"
+      reference_system.description = "Translated Description"
+      reference_system.headline = "Translated Headline"
+      reference_system.venue_size_descriptor = "Trans. Descr."
+      reference_system.save
+
+      sleep(1) # to allow parent object to become out of sync
+
+      I18n.locale = I18n.default_locale
+      reference_system.name = "Updated Name"
+      reference_system.description = "Updated Description"
+      reference_system.save
+
+      updated = ReferenceSystem.updated_but_not_translated(:es)
+
+      expect(updated).to include(reference_system)
+    end
+
+  end
+
 end

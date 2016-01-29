@@ -2,6 +2,8 @@ class Brand < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name
 
+  translates :description, :contact_info_for_consultants
+
   validates :name, presence: true, uniqueness: true
   validates :url, presence: true, format: { with: URI.regexp }
   validates :support_url, format: { with: URI.regexp }, allow_blank: true
@@ -62,7 +64,10 @@ class Brand < ActiveRecord::Base
   end
 
   def self.for_consultant_portal_with_contacts
-    for_consultant_portal.where("contact_info_for_consultants IS NOT NULL and contact_info_for_consultants != ''")
+    for_consultant_portal.
+      with_translations(I18n.locale).
+      where("brand_translations.contact_info_for_consultants IS NOT NULL" +
+            " AND brand_translations.contact_info_for_consultants != ''")
   end
 
   def self.for_service_site

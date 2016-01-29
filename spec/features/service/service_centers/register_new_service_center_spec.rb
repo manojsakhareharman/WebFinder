@@ -46,7 +46,7 @@ feature "Registering to become a service center" do
     fill_in "Address", with: sc.address
     fill_in "City", with: sc.city
     fill_in "State", with: sc.state
-    fill_in "Zip", with: sc.zip
+    fill_in "Postal Code", with: sc.zip
     fill_in "Phone", with: sc.phone
     fill_in "Email", with: sc.email
     check "I am willing and able to service all HARMAN" #...

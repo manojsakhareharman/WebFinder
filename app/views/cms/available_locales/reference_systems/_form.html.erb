@@ -1,0 +1,83 @@
+<%= simple_form_for [:cms, @available_locale, @reference_system] do |f| %>
+  <%= render 'cms/available_locales/form_header', f: f %>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :name %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @reference_system.name %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :headline %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @reference_system.headline %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :venue_size_descriptor, hint: "appears in slider area" %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @reference_system.venue_size_descriptor %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :description, input_html: { rows: 15 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw textilize @reference_system.description %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns text-center">
+      <hr/>
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

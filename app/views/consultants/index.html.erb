@@ -1,9 +1,9 @@
-<%= content_for :title do %>Consultant Resources<% end %>
-<%= content_for :description do %>Technical resources, brand contact information and other resources for professional audio consultants.<% end %>
+<%= content_for :title do %><%= t('consultant_page.title') %><% end %>
+<%= content_for :description do %><%= t('consultant_page.meta_description') %><% end %>
 
 <div class="bumped-up">
   <div class="banner-container">
-    <h1><%= image_tag "consultants_header.jpg", alt: "Consultant Resources" %></h1>
+    <h1><%= image_tag "consultants_header.jpg", alt: t('consultant_page.title') %></h1>
   </div>
 </div>
 
@@ -14,7 +14,7 @@
       <div><%=raw textilize SiteSetting.value("consultant-portal-welcome-paragraph") %></div>
       <hr/>
 
-      <h3>Technical Product Resources</h3>
+      <h3><%= t('consultant_page.technical_product_resources') %></h3>
       <div class="row">
         <div class="large-6 medium-6 columns">
           <br/>
@@ -27,28 +27,28 @@
               <form data-brand-id="<%= brand.friendly_id %>" class="product_selector">
                 <input type="hidden" name="brand_id" value="<%= brand.friendly_id %>">
                 <select name="product_id">
-                  <option class="loading">Loading...</option>
+                  <option class="loading"><%= t :loading %>...</option>
                 </select>
               </form>
             <% end %>
           <% end %>
-          <h5>Software</h5>
+          <h5><%= t('software') %></h5>
           <form id='software-menu'>
             <select name='software_id'>
-              <option class="loading">Loading...</option>
+              <option class="loading"><%= t :loading %>...</option>
             </select>
           </form>
           <% @brands.each do |brand| %>
             <% if brand.downloads_page_url.present? && brand.api_url.blank? %>
-              <h5><%= brand.name %> Technical Resources</h5>
-              <%= link_to "Browse on #{brand.name} website...", brand.downloads_page_url, target: "_blank" %>
+              <h5><%= brand.name %> <%= t('consultant_page.technical_resources') %></h5>
+              <%= link_to t('consultant_page.browse_on_brand_site', brand: brand.name), brand.downloads_page_url, target: "_blank" %>
             <% end %>
           <% end %>
         </div>
         <div class="large-6 medium-6 columns">
           <div id="product-content" class="white-callout panel" data-loading="<%= image_path 'ajax-loader.gif' %>">
             <div class="placeholder">
-              <p><i>select a product<br/> to retrieve resources </i></p>
+              <p><i><%= t 'consultant_page.select_a_product' %></i></p>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@
       <div class="row">
         <div class="large-12 medium-12 columns">
           <hr/>
-          <h3>Consultant Contacts</h3>
+          <h3><%= t 'consultant_page.contacts' %></h3>
           <br/>
           <div class="row">
             <div class="large-12 medium-12 columns" data-equalizer="contacts">
@@ -90,7 +90,7 @@
             <div>
               <%= raw auto_link textilize SiteSetting.value("consultant-portal-loan-program-paragraph") %>
             </div>
-            <%= link_to "Consignment Form", asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
+            <%= link_to t('consultant_page.consignment_form'), asset_path("consignment-template.xlsx"), class: "tiny radius button" %>
           </div>
         </div>
       <% end %>

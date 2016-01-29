@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 gem 'responders', '~> 2.0'
 gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
@@ -22,10 +22,11 @@ gem 'friendly_id'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'acts_as_tree'
+gem 'acts-as-taggable-on', '~> 3.4'
 gem 'devise'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'activeadmin-sortable'
-gem 'cancan'
+gem 'pundit'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'httparty'
@@ -35,8 +36,12 @@ gem 'ransack' # using for service center search
 gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'globalize', '~> 5.0.0'
+gem 'http_accept_language'
+gem 'rails-i18n'
+
 group :development do
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
@@ -66,4 +71,5 @@ group :test do
   gem 'json-schema'
   gem 'faker'
   gem 'selenium-webdriver'
+  gem 'launchy'
 end

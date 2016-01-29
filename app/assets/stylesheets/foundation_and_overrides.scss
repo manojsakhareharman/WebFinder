@@ -122,11 +122,11 @@ $body-font-weight: $font-weight-medium;
 
 // $small-range: (0em, 40em);
 // $medium-range: (40.063em, 64em);
-// $large-range: (64.063em, 90em);
-// $xlarge-range: (90.063em, 120em);
+$large-range: (69.163em, 90em);
+$xlarge-range: (90.063em, 120em);
 // $xxlarge-range: (120.063em, 99999999em);
 
-// $screen: "only screen";
+$screen: "only screen";
 
 // $landscape: "#{$screen} and (orientation: landscape)";
 // $portrait: "#{$screen} and (orientation: portrait)";
@@ -137,10 +137,10 @@ $body-font-weight: $font-weight-medium;
 // $medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
 // $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
 
-// $large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
+$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
 // $large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})";
 
-// $xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
 // $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})";
 
 // $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
@@ -359,7 +359,7 @@ $blockquote-font-color: scale-color($body-font-color, $lightness: 35%);
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to set the background color for the breadcrumb container.
-// $crumb-bg: scale-color($secondary-color, $lightness: 55%);
+$crumb-bg: scale-color($body-background-color, $lightness: 55%);
 
 // We use these to set the padding around the breadcrumbs.
 // $crumb-padding: rem-calc(9 14 9);
@@ -1390,8 +1390,8 @@ $topbar-link-text-transform: uppercase;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: $medium-up;
+$topbar-breakpoint: #{lower-bound($large-range)}; // Change to 9999px for always mobile layout
+$topbar-media-query: $large-up;
 
 // Divider Styles
 //$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: -8%);
@@ -1413,6 +1413,19 @@ $topbar-link-text-transform: uppercase;
 
 body {
   background: $body-background-color;
+  &.devise {
+    color: $vapor;
+    background: $harman-blue;
+    h1,h2,h3,h4,h5,h6 { color: $iron; }
+    label,p { color: $silver; }
+    .logo { padding: 30px; }
+    .sub-footer {
+      a {
+        color: $white-smoke;
+        &:hover { color: $white; }
+      }
+    }
+  }
 }
 input[type='checkbox'] {
   margin-right: 5px;
@@ -1436,10 +1449,15 @@ input[type='checkbox'] {
 }
 ul.dropdown {
   li {
-    height: rem-calc(50);
+    height: rem-calc(46);
     a {
-      height: rem-calc(50);
-      line-height: rem-calc(50) !important;
+      color: $iron !important;
+      text-transform: none;
+      height: rem-calc(46);
+      line-height: rem-calc(46) !important;
+      &:hover {
+        color: $white !important;
+      }
     }
   }
 }
@@ -1464,6 +1482,14 @@ ul.dropdown {
 .underlined {
   padding-bottom: 8px;
   border-bottom: 2px solid $secondary-color;
+}
+.needs-translation, li.needs-translation {
+  font-weight: bold;
+  color: $alert-color;
+  a {
+    font-weight: bold;
+    color: $alert-color;
+  }
 }
 .space-after {
   margin-bottom: 20px;
@@ -1831,4 +1857,11 @@ ul.title-area {
       color: $jet;
     }
   }
+}
+.dot-above {
+  border-top: 2px dotted $primary-color;
+}
+
+ul.breadcrumbs {
+  margin: rem-calc(10px) 0;
 }

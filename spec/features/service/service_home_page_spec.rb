@@ -12,15 +12,6 @@ feature 'Service landing page' do
   #   Given I am a visitor
   #   When I visit the home page
   #   Then I see relevant sections
-  scenario 'visit the home page' do
-    expect(page).to have_content("Register Your Products")
-    expect(page).to have_content("Warranty Repair")
-    expect(page).to have_content("Out of Warranty?")
-    expect(page).to have_content("Service Center Login")
-    expect(page).to have_content("Become a Service Center")
-    expect(page).to have_content("Dealer Portal")
-  end
-
   scenario 'click through to warranty registrion page' do
     click_on 'Register Now'
 

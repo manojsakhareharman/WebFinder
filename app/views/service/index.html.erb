@@ -1,5 +1,5 @@
-<%= content_for :title do %>HARMAN Pro Service<% end %>
-<%= content_for :description do %>How to get service for your HARMAN Professional products.<% end %>
+<%= content_for :title do %><%= t('service_page.title') %><% end %>
+<%= content_for :description do %><%= t('service_page.meta_description') %><% end %>
 
 <%= render 'shared/service_subnav' %>
 
@@ -11,49 +11,47 @@
       <br/>
       <div class="row" data-equalizer="blurbs">
         <div class="large-4 medium-4 small-4 columns">
-          <h5>Register Your Products</h5>
+          <h5><%= SiteSetting.value('service-page-register-your-products-subheader') %></h5>
           <div data-equalizer-watch="blurbs">
-            <p>Get the most from your warranty.</p>
+            <p><%= SiteSetting.value('service-page-register-your-products-blurb') %></p>
           </div>
             <br/>
-          <%= link_to "Register Now", ENV['warranty_registration_url'], target: "_blank", class: "small radius button" %>
+          <%= link_to t('service_page.links.register_now'), ENV['warranty_registration_url'], target: "_blank", class: "small radius button" %>
         </div>
         <div class="large-4 medium-4 small-4 columns">
-          <h5>Warranty Repair</h5>
+          <h5><%= SiteSetting.value('service-page-warranty-repair-subheader') %></h5>
           <div data-equalizer-watch="blurbs">
-            <p>Get your products fixed. Start by filling out a Service Return Authorization.</p>
+            <p><%= SiteSetting.value('service-page-warranty-repair-blurb') %></p>
           </div>
             <br/>
-          <%= link_to "Start Your Repair", ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
+          <%= link_to t('service_page.links.start_your_repair'), ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
         </div>
         <div class="large-4 medium-4 small-4 columns">
-          <h5>Out of Warranty?</h5>
+          <h5><%= SiteSetting.value('service-page-out-of-warranty-subheader') %></h5>
           <div data-equalizer-watch="blurbs">
-            <p>You're not out of luck. Fill out a Service Return Authorization for info &amp; general rate.</p>
+            <p><%= SiteSetting.value('service-page-out-of-warranty-blurb') %></p>
           </div>
             <br/>
-          <%= link_to "Get Started", ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
+          <%= link_to t('service_page.links.get_started'), ENV['warranty_repair_url'], target: "_blank", class: "small radius button" %>
         </div>
       </div>
     </div>
 
     <div class="large-4 medium-5 columns">
       <div class="callout panel">
-        <h3>Service Center Login</h3>
-        <p>Authorized service centers can access additional product information,
-        place part orders, or submit a warranty claim.</p>
-        <%= link_to "Access Now", service_center_login_path, class: "small radius button" %>
+        <h3><%= SiteSetting.value('service-page-service-center-login-subheader') %></h3>
+        <p><%= SiteSetting.value('service-page-service-center-login-blurb') %></p>
+        <%= link_to t('service_page.links.access_now'), service_center_login_path, class: "small radius button" %>
 
         <hr/>
-        <h3>Become a Service Center</h3>
-        <p>Learn our requirements and apply to be an authorized service center
-        for all HARMAN Professional products.</p>
-        <%= link_to "Apply Now", new_service_center_path, class: "small radius button" %>
+        <h3><%= SiteSetting.value('service-page-become-a-service-center-subheader') %></h3>
+        <p><%= SiteSetting.value('service-page-become-a-service-center-blurb') %></p>
+        <%= link_to t('service_page.links.apply_now'), new_service_center_path, class: "small radius button" %>
 
         <hr/>
-        <h3>HARMAN Pro Dealer Portal</h3>
-        <p>Portal for HARMAN Pro Representatives, Dealers and Authorized Service Centers.</p>
-        <%= link_to "Order Now", ENV['dealer_portal_url'], class: "small radius button" %>
+        <h3><%= SiteSetting.value('service-page-harman-pro-dealer-portal-subheader') %></h3>
+        <p><%= SiteSetting.value('service-page-harman-pro-dealer-portal-blurb') %></p>
+        <%= link_to t('service_page.links.order_now'), ENV['dealer_portal_url'], class: "small radius button" %>
     </div>
 
   </div>

@@ -10,7 +10,7 @@
       </div>
     </div>
     <p>{{ product_type.description }}</p>
-    <i ng-show="{{ product_type.products.length > 0 }}">Product Suggestions:</i>
+    <i ng-show="{{ product_type.products.length > 0 }}"><%= t('reference_system_page.product_suggestions') %>:</i>
     <ul>
       <li ng-repeat="product in product_type.products">
         <div class="row">

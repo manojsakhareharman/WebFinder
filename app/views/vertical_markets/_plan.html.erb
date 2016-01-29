@@ -6,7 +6,7 @@
       <% if vertical_market.retail? %>
 
         <%# TODO: enable caching once changes calm down %>
-        <%#= cache ["vertical-retail-plan", Date.today] do %>
+        <%#= cache ["vertical-retail-plan", Date.today, I18n.locale] do %>
           <div class="row">
             <div class="large-12 columns">
               <h3><%= SiteSetting.value("retail-plan-section-subheader") %></h3>
@@ -22,7 +22,7 @@
         <div class="row">
           <div class="large-8 columns">
             <% if vertical_market.parent %>
-              <%= cache ["parent-vertical-content", vertical_market.parent, Date.today] do %>
+              <%= cache ["parent-vertical-content", vertical_market.parent, Date.today, I18n.locale] do %>
                 <h3><%= vertical_market.parent.headline %></h3>
                 <div class="description parent">
                   <%= raw textilize vertical_market.parent.description %>
@@ -30,7 +30,7 @@
               <% end %>
             <% end %>
 
-            <%= cache ["help-find-installer-content", Date.today] do %>
+            <%= cache ["help-find-installer-content", Date.today, I18n.locale] do %>
               <h6><strong><%= SiteSetting.value("subheader-help-find-installer") %></strong></h6>
               <div class="space-after">
                 <%= raw textilize SiteSetting.value("help-find-installer-description") %>
@@ -42,12 +42,12 @@
 
           <div class="large-4 columns">
             <div class="panel">
-              <%= cache ["hef-content", Date.today] do %>
+              <%= cache ["hef-content", Date.today, I18n.locale] do %>
                 <h6 class="subheader"><%= SiteSetting.value("hef-sidebar-title") %></h6>
                 <div class="space-after">
                   <%= raw textilize SiteSetting.value("hef-description") %>
                 </div>
-                <%= link_to "Learn More", SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
+                <%= link_to t('learn_more'), SiteSetting.value("hef-link"), target: "_blank", class: "small radius button" %>
               <% end %>
             </div>
           </div>

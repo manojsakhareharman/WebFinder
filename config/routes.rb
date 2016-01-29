@@ -2,16 +2,33 @@ Rails.application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  # Logins for admins, etc.
+  devise_for :admin_users, skip: [:registrations]
+  as :admin_user do
+    get 'admin_users/edit' => 'admin_users/registrations#edit', as: :edit_admin_user_registration
+    patch 'admin_users' => 'admin_users/registrations#update', as: :admin_user_registration
+  end
+
+  # Old CMS using ActiveAdmin, still accessible at /admin
   ActiveAdmin.routes(self)
 
+  # New CMS, accessible at /cms
+  get '/cms' => 'cms#index', as: :cms_root
+  namespace :cms do
+    resources :available_locales, only: :show do
+      AvailableLocale.translatables.each do |t|
+        resources t.underscore.pluralize.to_sym
+      end
+    end
+  end
+
+  # Main site routes
   resources :brands, only: :show do
     member do
       get :softwares
     end
     resources :products, only: [:index, :show]
   end
-
   resources :vertical_markets, path: 'applications', only: :show do
     resources :reference_systems, path: 'solutions', only: :show
     resources :case_studies, only: :show
@@ -21,6 +38,7 @@ Rails.application.routes.draw do
       get :recent
     end
   end
+  resources :landing_pages, path: 'lp', only: :show
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
 
@@ -36,13 +54,18 @@ Rails.application.routes.draw do
   resources :service_centers, only: [:index, :new, :create]
 
   # Training site
-  get '/training' => 'main#training'
+  get '/training' => 'landing_pages#training'
+
+  # Resource library
+  get '/resource-library/:id' => 'resources#show', as: :resource_permalink
+  get '/medialibrary' => redirect("https://harman.widencollective.com")
 
   # The usual stuff
-  get '/contacts' => 'main#contacts'
-  get '/thankyou' => 'main#thankyou', as: :thankyou
-  get '/privacy_policy' => 'main#privacy_policy', as: :privacy_policy
-  get '/terms_of_use' => 'main#terms_of_use', as: :terms_of_use
+  get '/contacts' => 'landing_pages#contacts'
+  get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
+  get '/thanks' => 'landing_pages#thanks', as: :thanks # Generic thanks page
+  get '/privacy_policy' => 'landing_pages#privacy_policy', as: :privacy_policy
+  get '/terms_of_use' => 'landing_pages#terms_of_use', as: :terms_of_use
   get '/sitemap(.:format)' => 'main#sitemap', as: :sitemap
 
   root to: 'main#index'

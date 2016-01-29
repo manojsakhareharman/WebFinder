@@ -3,8 +3,10 @@ class SiteSetting < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   after_save :update_cached_value
 
+  translates :content
+
   def self.value(setting_name)
-    @@cache[setting_name] ||= get_value(setting_name)
+    @@cache["#{setting_name}.#{I18n.locale}"] ||= get_value(setting_name)
   end
 
   def self.get_value(setting_name)
@@ -13,11 +15,15 @@ class SiteSetting < ActiveRecord::Base
   end
 
   def self.set_value(setting_name, value)
-    @@cache[setting_name] = value
+    @@cache["#{setting_name}.#{I18n.locale}"] = value
   end
 
   def self.missing_value(setting_name)
     "Missing Site Setting: #{setting_name}"
+  end
+
+  def self.set?(setting_name)
+    exists?(name: setting_name)
   end
 
   def value

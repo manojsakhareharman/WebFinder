@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  menu parent: "Brands/Products", priority: 2, label: "Products"
   permit_params :name, :brand_id, :url, :photo, :description, :ecommerce_id
 
   # :nocov:
@@ -8,6 +9,43 @@ ActiveAdmin.register Product do
     column :name
     column :url
     actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :brand
+      row :external_link do
+        if product.url.present?
+          link_to product.url, product.url, target: "_blank"
+        end
+      end
+      row :images do
+        if product.photo_file_name.present?
+          columns do
+            column do
+              image_tag(product.photo.url(:small))
+            end
+            column do
+              ul do
+                li link_to('original size', product.photo.url(:original))
+                li link_to('large', product.photo.url(:large))
+                li link_to('medium', product.photo.url(:medium))
+                li link_to('small', product.photo.url(:small))
+                li link_to('thumb', product.photo.url(:thumb))
+                li link_to('thumb (square)', product.photo.url(:thumb_square))
+                li link_to('tiny (square)', product.photo.url(:tiny))
+              end
+            end
+          end
+        end
+      end
+      row :description do
+        raw(textilize(product.description))
+      end
+      row :ecommerce_id
+    end
+    active_admin_comments
   end
 
   form html: { multipart: true} do |f|

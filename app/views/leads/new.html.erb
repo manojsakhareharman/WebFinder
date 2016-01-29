@@ -1,5 +1,5 @@
 <%= content_for :title do %><%= SiteSetting.value("leadgen-title") %><% end %>
-<%= content_for :description do %>Contact form to get in touch with HARMAN Professional regarding your audio, video, lighting and control system.<% end %>
+<%= content_for :description do %><%= t('leadgen_page.meta_description') %><% end %>
 
 <div class="container main-container">
   <h1 class="text-center"><%= SiteSetting.value("leadgen-title") %></h1>
@@ -14,8 +14,8 @@
         <%= f.input :email %>
         <%= f.input :phone %>
         <%= f.input :location %>
-        <%= f.input :project_description, label: "Project Description", input_html: { rows: 10 } %>
-        <%= f.button :submit, "Submit", class: "medium radius button" %>
+        <%= f.input :project_description, input_html: { rows: 10 } %>
+        <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
       <% end %>
     </div>
   </div>

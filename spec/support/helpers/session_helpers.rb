@@ -13,22 +13,10 @@ module Features
     # end
 
     def signin(email, password)
-      visit new_user_session_path
+      visit new_admin_user_session_path
       fill_in 'Email', with: email
       fill_in 'Password', with: password
-      click_button 'Sign in'
-    end
-
-    def sign_in_as_processor
-      user = FactoryGirl.create(:user, :processor)
-      login_as(user, scope: :user)
-      user
-    end
-
-    def sign_in_as_admin
-      user = FactoryGirl.create(:user, :admin)
-      login_as(user, scope: :user)
-      user    
+      click_button 'Log in'
     end
 
   end

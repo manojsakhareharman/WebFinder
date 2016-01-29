@@ -6,8 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-CreateBrandsService.new.call
+AvailableLocale.create([
+  {name: 'English', key: 'en'},
+  {name: 'Spanish', key: 'es'},
+  {name: 'Spanish (Mexico)', key: 'es-MX'}
+])
+
 __END__
+CreateBrandsService.new.call
 VerticalMarket.create(name: "Installed", headline: "Installed Audio, Video & Control Systems")
 VerticalMarket.create(name: "Live Sound", headline: "Live Sound Solutions for Any Size")
 VerticalMarket.create(name: "Studio", headline: "From Home Studio To Professional Studio")

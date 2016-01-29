@@ -1,0 +1,20 @@
+<div class="medium-2 small-12 columns">
+  <h6>Translatable items for
+  <%= link_to @available_locale.name, [:cms, @available_locale] %>:</h6>
+  <ul class="side-nav">
+    <% AvailableLocale.translatables.each do |t| %>
+      <li>
+        <%= link_to [:cms, @available_locale, t.constantize] do %>
+          <%= t.pluralize.titleize %>
+          <% n = t.constantize.needing_translations(@available_locale.key).count %>
+          <% if n > 0 %>
+            <span class="needs-translation">
+              (<%= n %>)
+            </span>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

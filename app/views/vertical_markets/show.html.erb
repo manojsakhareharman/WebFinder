@@ -1,5 +1,7 @@
 <%= content_for :title do %><%= @vertical_market.name %><% end %>
-<%= content_for :description do %>Resources to learn, plan and buy your <%= @vertical_market.name %> pro audio, video, lighting and control systems.<% end %>
+<%= content_for :description do %>
+  <%= t('vertical_market_page.meta_description', vertical_market: @vertical_market.name) %>
+<% end %>
 
 <% if @vertical_market.children.length > 0 %>
   <div class="bumped-up space-after hide-for-small">
@@ -107,7 +109,7 @@
           </div>
 
           <noscript>
-            <h5 class="subheader">Explore these examples:</h5>
+            <h5 class="subheader"><%= t('vertical_market_page.explore_examples') %>:</h5>
             <ul>
               <%= @vertical_market.featured_reference_systems.each do |reference_system| %>
                 <li><%= link_to reference_system.name, [@vertical_market, reference_system] %></li>
