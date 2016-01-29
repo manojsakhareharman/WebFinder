@@ -23,7 +23,7 @@ ActiveAdmin.register Product do
       row :images do
         if product.photo_file_name.present?
           columns do
-            column max_width: "160px" do
+            column do
               image_tag(product.photo.url(:small))
             end
             column do
