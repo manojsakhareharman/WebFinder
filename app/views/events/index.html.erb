@@ -35,10 +35,10 @@
 
       <hr/>
 
-      <ul class="large-block-grid-2 medium-block-grid-2 small-block-grid-1">
+      <ul class="large-block-grid-2 medium-block-grid-2 small-block-grid-1" data-equalizer="events" data-equalizer-mq="medium-up">
         <% @events.where(featured: false).each do |event| %>
           <li>
-            <div class="panel">
+            <div class="panel" data-equalizer-watch="events">
               <% if event.more_info_link.present? %>
                 <h4><%= link_to_event event.name, event %></h4>
               <% else %>

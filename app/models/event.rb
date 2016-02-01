@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.current_and_upcoming
-    where(active: true).where("end_on >= ?", Date.today).order(start_on: :desc)
+    where(active: true).where("end_on >= ?", Date.today).order(start_on: :asc)
   end
 
   def self.recent
