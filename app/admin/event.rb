@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
   config.sort_order = 'start_on_desc'
 
-  permit_params :name, :start_on, :end_on, :description, :featured, :active, :image
+  permit_params :name, :start_on, :end_on, :description, :featured, :active, :image, :page_content, :more_info_link, :new_window
 
   # :nocov:
   index do
@@ -29,9 +29,16 @@ ActiveAdmin.register Event do
           link_to(image_tag(event.image.url(:small)), event.image.url)
         end
       end
+      row :more_info do
+        event.more_info_link + event.new_window? ? " (opens in a new window)" : ""
+      end
+      row :page_content do
+        raw(textilize(event.page_content))
+      end
       row :featured
       row :active
     end
+    active_admin_comments
   end
 
   form html: {multipart: true} do |f|
@@ -41,6 +48,9 @@ ActiveAdmin.register Event do
       f.input :end_on, as: :datepicker
       f.input :description
       f.input :image, hint: "Only for 'featured' events."
+      f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided."
+      f.input :new_window, hint: "Check if the more info link directs users away from the site."
+      f.input :page_content
       f.input :featured
       f.input :active
     end

@@ -7,6 +7,9 @@ feature "Browse events" do
     @current_event = FactoryGirl.create(:event, start_on: 2.days.ago, end_on: 2.days.from_now, featured: true, active: true)
     @past_event = FactoryGirl.create(:event, start_on: 5.weeks.ago, end_on: 4.weeks.ago, active: true)
     @hidden_event = FactoryGirl.create(:event, active: false)
+    unless SiteSetting.set?(:show_events)
+      FactoryGirl.create(:site_setting, name: "show_events")
+    end
   end
 
   before :each do

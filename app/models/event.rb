@@ -36,4 +36,5 @@ class Event < ActiveRecord::Base
   def self.recent
     where(active: true).where("end_on <= ? AND end_on >= ?", Date.today, 6.months.ago).order(start_on: :desc)
   end
+
 end

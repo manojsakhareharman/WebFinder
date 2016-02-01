@@ -15,6 +15,9 @@ RSpec.describe Event, type: :model do
   it { should respond_to(:end_on) }
   it { should respond_to(:image) }
   it { should respond_to(:friendly_id) }
+  it { should respond_to(:page_content) }
+  it { should respond_to(:more_info_link) }
+  it { should respond_to(:new_window) }
 
   describe ".current_and_upcoming" do
     before do

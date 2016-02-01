@@ -7,6 +7,7 @@ RSpec.describe "events/show.html.erb", as: :view do
                                         start_on: 2.days.ago,
                                         end_on: 2.days.from_now,
                                         featured: true,
+                                        page_content: "Yo mama was here.",
                                         image: File.new(Rails.root.join('spec','fixtures','test.jpg')),
                                         active: true)
   end
@@ -23,5 +24,9 @@ RSpec.describe "events/show.html.erb", as: :view do
 
   it "has featured event content" do
     expect(rendered).to have_xpath("//img[@src='#{ @current_event.image.url(:large) }']")
+  end
+
+  it "has page content" do
+    expect(rendered).to have_content(@current_event.page_content)
   end
 end

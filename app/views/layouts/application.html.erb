@@ -41,7 +41,9 @@
                 <ul class="dropdown">
                   <li><%= link_to t('nav.media_library'), "/medialibrary", target: "_blank" %></li>
                   <li><%= link_to t('nav.training'), training_path %></li>
-                  <li><%= link_to t('nav.events'), events_path %></li>
+                  <% if SiteSetting.set?("show_events") %>
+                    <li><%= link_to t('nav.events'), events_path %></li>
+                  <% end %>
                   <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
                   <li><%= link_to t('nav.contacts'), contacts_path %></li>
                   <li><%= link_to t('nav.service'), service_path %></li>
@@ -52,7 +54,7 @@
                   <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
                 </li>
               <% end %>
-              <% if SiteSetting.where(name: "store_link").exists? %>
+              <% if SiteSetting.set?("store_link") %>
                 <li class="divider"></li>
                 <li class="has-form"><%= link_to t('nav.shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
               <% end %>

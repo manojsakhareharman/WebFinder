@@ -21,16 +21,14 @@
         <div class="row">
           <div class="medium-4 small-12 columns">
             <% if event.image.present? %>
-              <%= link_to event do %>
-                <%= image_tag(event.image.url(:medium), alt: event.name, class: 'featured-event') %>
-              <% end %>
+              <%= link_to_event(image_tag(event.image.url(:medium), alt: event.name, class: 'featured-event'), event) %>
             <% end %>
           </div>
           <div class="medium-8 small-12 columns">
-            <h2><%= link_to event.name, event %></h2>
+            <h2><%= link_to_event event.name, event %></h2>
             <h5 class="subheader"><small><%= event_date(event) %></small></h5>
             <%=raw textilize truncate(event.description, length: 275) %>
-            <p><%= link_to "more info", event, class: "small radius button" %></p>
+            <p><%= link_to_event t("more_info"), event, class: "small radius button" %></p>
           </div>
         </div>
       <% end %>
@@ -41,7 +39,11 @@
         <% @events.where(featured: false).each do |event| %>
           <li>
             <div class="panel">
-              <h4><%= event.name %></h4>
+              <% if event.more_info_link.present? %>
+                <h4><%= link_to_event event.name, event %></h4>
+              <% else %>
+                <h4><%= event.name %></h4>
+              <% end %>
               <h5 class="subheader"><small><%= event_date(event) %></small></h5>
               <%=raw textilize event.description %>
             </div>

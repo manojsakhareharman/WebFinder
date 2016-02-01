@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221224652) do
+ActiveRecord::Schema.define(version: 20160201194053) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -171,6 +171,9 @@ ActiveRecord::Schema.define(version: 20151221224652) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "slug",               limit: 255
+    t.text     "page_content",       limit: 65535
+    t.string   "more_info_link",     limit: 255
+    t.boolean  "new_window"
   end
 
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree

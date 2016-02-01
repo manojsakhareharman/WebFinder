@@ -8,6 +8,8 @@ RSpec.describe "events/index.html.erb", as: :view do
                                         start_on: 2.days.ago,
                                         end_on: 2.days.from_now,
                                         featured: true,
+                                        more_info_link: 'http://foo.com',
+                                        new_window: true,
                                         image: File.new(Rails.root.join('spec','fixtures','test.jpg')),
                                         active: true)
     # so the 'recent events' button appears
@@ -27,7 +29,7 @@ RSpec.describe "events/index.html.erb", as: :view do
   end
 
   it "has featured event content" do
-    expect(rendered).to have_link @current_event.name, href: event_path(@current_event)
+    expect(rendered).to have_link @current_event.name, href: @current_event.more_info_link
     expect(rendered).to have_xpath("//img[@src='#{ @current_event.image.url(:medium) }']")
   end
 
