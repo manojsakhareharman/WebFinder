@@ -30,7 +30,7 @@ ActiveAdmin.register Event do
         end
       end
       row :more_info do
-        event.more_info_link + event.new_window? ? " (opens in a new window)" : ""
+        event.more_info_link.to_s
       end
       row :page_content do
         raw(textilize(event.page_content))
