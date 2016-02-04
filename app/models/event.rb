@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   validates :start_on, presence: true
   validates :end_on, presence: true
 
+  translates :name, :description, :page_content
+
   has_attached_file :image,
     styles: {
       large: "1000x624#",

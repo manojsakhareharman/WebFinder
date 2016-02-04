@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.current_and_upcoming
+    @events = Event.current_and_upcoming.where("start_on < ?", 6.months.from_now)
   end
 
   def show

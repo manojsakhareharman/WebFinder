@@ -6,6 +6,7 @@ RSpec.describe "events/show.html.erb", as: :view do
     @current_event = FactoryGirl.create(:event,
                                         start_on: 2.days.ago,
                                         end_on: 2.days.from_now,
+                                        description: "Coolest show",
                                         featured: true,
                                         page_content: "Yo mama was here.",
                                         image: File.new(Rails.root.join('spec','fixtures','test.jpg')),
@@ -19,7 +20,10 @@ RSpec.describe "events/show.html.erb", as: :view do
 
   it "has event content" do
     expect(rendered).to have_content @current_event.name
-    expect(rendered).to have_content @current_event.description
+  end
+
+  it "does not show general description if page content is provided" do
+    expect(rendered).not_to have_content @current_event.description
   end
 
   it "has featured event content" do
