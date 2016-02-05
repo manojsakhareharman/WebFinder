@@ -11,6 +11,7 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /db/*.csv
+*.sql
 
 # Ignoring some bins
 /bin/spring

@@ -12,6 +12,16 @@ class MainController < ApplicationController
     end
   end
 
+  # For akamai's route testing
+  def sureroute
+    # Load some content just to slow things down as a real-world example
+    Brand.all
+    Product.all
+    respond_to do |format|
+      format.html
+    end
+  end
+
   private
 
   def build_xml_sitemap_pages

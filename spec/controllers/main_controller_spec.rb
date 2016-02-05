@@ -50,4 +50,15 @@ RSpec.describe MainController do
     end
   end
 
+  describe "GET sureroute-test-object (html)" do
+
+    before do
+      get :sureroute, format: :html
+    end
+
+    it "renders the template" do
+      expect(response).to render_template("sureroute")
+    end
+  end
+
 end

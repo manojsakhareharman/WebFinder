@@ -60,6 +60,9 @@ Rails.application.routes.draw do
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink
   get '/medialibrary' => redirect("https://harman.widencollective.com")
 
+  # Akamai sure route test
+  get '/sureroute-test-object(.:format)' => 'main#sureroute', as: :sureroute_test_object
+
   # The usual stuff
   get '/contacts' => 'landing_pages#contacts'
   get '/thankyou' => 'landing_pages#thankyou', as: :thankyou # Thank you page after leadgen form
