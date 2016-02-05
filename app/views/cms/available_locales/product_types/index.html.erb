@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a product type:</h3>
     <ul>
-      <% @product_types.order('name').each do |product_type| %>
+      <% @product_types.order(updated_at: :asc).each do |product_type| %>
         <li class="<%= 'needs-translation' if product_type.needs_translation?(@available_locale.key) %>">
           <%= link_to product_type.name, edit_cms_available_locale_product_type_path(@available_locale, product_type) %>
         </li>

@@ -1,0 +1,21 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3>Choose an event:</h3>
+    <ul>
+      <% @events.order(updated_at: :asc).each do |event| %>
+        <li class="<%= 'needs-translation' if event.needs_translation?(@available_locale.key) %>">
+          <%= link_to event.name, edit_cms_available_locale_event_path(@available_locale, event) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>An Event represents a tradeshow, training,
+      webinar, etc. offered by the company.</p>
+    </div>
+  </div>
+</div>

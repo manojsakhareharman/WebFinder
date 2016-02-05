@@ -15,7 +15,7 @@ class AvailableLocale < ActiveRecord::Base
   end
 
   def self.translatables
-    %w(Brand CaseStudy LandingPage ProductType Product ReferenceSystem SiteSetting Venue VerticalMarket)
+    %w(Brand CaseStudy Event LandingPage ProductType Product ReferenceSystem SiteSetting Venue VerticalMarket)
   end
 
   def items_to_translate

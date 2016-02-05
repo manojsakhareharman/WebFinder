@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a reference system:</h3>
     <ul>
-      <% @reference_systems.order('name').each do |reference_system| %>
+      <% @reference_systems.order(updated_at: :asc).each do |reference_system| %>
         <li class="<%= 'needs-translation' if reference_system.needs_translation?(@available_locale.key) %>">
           <%= link_to reference_system.name, edit_cms_available_locale_reference_system_path(@available_locale, reference_system) %>
         </li>

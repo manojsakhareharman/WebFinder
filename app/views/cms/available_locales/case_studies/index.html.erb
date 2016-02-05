@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a case study:</h3>
     <ul>
-      <% @case_studies.order('headline').each do |case_study| %>
+      <% @case_studies.order(updated_at: :asc).each do |case_study| %>
         <li class="<%= 'needs-translation' if case_study.needs_translation?(@available_locale.key) %>">
           <%= link_to case_study.headline, edit_cms_available_locale_case_study_path(@available_locale, case_study) %>
         </li>

@@ -11,7 +11,7 @@ ActiveAdmin.register ReferenceSystem do
 
   sortable
 
-  filter :name
+  #filter :name
   filter :retail
 
   index do

@@ -20,7 +20,8 @@ ActiveAdmin.register Venue do
     f.actions
   end
 
-  filter :name, as: :string
+  #filter :name, as: :string
+  filter :updated_at
 
   # :nocov:
 end

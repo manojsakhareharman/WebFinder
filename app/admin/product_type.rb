@@ -5,7 +5,7 @@ ActiveAdmin.register ProductType do
   menu false
 
   # :nocov:
-  filter :name
+  filter :updated_at
 
   index do
     selectable_column

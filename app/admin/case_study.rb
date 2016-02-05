@@ -6,10 +6,10 @@ ActiveAdmin.register CaseStudy do
   belongs_to :vertical_market
 
   config.paginate = false
-  config.sort_order = 'name_asc'
+  #config.sort_order = 'name_asc'
 
   filter :vertical_market
-  filter :headline
+  #filter :headline
 
   index do
     selectable_column

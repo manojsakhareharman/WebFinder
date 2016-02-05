@@ -13,7 +13,7 @@ ActiveAdmin.register Event do
     actions
   end
 
-  filter :name
+  #filter :name
   filter :featured
   filter :active
   filter :start_on

@@ -4,7 +4,7 @@
   <div class="medium-7 small-12 columns">
     <h3>Choose a landing page:</h3>
     <ul>
-      <% @landing_pages.order('title').each do |landing_page| %>
+      <% @landing_pages.order(updated_at: :asc).each do |landing_page| %>
         <li class="<%= 'needs-translation' if landing_page.needs_translation?(@available_locale.key) %>">
           <%= link_to landing_page.title, edit_cms_available_locale_landing_page_path(@available_locale, landing_page) %>
         </li>

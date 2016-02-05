@@ -18,7 +18,7 @@ ActiveAdmin.register VerticalMarket do
   # :nocov:
 
   filter :parent, as: :select
-  filter :name, as: :string
+  #filter :name, as: :string
   filter :updated_at
 
   # :nocov:

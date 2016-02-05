@@ -27,7 +27,7 @@ RSpec.describe SiteSetting, :type => :model do
       setting = FactoryGirl.create(:site_setting, content: "Original Value")
 
       original = SiteSetting.value(setting.name)
-      setting.update_column(:content, "New Value")
+      setting.update_column(:name, "New Name")
       setting.reload
 
       expect(SiteSetting.value(setting.name)).to eq(original)

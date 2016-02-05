@@ -12,7 +12,8 @@ RSpec.describe "admin/vertical_markets.rb" do
 
   it "should have filters" do
     expect(resource.filters).to include(:parent)
-    expect(resource.filters).to include(:name)
+    #removed cause of globalize
+    #expect(resource.filters).to include(:name)
     expect(resource.filters).to include(:updated_at)
   end
 

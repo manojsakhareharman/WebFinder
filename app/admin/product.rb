@@ -70,7 +70,7 @@ ActiveAdmin.register Product do
   end
 
   filter :brand, as: :select
-  filter :name, as: :string
+  #filter :name, as: :string
 
   # :nocov:
 end

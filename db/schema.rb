@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204203628) do
+ActiveRecord::Schema.define(version: 20160205150611) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20160204203628) do
     t.string   "logo_content_type",            limit: 255
     t.integer  "logo_file_size",               limit: 4
     t.datetime "logo_updated_at"
-    t.text     "description",                  limit: 65535
     t.string   "white_logo_file_name",         limit: 255
     t.integer  "white_logo_file_size",         limit: 4
     t.string   "white_logo_content_type",      limit: 255
@@ -91,10 +90,9 @@ ActiveRecord::Schema.define(version: 20160204203628) do
     t.string   "support_url",                  limit: 255
     t.string   "training_url",                 limit: 255
     t.string   "tech_url",                     limit: 255
-    t.boolean  "show_on_main_site",                          default: true
-    t.boolean  "show_on_services_site",                      default: true
+    t.boolean  "show_on_main_site",                        default: true
+    t.boolean  "show_on_services_site",                    default: true
     t.boolean  "show_on_consultant_page"
-    t.text     "contact_info_for_consultants", limit: 65535
     t.string   "api_url",                      limit: 255
     t.string   "by_harman_logo_file_name",     limit: 255
     t.integer  "by_harman_logo_file_size",     limit: 4
@@ -112,13 +110,10 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "brands", ["slug"], name: "index_brands_on_slug", using: :btree
 
   create_table "case_studies", force: :cascade do |t|
-    t.string   "headline",            limit: 255
-    t.text     "description",         limit: 65535
     t.integer  "vertical_market_id",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",                limit: 255
-    t.text     "content",             limit: 65535
     t.string   "banner_file_name",    limit: 255
     t.string   "banner_content_type", limit: 255
     t.integer  "banner_file_size",    limit: 4
@@ -171,20 +166,17 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "event_translations", ["locale"], name: "index_event_translations_on_locale", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",               limit: 255
     t.date     "start_on"
     t.date     "end_on"
-    t.text     "description",        limit: 65535
     t.boolean  "featured"
     t.string   "image_file_name",    limit: 255
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
     t.boolean  "active"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "slug",               limit: 255
-    t.text     "page_content",       limit: 65535
     t.string   "more_info_link",     limit: 255
     t.boolean  "new_window"
   end
@@ -222,16 +214,9 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "landing_page_translations", ["locale"], name: "index_landing_page_translations_on_locale", using: :btree
 
   create_table "landing_pages", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.string   "subtitle",      limit: 255
-    t.string   "slug",          limit: 255
-    t.text     "main_content",  limit: 65535
-    t.text     "left_content",  limit: 65535
-    t.text     "right_content", limit: 65535
-    t.text     "sub_content",   limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "description",   limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
@@ -297,9 +282,7 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "product_type_translations", ["product_type_id"], name: "index_product_type_translations_on_product_type_id", using: :btree
 
   create_table "product_types", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.string   "slug",        limit: 255
+    t.string   "slug",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -307,8 +290,6 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "product_types", ["slug"], name: "index_product_types_on_slug", unique: true, using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.text     "description",        limit: 65535
     t.string   "slug",               limit: 255
     t.string   "url",                limit: 255
     t.string   "photo_file_name",    limit: 255
@@ -359,13 +340,9 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "reference_system_translations", ["reference_system_id"], name: "index_reference_system_translations_on_reference_system_id", using: :btree
 
   create_table "reference_systems", force: :cascade do |t|
-    t.string   "name",                        limit: 255
     t.integer  "vertical_market_id",          limit: 4
-    t.boolean  "retail",                                    default: false
+    t.boolean  "retail",                                  default: false
     t.integer  "position",                    limit: 4
-    t.string   "venue_size_descriptor",       limit: 255
-    t.string   "headline",                    limit: 255
-    t.text     "description",                 limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "banner_file_name",            limit: 255
@@ -449,7 +426,6 @@ ActiveRecord::Schema.define(version: 20160204203628) do
 
   create_table "site_settings", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.text     "content",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -489,13 +465,11 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "venue_translations", ["venue_id"], name: "index_venue_translations_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.string   "left",        limit: 255
-    t.string   "top",         limit: 255
-    t.string   "slug",        limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "left",       limit: 255
+    t.string   "top",        limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "venues", ["slug"], name: "index_venues_on_slug", using: :btree
@@ -514,12 +488,9 @@ ActiveRecord::Schema.define(version: 20160204203628) do
   add_index "vertical_market_translations", ["vertical_market_id"], name: "index_vertical_market_translations_on_vertical_market_id", using: :btree
 
   create_table "vertical_markets", force: :cascade do |t|
-    t.string   "name",                limit: 255
     t.integer  "parent_id",           limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "headline",            limit: 255
-    t.text     "description",         limit: 65535
     t.string   "slug",                limit: 255
     t.string   "banner_file_name",    limit: 255
     t.string   "banner_content_type", limit: 255

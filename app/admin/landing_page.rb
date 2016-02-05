@@ -14,7 +14,7 @@ ActiveAdmin.register LandingPage do
     actions
   end
 
-  filter :title, as: :string
+#  filter :title, as: :string
   filter :updated_at
 
   show do
