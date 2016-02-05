@@ -39,7 +39,7 @@
 
   <div class="row">
     <div class="medium-6 small-12 columns">
-      <%= f.input :venue_size_descriptor, hint: "appears in slider area" %>
+      <%= f.input :venue_size_descriptor, as: :text, hint: "appears in slider area" %>
     </div>
     <div class="medium-6 small-12 columns">
       <br/>
@@ -57,7 +57,7 @@
 
   <div class="row">
     <div class="medium-6 small-12 columns">
-      <%= f.input :description, input_html: { rows: 15 } %>
+      <%= f.input :description, as: :text, input_html: { rows: 15 } %>
     </div>
     <div class="medium-6 small-12 columns">
       <br/>

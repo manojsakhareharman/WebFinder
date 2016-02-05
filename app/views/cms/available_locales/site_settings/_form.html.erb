@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="medium-6 small-12 columns">
-      <%= f.input :content, hint: "Value for #{ @site_setting.name }", input_html: { rows: 10 } %>
+      <%= f.input :content, as: :text, hint: "Value for #{ @site_setting.name }", input_html: { rows: 10 } %>
     </div>
     <div class="medium-6 small-12 columns">
       <br/>

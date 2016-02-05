@@ -3,7 +3,9 @@ Globalize.fallbacks = {
   'en-US': [:'en-US', :en, :'en-GB'],
   'en-GB': [:'en-GB', :en, :'en-US'],
   es: [:es, :'es-MX', :en],
-  'es-MX': [:'es-MX', :es, :en]
+  'es-MX': [:'es-MX', :es, :en],
+  zh: [:zh, :en],
+  cn: [:zh, :en]
 }
 
 # My monkey patching

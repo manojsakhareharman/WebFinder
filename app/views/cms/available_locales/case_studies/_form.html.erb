@@ -21,7 +21,7 @@
 
   <div class="row">
     <div class="medium-6 small-12 columns">
-      <%= f.input :description, input_html: { rows: 5 } %>
+      <%= f.input :description, as: :text, input_html: { rows: 5 } %>
     </div>
     <div class="medium-6 small-12 columns">
       <br/>
@@ -39,7 +39,7 @@
 
   <div class="row">
     <div class="medium-6 small-12 columns">
-      <%= f.input :content, input_html: { rows: 35 } %>
+      <%= f.input :content, as: :text, input_html: { rows: 35 } %>
     </div>
     <div class="medium-6 small-12 columns">
       <br/>
