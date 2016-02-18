@@ -1,6 +1,8 @@
 //$harman-blue: #00395a;
 $harman-blue: #006498;
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,200);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import "font-awesome";
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -39,7 +41,7 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
+$row-width: rem-calc(1170);
 // $total-columns: 12;
 // $column-gutter: rem-calc(30);
 
@@ -47,7 +49,7 @@ $include-html-global-classes: $include-html-classes;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-$font-family-sans-serif: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: 'Roboto', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -78,7 +80,7 @@ $dark-gray: #676767;
  $base        : #AAAAAA;
  $aluminum    : #999999;
  $jumbo       : #888888;
- $monsoon     : #777777;
+ $monsoon     : #787878;
  $steel       : #666666;
  $charcoal    : #555555;
  $tuatara     : #444444;
@@ -86,11 +88,11 @@ $dark-gray: #676767;
  $jet         : #222222;
  $black       : #000000;
 
-$body-background-color: #e6e7e8;
+$body-background-color: $white;
 $plan-background-color: $white;
 $buy-background-color: #4c4d4f;
 $banner-background-color: #404042;
-$footer-background-color: #002f3a;
+$footer-background-color: #2c2c2c;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -1330,11 +1332,11 @@ $panel-header-adjust: false;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $harman-blue;
+$topbar-bg-color: $white;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-$topbar-height: rem-calc(100);
+$topbar-height: rem-calc(60);
 $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1347,16 +1349,16 @@ $topbar-margin-bottom: 0;
 // $topbar-dropdown-link-bg: $oil;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: scale-color($topbar-bg-color, $lightness: 30%);
+$topbar-dropdown-toggle-color: $monsoon;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: scale-color($topbar-bg-color, $lightness: 30%);
+$topbar-link-color: $monsoon;
 $topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $white;
-$topbar-link-weight: 200;
-$topbar-link-font-size: rem-calc(16);
+$topbar-link-weight: 500;
+$topbar-link-font-size: rem-calc(14);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-color-hover: scale-color($topbar-link-bg, $lightness: -8%);
@@ -1430,11 +1432,30 @@ body {
 input[type='checkbox'] {
   margin-right: 5px;
 }
+nav.top-bar {
+  margin-top: 8px;
+  border-top: 1px solid $smoke;
+  border-bottom: 1px solid $smoke;
+}
+h1.logo {
+  margin-top: 13px;
+  img {
+    padding-top: 2px;
+    vertical-align: text-center;
+  }
+  small {
+    padding-left: 8px;
+    font-size: 12px;
+    a {
+      color: $harman-blue;
+    }
+  }
+}
 .top-bar-section {
   li {
     &.has-form {
       .button {
-        padding-top: rem-calc(2);
+//        padding-top: rem-calc(2);
         text-transform: lowercase;
         font-weight: 100;
       }
@@ -1814,47 +1835,46 @@ ul.title-area {
 }
 
 .footer {
+  margin-top: 20px;
   padding-top: 40px;
-  @media only screen and (min-width: 1000px) {
-    padding-bottom: 100px;
-  }
-  @media only screen and (min-width: 500px) and (max-width: 999px) {
-    padding-bottom: 70px;
-  }
-  @media only screen and (max-width: 499px) {
-    padding-bottom: 40px;
-  }
-  background: $footer-background-color;
-  .subheader {
-    color: $primary-color;
-    font-weight: 200;
-    letter-spacing: rem-calc(.8);
-  }
-  ul {
-    list-style-type: none;
-    margin-left: 0;
-    padding-right: 0;
-    li {
-      font-size: rem-calc(10);
-      a {
-        color: $snow;
-        &:hover {
-          color: $secondary-color;
-        }
-      }
+  color: $base;
+  a {
+    color: $white;
+    &:hover {
+      color: $monsoon;
+    }
+    &.btn {
+      border: 1px solid $white;
+      border-radius: 2px;
+      padding: 6px 14px !important;
     }
   }
-}
-.sub-footer {
-  padding: 20px;
-  p {
-    font-size: rem-calc(10);
-    color: $monsoon;
+  @media only screen and (min-width: 1000px) {
+    padding-bottom: 40px;
   }
-  a {
-    color: $charcoal;
-    &:hover {
-      color: $jet;
+  @media only screen and (min-width: 500px) and (max-width: 999px) {
+    padding-bottom: 30px;
+  }
+  @media only screen and (max-width: 499px) {
+    padding-bottom: 20px;
+  }
+  background: $footer-background-color;
+  .row {
+    margin: 10px
+  }
+  .copyright {
+    font-size: 12px;
+  }
+  .footer-nav {
+    font-size: 18px;
+    a {
+      padding: 0 6px;
+    }
+  }
+  .social-links {
+    padding-top: 10px;
+    a {
+      margin: 10px;
     }
   }
 }

@@ -17,51 +17,61 @@
   </head>
 
   <body>
+    <% unless Rails.env.production? %>
+      <div class="text-center" style="background: yellow; padding: 3px">
+        Hi. Welcome to the pro.harman.com <%= Rails.env.to_s %> environment.
+      </div>
+    <% end %>
 
-    <div class="sticky">
-      <% unless Rails.env.production? %>
-        <div class="text-center" style="background: yellow; padding: 3px">
-          Hi. Welcome to the harmanpro.com <%= Rails.env.to_s %> environment.
+    <div class="row sticky">
+      <div class="small-12 columns">
+        <div class="row">
+          <div class="medium-6 columns">
+            <h1 class="logo">
+              <a href="http://www.harman.com"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a>
+              <small><a href="/">PROFESSIONAL SOLUTIONS</a></small>
+            </h1>
+          </div>
+          <div class="medium-6 columns">
+            &nbsp;
+          </div>
         </div>
-      <% end %>
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-          <h1><a href="/"><%= image_tag "harman-logo-white.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a></h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span><%= t('nav.menu') %></span></a></li>
-        </ul>
 
-        <section class="top-bar-section">
-          <ul class="right">
-            <%= cache ["top-nav", Date.today, I18n.locale] do %>
-              <%= top_vertical_market_navigation(dropdowns: false) %>
-              <li class="has-dropdown">
-              <a href="#" class="disabled"><%= t('nav.resources') %></a>
-                <ul class="dropdown">
-                  <li><%= link_to t('nav.media_library'), "/medialibrary", target: "_blank" %></li>
-                  <li><%= link_to t('nav.training'), training_path %></li>
-                  <% if SiteSetting.set?("show_events") %>
-                    <li><%= link_to t('nav.events'), events_path %></li>
-                  <% end %>
-                  <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
-                  <li><%= link_to t('nav.contacts'), contacts_path %></li>
-                  <li><%= link_to t('nav.service'), service_path %></li>
-                </ul>
-              </li>
-              <% if SiteSetting.set?("blog_link_name") && SiteSetting.set?("blog_link") %>
-                <li>
-                  <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
+        <nav class="top-bar" data-topbar role="navigation">
+          <section class="top-bar-section">
+            <ul>
+              <%= cache ["top-nav", Date.today, I18n.locale] do %>
+                <%= top_vertical_market_navigation(dropdowns: false) %>
+                <li class="has-dropdown">
+                <a href="#" class="disabled"><%= t('nav.resources') %></a>
+                  <ul class="dropdown">
+                    <li><%= link_to t('nav.media_library'), "/medialibrary", target: "_blank" %></li>
+                    <li><%= link_to t('nav.training'), training_path %></li>
+                    <% if SiteSetting.set?("show_events") %>
+                      <li><%= link_to t('nav.events'), events_path %></li>
+                    <% end %>
+                    <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
+                    <li><%= link_to t('nav.contacts'), contacts_path %></li>
+                    <li><%= link_to t('nav.service'), service_path %></li>
+                  </ul>
                 </li>
+                <% if SiteSetting.set?("blog_link_name") && SiteSetting.set?("blog_link") %>
+                  <li>
+                    <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
+                  </li>
+                <% end %>
               <% end %>
+            </ul>
+          </section>
+          <section class="top-bar-section">
+            <ul class="right">
               <% if SiteSetting.set?("store_link") %>
-                <li class="divider"></li>
                 <li class="has-form"><%= link_to t('nav.shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
               <% end %>
-            <% end %>
-          </ul>
-        </section>
-      </nav>
+            </ul>
+          </section>
+        </nav>
+      </div>
     </div>
 
     <% flash.each do |name, msg| %>
@@ -78,68 +88,65 @@
       <% end %>
     <% end %>
 
-    <%= yield %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
 
-    <div class="container footer">
-      <div class="row">
-        <div class="large-8 large-offset-2 columns">
-          <div class="row">
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-1", Date.today, I18n.locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length > 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
-                    <ul>
-                      <% vmp.children.each do |v| %>
-                        <li><%= link_to v.name, v %></li>
-                      <% end %>
-                    </ul>
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="container footer">
+              <div class="row">
+                <div class="small-2 columns">
+                  <%= link_to "http://www.harman.com/regions", class: "btn" do %>
+                    <%= image_tag "usa.png", alt: "Regions" %>
                   <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-2", Date.today, I18n.locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length <= 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
-                    <ul>
-                      <% vmp.reference_systems.each do |rs| %>
-                        <li><%= link_to rs.name, [vmp, rs] %></li>
-                      <% end %>
-                    </ul>
+                </div>
+                <div class="small-10 columns text-right footer-nav">
+                  <a href="http://www.harman.com/careers">Careers</a>
+                  <a href="http://www.harman.com/contact-us">Contact</a>
+                  <a href="http://www.harman.com/sitemap">Sitemap</a>
+                  <a href="http://www.harman.com/news">News</a>
+                  <a href="http://www.developer.harman.com/">Developer Community</a>
+                </div>
+              </div>
+              <div class="row text-right">
+                <div class="medium-12 columns social-links">
+                  <%= link_to "https://www.facebook.com/HarmanInt?_rdr=p" do %>
+                    <%= fa_icon 'facebook 2x' %>
                   <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-3", Date.today, I18n.locale] do %>
-                <h6 class="subheader"><%= t('harman_brands') %></h6>
-                <ul>
-                  <% all_brands.each do |brand| %>
-                    <li><%= link_to brand.name, brand %></li>
+                  <%= link_to "https://twitter.com/Harman" do %>
+                    <%= fa_icon 'twitter 2x' %>
                   <% end %>
-                </ul>
-              <% end %>
+                  <%= link_to "https://www.linkedin.com/company/harman-international" do %>
+                    <%= fa_icon 'linkedin 2x' %>
+                  <% end %>
+                  <%= link_to "https://www.youtube.com/user/HarmanIntl" do %>
+                    <%= fa_icon 'youtube 2x' %>
+                  <% end %>
+                  <%= link_to "https://www.pinterest.com/harmanint/" do %>
+                    <%= fa_icon 'pinterest 2x' %>
+                  <% end %>
+                  <%= link_to "https://plus.google.com/+HarmanIntl/videos" do %>
+                    <%= fa_icon 'google-plus 2x' %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns copyright">
+                    &copy; <%= Date.today.year %>
+                    HARMAN International.
+                    <%= t('all_rights_reserved') %>.
+                    <%= link_to t('privacy_policy'), "http://www.harman.com/privacy-policy"%>
+                    |
+                    <%= link_to t('terms_of_use'), "http://www.harman.com/terms-of-use" %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="sub-footer text-center">
-      <p>
-        &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
-        <%= t('all_rights_reserved') %>.
-        &bull;
-        <%= link_to t('privacy_policy'), privacy_policy_path %>
-        &bull;
-        <%= link_to t('terms_of_use'), terms_of_use_path %>
-      </p>
-      <p>
-        <%= link_to image_tag("harman_tiny.png", alt: "HARMAN"), "http://www.harman.com", target: "_blank" %>
-      </p>
-    </div>
+  </div>
 
     <%= javascript_include_tag "application" %>
     <%= render 'shared/marketing_tracking' %>
