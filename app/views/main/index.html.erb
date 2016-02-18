@@ -31,22 +31,30 @@
   </div>
 </div>
 
-<ul class="homepage-vertical-market large-block-grid-<%= @vertical_markets.length %> medium-block-grid-<%= @vertical_markets.length %> small-block-grid-3">
-  <% @vertical_markets.each do |vm| %>
-    <li>
-      <%= link_to vm do %>
-        <%= image_tag vm.banner.url(:medium_gray) %>
-        <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
 <div class="container main-container">
+  <p>&nbsp;</p>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="text-center">
+        <h3>HARMAN Pro Solutions</h3>
+      </div>
+      <div class="row">
+        <% @vertical_markets.each do |vm| %>
+          <div class="medium-4 small-12 columns">
+            <%= link_to vm do %>
+              <%= image_tag vm.banner.url(:medium_gray) %>
+              <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
+  <p>&nbsp;</p>
   <div class="row">
     <div class="large-10 large-offset-1 columns">
-      <h2 class="text-center space-after"><%=raw format_headline SiteSetting.value("homepage-brands-headline") %></h2>
+      <h3 class="text-center space-after"><%=raw format_headline SiteSetting.value("homepage-brands-headline") %></h3>
       <div class="text-center">
         <% all_brands.each do |brand| %>
           <%= link_to brand, class: 'brand-circle' do %>

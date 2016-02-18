@@ -1435,7 +1435,9 @@ input[type='checkbox'] {
 nav.top-bar {
   margin-top: 8px;
   border-top: 1px solid $smoke;
-  border-bottom: 1px solid $smoke;
+}
+#main {
+  border-top: 1px solid $smoke;
 }
 h1.logo {
   margin-top: 13px;
@@ -1559,7 +1561,7 @@ ul.dropdown {
 }
 a.brand-circle {
   border-radius: 50%;
-  background: $aluminum;
+  background: $tuatara;
   color: white;
   display: inline-block;
   width: rem-calc(100);
@@ -1570,7 +1572,7 @@ a.brand-circle {
   font-size: rem-calc(17);
   font-weight: $font-weight-light;
   &:hover {
-    background: $tuatara;
+    background: $harman-blue;
   }
 }
 a.vertical-market-icon {
@@ -1682,6 +1684,7 @@ a.retailer {
   padding: 0;
   h1 {
     margin: 0;
+    font-size: 80%;
   }
   &.vertical-market, &.reference-system {
     @media only screen and (min-width: 1000px) {
@@ -1709,11 +1712,11 @@ a.retailer {
       text-align: center;
       @media only screen and (min-width: 1000px) {
         top: 50px;
-        font-size: rem-calc(56);
+        font-size: rem-calc(36);
       }
       @media only screen and (min-width: 500px) and (max-width: 999px) {
         top: 20px;
-        font-size: rem-calc(32);
+        font-size: rem-calc(22);
       }
       @media only screen and (max-width: 499px) {
         top: 10px;
