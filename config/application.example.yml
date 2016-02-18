@@ -23,6 +23,8 @@ cheetahmail_sub: "98765432"
 cheetahmail_username: cheetah-user
 cheetahmail_password: cheetah-pass
 show_placeholders: "true"
+staging_user_email: user@email.com
+staging_user_password: changeme
 
 production:
   harmanpro_database_password: database_password

@@ -112,6 +112,7 @@ namespace :refresh do
           execute :mysqldump, "-u #{@db['production']['username']} --password=#{@db['production']['password']} -h #{@db['production']['host']} --port=#{@db['production']['port']} #{@db['production']['database']} | mysql -u #{@db['staging']['username']} --password=#{@db['staging']['password']} #{@db['staging']['database']}"
 
           rake 'db:migrate'
+          rake 'db:staging:create_user'
         end
       end
     end
