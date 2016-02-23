@@ -66,6 +66,7 @@ $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
 $dark-gray: #676767;
+$light-gray: #e6e7e8;
 
  $white       : #FFFFFF;
  $ghost       : #FAFAFA;
@@ -79,19 +80,20 @@ $dark-gray: #676767;
  $base        : #AAAAAA;
  $aluminum    : #999999;
  $jumbo       : #888888;
- $monsoon     : #777777;
+ $monsoon     : #787878;
  $steel       : #666666;
  $charcoal    : #555555;
  $tuatara     : #444444;
  $oil         : #333333;
- $jet         : #222222;
+ $jet         : #2c2c2c;
  $black       : #000000;
 
-$body-background-color: #e6e7e8;
-$plan-background-color: $white;
+$body-background-color: $white;
+$plan-background-color: $light-gray;
 $buy-background-color: #4c4d4f;
 $banner-background-color: #404042;
-$footer-background-color: #002f3a;
+//$footer-background-color: #002f3a;
+$footer-background-color: $jet;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -1539,18 +1541,18 @@ ul.dropdown {
 }
 a.brand-circle {
   border-radius: 50%;
-  background: $aluminum;
+  background: $tuatara;
   color: white;
   display: inline-block;
-  width: rem-calc(100);
-  height: rem-calc(100);
-  line-height: rem-calc(90);
+  width: rem-calc(110);
+  height: rem-calc(110);
+  line-height: rem-calc(100);
   text-align: center;
   margin: rem-calc(10);
   font-size: rem-calc(17);
   font-weight: $font-weight-light;
   &:hover {
-    background: $tuatara;
+    background: $harman-blue;
   }
 }
 a.vertical-market-icon {
@@ -1591,7 +1593,7 @@ a.vertical-market-icon {
   }
 }
 .ecomm-strip {
-  background-color: $white;
+  background-color: $light-gray;
   background-image: asset-url("ShoppingStrip.jpg");
   background-position: left top;
   background-repeat: no-repeat;
@@ -1600,7 +1602,7 @@ a.vertical-market-icon {
   @media only screen and (min-width: 1200px) {
     min-height: 350px;
   }
-  @media only screen and (max-width: 640px) {
+  @media only screen and (max-width: 740px) {
     background-image: none;
   }
 }
