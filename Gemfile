@@ -38,7 +38,7 @@ gem 'exception_notification'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'globalize', '~> 5.0.0'
-#gem 'friendly_id-globalize'
+gem 'friendly_id-globalize'
 gem 'http_accept_language'
 gem 'rails-i18n'
 

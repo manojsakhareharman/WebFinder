@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205150611) do
+ActiveRecord::Schema.define(version: 20160229195343) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.string   "headline",      limit: 255
     t.text     "description",   limit: 65535
     t.text     "content",       limit: 65535
+    t.string   "slug",          limit: 255
   end
 
   add_index "case_study_translations", ["case_study_id"], name: "index_case_study_translations_on_case_study_id", using: :btree
@@ -160,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.string   "name",         limit: 255
     t.text     "description",  limit: 65535
     t.text     "page_content", limit: 65535
+    t.string   "slug",         limit: 255
   end
 
   add_index "event_translations", ["event_id"], name: "index_event_translations_on_event_id", using: :btree
@@ -208,6 +210,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.text     "left_content",    limit: 65535
     t.text     "right_content",   limit: 65535
     t.text     "sub_content",     limit: 65535
+    t.string   "slug",            limit: 255
   end
 
   add_index "landing_page_translations", ["landing_page_id"], name: "index_landing_page_translations_on_landing_page_id", using: :btree
@@ -264,6 +267,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.datetime "updated_at",                null: false
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
+    t.string   "slug",        limit: 255
   end
 
   add_index "product_translations", ["locale"], name: "index_product_translations_on_locale", using: :btree
@@ -276,6 +280,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.datetime "updated_at",                    null: false
     t.string   "name",            limit: 255
     t.text     "description",     limit: 65535
+    t.string   "slug",            limit: 255
   end
 
   add_index "product_type_translations", ["locale"], name: "index_product_type_translations_on_locale", using: :btree
@@ -334,6 +339,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.string   "headline",              limit: 255
     t.string   "venue_size_descriptor", limit: 255
     t.text     "description",           limit: 65535
+    t.string   "slug",                  limit: 255
   end
 
   add_index "reference_system_translations", ["locale"], name: "index_reference_system_translations_on_locale", using: :btree
@@ -459,6 +465,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.datetime "updated_at",                null: false
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
+    t.string   "slug",        limit: 255
   end
 
   add_index "venue_translations", ["locale"], name: "index_venue_translations_on_locale", using: :btree
@@ -482,6 +489,7 @@ ActiveRecord::Schema.define(version: 20160205150611) do
     t.string   "name",               limit: 255
     t.string   "headline",           limit: 255
     t.text     "description",        limit: 65535
+    t.string   "slug",               limit: 255
   end
 
   add_index "vertical_market_translations", ["locale"], name: "index_vertical_market_translations_on_locale", using: :btree

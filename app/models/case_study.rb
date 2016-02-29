@@ -1,8 +1,7 @@
 class CaseStudy < ActiveRecord::Base
+  translates :slug, :headline, :description, :content
   extend FriendlyId
-  friendly_id :slug_candidates
-
-  translates :headline, :description, :content
+  friendly_id :slug_candidates, use: :globalize
 
   belongs_to :vertical_market
   has_attached_file :banner,

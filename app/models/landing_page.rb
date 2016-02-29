@@ -1,8 +1,7 @@
 class LandingPage < ActiveRecord::Base
+  translates :slug, :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
   extend FriendlyId
-  friendly_id :title
-
-  translates :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
+  friendly_id :title, use: :globalize
 
   validates :title, presence: true
   validates :main_content, presence: true

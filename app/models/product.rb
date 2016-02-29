@@ -1,8 +1,7 @@
 class Product < ActiveRecord::Base
+  translates :slug, :name, :description
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
-
-  translates :name, :description
+  friendly_id :name, use: :globalize
 
   belongs_to :brand
   has_many :reference_system_product_type_products, dependent: :destroy

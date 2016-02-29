@@ -1,8 +1,7 @@
 class VerticalMarket < ActiveRecord::Base
+  translates :slug, :name, :headline, :description
   extend FriendlyId
-  friendly_id :slug_candidates
-
-  translates :name, :headline, :description
+  friendly_id :slug_candidates, use: :globalize
 
   has_many :case_studies, dependent: :restrict_with_error
   has_many :reference_systems, -> { order("position ASC") }, dependent: :restrict_with_error

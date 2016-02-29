@@ -1,12 +1,12 @@
 class Event < ActiveRecord::Base
+  translates :slug, :name, :description, :page_content
   extend FriendlyId
-  friendly_id :slug_candidates
+  friendly_id :slug_candidates, use: :globalize
 
   validates :name, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
 
-  translates :name, :description, :page_content
 
   has_attached_file :image,
     styles: {

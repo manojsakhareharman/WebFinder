@@ -32,15 +32,18 @@ feature "Translators translate a case study" do
     visit cms_available_locale_path(@locale)
     click_on "Case Studies"
     click_on case_study.headline
+    fill_in 'Headline', with: "A new title"
     fill_in 'Description', with: "translated description for locale"
     click_on "Save"
 
     case_study.reload
     I18n.locale = @locale.key.to_sym
     expect(case_study.description).to eq("translated description for locale")
+    expect(case_study.slug).to eq("a-new-title")
 
     I18n.locale = I18n.default_locale
     expect(case_study.description).not_to eq("translated description for locale")
+    expect(case_study.slug).not_to eq("a-new-title")
 
     expect(current_path).to eq(cms_available_locale_case_studies_path(@locale))
   end

@@ -1,8 +1,7 @@
 class Venue < ActiveRecord::Base
+  translates :slug, :name, :description
   extend FriendlyId
-  friendly_id :name
-
-  translates :name, :description
+  friendly_id :name, use: :globalize
 
   validates :name, presence: true, uniqueness: true
 
