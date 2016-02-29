@@ -3,7 +3,9 @@ angular.module("harmanpro")
     ['$attrs', '$scope', 'Venue', ($attrs, $scope, Venue) ->
       $scope.venues = []
 
-      Venue.get {}, (data) ->
+      Venue.get {
+        locale: $attrs.locale
+      }, (data) ->
         $scope.venues = data.venues
 
     ]

@@ -5,6 +5,7 @@ angular.module("harmanpro")
       ReferenceSystem.get {
         application_id: $attrs.vmid
         id: $attrs.rsid
+        locale: $attrs.locale
       }, (data) ->
         $scope.system = data.reference_system
 

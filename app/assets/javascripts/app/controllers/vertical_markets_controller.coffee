@@ -7,6 +7,7 @@ angular.module("harmanpro")
 
       VerticalMarket.get {
         id: $attrs.vmid
+        locale: $attrs.locale
       }, (data) ->
         $scope.systems = data.vertical_market["reference_systems"]
         angular.forEach($scope.systems, (s) ->

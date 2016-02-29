@@ -45,6 +45,7 @@
 <% else %>
 
   <div ng-controller="VerticalMarketCtrl" ng-cloak
+    locale="<%= I18n.locale %>"
     vmid="<%= @vertical_market.to_param %>">
 
     <div class="bumped-up">
