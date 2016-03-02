@@ -82,47 +82,49 @@
 
     <div class="container footer">
       <div class="row">
-        <div class="large-8 large-offset-2 columns">
-          <div class="row">
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-1", Date.today, I18n.locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length > 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
-                    <ul>
-                      <% vmp.children.each do |v| %>
-                        <li><%= link_to v.name, v %></li>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-2", Date.today, I18n.locale] do %>
-                <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length <= 0 %>
-                    <h6 class="subheader"><%= vmp.name %></h6>
-                    <ul>
-                      <% vmp.reference_systems.each do |rs| %>
-                        <li><%= link_to rs.name, [vmp, rs] %></li>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="large-4 medium-4 small-4 columns">
-              <%= cache ["footer-col-3", Date.today, I18n.locale] do %>
-                <h6 class="subheader"><%= t('harman_brands') %></h6>
+        <div class="large-3 medium-6 hide-for-small columns">
+          <%= cache ["footer-col-1", Date.today, I18n.locale] do %>
+            <% VerticalMarket.parent_verticals.each do |vmp| %>
+              <% if vmp.children.length > 0 %>
+                <h6 class="subheader"><%= vmp.name %></h6>
                 <ul>
-                  <% all_brands.each do |brand| %>
-                    <li><%= link_to brand.name, brand %></li>
+                  <% vmp.children.each do |v| %>
+                    <li><%= link_to v.name, v %></li>
                   <% end %>
                 </ul>
               <% end %>
-            </div>
-          </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="large-3 medium-6 hide-for-small columns">
+          <%= cache ["footer-col-2", Date.today, I18n.locale] do %>
+            <% VerticalMarket.parent_verticals.each do |vmp| %>
+              <% if vmp.children.length <= 0 %>
+                <h6 class="subheader"><%= vmp.name %></h6>
+                <ul>
+                  <% vmp.reference_systems.each do |rs| %>
+                    <li><%= link_to rs.name, [vmp, rs] %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+          <%= cache ["footer-col-3", Date.today, I18n.locale] do %>
+            <h6 class="subheader"><%= t('harman_brands') %></h6>
+            <ul>
+              <% all_brands.each do |brand| %>
+                <li><%= link_to brand.name, brand %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+          <%= cache ["footer-col-4", Date.today, I18n.locale] do %>
+            <h6 class="subheader"><%= t('connect_with_us') %></h6>
+            <iframe src="http://www2.amx.com/l/18552/2016-02-16/9zs2wb" frameborder="0" width="100%" height="130" marginwidth="0" class="iframe-form" seamless="seamless"></iframe>
+          <% end %>
         </div>
       </div>
     </div>

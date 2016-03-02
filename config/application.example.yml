@@ -25,6 +25,11 @@ cheetahmail_password: cheetah-pass
 show_placeholders: "true"
 staging_user_email: user@email.com
 staging_user_password: changeme
+MAILGUN_API_KEY: key-1234567
+MAILGUN_DOMAIN: your-mailgun-domain
+PARDOT_USER: username
+PARDOT_PASSWORD: password
+PARDOT_API_KEY: api_key
 
 production:
   harmanpro_database_password: database_password

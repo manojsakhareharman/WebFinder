@@ -20,6 +20,7 @@ en:
   register: register
   any: any
   search: search
+  connect_with_us: Connect With Us
 
   date:
     formats:
