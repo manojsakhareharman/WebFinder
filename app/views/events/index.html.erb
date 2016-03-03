@@ -15,6 +15,17 @@
         <div class="alert-box radius info" data-alert>
           There don't seem to be any current events. Check back soon.
         </div>
+      <% else %>
+        <div class="row">
+          <div class="medium-8 small-12 columns">
+            <h3>Current/Upcoming Events:</h3>
+          </div>
+          <div class="medium-4 small-12 columns text-right">
+            <% if Event.recent.count > 0 %>
+              <%= link_to "recent events", recent_events_path %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
 
       <% @events.where(featured: true).each do |event| %>
@@ -32,8 +43,6 @@
           </div>
         </div>
       <% end %>
-
-      <hr/>
 
       <ul class="large-block-grid-2 medium-block-grid-2 small-block-grid-1" data-equalizer="events" data-equalizer-mq="medium-up">
         <% @events.where(featured: false).each do |event| %>

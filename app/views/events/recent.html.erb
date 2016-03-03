@@ -14,7 +14,7 @@
       <% end %>
 
       <% @events.each do |event| %>
-        <%= link_to event, data: {"reveal-id": "event_#{event.id}"} do %>
+        <%= link_to event, data: event.featured? ? {} : {"reveal-id": "event_#{event.id}"} do %>
           <div class="event-row row collapse">
             <div class="medium-8 small-7 columns">
               <h5><%= event.name %></h5>
