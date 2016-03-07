@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229195343) do
+ActiveRecord::Schema.define(version: 20160307173608) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(version: 20160229195343) do
     t.string   "slug",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.boolean  "hide_title"
   end
 
   add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree

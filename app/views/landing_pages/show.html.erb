@@ -4,16 +4,20 @@
     <%= @landing_page.description %>
   <% elsif @landing_page.subtitle.present? %>
     <%= @landing_page.subtitle %>
+  <% else %>
+    <%= @landing_page.title %>
   <% end %>
 <% end %>
 
 <div class="container main-container">
 
-  <div class="row">
-    <div class="large-<%= 12 - @landing_page.side_column_width %> medium-12 columns">
-      <h1 class="space-after"><%= @landing_page.title %></h1>
+  <% unless @landing_page.hide_title? %>
+    <div class="row">
+      <div class="large-<%= 12 - @landing_page.side_column_width %> medium-12 columns">
+        <h1 class="space-after"><%= @landing_page.title %></h1>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="row">
     <% if @landing_page.left_content.present? %>

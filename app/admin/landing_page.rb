@@ -1,7 +1,7 @@
 ActiveAdmin.register LandingPage do
   menu label: "Landing Pages"
 
-  permit_params :title, :subtitle, :description, :main_content, :left_content, :right_content, :sub_content
+  permit_params :title, :subtitle, :description, :main_content, :left_content, :right_content, :sub_content, :hide_title
 
   # :nocov:
   index do
@@ -20,6 +20,7 @@ ActiveAdmin.register LandingPage do
   show do
     attributes_table do
       row :title
+      row :hide_title
       row :subtitle
       row :description
       row :direct_link do
@@ -48,6 +49,7 @@ ActiveAdmin.register LandingPage do
   form do |f|
     f.inputs do
       f.input :title
+      f.input :hide_title, label: "Hide big, h1 title tag"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
       f.input :main_content, hint: "textilize and/or html permitted"
