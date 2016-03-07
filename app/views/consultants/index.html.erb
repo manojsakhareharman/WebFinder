@@ -59,25 +59,29 @@
           <hr/>
           <h3><%= t 'consultant_page.contacts' %></h3>
           <br/>
-          <div class="row">
-            <div class="large-12 medium-12 columns" data-equalizer="contacts">
-              <ul class="large-block-grid-3 medium-block-grid-3">
-                <% @brands_with_contact_info.each do |brand| %>
-                  <li>
-                    <div class="panel" data-equalizer-watch="contacts">
-                      <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
-                        <div class="brand-logo">
-                          <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
-                        </div>
-                      <% end %>
+          <% if SiteSetting.set?('consultant-portal-contacts') %>
+            <%= raw auto_link textilize SiteSetting.value("consultant-portal-contacts") %>
+          <% else %>
+            <div class="row">
+              <div class="large-12 medium-12 columns" data-equalizer="contacts">
+                <ul class="large-block-grid-3 medium-block-grid-3">
+                  <% @brands_with_contact_info.each do |brand| %>
+                    <li>
+                      <div class="panel" data-equalizer-watch="contacts">
+                        <% if brand.logo.present? || ENV['show_placeholders'] == "true" %>
+                          <div class="brand-logo">
+                            <p><%= image_tag brand.logo.url(:medium), alt: brand.name %></p>
+                          </div>
+                        <% end %>
 
-                      <%=raw auto_link textilize brand.contact_info_for_consultants %>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
+                        <%=raw auto_link textilize brand.contact_info_for_consultants %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
 
