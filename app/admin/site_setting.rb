@@ -25,6 +25,14 @@ ActiveAdmin.register SiteSetting do
     end
     active_admin_comments
   end
+
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :content
+    end
+    f.actions
+  end
   # :nocov:
 
 end

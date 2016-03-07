@@ -29,4 +29,7 @@ $(function(){
       equalize_on_stack: true
     }
   });
+  if ($('#roadblock').length > 0) {
+    $('#roadblock').foundation('reveal', 'open');
+  }
 });
