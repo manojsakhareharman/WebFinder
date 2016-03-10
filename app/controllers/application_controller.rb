@@ -10,9 +10,15 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    I18n.locale = params[:locale] ||
-      http_accept_language.compatible_language_from(I18n.available_locales) ||
-      I18n.default_locale
+    if params[:locale].present?
+      session[:locale] = params[:locale]
+    end
+    if session[:locale].present?
+      I18n.locale = session[:locale]
+    else
+      I18n.locale = http_accept_language.compatible_language_from(AvailableLocale.live) ||
+        I18n.default_locale
+    end
   end
 
   def all_brands

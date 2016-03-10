@@ -18,6 +18,10 @@ class AvailableLocale < ActiveRecord::Base
     %w(Brand CaseStudy Event LandingPage ProductType Product ReferenceSystem SiteSetting Venue VerticalMarket)
   end
 
+  def self.live
+    where(live: true).pluck(:key).map{|l| l.to_sym}
+  end
+
   def items_to_translate
     @items_to_translate ||= self.class.translatables.map do |t|
       t.constantize.needing_translations(self.key)
