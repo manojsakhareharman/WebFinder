@@ -1852,10 +1852,10 @@ ul.title-area {
 #pre-footer {
   padding-top: 40px;
   @media only screen and (min-width: 1000px) {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
   @media only screen and (min-width: 500px) and (max-width: 999px) {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
   }
   @media only screen and (max-width: 499px) {
     padding-bottom: 10px;
@@ -1880,17 +1880,24 @@ ul.title-area {
       }
     }
   }
+  .social-links {
+    padding-top: 10px;
+    a {
+      margin: 6px;
+      color: $snow;
+    }
+  }
 }
 .sub-footer {
-  padding: 20px;
+  padding-top: 20px;
   p {
-    font-size: rem-calc(10);
-    color: $monsoon;
+    font-size: rem-calc(12);
+    color: $base;
   }
   a {
-    color: $charcoal;
+    color: $silver;
     &:hover {
-      color: $jet;
+      color: $harman-blue;
     }
   }
 }
