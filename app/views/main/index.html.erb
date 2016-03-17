@@ -31,19 +31,27 @@
   </div>
 </div>
 
-<ul class="homepage-vertical-market large-block-grid-<%= @vertical_markets.length %> medium-block-grid-<%= @vertical_markets.length %> small-block-grid-3">
-  <% @vertical_markets.each do |vm| %>
-    <li>
-      <%= link_to vm do %>
-        <%= image_tag vm.banner.url(:medium_gray) %>
-        <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
 <div class="container main-container">
+  <p>&nbsp;</p>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="text-center">
+        <h3>HARMAN <%= t( "professional_solutions").upcase %></h3>
+      </div>
+      <div class="row">
+        <% @vertical_markets.each do |vm| %>
+          <div class="medium-4 small-12 columns">
+            <%= link_to vm do %>
+              <%= image_tag vm.banner.url(:medium_gray) %>
+              <h5><%= vm.name %> <span class="arrow">&gt;</span></h5>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
+  <p>&nbsp;</p>
   <div class="row">
     <div class="large-10 large-offset-1 columns">
       <h2 class="text-center space-after"><%=raw format_headline SiteSetting.value("homepage-brands-headline") %></h2>
@@ -60,18 +68,23 @@
       </div>
     </div>
   </div>
-
 </div>
 
-<div class="ecomm-strip">
-  <div class="row">
-    <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-10 small-offset-1 columns">
-      <h3><%= raw format_headline SiteSetting.value("homepage-ecommerce-headline") %></h3>
-      <p><%= raw SiteSetting.value("homepage-ecommerce-text") %></p>
-      <p><%= link_to t('home_page.shop_now'), "http://shop.harmanpro.com/", target: "_blank", class: "small radius button" %></p>
+<%= content_for :pre_footer_banner do %>
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <div class="ecomm-strip">
+        <div class="row">
+          <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-10 small-offset-1 columns">
+            <h3><%= raw format_headline SiteSetting.value("homepage-ecommerce-headline") %></h3>
+            <p><%= raw SiteSetting.value("homepage-ecommerce-text") %></p>
+            <p><%= link_to t('home_page.shop_now'), "http://shop.harmanpro.com/", target: "_blank", class: "small radius button" %></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <% if SiteSetting.set?("homepage-roadblock") %>
   <div id="roadblock" class="reveal-modal medium" data-reveal aria-labelledby="Offer" aria-hidden="true" role="dialog">
