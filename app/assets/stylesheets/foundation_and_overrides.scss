@@ -1359,8 +1359,8 @@ $topbar-link-color: $monsoon;
 $topbar-link-color-hover: scale-color($topbar-link-color, $lightness: 30%);
 $topbar-link-color-active: $harman-blue;
 $topbar-link-color-active-hover: $harman-blue;
-$topbar-link-weight: 500;
-$topbar-link-font-size: rem-calc(14);
+$topbar-link-weight: 400;
+$topbar-link-font-size: rem-calc(16);
 $topbar-link-hover-lightness: 0%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-color-hover: scale-color($topbar-link-bg, $lightness: -8%);
