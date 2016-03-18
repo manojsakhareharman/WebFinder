@@ -39,8 +39,10 @@
   <% else %>
     <div class="row">
       <div class="large-12 columns">
-        <h2><%= SiteSetting.value("installed-buy-headline") %></h2>
-        <p><%= raw textilize SiteSetting.value("installed-buy-paragraph") %></p>
+        <div class="text-center">
+          <h2><%= SiteSetting.value("installed-buy-headline") %></h2>
+          <p><%= raw textilize SiteSetting.value("installed-buy-paragraph") %></p>
+        </div>
 
         <div class="text-center">
           <% (1..8).each do |i| %>
