@@ -1,7 +1,15 @@
 ActiveAdmin.register LandingPage do
   menu label: "Landing Pages"
 
-  permit_params :title, :subtitle, :description, :main_content, :left_content, :right_content, :sub_content, :hide_title
+  permit_params :title,
+    :subtitle,
+    :description,
+    :main_content,
+    :left_content,
+    :right_content,
+    :sub_content,
+    :hide_title,
+    :banner
 
   # :nocov:
   index do
@@ -19,6 +27,11 @@ ActiveAdmin.register LandingPage do
 
   show do
     attributes_table do
+      row :banner do |b|
+        if b.banner_file_name.present?
+          image_tag b.banner.url(:small)
+        end
+      end
       row :title
       row :hide_title
       row :subtitle
@@ -46,12 +59,13 @@ ActiveAdmin.register LandingPage do
     active_admin_comments
   end
 
-  form do |f|
+  form html: { multipart: true} do |f|
     f.inputs do
       f.input :title
       f.input :hide_title, label: "Hide big, h1 title tag"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
+      f.input :banner
       f.input :main_content, hint: "textilize and/or html permitted"
       f.input :left_content, hint: "(optional)"
       f.input :right_content, hint: "(optional)"

@@ -3,6 +3,15 @@ class LandingPage < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :globalize
 
+  has_attached_file :banner,
+    styles: {
+      large: "1000x624",
+      medium: "500x312",
+      small: "250x156",
+      thumb: "83x52",
+      thumb_square: "64x64#"
+  }, default_url: "missing/banners/:style.jpg"
+
   validates :title, presence: true
   validates :main_content, presence: true
 

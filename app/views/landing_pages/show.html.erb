@@ -10,6 +10,9 @@
 <% end %>
 
 <div class="container main-container">
+  <% if @landing_page.banner.present? %>
+    <%= image_tag @landing_page.banner.url %>
+  <% end %>
 
   <% unless @landing_page.hide_title? %>
     <div class="row">
