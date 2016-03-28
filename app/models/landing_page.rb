@@ -12,6 +12,7 @@ class LandingPage < ActiveRecord::Base
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
 
+  validates_attachment_content_type :banner, content_type: /\Aimage\/.*\Z/
   validates :title, presence: true
   validates :main_content, presence: true
 
