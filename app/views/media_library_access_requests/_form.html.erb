@@ -1,0 +1,19 @@
+<%= simple_form_for @media_library_access_request do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :job_title %>
+  <%= f.input :relationship,
+    as: :radio_buttons,
+    collection: ["HARMAN Employee","US Rep","Int'l Distributor","Other"] %>
+  <fieldset>
+    <legend>For HARMAN Employees</legend>
+    <%= f.input :employee_csu, label: "CSU",
+      as: :select,
+      collection: ["Retail", "Tour", "CEG", "Hospitality", "Large Venue", "Cinema", "Broadcast", "n/a"] %>
+    <%= f.input :employee_office, label: "Office Location" %>
+  </fieldset>
+  <%= f.input :region, label: "Rep Region/Country/Territory" %>
+  <%= f.input :other_relationship, label: "If other, please explain your relationship with HARMAN." %>
+  <%= f.submit "Submit", class: "medium button" %>
+<% end %>

@@ -50,7 +50,7 @@
                 <li class="has-dropdown">
                 <a href="#" class="disabled"><%= t('nav.resources') %></a>
                   <ul class="dropdown">
-                    <li><%= link_to t('nav.media_library'), "/medialibrary", target: "_blank" %></li>
+                    <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
                     <li><%= link_to t('nav.training'), training_path %></li>
                     <% if SiteSetting.set?("show_events") %>
                       <li><%= link_to t('nav.events'), events_path %></li>

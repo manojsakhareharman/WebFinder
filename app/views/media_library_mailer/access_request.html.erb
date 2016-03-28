@@ -1,0 +1,24 @@
+<p>Hello, the following person has requested access to the DAM:</p>
+
+<p>
+First Name: <%= @media_library_access_request.first_name %><br/>
+Last Name: <%= @media_library_access_request.last_name %><br/>
+Email: <%= @media_library_access_request.email %><br/>
+Job title: <%= @media_library_access_request.job_title %><br/>
+Relationship: <%= @media_library_access_request.relationship %>
+</p>
+
+<p>(if employee...)<br/>
+CSU: <%= @media_library_access_request.employee_csu %><br/>
+Office: <%= @media_library_access_request.employee_office %>
+</p>
+
+<p>(if rep, etc...)<br/>
+Region: <%= @media_library_access_request.region %>
+</p>
+
+<p>(if other)<br/>
+Other relationship: <%= @media_library_access_request.other_relationship %>
+</p>
+
+

@@ -230,6 +230,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -473,6 +475,7 @@ DEPENDENCIES
   jquery-rails
   json-schema
   launchy
+  letter_opener
   mailgun_rails
   mysql2 (~> 0.3.18)
   paperclip

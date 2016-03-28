@@ -56,9 +56,14 @@ Rails.application.routes.draw do
   # Training site
   get '/training' => 'landing_pages#training'
 
-  # Resource library
+  # Resource library (local resources on our site)
   get '/resource-library/:id' => 'resources#show', as: :resource_permalink
-  get '/medialibrary' => redirect("https://harman.widencollective.com")
+
+  # The Widen DAM
+  resources :media_library_access_requests, only: [:new, :create]
+  get 'media_library' => "media_library#index"
+  get 'medialibrary', to: redirect('/media_library')
+  get 'media-library', to: redirect('/media_library')
 
   # Akamai sure route test
   get '/sureroute-test-object(.:format)' => 'main#sureroute', as: :sureroute_test_object

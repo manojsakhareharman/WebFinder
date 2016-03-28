@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328182907) do
+ActiveRecord::Schema.define(version: 20160328201012) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -251,6 +251,20 @@ ActiveRecord::Schema.define(version: 20160328182907) do
 
   add_index "locale_translators", ["admin_user_id"], name: "index_locale_translators_on_admin_user_id", using: :btree
   add_index "locale_translators", ["available_locale_id"], name: "index_locale_translators_on_available_locale_id", using: :btree
+
+  create_table "media_library_access_requests", force: :cascade do |t|
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "email",              limit: 255
+    t.string   "relationship",       limit: 255
+    t.string   "employee_csu",       limit: 255
+    t.string   "employee_office",    limit: 255
+    t.string   "job_title",          limit: 255
+    t.string   "region",             limit: 255
+    t.string   "other_relationship", limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "online_retailers", force: :cascade do |t|
     t.string   "name",              limit: 255

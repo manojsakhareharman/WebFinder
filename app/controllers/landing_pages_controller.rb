@@ -1,7 +1,7 @@
 class LandingPagesController < ApplicationController
 
   def show
-    @landing_page = LandingPage.find(params[:id])
+    render_landing_page(params[:id])
   end
 
   def contacts

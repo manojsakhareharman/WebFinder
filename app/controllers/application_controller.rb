@@ -9,6 +9,19 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def render_landing_page(slug)
+    if LandingPage.exists?(slug)
+      @landing_page = LandingPage.find(slug)
+    else
+      @landing_page = LandingPage.new
+    end
+    @landing_page.main_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.left_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.right_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    @landing_page.sub_content.to_s.gsub!(/\~+(\w*)\~+/) { eval($1) }
+    render "landing_pages/show"
+  end
+
   def set_locale
     if params[:locale].present?
       session[:locale] = params[:locale]
