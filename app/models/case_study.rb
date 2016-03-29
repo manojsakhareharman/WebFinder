@@ -6,7 +6,7 @@ class CaseStudy < ActiveRecord::Base
   belongs_to :vertical_market
   has_attached_file :banner,
     styles: {
-      large: "1000x624",
+      large: "1170x624",
       medium: "500x312",
       small: "250x156",
       thumb: "83x52",

@@ -24,7 +24,7 @@ feature "Exits to brand sites via brand page" do
   scenario "via footer links" do
     visit root_path
 
-    footer = find('#pre-footer')
+    footer = find('#footer')
 
     expect(footer).to have_link(@brand.name, href: brand_path(@brand))
   end

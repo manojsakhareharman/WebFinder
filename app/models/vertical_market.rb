@@ -9,7 +9,7 @@ class VerticalMarket < ActiveRecord::Base
 
   has_attached_file :banner,
     styles: {
-      large: "1000x624#",
+      large: "1170x624#",
       medium: "500x312#",
       medium_gray: { geometry: "500x312#", processors: [:grayscale, :thumbnail] },
       small: "250x156#",

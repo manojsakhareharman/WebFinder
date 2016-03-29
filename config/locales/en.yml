@@ -149,7 +149,7 @@ en:
     new_lead:
       subject: New lead from pro.harman.com
   media_library_mailer:
-    new_access_request:
+    access_request:
       subject: DAM access request
 
   activerecord:
