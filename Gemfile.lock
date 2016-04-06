@@ -41,7 +41,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.9.4)
+    active_model_serializers (0.9.5)
       activemodel (>= 3.2)
     activeadmin-sortable (0.0.3)
       activeadmin (>= 0.4)
@@ -188,7 +188,7 @@ GEM
     guard-rails (0.7.2)
       guard (~> 2.11)
       guard-compat (~> 1.0)
-    guard-rspec (4.6.4)
+    guard-rspec (4.6.5)
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
@@ -425,7 +425,7 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    websocket (1.2.2)
+    websocket (1.2.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
