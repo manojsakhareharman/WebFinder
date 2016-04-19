@@ -8,10 +8,12 @@ RSpec.describe "layouts/application.html.erb", as: :view do
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_market.id)
   end
 
+  before :each do
+    allow(view).to receive(:all_brands).and_return([@brand])
+  end
+
   describe "header" do
     before :each do
-      allow(view).to receive(:all_brands).and_return([@brand])
-
       render
     end
 
@@ -54,9 +56,12 @@ RSpec.describe "layouts/application.html.erb", as: :view do
                                      enabled: true,
                                      new_tab: true)
       I18n.locale = @locale.key
-      allow(view).to receive(:all_brands).and_return([@brand])
 
       render
+    end
+
+    after :each do
+      I18n.locale = I18n.default_locale
     end
 
     it "links to custom link" do
@@ -67,8 +72,6 @@ RSpec.describe "layouts/application.html.erb", as: :view do
 
   describe "footer" do
     before :each do
-      allow(view).to receive(:all_brands).and_return([@brand])
-
       render
     end
 

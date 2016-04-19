@@ -1,0 +1,52 @@
+require 'rails_helper'
+
+RSpec.describe Cms::MenuItemsController, type: :controller do
+  before :all do
+    @available_locale = FactoryGirl.create(:available_locale, key: 'es')
+    @admin_user = FactoryGirl.create(:admin_user, translator: true)
+  end
+
+  after :all do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  before :each do
+    sign_in(:admin_user, @admin_user)
+  end
+
+  describe "sub-folder of available_locale" do
+    describe "GET :index" do
+      it "assigns locale" do
+        get :index, available_locale_id: @available_locale.to_param
+
+        expect(assigns(:available_locale)).to eq(@available_locale)
+        expect(response).to render_template('cms/available_locales/menu_items/index')
+      end
+    end
+
+    describe "GET :new" do
+      it "assigns locale and sets up new MenuItem" do
+        get :new, available_locale_id: @available_locale.to_param
+
+        expect(assigns(:available_locale)).to eq(@available_locale)
+        expect(assigns(:menu_item)).to be_a(MenuItem)
+        expect(response).to render_template('cms/available_locales/menu_items/new')
+      end
+    end
+
+    describe "POST :create" do
+      it "creates the new menu item and assigns it the currently active locale" do
+        post :create, available_locale_id: @available_locale.to_param, menu_item: {
+          title: "Cosa Buena", link: "http://cosabuena.com"
+        }
+
+        menu_item = assigns(:menu_item)
+        expect(menu_item.new_record?).to be(false)
+        expect(menu_item.locale).to eq @available_locale
+        expect(response).to redirect_to cms_available_locale_menu_items_path(@available_locale)
+      end
+    end
+
+  end
+
+end

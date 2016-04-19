@@ -1,0 +1,7 @@
+<%= simple_form_for [:cms, @available_locale, @menu_item] do |f| %>
+
+  <%= f.input :title %>
+  <%= f.input :link %>
+  <%= f.submit 'Save Changes', class: 'medium button' %>
+
+<% end %>

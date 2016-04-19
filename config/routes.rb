@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       AvailableLocale.translatables.each do |t|
         resources t.underscore.pluralize.to_sym
       end
+      resources :menu_items
     end
   end
 
