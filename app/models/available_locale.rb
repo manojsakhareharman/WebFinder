@@ -9,6 +9,7 @@ class AvailableLocale < ActiveRecord::Base
 
   has_many :locale_translators, dependent: :destroy
   has_many :translators, through: :locale_translators
+  has_many :menu_items, foreign_key: :locale_id
 
   def self.default
     find_by(key: I18n.default_locale.to_s)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328201012) do
+ActiveRecord::Schema.define(version: 20160418210820) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -265,6 +265,19 @@ ActiveRecord::Schema.define(version: 20160328201012) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.integer  "locale_id",  limit: 4
+    t.string   "title",      limit: 255
+    t.string   "link",       limit: 255
+    t.boolean  "new_tab"
+    t.boolean  "enabled"
+    t.integer  "position",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "menu_items", ["locale_id"], name: "index_menu_items_on_locale_id", using: :btree
 
   create_table "online_retailers", force: :cascade do |t|
     t.string   "name",              limit: 255

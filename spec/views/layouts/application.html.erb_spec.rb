@@ -8,13 +8,13 @@ RSpec.describe "layouts/application.html.erb", as: :view do
     @child_vertical = FactoryGirl.create(:vertical_market, parent_id: @vertical_market.id)
   end
 
-  before :each do
-    allow(view).to receive(:all_brands).and_return([@brand])
-
-    render
-  end
-
   describe "header" do
+    before :each do
+      allow(view).to receive(:all_brands).and_return([@brand])
+
+      render
+    end
+
     it "has logo above top nav" do
       expect(rendered).to have_css("img#logo")
     end
@@ -44,7 +44,34 @@ RSpec.describe "layouts/application.html.erb", as: :view do
     end
   end
 
+  describe "custom locale menu" do
+    before :each do
+      @locale = FactoryGirl.create(:available_locale, key: 'es')
+      @menu_item = FactoryGirl.create(:menu_item,
+                                     locale: @locale,
+                                     title: "Tienda",
+                                     link: "http://shop.harmanpro.com",
+                                     enabled: true,
+                                     new_tab: true)
+      I18n.locale = @locale.key
+      allow(view).to receive(:all_brands).and_return([@brand])
+
+      render
+    end
+
+    it "links to custom link" do
+      expect(header).to have_link @menu_item.title
+    end
+
+  end
+
   describe "footer" do
+    before :each do
+      allow(view).to receive(:all_brands).and_return([@brand])
+
+      render
+    end
+
     it "links to brands" do
       expect(rendered).to have_link(@brand.name, href: brand_path(@brand))
     end
