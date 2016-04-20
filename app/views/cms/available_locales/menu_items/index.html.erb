@@ -1,1 +1,10 @@
-<%= link_to "Add menu item", new_cms_available_locale_menu_item_path(@available_locale) %>
+<h6>Custom Resources Menu</h6>
+<p>The links you create here will appear under the "Resources" menu on the <%= @available_locale.name %> site.</p>
+
+<%= link_to "Add menu item", new_cms_available_locale_menu_item_path(@available_locale), class: "small radius success button" %>
+
+<ul>
+  <% @available_locale.menu_items.each do |menu_item| %>
+    <li><%= link_to menu_item.title, edit_cms_available_locale_menu_item_path(@available_locale, menu_item) %></li>
+  <% end %>
+</ul>

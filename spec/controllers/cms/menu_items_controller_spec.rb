@@ -47,6 +47,35 @@ RSpec.describe Cms::MenuItemsController, type: :controller do
       end
     end
 
+    describe "GET :edit" do
+      before do
+        @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
+        get :edit, available_locale_id: @available_locale.id, id: @menu_item.id
+      end
+
+      it "renders a form to edit the menu item" do
+        expect(assigns[:menu_item]).to eq @menu_item
+        expect(response).to render_template("cms/available_locales/menu_items/edit")
+      end
+    end
+
+    describe "PUT :update" do
+      before do
+        @menu_item = FactoryGirl.create(:menu_item, locale: @available_locale)
+      end
+
+      it "updates the item" do
+        put :update, available_locale_id: @available_locale.id, id: @menu_item.id, menu_item: {
+          title: "Foo To You", link: "http://foo.to.you"
+        }
+
+        @menu_item.reload
+        expect(@menu_item.title).to eq "Foo To You"
+        expect(@menu_item.link).to eq "http://foo.to.you"
+        expect(response).to redirect_to(cms_available_locale_menu_items_path(@available_locale))
+      end
+    end
+
   end
 
 end
