@@ -51,22 +51,24 @@
                 <a href="#" class="disabled"><%= t('nav.resources') %></a>
                   <ul class="dropdown">
                     <% if current_locale.menu_items.length > 0 %>
-                      <% current_locale.menu_items.each do |mi| %>
+                      <% current_locale.menu_items.order(:position).each do |mi| %>
                         <li><%= link_to mi.title, mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
+                      <% end %>
+                    <% elsif MenuItem.where(locale_id: nil).count > 0 %>
+                      <% MenuItem.where(locale_id: nil).order(:position).each do |mi| %>
+                        <li><%= link_to t(mi.title), mi.link, target: (mi.new_tab?) ? "_blank" : "" %></li>
                       <% end %>
                     <% else %>
                       <li><%= link_to t('nav.media_library'), SiteSetting.value("media-library-menu-link-location") %></li>
                       <li><%= link_to t('nav.training'), training_path %></li>
-                      <% if SiteSetting.set?("show_events") %>
-                        <li><%= link_to t('nav.events'), events_path %></li>
-                      <% end %>
+                      <li><%= link_to t('nav.events'), events_path %></li>
                       <li><%= link_to t('nav.consultants'), consultant_portal_path %></li>
                       <li><%= link_to t('nav.contacts'), contacts_path %></li>
                       <li><%= link_to t('nav.service'), service_path %></li>
                     <% end %>
                   </ul>
                 </li>
-                <% if SiteSetting.set?("blog_link_name") && SiteSetting.set?("blog_link") %>
+                <% if SiteSetting.set_for_locale?("blog_link_name") && SiteSetting.set_for_locale?("blog_link") %>
                   <li>
                     <%= link_to SiteSetting.value("blog_link_name"), SiteSetting.value("blog_link"), target: "_blank" %>
                   </li>
@@ -76,7 +78,7 @@
           </section>
           <section class="top-bar-section">
             <ul class="right">
-              <% if SiteSetting.set?("store_link") %>
+              <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
                 <li class="has-form"><%= link_to t('nav.shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
               <% end %>
             </ul>

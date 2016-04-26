@@ -5,7 +5,9 @@
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <p><i>&lt;-- Choose an item in the menu to translate</i></p>
+    <p>&lt;-- Choose an item in the menu to translate</p>
+    <p><i>or</i></p>
+    <p><%= link_to "View the #{ @available_locale.name} site -->", root_path(locale: @available_locale.key), target: "_blank" %></p>
   </div>
 
   <div class="medium-3 small-12 columns">

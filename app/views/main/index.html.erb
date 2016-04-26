@@ -70,6 +70,7 @@
   </div>
 </div>
 
+<% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
 <div class="row collapse">
   <div class="small-12 columns">
     <div class="ecomm-strip">
@@ -77,12 +78,13 @@
         <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-10 small-offset-1 columns">
           <h3><%= raw format_headline SiteSetting.value("homepage-ecommerce-headline") %></h3>
           <p><%= raw SiteSetting.value("homepage-ecommerce-text") %></p>
-          <p><%= link_to t('home_page.shop_now'), "http://shop.harmanpro.com/", target: "_blank", class: "small radius button" %></p>
+          <p><%= link_to t('home_page.shop_now'), SiteSetting.value("store_link"), target: "_blank", class: "small radius button" %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 
 <% if SiteSetting.set?("homepage-roadblock") %>
   <div id="roadblock" class="reveal-modal medium" data-reveal aria-labelledby="Offer" aria-hidden="true" role="dialog">

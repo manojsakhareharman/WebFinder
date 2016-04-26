@@ -2,6 +2,8 @@
 
   <%= f.input :title %>
   <%= f.input :link %>
-  <%= f.submit 'Save Changes', class: 'medium button' %>
+  <%= f.input :position, label: "Order" %>
+  <%= f.input :new_tab, label: "Open in a new tab or window." %>
+  <%= f.submit 'Save Changes', class: 'medium radius button' %>
 
 <% end %>

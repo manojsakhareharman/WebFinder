@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <% if SiteSetting.exists?(name: "consultant-portal-loan-program-paragraph") %>
+      <% if SiteSetting.set?("consultant-portal-loan-program-paragraph") %>
         <div class="row">
           <div class="large-12 medium-12 columns">
             <hr/>

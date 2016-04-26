@@ -17,7 +17,7 @@ module CmsHelper
       if current_page?(cms_available_locale_path(@available_locale))
         content_tag(:li, link, class: 'current hide-for-small')
       else
-        content_tag(:li, link) + translatable_items_links
+        content_tag(:li, link) + translatable_items_links + other_items_links
       end
     end
   end
@@ -54,6 +54,17 @@ module CmsHelper
         content_tag(:li, link_to(item.title.truncate(30), [:cms, @available_locale, item]), class: 'current hide-for-small')
       end
     end
+  end
+
+  def other_items_links
+    ret = ""
+    custom_menu_link = cms_available_locale_menu_items_path(@available_locale)
+    if current_page?(custom_menu_link)
+      ret += link_to("Customize Navigation", custom_menu_link, class: 'current hide-for-small')
+    elsif controller.controller_name == "menu_items"
+      ret += link_to("Customize Navigation", custom_menu_link)
+    end
+    ret.html_safe
   end
 
 end

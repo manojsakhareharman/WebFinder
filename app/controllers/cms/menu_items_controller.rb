@@ -3,6 +3,9 @@ class Cms::MenuItemsController < CmsController
 
   def index
     if @available_locale
+      @store_link = SiteSetting.find_by(name: "store_link")
+      @blog_link = SiteSetting.find_by(name: "blog_link")
+      @blog_link_name = SiteSetting.find_by(name: "blog_link_name")
       render template: 'cms/available_locales/menu_items/index' and return false
     end
   end
@@ -26,6 +29,21 @@ class Cms::MenuItemsController < CmsController
     end
   end
 
+  def add_defaults
+    if @available_locale
+      I18n.locale = @available_locale.key
+      last_item = MenuItem.where(locale: @available_locale).order(:position).last
+      MenuItem.where(locale_id: nil).each do |mi|
+        new_mi = mi.dup
+        new_mi.locale = @available_locale
+        new_mi.title = I18n.t(mi.title)
+        new_mi.position += last_item.position
+        new_mi.save
+      end
+      redirect_to cms_available_locale_menu_items_path(@available_locale), notice: "Default menu items were added to the #{@available_locale.name} site."
+    end
+  end
+
   def edit
     @menu_item = MenuItem.find(params[:id])
     if @available_locale
@@ -45,9 +63,15 @@ class Cms::MenuItemsController < CmsController
     end
   end
 
+  def destroy
+    @menu_item = MenuItem.find(params[:id])
+    @menu_item.destroy
+    redirect_to [:cms, @available_locale, :menu_items], notice: "'#{@menu_item.title}' was deleted."
+  end
+
   private
 
   def menu_item_params
-    params.require(:menu_item).permit(:title, :link)
+    params.require(:menu_item).permit(:title, :link, :position, :new_tab)
   end
 end

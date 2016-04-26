@@ -15,8 +15,9 @@
             <b><%= locale.name %></b>.</p>
             <%= link_to 'start translating', [:cms, locale], class: "small radius button" %>
             <br/>
-            <div id="<%= locale.key %>_tools">
-              <h5>More tools for <%= locale.name %> site:</h5>
+            <hr/>
+            <div id="<%= locale.key %>_tools" class="text-left">
+              <h6><%= locale.name %> site options:</h6>
               <ul>
                 <li><%= link_to "Customize Navigation", [:cms, locale, :menu_items] %></li>
               </ul>

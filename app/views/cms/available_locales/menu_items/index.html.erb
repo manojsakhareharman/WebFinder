@@ -1,10 +1,55 @@
-<h6>Custom Resources Menu</h6>
-<p>The links you create here will appear under the "Resources" menu on the <%= @available_locale.name %> site.</p>
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
 
-<%= link_to "Add menu item", new_cms_available_locale_menu_item_path(@available_locale), class: "small radius success button" %>
+  <div class="medium-5 small-12 columns">
+    <h5>Custom Resources Menu</h5>
+    <p>The links you create here will appear under the "Resources" menu on the <%= @available_locale.name %> site.
+    When one or more menu items appears below, the default Resources menu is removed completely and replaced with
+    your links below. If you'd like to retain some of the default links, recreate them below.</p>
 
-<ul>
-  <% @available_locale.menu_items.each do |menu_item| %>
-    <li><%= link_to menu_item.title, edit_cms_available_locale_menu_item_path(@available_locale, menu_item) %></li>
-  <% end %>
-</ul>
+    <ul class="button-group radius">
+      <li><%= link_to "+ Add menu item", new_cms_available_locale_menu_item_path(@available_locale), class: "tiny success button" %></li>
+      <li><%= link_to "Add default items", add_defaults_cms_available_locale_menu_items_path(@available_locale), method: :put, class: "tiny button" %></li>
+    </ul>
+
+    <ol>
+      <% @available_locale.menu_items.order(:position).each do |menu_item| %>
+        <li>
+          <%= link_to menu_item.title, edit_cms_available_locale_menu_item_path(@available_locale, menu_item) %>
+          <% if menu_item.new_tab? %>(new tab)<% end %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="medium-5 small-12 columns">
+    <h5>Other Navigation Options</h5>
+    <div class="callout panel">
+      <h6>Blog Link (Insights)</h6>
+      <p>The default site has a blog link on the top navigation called, "Insights".
+      This blog is run by the content staff at Harman Pro. If the <%= @available_locale.name %>
+      locale runs a separate blog, you can replace "Insights" with that blog here.</p>
+
+    </div>
+
+    <div class="callout panel">
+      <h6>Shop Button</h6>
+      <p>The default site has a "Shop" button on the top navigation. If the
+      <%= @available_locale.name %> site should point to a different online store, you
+      can make that change here. (If the field below is empty, the shop button and
+      homepage banner will be hidden for the <%= @available_locale.name %> site.)</p>
+
+      <%= simple_form_for [:cms, @available_locale, @store_link], url: store_link_cms_available_locale_path(@available_locale) do |f| %>
+        <div class="row collapse">
+          <div class="medium-8 small-8 columns">
+            <%= f.input :content, label: false, placeholder: "http://..." %>
+          </div>
+          <div class="medium-4 small-4 columns">
+            <%= f.submit "Update", class: "postfix radius button expand" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

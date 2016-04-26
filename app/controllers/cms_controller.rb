@@ -12,7 +12,7 @@ class CmsController < ApplicationController
       @available_locale = AvailableLocale.find(params[:available_locale_id])
       I18n.locale = @available_locale.key.to_sym
     else
-      @available_locale = false
+      @available_locale ||= false
     end
   end
 end
