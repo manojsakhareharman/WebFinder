@@ -19,16 +19,4 @@ RSpec.describe "main/index.html.erb", as: :view do
     end
   end
 
-  it "links to each brand" do
-    @brands.each do |brand|
-      expect(rendered).to have_link(brand.name, href: brand_path(brand))
-    end
-  end
-
-  it "shows logos for each brand" do
-    @brands.each do |brand|
-      expect(rendered).to have_css("img[@src='#{brand.white_logo.url(:circle)}']")
-    end
-  end
-
 end

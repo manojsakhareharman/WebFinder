@@ -22,11 +22,11 @@
   <div class="container main-container">
     <div class="row">
       <div class="large-10 medium-12 large-offset-1 columns">
-        <h1 class="text-center space-after"><%= @vertical_market.headline %></h1>
+        <h3 class="text-center space-after"><%= @vertical_market.headline %></h3>
       </div>
     </div>
     <div class="row">
-      <div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
+      <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
         <%= raw textilize @vertical_market.description %>
         <div class="text-center">
           <% @vertical_market.children.each do |vm| %>
