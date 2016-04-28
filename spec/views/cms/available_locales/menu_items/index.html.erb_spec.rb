@@ -5,11 +5,15 @@ RSpec.describe "cms/available_locales/menu_items/index.html.erb" do
     @locale = FactoryGirl.build_stubbed(:available_locale)
     @menu_item = FactoryGirl.create(:menu_item, locale: @locale)
     @store_link = FactoryGirl.build_stubbed(:site_setting)
+    @blog_link = FactoryGirl.build_stubbed(:site_setting)
+    @blog_link_name = FactoryGirl.build_stubbed(:site_setting)
   end
 
   before :each do
     assign(:available_locale, @locale)
     assign(:store_link, @store_link)
+    assign(:blog_link, @blog_link)
+    assign(:blog_link_name, @blog_link_name)
     render
   end
 

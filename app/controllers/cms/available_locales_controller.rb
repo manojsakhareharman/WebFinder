@@ -13,6 +13,19 @@ class Cms::AvailableLocalesController < CmsController
     redirect_to cms_available_locale_menu_items_path(@available_locale), msg
   end
 
+  def blog_link
+    @blog_link = SiteSetting.find_by(name: "blog_link")
+    @blog_link_name = SiteSetting.find_by(name: "blog_link_name")
+
+    @blog_link.content = params[:blog_link]
+    @blog_link_name.content = params[:blog_link_name]
+
+    @blog_link.save
+    @blog_link_name.save
+
+    redirect_to cms_available_locale_menu_items_path(@available_locale), notice: "Changes submitted."
+  end
+
   private
 
   def load_available_locale

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       end
       member do
         patch :store_link
+        patch :blog_link
       end
     end
   end

@@ -28,7 +28,19 @@
       <h6>Blog Link (Insights)</h6>
       <p>The default site has a blog link on the top navigation called, "Insights".
       This blog is run by the content staff at Harman Pro. If the <%= @available_locale.name %>
-      locale runs a separate blog, you can replace "Insights" with that blog here.</p>
+      locale runs a separate blog, you can replace "Insights" with that blog here.
+      <strong>If the fields below are both empty, the blog link will not appear on
+      the top-level navigation for the <%= @available_locale.name %> site.</strong></p>
+
+      <%= simple_form_for [:cms, @available_locale], url: blog_link_cms_available_locale_path(@available_locale) do |f| %>
+        <%= simple_fields_for @blog_link_name do |blog_name| %>
+          <%= blog_name.input :content, label: "Blog Link Name", input_html: {id: "blog_link_name", name: "blog_link_name"} %>
+        <% end %>
+        <%= simple_fields_for @blog_link do |blog_link| %>
+          <%= blog_link.input :content, label: "Blog URL", placeholder: "http://...", input_html: {id: "blog_link", name: "blog_link"} %>
+        <% end %>
+        <%= f.submit "Update", class: "small radius button" %>
+      <% end %>
 
     </div>
 
@@ -36,8 +48,8 @@
       <h6>Shop Button</h6>
       <p>The default site has a "Shop" button on the top navigation. If the
       <%= @available_locale.name %> site should point to a different online store, you
-      can make that change here. (If the field below is empty, the shop button and
-      homepage banner will be hidden for the <%= @available_locale.name %> site.)</p>
+      can make that change here. <strong>If the field below is empty, the shop button and
+        homepage banner will be hidden for the <%= @available_locale.name %> site.</strong></p>
 
       <%= simple_form_for [:cms, @available_locale, @store_link], url: store_link_cms_available_locale_path(@available_locale) do |f| %>
         <div class="row collapse">
