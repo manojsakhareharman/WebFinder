@@ -14,6 +14,14 @@
             <p>items to be translated for<br/>
             <b><%= locale.name %></b>.</p>
             <%= link_to 'start translating', [:cms, locale], class: "small radius button" %>
+            <br/>
+            <hr/>
+            <div id="<%= locale.key %>_tools" class="text-left">
+              <h6><%= locale.name %> site options:</h6>
+              <ul>
+                <li><%= link_to "Customize Navigation", [:cms, locale, :menu_items] %></li>
+              </ul>
+            </div>
           </div>
         </li>
       <% end %>

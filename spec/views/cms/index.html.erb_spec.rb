@@ -22,4 +22,9 @@ RSpec.describe "cms/index.html.erb" do
     expect(rendered).to have_link "start translating", href: cms_available_locale_path(@locale)
   end
 
+  it "has a div with more tools for the locale" do
+    expect(rendered).to have_css("##{ @locale.key }_tools")
+    expect(rendered).to have_link("Customize Navigation", href: "/cms/available_locales/#{@locale.key}/menu_items")
+  end
+
 end

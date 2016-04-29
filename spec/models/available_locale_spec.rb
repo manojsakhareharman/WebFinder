@@ -33,4 +33,14 @@ RSpec.describe AvailableLocale, type: :model do
     expect(@loc.items_to_translate).to include(venue)
     expect(@loc.items_to_translate).to include(site_setting)
   end
+
+  it "has custom menu items" do
+    menu_item = FactoryGirl.create(:menu_item,
+                                   locale: @loc,
+                                   title: "Tienda",
+                                   link: "http://shop.harmanpro.com",
+                                   enabled: true,
+                                   new_tab: true)
+    expect(@loc.menu_items).to include(menu_item)
+  end
 end

@@ -32,4 +32,8 @@ module ApplicationHelper
     content.to_s.gsub(/\r\n|\r|\n/, "<br/>")
   end
 
+  def current_locale
+    @current_locale ||= AvailableLocale.where(key: I18n.locale).first_or_initialize
+  end
+
 end

@@ -56,7 +56,7 @@
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
         <br/>
-        <div class="row">
+        <div class="container">
           <div class="large-12 medium-12 columns">
             <div data-alert class="alert-box radius <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
               <%= content_tag :div, msg %>
@@ -68,21 +68,6 @@
     <% end %>
 
     <%= yield %>
-
-
-    <div class="sub-footer text-center">
-      <p>
-        &copy; <%= Date.today.year %> <%= link_to "HARMAN", "http://www.harman.com", target: "_blank" %>.
-        <%= t('all_rights_reserved') %>.
-        &bull;
-        <%= link_to t('privacy_policy'), privacy_policy_path %>
-        &bull;
-        <%= link_to t('terms_of_use'), terms_of_use_path %>
-      </p>
-      <p>
-        <%= link_to image_tag("harman_tiny.png", alt: "HARMAN"), "http://www.harman.com", target: "_blank" %>
-      </p>
-    </div>
 
     <%= javascript_include_tag "application" %>
   </body>

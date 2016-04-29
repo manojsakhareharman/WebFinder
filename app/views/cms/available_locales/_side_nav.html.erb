@@ -1,7 +1,7 @@
 <div class="medium-2 small-12 columns">
   <h6>Translatable items for
-  <%= link_to @available_locale.name, [:cms, @available_locale] %>:</h6>
-  <ul class="side-nav">
+  <%= @available_locale.name %>:</h6>
+  <ul class="no-bullet">
     <% AvailableLocale.translatables.each do |t| %>
       <li>
         <%= link_to [:cms, @available_locale, t.constantize] do %>
@@ -16,5 +16,12 @@
       </li>
     <% end %>
   </ul>
+
+  <hr/>
+  <h6><%= @available_locale.name %> site options:</h6>
+  <ul class="no-bullet">
+    <li><%= link_to "Customize Navigation", [:cms, @available_locale, :menu_items] %></li>
+  </ul>
+
 </div>
 

@@ -19,6 +19,15 @@ Rails.application.routes.draw do
       AvailableLocale.translatables.each do |t|
         resources t.underscore.pluralize.to_sym
       end
+      resources :menu_items do
+        collection do
+          put :add_defaults
+        end
+      end
+      member do
+        patch :store_link
+        patch :blog_link
+      end
     end
   end
 

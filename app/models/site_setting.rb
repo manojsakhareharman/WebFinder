@@ -23,7 +23,18 @@ class SiteSetting < ActiveRecord::Base
   end
 
   def self.set?(setting_name)
-    exists?(name: setting_name)
+    #exists?(name: setting_name)
+    where(name: setting_name).where.not(content: [nil, ""]).exists?
+  end
+
+  # Strictly looks for setting for the locale. Otherwise, it would
+  # traverse the defaults tree and always return true since English is
+  # the final default for all locales.
+  def self.set_for_locale?(setting_name, locale=I18n.locale)
+    if exists?(name: setting_name)
+      parent = find_by(name: setting_name)
+      parent.translations.where(locale: locale).where.not(content: [nil, ""]).exists?
+    end
   end
 
   def value

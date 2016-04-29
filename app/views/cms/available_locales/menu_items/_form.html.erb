@@ -1,0 +1,9 @@
+<%= simple_form_for [:cms, @available_locale, @menu_item] do |f| %>
+
+  <%= f.input :title %>
+  <%= f.input :link %>
+  <%= f.input :position, label: "Order" %>
+  <%= f.input :new_tab, label: "Open in a new tab or window." %>
+  <%= f.submit 'Save Changes', class: 'medium radius button' %>
+
+<% end %>

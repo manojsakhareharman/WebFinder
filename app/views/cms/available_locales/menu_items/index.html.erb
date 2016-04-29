@@ -1,0 +1,67 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-5 small-12 columns">
+    <h5>Custom Resources Menu</h5>
+    <p>The links you create here will appear under the "Resources" menu on the <%= @available_locale.name %> site.
+    When one or more menu items appears below, the default Resources menu is removed completely and replaced with
+    your links below. If you'd like to retain some of the default links, recreate them below.</p>
+
+    <ul class="button-group radius">
+      <li><%= link_to "+ Add menu item", new_cms_available_locale_menu_item_path(@available_locale), class: "tiny success button" %></li>
+      <li><%= link_to "Add default items", add_defaults_cms_available_locale_menu_items_path(@available_locale), method: :put, class: "tiny button" %></li>
+    </ul>
+
+    <ol>
+      <% @available_locale.menu_items.order(:position).each do |menu_item| %>
+        <li>
+          <%= link_to menu_item.title, edit_cms_available_locale_menu_item_path(@available_locale, menu_item) %>
+          <% if menu_item.new_tab? %>(new tab)<% end %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="medium-5 small-12 columns">
+    <h5>Other Navigation Options</h5>
+    <div class="callout panel">
+      <h6>Blog Link (Insights)</h6>
+      <p>The default site has a blog link on the top navigation called, "Insights".
+      This blog is run by the content staff at Harman Pro. If the <%= @available_locale.name %>
+      locale runs a separate blog, you can replace "Insights" with that blog here.
+      <strong>If the fields below are both empty, the blog link will not appear on
+      the top-level navigation for the <%= @available_locale.name %> site.</strong></p>
+
+      <%= simple_form_for [:cms, @available_locale], url: blog_link_cms_available_locale_path(@available_locale) do |f| %>
+        <%= simple_fields_for @blog_link_name do |blog_name| %>
+          <%= blog_name.input :content, label: "Blog Link Name", input_html: {id: "blog_link_name", name: "blog_link_name"} %>
+        <% end %>
+        <%= simple_fields_for @blog_link do |blog_link| %>
+          <%= blog_link.input :content, label: "Blog URL", placeholder: "http://...", input_html: {id: "blog_link", name: "blog_link"} %>
+        <% end %>
+        <%= f.submit "Update", class: "small radius button" %>
+      <% end %>
+
+    </div>
+
+    <div class="callout panel">
+      <h6>Shop Button</h6>
+      <p>The default site has a "Shop" button on the top navigation. If the
+      <%= @available_locale.name %> site should point to a different online store, you
+      can make that change here. <strong>If the field below is empty, the shop button and
+        homepage banner will be hidden for the <%= @available_locale.name %> site.</strong></p>
+
+      <%= simple_form_for [:cms, @available_locale, @store_link], url: store_link_cms_available_locale_path(@available_locale) do |f| %>
+        <div class="row collapse">
+          <div class="medium-8 small-8 columns">
+            <%= f.input :content, label: false, placeholder: "http://..." %>
+          </div>
+          <div class="medium-4 small-4 columns">
+            <%= f.submit "Update", class: "postfix radius button expand" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
