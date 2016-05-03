@@ -18,6 +18,7 @@ gem 'dalli'
 gem 'figaro'
 gem 'simple_form'
 gem 'RedCloth'
+gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails.git'
 gem 'foundation-rails', '~> 5.5' # After this, getting incompatible units errors
 gem 'friendly_id'
 gem 'paperclip'

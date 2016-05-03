@@ -8,8 +8,18 @@
     your links below. If you'd like to retain some of the default links, recreate them below.</p>
 
     <ul class="button-group radius">
-      <li><%= link_to "+ Add menu item", new_cms_available_locale_menu_item_path(@available_locale), class: "tiny success button" %></li>
-      <li><%= link_to "Add default items", add_defaults_cms_available_locale_menu_items_path(@available_locale), method: :put, class: "tiny button" %></li>
+      <li>
+        <%= link_to new_cms_available_locale_menu_item_path(@available_locale), class: "tiny success button" do %>
+          <%= fa_icon "plus" %>
+          Add menu item
+        <% end %>
+      </li>
+      <li>
+        <%= link_to add_defaults_cms_available_locale_menu_items_path(@available_locale), method: :put, class: "tiny button" do %>
+          <%= fa_icon "clone" %>
+          Import default items
+        <% end %>
+      </li>
     </ul>
 
     <ol>

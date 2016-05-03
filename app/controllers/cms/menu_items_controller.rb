@@ -37,7 +37,9 @@ class Cms::MenuItemsController < CmsController
         new_mi = mi.dup
         new_mi.locale = @available_locale
         new_mi.title = I18n.t(mi.title)
-        new_mi.position += last_item.position
+        if last_item
+          new_mi.position += last_item.position
+        end
         new_mi.save
       end
       redirect_to cms_available_locale_menu_items_path(@available_locale), notice: "Default menu items were added to the #{@available_locale.name} site."

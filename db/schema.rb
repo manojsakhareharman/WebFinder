@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418210820) do
+ActiveRecord::Schema.define(version: 20160429210546) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -226,8 +226,10 @@ ActiveRecord::Schema.define(version: 20160418210820) do
     t.string   "banner_content_type", limit: 255
     t.datetime "banner_updated_at"
     t.integer  "banner_file_size",    limit: 4
+    t.integer  "original_locale_id",  limit: 4
   end
 
+  add_index "landing_pages", ["original_locale_id"], name: "index_landing_pages_on_original_locale_id", using: :btree
   add_index "landing_pages", ["slug"], name: "index_landing_pages_on_slug", using: :btree
 
   create_table "leads", force: :cascade do |t|

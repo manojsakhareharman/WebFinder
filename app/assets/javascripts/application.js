@@ -15,8 +15,10 @@
 //= require nsPopover
 //= require_tree ./app
 //= require foundation
+//= require tinymce-jquery
 //= require consultants
 //= require vertical_markets
+//= require tiny
 // require_tree .
 
 $(function(){

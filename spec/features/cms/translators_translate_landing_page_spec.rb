@@ -30,7 +30,9 @@ feature "Translators translate a landing page" do
     landing_page = FactoryGirl.create(:landing_page) # which means it needs translation
 
     visit cms_available_locale_path(@locale)
-    click_on "Landing Pages"
+    within '#translatables' do
+      click_on "Landing Pages"
+    end
     click_on landing_page.title
     fill_in 'Main content', with: "translated description for locale"
     click_on "Save"

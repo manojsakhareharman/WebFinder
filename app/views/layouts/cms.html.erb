@@ -26,7 +26,7 @@
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
           <li class="name">
-          <h1><a href="/"><%= image_tag "harman-logo-white.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a></h1>
+          <h1><a href="/"><%= image_tag "logo.png", alt: t('logo_alt_text'), id: "logo", class: 'no-resize' %></a></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span><%= t('nav.menu') %></span></a></li>
         </ul>
@@ -70,5 +70,6 @@
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
+    <%= tinymce %>
   </body>
 </html>

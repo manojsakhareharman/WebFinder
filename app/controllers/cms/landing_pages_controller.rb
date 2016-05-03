@@ -1,10 +1,45 @@
 class Cms::LandingPagesController < CmsController
   before_action :set_locale_for_translator
 
+  # Need to figure out where to handle those LandingPages which have their
+  # "original_locale_id" set to the translator's locale. For example, if I
+  # created a new page as a Spanish/Mexico dude, then I want that page to appear
+  # in a list of "my" pages--not the translation interface.
+  #
+  # This applies to all the actions below.
+  #
   def index
-    @landing_pages = LandingPage.all
+    @landing_pages = LandingPage.where(original_locale_id: [nil, AvailableLocale.default_id])
     if @available_locale
       render template: 'cms/available_locales/landing_pages/index' and return false
+    end
+  end
+
+  def originated
+    if @available_locale
+      @landing_pages = @available_locale.landing_pages.with_translations
+      render template: 'cms/available_locales/landing_pages/originated' and return false
+    end
+  end
+
+  def new
+    @landing_page = LandingPage.new
+    if @available_locale
+      render template: 'cms/available_locales/landing_pages/new' and return false
+    end
+  end
+
+  def create
+    @landing_page = LandingPage.new(landing_page_params)
+    redirect_action = :index
+    if @available_locale
+      @landing_page.original_locale = @available_locale
+      redirect_action =  :originated
+    end
+    if @landing_page.save
+      redirect_to action: redirect_action, notice: "Page was created"
+    else
+      render template: (@available_locale) ? 'cms/available_locales/landing_pages/new' : 'cms/landing_pages/new'
     end
   end
 
@@ -18,7 +53,11 @@ class Cms::LandingPagesController < CmsController
   def edit
     @landing_page = LandingPage.find(params[:id])
     if @available_locale
-      render template: 'cms/available_locales/landing_pages/edit' and return false
+      if @landing_page.original_locale && @landing_page.original_locale == @available_locale
+        render template: 'cms/available_locales/landing_pages/edit_originated' and return false
+      else
+        render template: 'cms/available_locales/landing_pages/edit' and return false
+      end
     end
   end
 
@@ -26,11 +65,19 @@ class Cms::LandingPagesController < CmsController
     @landing_page = LandingPage.find(params[:id])
     if @landing_page.update_attributes(landing_page_params)
       if @available_locale
-        redirect_to [:cms, @available_locale, @landing_page.class], notice: 'Update successful'
+        if @landing_page.original_locale && @landing_page.original_locale == @available_locale
+          redirect_to [:originated, :cms, @available_locale, @landing_page.class], notice: 'Update successful'
+        else
+          redirect_to [:cms, @available_locale, @landing_page.class], notice: 'Update successful'
+        end
       end
     else
       if @available_locale
-        render template: 'cms/available_locales/landing_pages/edit'
+        if @landing_page.original_locale && @landing_page.original_locale == @available_locale
+          render template: 'cms/available_locales/landing_pages/edit_originated'
+        else
+          render template: 'cms/available_locales/landing_pages/edit'
+        end
       end
     end
   end
@@ -39,7 +86,8 @@ class Cms::LandingPagesController < CmsController
 
   def landing_page_params
     params.require(:landing_page).permit(
-      :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description
+      :title, :subtitle, :main_content, :left_content, :right_content, :sub_content, :description,
+      :banner, :delete_banner, :hide_title
     )
   end
 end

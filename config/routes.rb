@@ -16,8 +16,13 @@ Rails.application.routes.draw do
   get '/cms' => 'cms#index', as: :cms_root
   namespace :cms do
     resources :available_locales, only: :show do
-      AvailableLocale.translatables.each do |t|
+      (AvailableLocale.translatables - ["LandingPage"]).each do |t|
         resources t.underscore.pluralize.to_sym
+      end
+      resources :landing_pages do
+        collection do
+          get :originated
+        end
       end
       resources :menu_items do
         collection do
