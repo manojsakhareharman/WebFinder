@@ -47,7 +47,7 @@ gem 'rails-i18n'
 
 group :development do
   gem 'letter_opener'
-  gem 'web-console', '~> 3.0'
+#  gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rails'
