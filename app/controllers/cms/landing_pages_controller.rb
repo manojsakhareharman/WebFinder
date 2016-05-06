@@ -85,11 +85,11 @@ class Cms::LandingPagesController < CmsController
   def destroy
     @landing_page = LandingPage.find(params[:id])
     if @available_locale
-      if @landing_page.available_locale == @available_locale
+      if @landing_page.original_locale == @available_locale
         @landing_page.destroy
-        redirect_to action: :originated, notice: "Page was deleted."
+        redirect_to [:originated, :cms, @available_locale, @landing_page.class], notice: "Page was deleted."
       else
-        redirect_to action: :originated, alert: "Cannot delete page not originated for #{@available_locale.name}."
+        redirect_to [:originated, :cms, @available_locale, @landing_page.class], alert: "Cannot delete page not originated for #{@available_locale.name}."
       end
     end
   end
