@@ -1,5 +1,5 @@
 tinyMCE.init({
-  selector: 'textarea.tinymce',
+  selector: 'textarea.mceEditor',
   browsers: "msie,gecko,safari",
   cleanup: true,
   cleanup_on_startup: true,
@@ -9,13 +9,18 @@ tinyMCE.init({
   entity_encoding: 'named',
   extended_valid_elements: 'img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width],iframe[src|title|width|height|allowfullscreen|frameborder|style]',
   language: 'en',
-  mode: 'textareas',
+//  mode: 'textareas',
   plugins: "advlist,anchor,autolink,autoresize,colorpicker,code,hr,image,link,lists,media,searchreplace,spellchecker,textcolor,table,paste,preview",
   relative_urls: false,
+  setup: function (editor) {
+      editor.on('change', function () {
+          editor.save();
+      });
+  }
 });
 tinyMCE.init({
-  selector: 'textarea.tinymceFP',
   browsers: "msie,gecko,safari",
+  selector: 'textarea.mceEditorFP',
   cleanup: true,
   cleanup_on_startup: true,
   convert_fonts_to_spans: true,
@@ -24,7 +29,12 @@ tinyMCE.init({
   entity_encoding: 'named',
   extended_valid_elements: 'img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width],iframe[src|title|width|height|allowfullscreen|frameborder|style]',
   language: 'en',
-  mode: 'textareas',
+//  mode: 'textareas',
   plugins: "advlist,anchor,autolink,autoresize,colorpicker,code,hr,image,link,lists,media,searchreplace,spellchecker,textcolor,table,paste,preview,fullpage,fullscreen",
   relative_urls: false,
+  setup: function (editor) {
+      editor.on('change', function () {
+          editor.save();
+      });
+  }
 });

@@ -17,13 +17,13 @@
       <% end %>
     </div>
   </div>
-  <%= f.input :main_content, as: :text, input_html: { rows: 35, class: "tinymce" } %>
+  <%= f.input :main_content, as: :text, input_html: { rows: 35, class: "mceEditor" } %>
   <br/>
-  <%= f.input :left_content, as: :text, hint: "Leave blank to hide left side bar", input_html: { rows: 20, class: "tinymce" } %>
+  <%= f.input :left_content, as: :text, hint: "Leave blank to hide left side bar", input_html: { rows: 20, class: "mceEditor" } %>
   <br/>
-  <%= f.input :right_content, as: :text, hint: "Leave blank to hide right side bar", input_html: { rows: 20, class: "tinymce" } %>
+  <%= f.input :right_content, as: :text, hint: "Leave blank to hide right side bar", input_html: { rows: 20, class: "mceEditor" } %>
   <br/>
-  <%= f.input :sub_content, as: :text, hint: "Leave blank to hide content below main content", input_html: { rows: 20, class: "tinymce" } %>
+  <%= f.input :sub_content, as: :text, hint: "Leave blank to hide content below main content", input_html: { rows: 20, class: "mceEditor" } %>
   <br/>
   <%= f.submit 'Save Changes', class: 'medium button' %>
 
