@@ -6,7 +6,7 @@
       <div class="large-8 large-offset-2 columns text-center">
 
         <%# TODO: enable caching once changes settle down %>
-        <%#= cache ["retailers_section", Date.today, I18n.locale] do %>
+        <%#= cache ["retailers_section", Date.today, current_locale] do %>
           <% retailers = OnlineRetailer.all %>
           <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
 

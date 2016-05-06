@@ -1,5 +1,5 @@
 class MenuItem < ActiveRecord::Base
-  belongs_to :locale, class_name: "AvailableLocale"
+  belongs_to :locale, class_name: "AvailableLocale", touch: true
 
   validates :title, presence: true
   validates :link, presence: true
