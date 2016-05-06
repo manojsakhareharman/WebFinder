@@ -10,6 +10,7 @@ class Cms::AvailableLocalesController < CmsController
     @store_link.content = params[:site_setting][:content]
 
     msg = (@store_link.save) ? {notice: "Success!"} : {alert: "Sorry, something went wrong. Try again."}
+    @available_locale.touch
     redirect_to cms_available_locale_menu_items_path(@available_locale), msg
   end
 
@@ -23,6 +24,7 @@ class Cms::AvailableLocalesController < CmsController
     @blog_link.save
     @blog_link_name.save
 
+    @available_locale.touch
     redirect_to cms_available_locale_menu_items_path(@available_locale), notice: "Changes submitted."
   end
 
