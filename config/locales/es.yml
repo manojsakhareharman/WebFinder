@@ -20,6 +20,7 @@ es:
   register: registro
   any: alguna
   search: buscar
+  message: Mensaje
 
   nav:
     menu: Menu

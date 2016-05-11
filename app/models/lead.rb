@@ -3,6 +3,7 @@ class Lead < ActiveRecord::Base
   validates :email, presence: true
 
   after_create :notify_leadgen_recipients, :subscribe!
+  attr_accessor :locale
 
   def subscribe!
     @cheetahmail_client ||= CheetahMail::CheetahMail.new({
@@ -22,6 +23,6 @@ class Lead < ActiveRecord::Base
   handle_asynchronously :subscribe!
 
   def notify_leadgen_recipients
-    LeadMailer.new_lead(self).deliver_later
+    LeadMailer.new_lead(self, self.locale.to_s).deliver_later
   end
 end

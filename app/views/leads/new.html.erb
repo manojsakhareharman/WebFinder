@@ -8,15 +8,7 @@
       <p>
         <%= SiteSetting.value("leadgen-intro") %>
       </p>
-      <%= simple_form_for @lead do |f| %>
-        <%= f.input :name %>
-        <%= f.input :company %>
-        <%= f.input :email %>
-        <%= f.input :phone %>
-        <%= f.input :location %>
-        <%= f.input :project_description, input_html: { rows: 10 } %>
-        <%= f.button :submit, t('submit').titleize, class: "medium radius button" %>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

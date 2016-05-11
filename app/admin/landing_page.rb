@@ -9,20 +9,41 @@ ActiveAdmin.register LandingPage do
     :right_content,
     :sub_content,
     :hide_title,
-    :banner
+    :banner,
+    :header_code,
+    :footer_code
 
   # :nocov:
   index do
     selectable_column
-    column :title
+    column :locale do |lp|
+      if lp.original_locale
+        lp.original_locale.key
+      end
+    end
+    column :title do |lp|
+      if lp.original_locale
+        Globalize.with_locale(lp.original_locale.key) do
+          lp.title
+        end
+      else
+        lp.title
+      end
+    end
     column "Link" do |lp|
-      link_to "Direct Link", landing_page_path(lp), target: "_blank"
+      if lp.original_locale
+        link_to "Direct Link", landing_page_path(lp, locale: lp.original_locale.key), target: "_blank"
+      else
+        link_to "Direct Link", landing_page_path(lp), target: "_blank"
+      end
     end
     column :created_at
     actions
   end
 
+# Can't filter by title since it is Globalized now
 #  filter :title, as: :string
+  filter :original_locale
   filter :updated_at
 
   show do
@@ -55,6 +76,9 @@ ActiveAdmin.register LandingPage do
       row :sub_content do
         raw(textilize(landing_page.sub_content))
       end
+
+      row :header_code
+      row :footer_code
     end
     active_admin_comments
   end
@@ -70,6 +94,8 @@ ActiveAdmin.register LandingPage do
       f.input :left_content, hint: "(optional)"
       f.input :right_content, hint: "(optional)"
       f.input :sub_content, hint: "(optional)"
+      f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
+      f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
     end
     f.actions
   end

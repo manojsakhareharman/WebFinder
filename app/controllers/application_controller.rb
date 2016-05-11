@@ -52,4 +52,18 @@ class ApplicationController < ActionController::Base
     current_admin_user
   end
 
+  # For dynamically inserting contact forms into landing pages with:
+  #  ~contact_form~
+  def contact_form
+    @lead ||= Lead.new(project_description: '')
+    render_to_string partial: "leads/form", locals: { body_label: I18n.t("message") }
+  end
+
+  # For dynamically inserting contact forms into landing pages with:
+  #  ~lead_form~
+  def lead_form
+    @lead ||= Lead.new
+    render_to_string partial: "leads/form"
+  end
+
 end

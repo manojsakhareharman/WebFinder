@@ -7,6 +7,7 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     @lead.source = session["last_page"]
+    @lead.locale = I18n.locale
     respond_to do |f|
       if @lead.save
         f.html { redirect_to thankyou_path }

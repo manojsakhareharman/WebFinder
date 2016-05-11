@@ -22,6 +22,7 @@ en:
   any: any
   search: search
   connect_with_us: Connect With Us
+  message: Message
 
   date:
     formats:

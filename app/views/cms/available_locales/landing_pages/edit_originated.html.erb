@@ -24,6 +24,23 @@
     you'll see the URL
     after editing the page.</p>
     <p>The current URL for this page is:</p>
-    <p><%= landing_page_url(@landing_page, locale: @landing_page.original_locale.key) %></p>
+    <p><%= link_to landing_page_url(@landing_page, locale: @landing_page.original_locale.key) do %>
+      <%= landing_page_url(@landing_page, locale: @landing_page.original_locale.key) %>
+    <% end %>
+    </p>
+    <h6>Forms</h6>
+    <p>To insert a form on your landing page,
+    put one of these snippets in one of the
+    content boxes:<p>
+<pre>
+~contact_form~
+~lead_form~
+</pre>
+    <p>In both cases, the form will be
+    emailed to the address(es) defined in the
+    <%= link_to "Site Setting", [:cms, @available_locale, :site_settings] %>
+    named "leadgen-recipients".
+    This setting can be a single email address
+    or a comma-separated list of email addresses.</p>
   </div>
 </div>

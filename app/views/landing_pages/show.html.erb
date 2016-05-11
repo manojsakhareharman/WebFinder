@@ -9,6 +9,14 @@
   <% end %>
 <% end %>
 
+<%= content_for :header_code do %>
+  <%= raw @landing_page.header_code %>
+<% end %>
+
+<%= content_for :footer_code do %>
+  <%= raw @landing_page.footer_code %>
+<% end %>
+
 <div class="container main-container">
   <% if @landing_page.banner.present? %>
     <%= image_tag @landing_page.banner.url %>
@@ -25,7 +33,7 @@
   <div class="row">
     <% if @landing_page.left_content.present? %>
       <div class="medium-<%= @landing_page.side_column_width %> small-12 columns">
-        <%= raw textilize @landing_page.left_content %>
+        <%= render_content(@landing_page, :left_content) %>
       </div>
     <% end %>
 
@@ -34,12 +42,12 @@
         <h4 class="subheader"><%= @landing_page.subtitle %></h4>
         <br/>
       <% end %>
-      <%= raw textilize @landing_page.main_content %>
+      <%= render_content(@landing_page, :main_content) %>
     </div>
 
     <% if @landing_page.right_content.present? %>
       <div class="medium-<%= @landing_page.side_column_width %> small-12 columns">
-        <%= raw textilize @landing_page.right_content %>
+        <%= render_content(@landing_page, :right_content) %>
       </div>
     <% end %>
   </div>
@@ -49,7 +57,7 @@
       <div class="small-12 columns">
         <div class="dot-above">
           <br/>
-          <%= raw textilize @landing_page.sub_content %>
+          <%= render_content(@landing_page, :sub_content) %>
         </div>
       </div>
     </div>

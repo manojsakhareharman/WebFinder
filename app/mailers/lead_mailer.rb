@@ -5,11 +5,13 @@ class LeadMailer < ApplicationMailer
   #
   #   en.lead_mailer.new_lead.subject
   #
-  def new_lead(lead)
+  def new_lead(lead, locale=I18n.default_locale)
     @lead = lead
 
-    tos = SiteSetting.value('leadgen-recipients').split(',')
-    from = SiteSetting.value('leadgen-sender') || "leadgen@harman.com"
-    mail to: tos, from: from
+    Globalize.with_locale(locale) do
+      tos = SiteSetting.value('leadgen-recipients').split(',')
+      from = SiteSetting.value('leadgen-sender') || "leadgen@harman.com"
+      mail to: tos, from: from
+    end
   end
 end
