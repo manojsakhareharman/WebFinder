@@ -90,10 +90,10 @@ ActiveAdmin.register LandingPage do
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"
       f.input :banner
-      f.input :main_content, hint: "textilize and/or html permitted"
-      f.input :left_content, hint: "(optional)"
-      f.input :right_content, hint: "(optional)"
-      f.input :sub_content, hint: "(optional)"
+      f.input :main_content, input_html: { class: "mceEditor"}
+      f.input :left_content, hint: "(optional)", input_html: { class: "mceEditor"}
+      f.input :right_content, hint: "(optional)", input_html: { class: "mceEditor"}
+      f.input :sub_content, hint: "(optional)", input_html: { class: "mceEditor"}
       f.input :header_code, hint: "Javascript, etc. here will load in the page's HTML header"
       f.input :footer_code, hint: "Javascript, etc. here will load just before the page's closing body tag"
     end
