@@ -12,6 +12,18 @@
     <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands">
       <p class="text-center"><i><%= t('training_page.click_for_info') %>:</i></p>
       <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
+        <% if SiteSetting.set?("harmanpro_university_url") %>
+          <li>
+            <%= link_to SiteSetting.value("harmanpro_university_url"), target: "_blank" do %>
+              <div class="panel text-center" data-equalizer-watch="brands">
+                <div class="brand-logo">
+                  <p><%= image_tag "HPU_square.png", alt: "HARMAN Professional University" %></p>
+                </div>
+                <p>HARMAN Professional University</p>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
         <% all_brands.each do |brand| %>
           <% if brand.training_url.present? %>
             <li>
