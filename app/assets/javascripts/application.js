@@ -18,6 +18,7 @@
 //= require tinymce-jquery
 //= require consultants
 //= require vertical_markets
+//= require_tree ./cms
 //= require tiny
 // require_tree .
 

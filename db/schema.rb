@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511165452) do
+ActiveRecord::Schema.define(version: 20160516203831) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -182,8 +182,10 @@ ActiveRecord::Schema.define(version: 20160511165452) do
     t.string   "slug",               limit: 255
     t.string   "more_info_link",     limit: 255
     t.boolean  "new_window"
+    t.integer  "original_locale_id", limit: 4
   end
 
+  add_index "events", ["original_locale_id"], name: "index_events_on_original_locale_id", using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|

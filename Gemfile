@@ -11,6 +11,7 @@ gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bower-rails'
 gem "active_model_serializers"

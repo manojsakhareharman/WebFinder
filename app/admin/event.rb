@@ -5,7 +5,20 @@ ActiveAdmin.register Event do
 
   # :nocov:
   index do
-    column :name
+    column :name do |event|
+      if event.original_locale
+        Globalize.with_locale(event.original_locale.key) do
+          event.name
+        end
+      else
+        event.name
+      end
+    end
+    column :locale do |event|
+      if event.original_locale
+        event.original_locale.key
+      end
+    end
     column :start_on
     column :end_on
     column :featured
@@ -17,6 +30,7 @@ ActiveAdmin.register Event do
   filter :featured
   filter :active
   filter :start_on
+  filter :original_locale
 
   show do
     attributes_table do

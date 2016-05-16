@@ -1,0 +1,30 @@
+<%= simple_form_for [:cms, @available_locale, @event] do |f| %>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :name, label: "Event Name" %>
+      <%= f.input :description, as: :text, input_html: { rows: 3 } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= f.input :start_on, as: :string, input_html: { class: "datepicker" } %>
+    </div>
+    <div class="medium-6 columns">
+      <%= f.input :end_on, as: :string, input_html: { class: "datepicker" } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :image, label: "Banner Image" %>
+      <%= f.input :page_content, as: :text, input_html: { rows: 15, class: "mceEditor" } %>
+      <br/>
+      <%= f.input :active %>
+      <%= f.input :featured %>
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

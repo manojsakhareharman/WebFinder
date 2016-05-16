@@ -1,0 +1,32 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-8 small-12 columns">
+    <h5 class="text-center">Edit Local Event</h5>
+    <div class="callout panel">
+      <%= render 'cms/available_locales/events/local' %>
+    </div>
+  </div>
+
+  <div class="large-2 medium-2 columns">
+    <div class="text-right">
+      <%= link_to [:cms, @available_locale, @event],
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        class: "tiny alert button radius" do %>
+        <%= fa_icon 'trash' %>
+        Delete Local Event
+      <% end %>
+    </div>
+    <hr/>
+    <p>The URL for this event has been generated
+    based on the name. If you change the name of the event,
+    you'll see the URL
+    after editing the event.</p>
+    <p>The current URL for this event is:</p>
+    <p><%= link_to event_url(@event, locale: @event.original_locale.key) do %>
+      <%= event_url(@event, locale: @event.original_locale.key) %>
+    <% end %>
+    </p>
+  </div>
+</div>

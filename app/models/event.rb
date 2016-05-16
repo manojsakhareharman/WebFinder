@@ -3,10 +3,10 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 
+  belongs_to :original_locale, class_name: "AvailableLocale"
   validates :name, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
-
 
   has_attached_file :image,
     styles: {

@@ -479,6 +479,7 @@ DEPENDENCIES
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   json-schema
   launchy
   letter_opener

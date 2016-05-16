@@ -1,13 +1,6 @@
 class Cms::LandingPagesController < CmsController
   before_action :set_locale_for_translator
 
-  # Need to figure out where to handle those LandingPages which have their
-  # "original_locale_id" set to the translator's locale. For example, if I
-  # created a new page as a Spanish/Mexico dude, then I want that page to appear
-  # in a list of "my" pages--not the translation interface.
-  #
-  # This applies to all the actions below.
-  #
   def index
     @landing_pages = LandingPage.where(original_locale_id: [nil, AvailableLocale.default_id])
     if @available_locale

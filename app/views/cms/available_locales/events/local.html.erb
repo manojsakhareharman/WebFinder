@@ -1,0 +1,39 @@
+<div class="large-12 small-12 columns">
+  <%= render 'cms/available_locales/side_nav' %>
+
+  <div class="medium-7 small-12 columns">
+    <h3><%= @available_locale.name %> Local Events</h3>
+    <%= link_to new_cms_available_locale_event_path(@available_locale),
+      class: "tiny success button radius" do %>
+      <%= fa_icon "plus" %>
+      New Local Event
+    <% end %>
+    <% if @events.count > 0 %>
+      <table width="100%">
+        <tr>
+          <th>Name <i>(click to edit event)</i></th>
+          <th>Public Link <i>(click to view event)</i></th>
+        </tr>
+        <% @events.order(:start_on).reverse.each do |event| %>
+          <tr>
+            <td><%= link_to event.title, edit_cms_available_locale_event_path(@available_locale, event) %></td>
+            <td><%= link_to(event_url(event, locale: event.original_locale.key),
+                            event_url(event, locale: event.original_locale.key),
+                           target: "_blank") %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+  <div class="medium-3 small-12 columns">
+    <div class="panel">
+      <h6>What is it?</h6>
+      <p>An Event represents a tradeshow, training,
+      webinar, etc. offered by the company.</p>
+      <p>Events here are created for the
+      <%= @available_locale.name %> site only. To
+      translate events from the default site,
+      <%= link_to "click here", [:cms, @available_locale, :events] %>.</p>
+    </div>
+  </div>
+</div>
