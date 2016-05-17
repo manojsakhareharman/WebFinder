@@ -10,12 +10,14 @@ ActiveAdmin.register LandingPage do
     :sub_content,
     :hide_title,
     :banner,
+    :custom_slug,
     :header_code,
     :footer_code
 
   # :nocov:
   index do
     selectable_column
+    id_column
     column :locale do |lp|
       if lp.original_locale
         lp.original_locale.key
@@ -31,9 +33,14 @@ ActiveAdmin.register LandingPage do
       end
     end
     column "Link" do |lp|
-      if lp.original_locale
-        link_to "Direct Link", landing_page_path(lp, locale: lp.original_locale.key), target: "_blank"
-      else
+      begin
+        if lp.original_locale && lp.original_locale != AvailableLocale.default
+          link_to "Direct Link", landing_page_path(lp, locale: lp.original_locale.key), target: "_blank"
+        else
+          this_slug = lp.custom_slug.present? ? lp.custom_slug : lp.slug
+          link_to "Direct Link", landing_page_path(id: this_slug), target: "_blank"
+        end
+      rescue
         link_to "Direct Link", landing_page_path(lp), target: "_blank"
       end
     end
@@ -58,7 +65,12 @@ ActiveAdmin.register LandingPage do
       row :subtitle
       row :description
       row :direct_link do
-        link_to landing_page_url(landing_page), landing_page_url(landing_page), target: "_blank"
+        if landing_page.original_locale && landing_page.original_locale != AvailableLocale.default
+          link_to "Direct Link", landing_page_path(landing_page, locale: landing_page.original_locale.key), target: "_blank"
+        else
+          this_slug = landing_page.custom_slug || landing_page.slug
+          link_to "Direct Link", landing_page_path(id: this_slug), target: "_blank"
+        end
       end
 
       row :main_content do
@@ -86,6 +98,7 @@ ActiveAdmin.register LandingPage do
   form html: { multipart: true} do |f|
     f.inputs do
       f.input :title
+      f.input :custom_slug, label: "Custom Friendly ID", hint: "Almost always leave this blank--unless the person requesting the page is smarter than you are and he/she needs a specific URL that doesn't match the page title. Don't include the page format (html, xml, js, etc.)"
       f.input :hide_title, label: "Hide big, h1 title tag"
       f.input :subtitle
       f.input :description, hint: "appears as meta description in HTML for page"

@@ -10,8 +10,13 @@ class ApplicationController < ActionController::Base
   private
 
   def render_landing_page(slug)
-    if LandingPage.exists?(slug)
+    if LandingPage.exists?(slug: slug)
       @landing_page = LandingPage.find(slug)
+      if @landing_page.custom_slug.present?
+        redirect_to landing_page_url(@landing_page.custom_slug), status: 301 and return false
+      end
+    elsif LandingPage.exists?(custom_slug: slug)
+      @landing_page = LandingPage.find_by(custom_slug: slug)
     else
       @landing_page = LandingPage.new
     end
