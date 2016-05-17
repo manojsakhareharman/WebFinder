@@ -96,8 +96,11 @@ class Cms::EventsController < CmsController
       :start_on,
       :end_on,
       :image,
+      :delete_image,
       :active,
       :featured,
+      :more_info_link,
+      :new_window,
       :page_content
     )
   end

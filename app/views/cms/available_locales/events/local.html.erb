@@ -16,10 +16,16 @@
         </tr>
         <% @events.order(:start_on).reverse.each do |event| %>
           <tr>
-            <td><%= link_to event.title, edit_cms_available_locale_event_path(@available_locale, event) %></td>
-            <td><%= link_to(event_url(event, locale: event.original_locale.key),
+            <td><%= link_to event.name, edit_cms_available_locale_event_path(@available_locale, event) %></td>
+            <td>
+              <% if event.featured? %>
+                <%= link_to(event_url(event, locale: event.original_locale.key),
                             event_url(event, locale: event.original_locale.key),
-                           target: "_blank") %></td>
+                           target: "_blank") %>
+              <% else %>
+                <%= link_to events_url, events_url, target: "_blank" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>
@@ -30,7 +36,9 @@
       <h6>What is it?</h6>
       <p>An Event represents a tradeshow, training,
       webinar, etc. offered by the company.</p>
-      <p>Events here are created for the
+      <p>
+      <%= fa_icon "info-circle" %>
+      Events here are created for the
       <%= @available_locale.name %> site only. To
       translate events from the default site,
       <%= link_to "click here", [:cms, @available_locale, :events] %>.</p>

@@ -33,7 +33,9 @@
       email capture or general announcements.
       These pages are not automatically linked
       anywhere within the site.</p>
-      <p>Pages here are created for the
+      <p>
+      <%= fa_icon "info-circle" %>
+      Pages here are created for the
       <%= @available_locale.name %> site only. To
       translate pages from the default site,
       <%= link_to "click here", [:cms, @available_locale, :landing_pages] %>.</p>

@@ -19,7 +19,9 @@
       email capture or general announcements.
       These pages are not automatically linked
       anywhere within the site.</p>
-      <p>Pages here originated in the main site's
+      <p>
+      <%= fa_icon "info-circle" %>
+      Pages here originated in the main site's
       default locale. For <%= @available_locale.name %>-only pages,
       <%= link_to "click here", [:originated, :cms, @available_locale, :landing_pages] %>.</p>
     </div>

@@ -3,7 +3,6 @@
   <div class="row">
     <div class="medium-12 columns">
       <%= f.input :name, label: "Event Name" %>
-      <%= f.input :description, as: :text, input_html: { rows: 3 } %>
     </div>
   </div>
 
@@ -18,11 +17,37 @@
 
   <div class="row">
     <div class="medium-12 columns">
-      <%= f.input :image, label: "Banner Image" %>
-      <%= f.input :page_content, as: :text, input_html: { rows: 15, class: "mceEditor" } %>
-      <br/>
+      <%= f.input :description, as: :text, input_html: { rows: 3 } %>
+      <fieldset>
+        <legend>Featured Event Settings</legend>
+        <p>Featured events get a landing page. (Non-featured events only appear
+        on the event list page.)</p>
+        <div class="row collapse">
+          <div class="medium-4 columns">
+            <%= f.input :featured %>
+          </div>
+          <div class="medium-4 columns">
+            <%= f.input :image, label: "Banner Image" %>
+          </div>
+          <div class="medium-4 columns">
+            <% if @event.image.present? %>
+              Current banner:<br/>
+              <%= link_to(image_tag(@event.image.url(:thumb)),
+                    @event.image.url ) %><br/>
+              <%= f.input :delete_image, as: :boolean %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.input :page_content, as: :text, input_html: { rows: 15, class: "mceEditor" } %>
+        <br/>
+      </fieldset>
+      <fieldset>
+        <legend>Non-feaured Event Settings</legend>
+        <p>Non-featured events can link off to other websites or landing pages.</p>
+        <%= f.input :more_info_link, placeholder: "http://" %>
+        <%= f.input :new_window, label: "Open link in new window." %>
+      </fieldset>
       <%= f.input :active %>
-      <%= f.input :featured %>
       <%= f.submit 'Save Changes', class: 'medium button' %>
     </div>
   </div>

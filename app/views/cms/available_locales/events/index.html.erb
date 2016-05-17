@@ -16,6 +16,12 @@
       <h6>What is it?</h6>
       <p>An Event represents a tradeshow, training,
       webinar, etc. offered by the company.</p>
+      <p>
+      <%= fa_icon "info-circle" %>
+      Events here were originally created for
+      the main site. To create an event only for
+      the <%= @available_locale.name %> site,
+      <%= link_to "click here", [:local, :cms, @available_locale, :events] %>.
     </div>
   </div>
 </div>

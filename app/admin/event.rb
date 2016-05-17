@@ -47,7 +47,7 @@ ActiveAdmin.register Event do
         event.more_info_link.to_s
       end
       row :page_content do
-        raw(textilize(event.page_content))
+        raw(event.page_content)
       end
       row :featured
       row :active
@@ -64,7 +64,7 @@ ActiveAdmin.register Event do
       f.input :image, hint: "Only for 'featured' events."
       f.input :more_info_link, hint: "'Featured' events will show this link on the event details page if page content is provided."
       f.input :new_window, hint: "Check if the more info link directs users away from the site."
-      f.input :page_content
+      f.input :page_content, input_html: { class: "mceEditor"}
       f.input :featured
       f.input :active
     end

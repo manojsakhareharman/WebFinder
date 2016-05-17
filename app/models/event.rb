@@ -17,8 +17,19 @@ class Event < ActiveRecord::Base
       thumb: "83x52#",
       thumb_square: "64x64#"
   }, default_url: "missing/banners/:style.jpg"
-
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  attr_accessor :delete_image
+
+  before_update :delete_image_if_needed
+
+  def delete_image_if_needed
+    unless self.image.dirty?
+      if self.delete_image.present?
+        self.image = nil
+      end
+    end
+  end
 
   def slug_candidates
     [

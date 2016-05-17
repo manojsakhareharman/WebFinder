@@ -4,7 +4,7 @@
   <div class="medium-8 small-12 columns">
     <h5 class="text-center">Edit Local Event</h5>
     <div class="callout panel">
-      <%= render 'cms/available_locales/events/local' %>
+      <%= render 'cms/available_locales/events/local_form' %>
     </div>
   </div>
 
@@ -18,15 +18,17 @@
         Delete Local Event
       <% end %>
     </div>
-    <hr/>
-    <p>The URL for this event has been generated
-    based on the name. If you change the name of the event,
-    you'll see the URL
-    after editing the event.</p>
-    <p>The current URL for this event is:</p>
-    <p><%= link_to event_url(@event, locale: @event.original_locale.key) do %>
-      <%= event_url(@event, locale: @event.original_locale.key) %>
+    <% if @event.featured? %>
+      <hr/>
+      <p>The URL for this event has been generated
+      based on the name. If you change the name of the event,
+      you'll see the URL
+      after editing the event.</p>
+      <p>The current URL for this event is:</p>
+      <p><%= link_to event_url(@event, locale: @event.original_locale.key) do %>
+        <%= event_url(@event, locale: @event.original_locale.key) %>
+      <% end %>
+      </p>
     <% end %>
-    </p>
   </div>
 </div>
