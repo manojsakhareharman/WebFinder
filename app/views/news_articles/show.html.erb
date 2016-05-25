@@ -1,0 +1,38 @@
+<%= content_for :title do %>
+  <%= @news_article.title %>
+<% end %>
+<%= content_for :description do %>
+  <%= @news_article.keywords %>
+<% end %>
+<%= content_for :keywords do %>
+  <%= @news_article.keywords %>
+<% end %>
+
+<% if @news_article.news_photo.present? || ENV['show_placeholders'] == "true" %>
+<div class="bumped-up">
+  <div class="banner-container">
+    <h1><%= image_tag @news_article.news_photo.url(:large) %></h1>
+  </div>
+</div>
+<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+      <%= link_to "<< Back", news_articles_path %>
+
+      <h1><%= @news_article.title %></h1>
+      <p><%= l @news_article.post_on, format: :long %></p>
+
+      <div>
+        <% if @news_article.quote.present? %>
+          <div style="float: right; padding: 20px;">
+            <h5><i><%= raw @news_article.quote %></i></h5>
+          </div>
+        <% end %>
+        <%= raw @news_article.body %>
+      </div>
+
+    </div>
+  </div>
+</div>

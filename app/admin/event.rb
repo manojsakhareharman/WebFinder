@@ -1,4 +1,5 @@
 ActiveAdmin.register Event do
+  menu parent: "Events & News", priority: 2
   config.sort_order = 'start_on_desc'
 
   permit_params :name, :start_on, :end_on, :description, :featured, :active, :image, :page_content, :more_info_link, :new_window

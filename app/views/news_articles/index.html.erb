@@ -1,0 +1,31 @@
+<%= content_for :title do %>
+  <%= t('site_name') %> <%= t('nav.news') %>
+<% end %>
+<%= content_for :description do %>
+  <%= t('site_name') %> <%= t('nav.news') %>
+<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+
+      <h1><%= t('site_name') %> <%= t('nav.news') %></h1>
+
+      <% @news_articles.each do |news| %>
+        <div class="row">
+          <div class="medium-2 columns">
+            <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
+              <%= image_tag news.news_photo.url(:small) %>
+            <% end %>
+            <br/>
+          </div>
+          <div class="medium-10 columns">
+            <h3><%= link_to news.title, news %></h3>
+            <p><%= l news.post_on, format: :long %></p>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

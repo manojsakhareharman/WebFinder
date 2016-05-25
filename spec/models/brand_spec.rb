@@ -20,6 +20,7 @@ RSpec.describe Brand, :type => :model do
   it { should respond_to(:show_on_consultant_page) }
   it { should respond_to(:contact_info_for_consultants) }
   it { should respond_to(:api_url) }
+  it { should respond_to(:news_articles) } # Eventually I want to feed the brand sites with this.
 
   describe "deleting" do
     it "raises an error when related products exist" do

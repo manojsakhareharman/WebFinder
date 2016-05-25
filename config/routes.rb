@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/cms' => 'cms#index', as: :cms_root
   namespace :cms do
     resources :available_locales, only: :show do
+      resources :news_articles
       (AvailableLocale.translatables - ["LandingPage", "Event"]).each do |t|
         resources t.underscore.pluralize.to_sym
       end
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
   resources :landing_pages, path: 'lp', only: :show
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
+  resources :news_articles, path: 'news', only: [:index, :show]
 
   # Consultant Portal
   get '/consultants/software(.:format)' => 'consultants#software', defaults: { format: 'json' }

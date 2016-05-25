@@ -12,6 +12,8 @@ class Brand < ActiveRecord::Base
   validates :tech_url, format: { with: URI.regexp }, allow_blank: true
 
   has_many :products, dependent: :restrict_with_error
+  has_many :brand_news_articles, dependent: :destroy, inverse_of: :brand
+  has_many :news_articles, through: :brand_news_articles
 
   has_attached_file :logo,
     styles: {

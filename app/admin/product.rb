@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  menu parent: "Brands/Products", priority: 2, label: "Products"
+  menu parent: "Brands & Products", priority: 2, label: "Products"
   permit_params :name, :brand_id, :url, :photo, :description, :ecommerce_id
 
   # :nocov:

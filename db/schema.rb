@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517201003) do
+ActiveRecord::Schema.define(version: 20160525191108) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20160517201003) do
 
   add_index "available_locales", ["key"], name: "index_available_locales_on_key", using: :btree
   add_index "available_locales", ["slug"], name: "index_available_locales_on_slug", using: :btree
+
+  create_table "brand_news_articles", force: :cascade do |t|
+    t.integer  "brand_id",        limit: 4
+    t.integer  "news_article_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "brand_news_articles", ["brand_id"], name: "index_brand_news_articles_on_brand_id", using: :btree
+  add_index "brand_news_articles", ["news_article_id"], name: "index_brand_news_articles_on_news_article_id", using: :btree
 
   create_table "brand_translations", force: :cascade do |t|
     t.integer  "brand_id",                     limit: 4,     null: false
@@ -285,6 +295,24 @@ ActiveRecord::Schema.define(version: 20160517201003) do
   end
 
   add_index "menu_items", ["locale_id"], name: "index_menu_items_on_locale_id", using: :btree
+
+  create_table "news_articles", force: :cascade do |t|
+    t.integer  "locale_id",               limit: 4
+    t.string   "title",                   limit: 255
+    t.text     "body",                    limit: 65535
+    t.text     "keywords",                limit: 65535
+    t.date     "post_on"
+    t.string   "news_photo_file_name",    limit: 255
+    t.string   "news_photo_content_type", limit: 255
+    t.integer  "news_photo_file_size",    limit: 4
+    t.datetime "news_photo_updated_at"
+    t.string   "quote",                   limit: 255
+    t.string   "slug",                    limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "news_articles", ["locale_id"], name: "index_news_articles_on_locale_id", using: :btree
 
   create_table "online_retailers", force: :cascade do |t|
     t.string   "name",              limit: 255
