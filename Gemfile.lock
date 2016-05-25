@@ -28,7 +28,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    RedCloth (4.3.0)
+    RedCloth (4.3.2)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -75,7 +75,7 @@ GEM
     acts_as_tree (2.4.0)
       activerecord (>= 3.0.0)
     addressable (2.3.8)
-    airbrussh (1.0.1)
+    airbrussh (1.0.2)
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
@@ -133,12 +133,12 @@ GEM
     daemons (1.2.3)
     dalli (2.7.6)
     database_cleaner (1.5.3)
-    delayed_job (4.1.1)
-      activesupport (>= 3.0, < 5.0)
-    delayed_job_active_record (4.1.0)
-      activerecord (>= 3.0, < 5)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
       delayed_job (>= 3.0, < 5)
-    devise (4.1.0)
+    devise (4.1.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -152,7 +152,7 @@ GEM
     exception_notification (4.1.4)
       actionmailer (~> 4.0)
       activesupport (~> 4.0)
-    execjs (2.6.0)
+    execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.7.0)
@@ -163,7 +163,7 @@ GEM
     ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
-    font-awesome-rails (4.6.2.0)
+    font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     formtastic (3.1.4)
@@ -181,9 +181,9 @@ GEM
     globalize (5.0.1)
       activemodel (>= 4.2.0, < 4.3)
       activerecord (>= 4.2.0, < 4.3)
-    guard (2.13.0)
+    guard (2.14.0)
       formatador (>= 0.2.4)
-      listen (>= 2.7, <= 4.0)
+      listen (>= 2.7, < 4.0)
       lumberjack (~> 1.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
@@ -198,7 +198,7 @@ GEM
     guard-rails (0.7.2)
       guard (~> 2.11)
       guard-compat (~> 1.0)
-    guard-rspec (4.6.5)
+    guard-rspec (4.7.0)
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
@@ -233,7 +233,7 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
-    json-schema (2.6.1)
+    json-schema (2.6.2)
       addressable (~> 2.3.8)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -242,7 +242,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.4.1)
       launchy (~> 2.2)
-    listen (3.1.4)
+    listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
@@ -256,14 +256,14 @@ GEM
       json (>= 1.7.7)
       rest-client (>= 1.6.7)
     method_source (0.8.2)
-    mime-types (2.99.1)
+    mime-types (2.99.2)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
+    minitest (5.9.0)
     mono_logger (1.1.0)
-    multi_json (1.12.0)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
-    mysql2 (0.3.21)
+    mysql2 (0.4.4)
     nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -271,7 +271,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    notiffany (0.0.8)
+    notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
@@ -421,7 +421,7 @@ GEM
       net-ssh (>= 2.8.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.3)
+    tilt (2.0.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -442,7 +442,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  active_model_serializers
+  active_model_serializers (= 0.9.5)
   activeadmin!
   activeadmin-sortable
   acts-as-taggable-on (~> 3.4)
@@ -484,7 +484,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mailgun_rails
-  mysql2 (~> 0.3.18)
+  mysql2
   paperclip
   pundit
   rails (= 4.2.6)
