@@ -5,27 +5,69 @@
   <%= t('site_name') %> <%= t('nav.news') %>
 <% end %>
 
-<div class="container main-container">
-  <div class="row">
-    <div class="large-10 large-offset-1 columns">
-
-      <h1><%= t('site_name') %> <%= t('nav.news') %></h1>
-
-      <% @news_articles.each do |news| %>
-        <div class="row">
-          <div class="medium-2 columns">
-            <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
-              <%= image_tag news.news_photo.url(:small) %>
-            <% end %>
-            <br/>
-          </div>
-          <div class="medium-10 columns">
-            <h3><%= link_to news.title, news %></h3>
-            <p><%= l news.post_on, format: :long %></p>
-          </div>
-        </div>
-      <% end %>
-
+<% if @featured_article && (@featured_article.news_photo.present? || ENV['show_placeholders'] == "true") %>
+  <div class="bumped-up">
+    <div class="banner-container">
+      <h1><%= image_tag @featured_article.news_photo.url(:large), alt: "#{t('site_name')} #{t('nav.news')}" %></h1>
     </div>
   </div>
+<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="medium-10 columns">
+      <%# The single most recent article %>
+      <% if @featured_article %>
+        <h2><%= link_to @featured_article.title, news %></h2>
+        <p><%= l @featured_article.post_on, format: :long %></p>
+        <div><%= raw @featured_article.body %></div>
+      <% end %>
+
+      <%# The 10 other most recent %>
+      <% if @news_articles.count > 0 %>
+        <% @news_articles[0,10].each do |news| %>
+          <hr/>
+          <div class="article">
+            <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
+              <%= image_tag news.news_photo.url(:medium) %>
+            <% end %>
+            <h4><%= link_to news.title, news %></h4>
+            <p><%= l news.post_on, format: :long %></p>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%# The rest of the original 99 selected articles %>
+      <% if @news_articles.count > 10 %>
+        <% @news_articles[11,99].each do |news| %>
+          <div class="row">
+            <div class="medium-2 columns">
+              <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
+                <%= image_tag news.news_photo.url(:small) %>
+              <% end %>
+              <br/>
+            </div>
+            <div class="medium-10 columns">
+              <h3><%= link_to news.title, news %></h3>
+              <p><%= l news.post_on, format: :long %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%# Side nav linking to the 10 most recent articles %>
+    <div class="medium-2 columns">
+      <ul class="no_bullet">
+        <% @news_articles[0,10].each do |news| %>
+          <li>
+            <h3><%= link_to news.title, news %></h3>
+            <%= l news.post_on, format: :short %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
 </div>
+

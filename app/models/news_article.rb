@@ -22,6 +22,10 @@ class NewsArticle < ActiveRecord::Base
 
   accepts_nested_attributes_for :brand_news_articles, reject_if: :all_blank, allow_destroy: true
 
+  attr_accessor :delete_photo
+
+  before_update :delete_photo_if_needed
+
   # :nocov:
   def slug_candidates
     [
@@ -35,5 +39,13 @@ class NewsArticle < ActiveRecord::Base
     true
   end
   # :nocov:
+
+  def delete_photo_if_needed
+    unless self.news_photo.dirty?
+      if self.delete_photo.present? && self.delete_photo.to_s == "1"
+        self.news_photo = nil
+      end
+    end
+  end
 
 end

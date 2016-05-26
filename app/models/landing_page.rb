@@ -24,7 +24,7 @@ class LandingPage < ActiveRecord::Base
 
   def delete_banner_if_needed
     unless self.banner.dirty?
-      if self.delete_banner.present?
+      if self.delete_banner.present? && self.delete_banner.to_s == "1"
         self.banner = nil
       end
     end

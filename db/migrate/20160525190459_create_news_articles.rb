@@ -10,7 +10,7 @@ class CreateNewsArticles < ActiveRecord::Migration
       t.string :news_photo_content_type
       t.integer :news_photo_file_size
       t.datetime :news_photo_updated_at
-      t.string :quote
+      t.text :quote
       t.string :slug
 
       t.timestamps null: false

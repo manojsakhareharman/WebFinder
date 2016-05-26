@@ -4,6 +4,11 @@ class NewsArticlesController < ApplicationController
   def index
     news_articles = NewsArticle.where("post_on <= ?", Date.today)
     @news_articles = filter_by_locale(news_articles).limit(999).order("post_on DESC")
+    @featured_article = nil
+    if @news_articles.count > 0
+      @featured_article = @news_articles.first
+      @news_articles = @news_articles.where.not(id: @featured_article.id)
+    end
   end
 
   def show

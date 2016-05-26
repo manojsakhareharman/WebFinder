@@ -1,0 +1,41 @@
+<%= simple_form_for [:cms, @available_locale, @news_article] do |f| %>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :title %>
+      <%= f.input :keywords, hint: "Separate words by comma", input_html: { rows: 3 } %>
+      <%= f.input :quote, input_html: { rows: 3 } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.input :post_on, as: :string, label: "Publish Date", input_html: { class: "datepicker" } %>
+    </div>
+    <div class="medium-4 columns">
+      <%= f.input :news_photo %>
+    </div>
+    <div class="medium-4 columns">
+      <% if @news_article.news_photo.present? %>
+        Current photo:<br/>
+        <%= link_to(image_tag(@news_article.news_photo.url(:thumb)),
+              @news_article.news_photo.url ) %><br/>
+        <%= f.input :delete_photo, as: :boolean %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :body, as: :text, input_html: { rows: 15, class: "mceEditor" } %>
+      <br/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

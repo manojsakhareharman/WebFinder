@@ -5,6 +5,7 @@ RSpec.describe "news_articles/index.html.erb", type: :view do
     @news_article = FactoryGirl.create(:news_article)
 
     assign(:news_articles,  [@news_article])
+    assign(:featured_article, nil)
   end
 
   before :each do
