@@ -35,7 +35,7 @@ ActiveAdmin.register NewsArticle do
       f.input :post_on, label: "Publish On", as: :datepicker
       f.input :locale
     end
-    f.has_many :brand_news_articles do |s|
+    f.has_many :brand_news_articles, heading: "Related Brands", new_record: "Add a related brand" do |s|
       s.input :id, as: :hidden
       s.input :brand
       s.input :_destroy, as: :boolean, label: "Delete"

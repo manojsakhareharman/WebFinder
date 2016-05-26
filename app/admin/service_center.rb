@@ -50,7 +50,7 @@ ActiveAdmin.register ServiceCenter do
       f.input :account_number
       f.input :active
     end
-    f.has_many :service_center_service_groups do |s|
+    f.has_many :service_center_service_groups, heading: "Service Groups", new_record: "Add a service group" do |s|
       s.input :id, as: :hidden
       s.input :service_group
       s.input :_destroy, as: :boolean, label: "Delete"
