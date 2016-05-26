@@ -8,7 +8,9 @@
 <% if @featured_article && (@featured_article.news_photo.present? || ENV['show_placeholders'] == "true") %>
   <div class="bumped-up">
     <div class="banner-container">
-      <h1><%= image_tag @featured_article.news_photo.url(:large), alt: "#{t('site_name')} #{t('nav.news')}" %></h1>
+      <%= link_to @featured_article do %>
+        <h1><%= image_tag @featured_article.news_photo.url(:large), alt: "#{t('site_name')} #{t('nav.news')}" %></h1>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -18,7 +20,7 @@
     <div class="medium-10 columns">
       <%# The single most recent article %>
       <% if @featured_article %>
-        <h2><%= link_to @featured_article.title, news %></h2>
+        <h2><%= link_to @featured_article.title, @featured_article %></h2>
         <p><%= l @featured_article.post_on, format: :long %></p>
         <div><%= raw @featured_article.body %></div>
       <% end %>
@@ -29,10 +31,13 @@
           <hr/>
           <div class="article">
             <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
-              <%= image_tag news.news_photo.url(:medium) %>
+              <%= link_to news do %>
+                <%= image_tag news.news_photo.url(:medium) %>
+              <% end %>
             <% end %>
             <h4><%= link_to news.title, news %></h4>
             <p><%= l news.post_on, format: :long %></p>
+            <div><%= raw news.body %></div>
           </div>
         <% end %>
       <% end %>
@@ -43,7 +48,9 @@
           <div class="row">
             <div class="medium-2 columns">
               <% if news.news_photo.present? || ENV['show_placeholders'] == "true" %>
-                <%= image_tag news.news_photo.url(:small) %>
+                <%= link_to news do %>
+                  <%= image_tag news.news_photo.url(:small) %>
+                <% end %>
               <% end %>
               <br/>
             </div>
@@ -58,11 +65,12 @@
 
     <%# Side nav linking to the 10 most recent articles %>
     <div class="medium-2 columns">
-      <ul class="no_bullet">
+      <ul class="no-bullet">
         <% @news_articles[0,10].each do |news| %>
           <li>
-            <h3><%= link_to news.title, news %></h3>
-            <%= l news.post_on, format: :short %>
+            <%= l news.post_on, format: :short %>:
+            <h6><%= link_to news.title, news %></h6>
+            <br/>
           </li>
         <% end %>
       </ul>

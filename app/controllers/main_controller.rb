@@ -35,6 +35,7 @@ class MainController < ApplicationController
     add_brands_to_sitemap
     add_vertical_markets_to_sitemap
     add_events_to_sitemap
+    add_news_to_sitemap
     add_other_pages_to_sitemap
   end
 
@@ -78,6 +79,19 @@ class MainController < ApplicationController
       end
     end
   end
+
+  def add_news_to_sitemap
+    @pages << { url: news_articles_url, updated_at: 1.day.ago, changefreq: 'daily', priority: 0.7 }
+    NewsArticle.where("post_on <= ?", Date.today).each do |news|
+      @pages << {
+        url: news_article_url(news),
+        updated_at: news.post_on.to_time,
+        changefreq: 'monthly',
+        priority: 0.5
+      }
+    end
+  end
+
 
   def add_brands_to_sitemap
     all_brands.each do |brand|
