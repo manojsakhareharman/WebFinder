@@ -30,6 +30,7 @@ en:
       short: "%b %d, %Y"
       long: "%B %d, %Y"
       month_day: "%b %d"
+      month_year: "%B %Y"
       blog_month_day: "%B %d"
       mmddyy: "%m/%d/%y"
       mmddyyyy: "%m/%d/%Y"
@@ -136,16 +137,9 @@ en:
   leadgen_page:
     meta_description: Contact form to get in touch with HARMAN Professional regarding your audio, video, lighting and control system.
 
-  date:
-    formats:
-      default: "%Y-%m-%d"
-      short: "%b %d, %Y"
-      long: "%B %d, %Y"
-      month_day: "%b %d"
-      month_year: "%B %Y"
-      blog_month_day: "%B %d"
-      mmddyy: "%m/%d/%y"
-      mmddyyyy: "%m/%d/%Y"
+  case_study_page:
+    is_your_project_similar: "Is Your Project Similar? We Can Help!"
+    connect_with_harman: Connect With HARMAN
 
   lead_mailer:
     new_lead:

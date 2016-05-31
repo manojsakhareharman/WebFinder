@@ -1,7 +1,7 @@
 ActiveAdmin.register MenuItem do
   menu parent: "Settings", name: "Resources Menu", priority: 5
 
-  permit_params :title, :link, :position
+  permit_params :title, :link, :position, :locale_id
 
   index do
     selectable_column
