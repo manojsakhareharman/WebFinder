@@ -118,6 +118,10 @@ es:
   leadgen_page:
     meta_description: Formulario para ponerse en contacto con HARMAN Profesional con respecto a su sistema de audio profesional, video, iluminación y control.
 
+  case_study_page:
+    is_your_project_similar: "Tienes un proyecto? Pedemos ayudar!"
+    connect_with_harman: Conectar Con HARMAN
+
   lead_mailer:
     new_lead:
       subject: Nueva guía desde harmanpro.com
