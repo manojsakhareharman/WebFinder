@@ -65,7 +65,6 @@ es:
   training_page:
     title: Capacitación HARMAN Profesional
     meta_description: Ligas de Capacitación para las marcas de audio profesional, video, iluminación y sistemas de control de HARMAN Profesional.
-    click_for_info: haga click para capacitación de estas marcas
     brand_training: "%{brand} Capacitación"
 
   reference_system_page:

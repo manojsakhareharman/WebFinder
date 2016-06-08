@@ -8,9 +8,15 @@
 </div>
 
 <div class="container main-container padded">
+  <% if SiteSetting.set_for_locale?("training-intro-paragraph") %>
+    <div class="row">
+      <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns">
+        <div><%=raw textilize SiteSetting.value("training-intro-paragraph") %></div>
+      </div>
+    </div>
+  <% end %>
   <div class="row">
     <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns" data-equalizer="brands">
-      <p class="text-center"><i><%= t('training_page.click_for_info') %>:</i></p>
       <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-1">
         <% if SiteSetting.set?("harmanpro_university_url") %>
           <li>

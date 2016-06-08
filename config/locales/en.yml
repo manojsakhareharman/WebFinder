@@ -84,7 +84,6 @@ en:
   training_page:
     title: HARMAN Professional Training
     meta_description: Training links for HARMAN Professional audio, video, lighting and control brands.
-    click_for_info: click for training from these brands
     brand_training: "%{brand} Training"
 
   reference_system_page:
