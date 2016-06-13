@@ -11,11 +11,11 @@ RSpec.describe "consultants/index.html.erb", as: :view do
 
   before :each do
     expect(SiteSetting).to receive(:value).with("consultant-portal-welcome-paragraph").and_return("WELCOME PARAGRAPH")
-    expect(SiteSetting).to receive(:set?).with("consultant-portal-contacts").and_return(true)
+    expect(SiteSetting).to receive(:set_for_locale?).with("consultant-portal-contacts").and_return(true)
     expect(SiteSetting).to receive(:value).with("consultant-portal-contacts").and_return("CONTACT INFORMATION HERE")
     expect(SiteSetting).to receive(:value).with("consultant-portal-loan-program-headline").and_return("LOAN PROGRAM HEADLINE")
     expect(SiteSetting).to receive(:value).with("consultant-portal-loan-program-paragraph").and_return("LOAN PROGRAM PARAGRAPH")
-    expect(SiteSetting).to receive(:set?).with("consultant-portal-loan-program-paragraph").and_return(true)
+    expect(SiteSetting).to receive(:set_for_locale?).with("consultant-portal-loan-program-paragraph").and_return(true)
 
     render
   end

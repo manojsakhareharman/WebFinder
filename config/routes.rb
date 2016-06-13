@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       member do
         patch :store_link
         patch :blog_link
+        get :edit_consultants
+        post :update_consultants
       end
     end
   end

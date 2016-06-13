@@ -28,6 +28,22 @@ class Cms::AvailableLocalesController < CmsController
     redirect_to cms_available_locale_menu_items_path(@available_locale), notice: "Changes submitted."
   end
 
+  def edit_consultants
+    @intro = SiteSetting.find_by(name: "consultant-portal-welcome-paragraph")
+    @contacts = SiteSetting.find_by(name: "consultant-portal-contacts")
+    @contacts.content = RedCloth.new(@contacts.content).to_html
+    @consignment = SiteSetting.find_by(name: "consultant-portal-loan-program-paragraph")
+  end
+
+  def update_consultants
+    params[:site_setting].each do |sid,val|
+      setting = SiteSetting.find(sid)
+      setting.content = val["content"]
+      setting.save
+    end
+    redirect_to [:cms, @available_locale], notice: "Consultant settings updated successfully."
+  end
+
   private
 
   def load_available_locale

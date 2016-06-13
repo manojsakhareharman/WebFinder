@@ -17,13 +17,7 @@
             <br/>
             <hr/>
             <div id="<%= locale.key %>_tools" class="text-left">
-              <h6><%= locale.name %> site options:</h6>
-              <ul>
-                <li><%= link_to "Customize Navigation", [:cms, locale, :menu_items] %></li>
-                <li><%= link_to "Landing Pages", [:originated, :cms, locale, :landing_pages] %></li>
-                <li><%= link_to "Local Events", [:local, :cms, locale, :events] %></li>
-                <li><%= link_to "News Articles", [:cms, locale, :news_articles] %></li>
-              </ul>
+              <%= render "cms/available_locales/extra_menu", locale: locale %>
             </div>
           </div>
         </li>
