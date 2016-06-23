@@ -1,0 +1,33 @@
+<%= content_for :title do %>
+  <%= @artist.name %>
+<% end %>
+<%= content_for :description do %>
+  <%= @artist.overview %>
+<% end %>
+
+<% if @artist.photo.present? || ENV['show_placeholders'] == "true" %>
+<div class="bumped-up">
+  <div class="banner-container">
+    <h1><%= image_tag @artist.photo.url(:large) %></h1>
+  </div>
+</div>
+<% end %>
+
+<div class="container main-container">
+  <div class="row">
+    <div class="large-10 large-offset-1 columns">
+      <%= link_to "<< Back", artists_path %>
+
+      <h1><%= @artist.name %></h1>
+
+      <div>
+        <p><i><%= @artist.overview %></i></p>
+      </div>
+
+      <div>
+        <%= raw @artist.description %>
+      </div>
+
+    </div>
+  </div>
+</div>

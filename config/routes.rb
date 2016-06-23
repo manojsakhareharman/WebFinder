@@ -35,6 +35,7 @@ Rails.application.routes.draw do
           put :add_defaults
         end
       end
+      resources :artists
       member do
         patch :store_link
         patch :blog_link
@@ -64,6 +65,7 @@ Rails.application.routes.draw do
   resources :leads, path: 'plan/help', only: [:new, :create]
   resources :venues, only: :index
   resources :news_articles, path: 'news', only: [:index, :show]
+  resources :artists, only: [:index, :show]
 
   # Consultant Portal
   get '/consultants/software(.:format)' => 'consultants#software', defaults: { format: 'json' }

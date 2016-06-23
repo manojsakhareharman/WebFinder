@@ -13,6 +13,7 @@ class AvailableLocale < ActiveRecord::Base
   has_many :landing_pages, foreign_key: :original_locale_id
   has_many :events, foreign_key: :original_locale_id
   has_many :news_articles, foreign_key: :locale_id
+  has_many :artists, foreign_key: :locale_id, dependent: :destroy
 
   def self.default
     find_by(key: I18n.default_locale.to_s)

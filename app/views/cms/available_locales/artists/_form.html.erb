@@ -1,0 +1,37 @@
+<%= simple_form_for [:cms, @available_locale, @artist] do |f| %>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :name %>
+      <%= f.input :overview, hint: "Brief overview--one or two lines of text." %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 columns">
+      <%= f.input :photo, hint: "The photo should be a strongly horizontal image (landscape) with the primary content in the middle 1/3rd of the image." %>
+    </div>
+    <div class="medium-4 columns">
+      <% if @artist.photo.present? %>
+        Current photo:<br/>
+        <%= link_to(image_tag(@artist.photo.url(:thumb)),
+              @artist.photo.url ) %><br/>
+        <%= f.input :delete_photo, as: :boolean %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.input :description, as: :text, input_html: { rows: 15, class: "mceEditor" } %>
+      <br/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <%= f.submit 'Save Changes', class: 'medium button' %>
+    </div>
+  </div>
+
+<% end %>

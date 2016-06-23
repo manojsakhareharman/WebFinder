@@ -1,0 +1,39 @@
+<%= content_for :title do %>
+  <% if SiteSetting.set_for_locale?("artist_page_title") %>
+    <%= SiteSetting.value("artist_page_title") %>
+  <% else %>
+    HARMAN Artists
+  <% end %>
+<% end %>
+<%= content_for :description do %>
+  <% if SiteSetting.set_for_locale?("artist_page_description") %>
+    <%= SiteSetting.value("artist_page_description") %>
+  <% else %>
+    These artists demonstrate the power of HARMAN's electrifying line of products and services.
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1><%= yield :title %></h1>
+
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+      <% @artists.each do |artist| %>
+        <li>
+          <div class="panel">
+            <% if artist.photo.present? %>
+              <div class="text-center">
+                <%= link_to(image_tag(artist.photo.url(:medium)), artist) %>
+              </div>
+            <% end %>
+
+            <h5><%= link_to artist.name, artist %></h5>
+            <p><%= artist.overview %></p>
+            <%= link_to t(:more_information), artist, class: "tiny button" %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
