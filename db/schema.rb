@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623164754) do
+ActiveRecord::Schema.define(version: 20160624204456) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -50,17 +50,17 @@ ActiveRecord::Schema.define(version: 20160623164754) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "artists", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.text     "description",         limit: 65535
-    t.text     "overview",            limit: 65535
-    t.string   "photo_file_name",     limit: 255
-    t.integer  "photo_file_size",     limit: 4
-    t.string   "photo_content_type",  limit: 255
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.text     "overview",           limit: 65535
+    t.string   "photo_file_name",    limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.string   "photo_content_type", limit: 255
     t.datetime "photo_updated_at"
-    t.integer  "locale_id", limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "slug",                limit: 255
+    t.integer  "locale_id",          limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "slug",               limit: 255
   end
 
   add_index "artists", ["locale_id"], name: "index_artists_on_locale_id", using: :btree
@@ -341,8 +341,10 @@ ActiveRecord::Schema.define(version: 20160623164754) do
     t.datetime "logo_updated_at"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "locale_id",         limit: 4
   end
 
+  add_index "online_retailers", ["locale_id"], name: "index_online_retailers_on_locale_id", using: :btree
   add_index "online_retailers", ["slug"], name: "index_online_retailers_on_slug", using: :btree
 
   create_table "product_translations", force: :cascade do |t|

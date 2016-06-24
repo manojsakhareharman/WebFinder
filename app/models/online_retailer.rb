@@ -2,8 +2,11 @@ class OnlineRetailer < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name
 
+  belongs_to :locale, class_name: "AvailableLocale", foreign_key: :locale_id
+
   validates :name, presence: true, uniqueness: true
   validates :url, presence: true, format: { with: URI.regexp }
+  validates :locale, presence: true
 
   has_attached_file :logo,
     styles: {
