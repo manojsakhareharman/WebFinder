@@ -33,8 +33,21 @@
               <small><a href="/"><%= t("professional_solutions").upcase %></a></small>
             </h1>
           </div>
-          <div class="medium-6  hide-for-small columns">
-            &nbsp;
+          <div class="large-2 medium-3 small-6 columns text-right">
+            <% if active_locales.count > 1 %>
+              <div class="row collapse prefix" style="border: none">
+                <div class="small-2 columns">
+                  <span class="prefix"><%= fa_icon :flag %></span>
+                </div>
+                <div class="small-10 columns">
+                  <%= select_tag :locale,
+                    options_from_collection_for_select(active_locales, "key", "name", current_locale.key),
+                    id: "locale-switcher" %>
+                </div>
+              </div>
+            <% else %>
+              &nbsp;
+            <% end %>
           </div>
         </div>
 
@@ -81,7 +94,12 @@
           <section class="top-bar-section">
             <ul class="right">
               <% if SiteSetting.set_for_locale?("store_link", current_locale.key) %>
-                <li class="has-form"><%= link_to t('nav.shop'), SiteSetting.value("store_link"), target: "_blank", class: "radius button" %></li>
+                <li class="has-form">
+                  <%= link_to SiteSetting.value("store_link"), target: "_blank", class: "radius button" do %>
+                    <%= fa_icon "shopping-cart" %>
+                    <%= t('nav.shop') %>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </section>

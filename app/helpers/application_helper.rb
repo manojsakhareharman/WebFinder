@@ -36,4 +36,8 @@ module ApplicationHelper
     @current_locale ||= AvailableLocale.where(key: I18n.locale).first_or_initialize
   end
 
+  def active_locales
+    @active_locales ||= AvailableLocale.where(live: true).order("name")
+  end
+
 end
