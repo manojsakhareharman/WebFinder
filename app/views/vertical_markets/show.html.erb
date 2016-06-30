@@ -26,7 +26,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
+      <% if (@vertical_market.children.count % 5) == 0 %>
+        <div class="medium-10 medium-offset-1 small-12 columns">
+      <% else %>
+        <div class="medium-8 medium-offset-2 small-12 columns">
+      <% end %>
         <%= raw textilize @vertical_market.description %>
         <div class="text-center">
           <% @vertical_market.children.each do |vm| %>
