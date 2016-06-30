@@ -1,5 +1,5 @@
 class VerticalMarket < ActiveRecord::Base
-  translates :slug, :name, :headline, :description
+  translates :slug, :name, :headline, :description, :lead_form_content
   extend FriendlyId
   friendly_id :slug_candidates, use: :globalize
 

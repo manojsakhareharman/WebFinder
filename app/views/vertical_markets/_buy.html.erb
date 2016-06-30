@@ -1,9 +1,17 @@
 <a name="buy"></a>
 
-<%# TODO: enable caching once changes settle down %>
-<%#= cache ["retailers_section", Date.today, vertical_market, current_locale] do %>
+<% if vertical_market.lead_form_content.present? %>
 
-<% if vertical_market.retail? %>
+  <div class="container buy-container" data-magellan-destination="buy">
+    <div class="row">
+      <div class="large-12 columns">
+        <%= raw vertical_market.lead_form_content %>
+      </div>
+    </div>
+  </div>
+
+<% elsif vertical_market.retail? %>
+
   <% retailers = current_locale.online_retailers %>
   <% if SiteSetting.set_for_locale?("store_link", current_locale.key) || retailers.count > 0 %>
 
@@ -70,4 +78,3 @@
 
 <% end %>
 
-<%# end %>

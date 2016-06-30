@@ -50,6 +50,18 @@
   </div>
 
   <div class="row">
+    <div class="medium-6 small-12 columns">
+      <%= f.input :lead_form_content, as: :text, input_html: { rows: 15 } %>
+    </div>
+    <div class="medium-6 small-12 columns">
+      <br/>
+      <% Globalize.with_locale(I18n.default_locale) do %>
+        <%= raw @vertical_market.lead_form_content %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="small-12 columns">
       <hr/>
     </div>
