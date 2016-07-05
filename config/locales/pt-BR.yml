@@ -1,0 +1,181 @@
+pt-BR:
+  default_meta_description: "HARMAN Soluções Porfissional é líder em áudio, vídeo, iluminação e controle de sistemas de %{brand_names}."
+  site_name: HARMAN Soluções Profissionais
+  professional_solutions: Soluções Profissionais
+  logo_alt_text: HARMAN Soluções Porfissionais para Áudio, Vídeo, Iluminação e Controle de sistemas
+  learn_more_at: Saiba mais em
+  logo: logo
+  case_study: Estudos de Caso
+  software: Software
+  loading: Carregando
+  harman_brands: Marcas HARMAN
+  all_rights_reserved: Todos os direitos reservados
+  privacy_policy: Política de Privacidade
+  terms_of_use: Termos de Uso
+  submit: submit
+  more: more
+  more_information: Mais informações
+  learn_more: Saiba Mais
+  previous: Anterior
+  next: Próximo
+  register: Registro
+  any: Qualquer
+  search: Localizar
+  connect_with_us: Fale Conosco
+  message: Mensagem
+
+  date:
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      month_year: "%B %Y"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
+  nav:
+    menu: Menu
+    resources: Recursos
+    training: Treinamento
+    events: Eventos
+    media_library: Biblioteca de Mídia
+    consultants: Consultores
+    news: News
+    contacts: Contatos
+    service: Serviço
+    shop: Loja
+    learn: Aprenda
+    plan: Planeje
+    buy: Compre
+
+  home_page:
+    show_now: Compre Agora
+
+  brand_page:
+    meta_description: "índice de Produtos e Serviços fornecidos por %{brand}, uma marca HARMAN Profissional."
+    branding_resources: Recursos por Marcas
+    logo_collection: Coleção de Logos
+    more_resources: Mais recursos de Marketing
+  consultant_page:
+    title: Recursos aos Consultores
+    meta_description: Recursos técnicos, informação de contato por marca e outros recursos para consultores de áudio profissional.
+    technical_product_resources: Recursos Técnicos de Produtos
+    technical_resources: Recursos Técnicos
+    select_a_product: Selecione um produto para localizar mais informações
+    contacts: Contatos de Consultores
+    browse_on_brand_site: "Procure em %{brand} website..."
+    consignment_form: Formulário de envio
+
+  contacts_page:
+    title: Contatos HARMAN Profissional por marca
+    meta_description: "Suporte e outros links de contato para as marcas HARMAN Profissional %{brand_names}."
+    click_to_contact: clique para contatar estas marcas
+    brand_support: "%{brand} Suporte"
+    brand_info: "%{brand} Info"
+
+  training_page:
+    title: Treinamento HARMAN Profissional
+    meta_description: Links de treinamento HARMAN Profissional áudio, vídeo, iluminação e controle por marca.
+    brand_training: "%{brand} Treinamento"
+
+  reference_system_page:
+    meta_description: "Sample %{vertical_market} system: %{reference_system} de áudio pro, vídeo, iluminação e controle de marcas da HARMAN Profissional."
+    vertical_market_examples: "%{vertical_market} exemplos"
+    explore_products: Explore produtos sugeridos
+    product_suggestions: Sugestão de Produtos
+
+  vertical_market_page:
+    meta_description: "Recursos para aprender, planejar e comprar seu %{vertical_market}  áudio pro, vídeo, iluminação e controle de sistemas ."
+    explore_examples: Explore Exemplos
+
+  service_page:
+    title: Serviços HARMAN Pro
+    meta_description: Como conseguir atendimento pela assistência técnica aos seus produtos HARMAN Profissional.
+    links:
+      register_now: Registre-se agora
+      start_your_repair: Inicie o seu reparo
+      get_started: Inicie
+      access_now: Acesse agora
+      apply_now: Increva-se agora
+      order_now: Solicite agora
+    subnav:
+      services_home: Home Serviços
+      service_center_login:  Login Centro de Serviços
+      find_service: Encontre um Centro de Serviços
+  service_center_registration:
+    title: Registro de Centro de Serviços
+    meta_description: Registre-se e seja um Centro de Serviços Autorizado das marcas HARMAN Profissional.
+    agreement: Estou disposto e capaz de atender a todas as marcas HARMAN Profissional  na minha localidade.
+    subheaders:
+      requirements: Requerimentos
+
+  service_login_page:
+    title: Login Centro de Serviços HARMAN Pro
+    meta_description: "Recursos para os Centros de Serviços parceiros da HARMAN Profissional."
+    brand_website: "%{brand} Website"
+    brand_technical_resources: "%{brand} Recursos Técnicos"
+
+  find_service_page:
+    title: Localize um Centro de Serviços HARMAN Pro
+    meta_description: Encontre uma Assistência Técnica na sua localidade para reparo de seu produto HARMAN Profissional .
+    select_state: "Selecione sue estado:"
+    service_type_needed: "Tipo de serviço necessário:"
+    no_results_found: Nenhum resultado de pesquisa encontrado. Por favor tente novamente. Tente digitar apenas a abreviatura do estado sem o tipo de serviço.
+    contact_information: Informações de Contato
+    services: Serviços
+
+  leadgen_page:
+    meta_description: Formulário fale conosco pata entrar em contato com a HARMAN Profissional a respeito do seu áudio, vídeo, iluminação e sistema de controle .
+
+  case_study_page:
+    is_your_project_similar: "Você tem um projeto? Nós podemos ajudar!"
+    connect_with_harman: Fale com a  HARMAN
+
+  lead_mailer:
+    new_lead:
+      subject: Novo lead de pro.harman.com
+  media_library_mailer:
+    access_request:
+      subject: Solicitação de Acesso ao DAM
+  activerecord:
+    models:
+      brand: Marca
+      case_study: Estudo de Caso
+      landing_page: Landing Page
+      lead: Lead
+      product_type: Tipo de Produto
+      product: Produto
+      reference_system: Sistema de Referência
+      resource: Recursos
+      service_center: Centro de Serviços
+      site_setting: Confugurações do Site
+      venue: Local
+      vertical_market: Mercado Vertical
+    attributes:
+      lead:
+        name: Nome
+        company: Empresa
+        email: E-mail
+        phone: Telefone
+        location: Localidade
+        project_description: Descrição do Projeto
+      service_center:
+        contact_name: Seu Nome
+        email: E-mail
+        name: Nome da Empresa
+        address: Endereço
+        city: Cidade
+        state: Estado
+        zip: CEP
+        phone: Telefone
+        fax: Fax
+        website: Website
+        account_number: Número da Conta
+
