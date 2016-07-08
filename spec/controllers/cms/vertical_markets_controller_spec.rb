@@ -12,7 +12,7 @@ RSpec.describe Cms::VerticalMarketsController, type: :controller do
   end
 
   before :each do
-    sign_in(:admin_user, @admin_user)
+    sign_in(@admin_user, scope: :admin_user)
   end
 
   describe "sub-folder of available_locale" do

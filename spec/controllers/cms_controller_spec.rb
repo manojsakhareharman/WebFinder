@@ -5,7 +5,7 @@ RSpec.describe CmsController do
   describe "GET :index (logged in)" do
     it "responds with dashboard" do
       @admin_user = FactoryGirl.create(:admin_user, translator: true)
-      sign_in(:admin_user, @admin_user)
+      sign_in(@admin_user, scope: :admin_user)
 
       get :index
 
