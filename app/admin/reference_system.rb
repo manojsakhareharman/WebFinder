@@ -40,7 +40,7 @@ ActiveAdmin.register ReferenceSystem do
       f.input :banner, hint: "Preferred size: 1170x624 px with a strongly horizontal orientation."
       f.input :venue_size_descriptor, hint: "Maximum characters: 16", input_html: { maxlength: 16 }
       f.input :headline, hint: "Maximum characters: 90", input_html: { maxlength: 90 }
-      f.input :description, hint: "Maximum characters: 650", input_html: { maxlength: 650, rows: 6 }
+      f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 6 }
       f.input :system_diagram, hint: "Becomes the backdrop for the interactive learning diagram."
       f.input :retail, label: "Offer ecommerce links with this system."
     end

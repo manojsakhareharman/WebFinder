@@ -59,7 +59,7 @@ ActiveAdmin.register VerticalMarket do
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
       f.input :banner, hint: "Only needed for a vertical which acts as a parent for other vertical markets. Preferred size: 1170x624 px with a strongly horizontal orientation."
-      f.input :description, hint: "Maximum characters: 650", input_html: { rows: 10 }
+      f.input :description, hint: "Maximum recommended characters: 650", input_html: { rows: 10 }
       f.input :lead_form_content, input_html: { class: "mceEditor"}
     end
     f.actions
