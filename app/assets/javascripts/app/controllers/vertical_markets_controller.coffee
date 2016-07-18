@@ -1,6 +1,6 @@
 angular.module("harmanpro")
   .controller 'VerticalMarketCtrl',
-    ['$attrs', '$scope', 'VerticalMarket', ($attrs, $scope, VerticalMarket) ->
+    ['$attrs', '$scope', '$sce', 'VerticalMarket', ($attrs, $scope, $sce, VerticalMarket) ->
       $scope.slider_pos = 1
       $scope.systems = []
       $scope.system_labels = []
@@ -17,6 +17,9 @@ angular.module("harmanpro")
       $scope.currentSystem = ->
         if $scope.systems.length > 0
           $scope.system = $scope.systems[$scope.slider_pos - 1]
+
+      $scope.getHtml = (html) ->
+        $sce.trustAsHtml html
 
       true
     ]

@@ -92,7 +92,7 @@
 
     <%= render "shared/learn_plan_buy_nav.html.erb" %>
 
-    <div class="container main-container">
+    <div class="container">
       <div class="row">
         <div class="large-8 large-offset-2 columns">
 
@@ -100,7 +100,7 @@
             ng-show="systems.length > 0">
 
             <h2>{{ system['headline'] }}</h2>
-            {{ system['description'] }}
+            <div ng-bind-html="getHtml(system['description'])"></div>
 
             <% if @vertical_market.all_diagrams_present? || ENV['show_placeholders'] == "true" %>
               <div class="system-diagram-container">
