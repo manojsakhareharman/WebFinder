@@ -46,7 +46,7 @@ namespace :refresh do
       execute :mkdir, "-p", folder
 
       within folder do
-        execute :mysqldump, "-u #{@db['username']} --password=#{@env['harmanpro_database_password']} -h #{@db['host']} --port=#{@db['port']} #{@db['database']} > #{@filename}"
+        execute :mysqldump, "--opt -u #{@db['username']} --password=#{@env['harmanpro_database_password']} -h #{@db['host']} --port=#{@db['port']} #{@db['database']} > #{@filename}"
         curr = capture(:pwd)
         download! "#{curr}/#{@filename}", "./#{@filename}"
         execute :rm, @filename
