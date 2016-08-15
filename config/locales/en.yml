@@ -56,7 +56,7 @@ en:
     buy: Buy
 
   home_page:
-    show_now: Shop Now
+    shop_now: Shop Now
 
   brand_page:
     meta_description: "Summary of products and services provided by %{brand}, a HARMAN Professional brand."

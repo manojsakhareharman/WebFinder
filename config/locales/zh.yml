@@ -1,2 +1,184 @@
 zh:
+  default_meta_description: "哈曼专业音视系统事业部是专业音视频灯光及控制系统的制造业领头羊，旗下品牌包括 %{brand_names}."
+  site_name: 哈曼专业音视系统事业部
+  professional_solutions: 专业音视系统
+  logo_alt_text: 哈曼专业音视系统，音视频灯光与控制系统解决方案提供商
+  learn_more_at: 了解更多详情
+  logo: logo
+  case_study: 项目案例
+  software: 软件
+  loading: 上载中
+  harman_brands: 哈曼旗下品牌
+  all_rights_reserved: 产权所有
+  privacy_policy: 隐私政策
+  terms_of_use: 使用条款
+  submit: 提交
+  more: 更多
+  more_information: 更多详情
+  learn_more: 了解更多详情
+  previous: 上一页
+  next: 下一页
+  register: 注册
+  any: 任何
+  search: 搜索
+  connect_with_us: 与我们建立联系
+  message: 信息
+
+  date:
+    formats:
+      default: "%a, %d %B %Y"
+      short: "%b %d, %Y"
+      long: "%B %d, %Y"
+      month_day: "%b %d"
+      month_year: "%B %Y"
+      blog_month_day: "%B %d"
+      mmddyy: "%m/%d/%y"
+      mmddyyyy: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%a, %d %B %Y, %I:%M %p"
+      log: "%b %d, %Y, %I:%M %p"
+
+  nav:
+    menu: 目录
+    resources: 资源中心
+    training: 网络培训
+    events: 市场活动
+    media_library: 媒体库
+    consultants: 产品资料库
+    news: 新闻中心
+    contacts: 联系我们
+    service: 售后服务
+    shop: 网上商城
+    learn: 了解产品
+    plan: 项目规划
+    buy: 设备购置
+
+  home_page:
+    shop_now: 立即选购
+
+  brand_page:
+    meta_description: "由 %{brand} 提供的产品与服务汇总, 哈曼专业音视系统旗下品牌。"
+    branding_resources: 品牌资源
+    logo_collection: 商标库
+    more_resources: 更多市场营销资源
+
+  consultant_page:
+    title: 技术顾问所需资源
+    meta_description: 专业音频顾问所需的技术资料，品牌联系信息以及其它资源。
+    technical_product_resources: 产品技术资料
+    technical_resources: 技术资料
+    select_a_product: 选择产品
+    contacts: 顾问联系人
+    browse_on_brand_site: "浏览 %{brand} 网站..."
+    consignment_form: 运单
+
+  contacts_page:
+    title: 哈曼专业音视系统品牌联系人
+    meta_description: "哈曼专业音视系统品牌支持与其它联系方式链接: %{brand_names}."
+    click_to_contact: 点击这里联系这些品牌
+    brand_support: "%{brand} 技术支持"
+    brand_info: "%{brand} 品牌信息"
+
+  training_page:
+    title: 哈曼专业音视系统网络培训中心
+    meta_description: 哈曼专业音视系统音视频灯光与控制系统网络培训链接。
+    brand_training: "%{brand} 网络培训"
+
+  reference_system_page:
+    meta_description: "%{vertical_market} 样版系统:哈曼专业音视系统音视频灯光及控制系统品牌的 %{reference_system} ."
+    vertical_market_examples: "%{vertical_market} 样版案例"
+    explore_products: 了解这些推荐的产品
+    product_suggestions: 产品推荐
+
+  vertical_market_page:
+    meta_description: "了解、规划与购置您 %{vertical_market} 专业音视频灯光与控制系统。"
+    explore_examples: 了解这些案例项目
+
+  service_page:
+    title: 哈曼专业音视系统售后服务中心
+    meta_description: 如何进行哈曼专业产品售后服务。
+    links:
+      register_now: 立即注册
+      start_your_repair: 开始维修
+      get_started: 开始
+      access_now: 立即进入
+      apply_now: 立即申请
+      order_now: 立即订购
+    subnav:
+      services_home: 售后服务中心首页
+      service_center_login: 服务中心登录
+      find_service: 定位一家服务中心
+
+  service_center_registration:
+    title: 服务中心注册
+    meta_description: 注册成为哈曼专业音视系统品牌授权服务中心。
+    agreement: 我愿意并有足够能力在我的经营范围内进行哈曼专业音视系统所有产品的售后服务工作。
+    subheaders:
+      requirements: 所需条件
+
+  service_login_page:
+    title: 哈曼专业音视系统服务中心登录
+    meta_description: "哈曼专业音视系统服务中心所需资源。"
+    brand_website: "%{brand} 网站"
+    brand_technical_resources: "%{brand} 技术资料"
+
+  find_service_page:
+    title: 定位一家哈曼专业服务中心
+    meta_description: 找到一家本地服务中心进行哈曼专业产品售后服务。
+    select_state: "请选择省份:"
+    service_type_needed: "请选择服务类型:"
+    no_results_found: 未搜到任何结果，请再次尝试。 请尝试键入省份的简写，而不加入服务类型。
+    contact_information: 联系方式
+    services: 售后服务
+
+  leadgen_page:
+    meta_description: 填写表格与哈曼专业音视系统建立联系。
+
+  case_study_page:
+    is_your_project_similar: "在做项目规划吗? 让我们来帮你吧!"
+    connect_with_harman: 联系哈曼
+
+  lead_mailer:
+    new_lead:
+      subject: New lead from pro.harman.com
+  media_library_mailer:
+    access_request:
+      subject: DAM系统权限申请
+
+  activerecord:
+    models:
+      brand: 品牌
+      case_study: 案例赏析
+      landing_page: 登录页面
+      lead: 潜在项目
+      product_type: 产品类型
+      product: 产品
+      reference_system: 样版系统
+      resource: 资源
+      service_center: 服务中心
+      site_setting: 网页设置
+      venue: 应用地点
+      vertical_market: 垂直市场
+    attributes:
+      lead:
+        name: 姓名
+        company: 公司名
+        email: 电子邮箱
+        phone: 电话
+        location: 地区
+        project_description: 项目描述
+      service_center:
+        contact_name: 您的姓名
+        email: 邮箱
+        name: 业务名称
+        address: 地址
+        city: 城市
+        state: 省份
+        zip: 邮编
+        phone: 电话
+        fax: 传真
+        website: 网站
+        account_number: 帐号
 

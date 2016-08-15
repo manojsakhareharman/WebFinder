@@ -38,7 +38,7 @@ es:
     buy: Compra
 
   home_page:
-    show_now: Compra Ahora
+    shop_now: Compra Ahora
 
   brand_page:
     meta_description: "Resumen de productos y servicios proporcionado por %{brand}, una marca de HARMAN Profesional."
