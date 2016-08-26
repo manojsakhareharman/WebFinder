@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629210720) do
+ActiveRecord::Schema.define(version: 20160826185529) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -592,6 +592,7 @@ ActiveRecord::Schema.define(version: 20160629210720) do
     t.string   "banner_content_type", limit: 255
     t.integer  "banner_file_size",    limit: 4
     t.datetime "banner_updated_at"
+    t.boolean  "live",                            default: true
   end
 
   add_index "vertical_markets", ["parent_id"], name: "index_vertical_markets_on_parent_id", using: :btree

@@ -14,8 +14,8 @@ module ApplicationHelper
   end
 
   def tree_links_for(vm, options)
-    if vm.children.length > 0
-      c = vm.children.map do |cvm|
+    if vm.children.where(live: true).length > 0
+      c = vm.children.where(live: true).map do |cvm|
         menu_link_for(cvm, options)
       end
       content_tag(:ul, c.join.html_safe, class: "dropdown")
@@ -24,7 +24,7 @@ module ApplicationHelper
 
   def dropdown_class_for(vm, options)
     if options[:dropdowns]
-      vm.children.length > 0 ? "has-dropdown" : ""
+      vm.children.where(live: true).length > 0 ? "has-dropdown" : ""
     end
   end
 

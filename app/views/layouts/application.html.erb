@@ -143,10 +143,10 @@
             <div class="large-3 medium-6 hide-for-small columns">
               <%= cache ["footer-col-1", Date.today, current_locale] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length > 0 %>
+                  <% if vmp.children.where(live: true).length > 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
                     <ul>
-                      <% vmp.children.each do |v| %>
+                      <% vmp.children.where(live: true).each do |v| %>
                         <li><%= link_to v.name, v %></li>
                       <% end %>
                     </ul>
@@ -157,7 +157,7 @@
             <div class="large-3 medium-6 hide-for-small columns">
               <%= cache ["footer-col-2", Date.today, current_locale] do %>
                 <% VerticalMarket.parent_verticals.each do |vmp| %>
-                  <% if vmp.children.length <= 0 %>
+                  <% if vmp.children.where(live: true).length <= 0 %>
                     <h6 class="subheader"><%= vmp.name %></h6>
                     <ul>
                       <% vmp.reference_systems.each do |rs| %>

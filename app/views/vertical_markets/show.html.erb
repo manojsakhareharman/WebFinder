@@ -3,7 +3,7 @@
   <%= t('vertical_market_page.meta_description', vertical_market: @vertical_market.name) %>
 <% end %>
 
-<% if @vertical_market.children.length > 0 %>
+<% if @vertical_market.children.where(live: true).length > 0 %>
   <div class="bumped-up space-after hide-for-small">
     <div class="banner-container vertical-market">
       <% if @vertical_market.banner.present? || ENV['show_placeholders'] == "true" %>
@@ -26,14 +26,14 @@
       </div>
     </div>
     <div class="row">
-      <% if (@vertical_market.children.count % 5) == 0 %>
+      <% if (@vertical_market.children.where(live: true).count % 5) == 0 %>
         <div class="medium-10 medium-offset-1 small-12 columns">
       <% else %>
         <div class="medium-8 medium-offset-2 small-12 columns">
       <% end %>
         <%= raw textilize @vertical_market.description %>
         <div class="text-center">
-          <% @vertical_market.children.each do |vm| %>
+          <% @vertical_market.children.where(live: true).each do |vm| %>
             <%= link_to vm, class: "vertical-market-icon" do %>
               <% if vm.banner.present? || ENV['show_placeholders'] == "true" %>
                 <%= image_tag vm.banner.url(:small) %>

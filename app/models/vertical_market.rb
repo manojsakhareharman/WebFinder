@@ -22,7 +22,7 @@ class VerticalMarket < ActiveRecord::Base
   validates :headline, presence: true
 
   def self.parent_verticals
-    where("parent_id IS NULL or parent_id <= 0")
+    where(live: true).where("parent_id IS NULL or parent_id <= 0")
   end
 
   def slug_candidates

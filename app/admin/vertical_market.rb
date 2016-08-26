@@ -1,7 +1,7 @@
 ActiveAdmin.register VerticalMarket do
   menu label: "Vertical Markets", priority: 1
 
-  permit_params :name, :parent_id, :headline, :description, :banner, :lead_form_content
+  permit_params :name, :parent_id, :headline, :description, :banner, :lead_form_content, :live
 
   config.sort_order = "parent_id"
 
@@ -13,11 +13,13 @@ ActiveAdmin.register VerticalMarket do
     column "Reference Systems" do |v|
       v.reference_systems.length
     end
+    column :live
     actions
   end
   # :nocov:
 
   filter :parent, as: :select
+  filter :live
   #filter :name, as: :string
   filter :updated_at
 
@@ -55,6 +57,7 @@ ActiveAdmin.register VerticalMarket do
 
   form html: { multipart: true} do |f|
     f.inputs do
+      f.input :live
       f.input :parent
       f.input :name, hint: "Maximum characters: 20", input_html: {maxlength: 20}
       f.input :headline, hint: "Maximum characters: 70", input_html: { maxlength: 70 }
